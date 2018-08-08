@@ -15,7 +15,27 @@ public class UIAnchor : MonoBehaviour {
     [SerializeField] private bool snapToPixel;
     [SerializeField] private int pixelsPerUnit = 8;
 
-    void Awake () {
+    /// <summary>
+    /// set the fields for the Anchor
+    /// </summary>
+    /// <param name="anc">Anchor Type</param>
+    /// <param name="cam">Main Camera</param>
+    /// <param name="off">Offset from Anchor</param>
+    /// <param name="snap">snap to pixel grid?</param>
+    /// <param name="ppu">Pixels per (unity) unit</param>
+    public void Set(Anchor anc, GameObject cam, Vector2 off, bool snap, int ppu)
+    {
+        anchor = anc;
+        mainCamera = cam;
+        offset = off;
+        snapToPixel = snap;
+        ppu = pixelsPerUnit;
+
+        SetPosition();
+    }
+
+    public void SetPosition()
+    {
         float cameraHeight = mainCamera.GetComponent<Camera>().orthographicSize;
         float cameraWidth = Screen.width * cameraHeight / Screen.height;
 
@@ -40,7 +60,7 @@ public class UIAnchor : MonoBehaviour {
                 transform.position += Vector3.right * offset.x;
                 break;
         }
-        
+
         //adjust y position of UI element
         switch (anchor)
         {
@@ -66,6 +86,12 @@ public class UIAnchor : MonoBehaviour {
         {
             //round to nearest pixel position
             transform.position = new Vector3(RoundToPixel(transform.position.x), RoundToPixel(transform.position.y), transform.position.z);
+        }
+    }
+    void Awake () {
+        if (mainCamera != null)
+        {
+            SetPosition();
         }
     }
 

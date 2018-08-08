@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class Jump : PhysicsObject, IHealthObject
+public class Jump : PhysicsObject, IHealthObject, IItems
 {
     # region private fields
     [SerializeField] private float moveSpeed; //how fast the object can move
@@ -26,14 +26,18 @@ public class Jump : PhysicsObject, IHealthObject
     private bool touchingLadder; //true when player is touching the ladder
     protected bool climbing;
 
-    [SerializeField] private bool canSprint;
+    [SerializeField] private bool canSprint; 
     [SerializeField] private float sprintSpeed;
+
+    private Dictionary<string, GameObject> items = new Dictionary<string, GameObject>();
+    private GameObject mainCamera; //ref to main camera in scene
     #endregion
 
     //Properties 
     public int Health { get { return health; } }
     public int MaxHealth { get { return maxHealth; } }
     public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
+    public Dictionary<string, GameObject> Items { get { return items; } }
 
     //Start is already being called in Base PhysicsObject Class
     private void Awake()
@@ -43,6 +47,8 @@ public class Jump : PhysicsObject, IHealthObject
 
         if (maxHealth < 1) { maxHealth = 1; } //must have at leath one health point
         health = maxHealth;
+
+        mainCamera = Manager.Instance.MainCamera;
     }
 
     protected override void FixedUpdate()
@@ -223,6 +229,24 @@ public class Jump : PhysicsObject, IHealthObject
     public void FullHeal()
     {
         health = maxHealth;
+    }
+    #endregion
+
+    #region Items
+    public void AddItem(string name, GameObject obj)
+    {
+        items.Add(name, obj);
+
+        obj.AddComponent<UIAnchor>();
+
+        mainCamera = Manager.Instance.MainCamera;
+        obj.transform.parent = mainCamera.transform;
+        obj.GetComponent<UIAnchor>().Set(Anchor.topRight, mainCamera, new Vector2(-1.0f, items.Count * -1.125f), true, 8);
+    }
+
+    public void RemoveItem(string name)
+    {
+        items.Remove(name);
     }
     #endregion
 }
