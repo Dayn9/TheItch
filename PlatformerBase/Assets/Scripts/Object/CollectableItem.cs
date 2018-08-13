@@ -10,7 +10,7 @@ public class CollectableItem : MonoBehaviour {
         if (!collected && coll.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             collected = true;
-            coll.gameObject.GetComponent<IItems>().AddItem(this.gameObject.name, this.gameObject);
+            Manager.Instance.AddItem(this.gameObject.name, this.gameObject);
             Destroy(this); //remove collectable item script from item
         }
     }

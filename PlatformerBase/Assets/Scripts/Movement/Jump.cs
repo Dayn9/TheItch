@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class Jump : PhysicsObject, IHealthObject, IItems
+public class Jump : PhysicsObject, IHealthObject
 {
     # region private fields
     [SerializeField] private float moveSpeed; //how fast the object can move
@@ -29,15 +29,16 @@ public class Jump : PhysicsObject, IHealthObject, IItems
     [SerializeField] private bool canSprint; 
     [SerializeField] private float sprintSpeed;
 
-    private Dictionary<string, GameObject> items = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> items; //ref to inventory
     private GameObject mainCamera; //ref to main camera in scene
     #endregion
 
-    //Properties 
+    #region Properties
     public int Health { get { return health; } }
     public int MaxHealth { get { return maxHealth; } }
     public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
     public Dictionary<string, GameObject> Items { get { return items; } }
+    #endregion
 
     //Start is already being called in Base PhysicsObject Class
     private void Awake()
@@ -49,6 +50,7 @@ public class Jump : PhysicsObject, IHealthObject, IItems
         health = maxHealth;
 
         mainCamera = Manager.Instance.MainCamera;
+        items = Manager.Instance.Items;
     }
 
     protected override void FixedUpdate()
@@ -229,24 +231,6 @@ public class Jump : PhysicsObject, IHealthObject, IItems
     public void FullHeal()
     {
         health = maxHealth;
-    }
-    #endregion
-
-    #region Items
-    public void AddItem(string name, GameObject obj)
-    {
-        items.Add(name, obj);
-
-        obj.AddComponent<UIAnchor>();
-
-        mainCamera = Manager.Instance.MainCamera;
-        obj.transform.parent = mainCamera.transform;
-        obj.GetComponent<UIAnchor>().Set(Anchor.topRight, mainCamera, new Vector2(-1.0f, items.Count * -1.125f), true, 8);
-    }
-
-    public void RemoveItem(string name)
-    {
-        items.Remove(name);
     }
     #endregion
 }
