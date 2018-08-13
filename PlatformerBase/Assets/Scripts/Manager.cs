@@ -5,6 +5,8 @@ using UnityEngine;
 public class Manager : Singleton<Manager> {
     private GameObject mainCamera;
 
+    [SerializeField] public int pixelsPerUnit = 8;
+
     public GameObject MainCamera
     {
         get

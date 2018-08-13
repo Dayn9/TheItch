@@ -89,6 +89,7 @@ public class UIAnchor : MonoBehaviour {
         }
     }
     void Awake () {
+        mainCamera = Manager.Instance.MainCamera;
         if (mainCamera != null)
         {
             SetPosition();
