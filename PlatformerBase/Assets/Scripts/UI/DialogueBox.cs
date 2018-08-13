@@ -8,7 +8,7 @@ public class DialogueBox : MonoBehaviour {
     [SerializeField] private GameObject charPrefab; //gameobject prefab for individual letters
     [SerializeField] private Sprite[] letters; //array of all possible sprites
 
-    private GameObject charachterImage; 
+    private SpriteRenderer charachterImage; 
     private List<SpriteRenderer> text;
 
     private const int numLines = 3; //number of lines in the dialoge box
@@ -27,10 +27,21 @@ public class DialogueBox : MonoBehaviour {
                 newLetter = Instantiate(charPrefab, transform);
                 newLetter.name = "char" + line + "." + cha; 
                 newLetter.transform.position = transform.position + 
-                    new Vector3((cha * 1.125f) - 6.375f, (line * -1.375f) + 1.375f, 0); //move to correct position
+                    new Vector3((cha * 1.125f) - 6.375f, (line * -1.375f) + 1.375f, 0); //TODO: make variables for adjustable 'font size'
                 text.Add(newLetter.GetComponent<SpriteRenderer>());
             }
         }
+
+        GameObject charachterFace = Instantiate(charPrefab, transform);
+        charachterFace.name = "faceImage";
+        charachterFace.transform.position = transform.position + new Vector3(-9.0f, 0.0f, 0.0f);
+        charachterImage = charachterFace.GetComponent<SpriteRenderer>();
+    }
+
+    public void DisplayMessage(string message, Sprite face)
+    {
+        DisplayMessage(message);
+        charachterImage.sprite = face;
     }
 
     public void DisplayMessage(string message)

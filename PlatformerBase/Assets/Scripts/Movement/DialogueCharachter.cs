@@ -6,6 +6,9 @@ public class DialogueCharachter : PhysicsObject {
 
     [SerializeField] private DialogueBox dialogueBox;
 
+    [Tooltip("img should be 32x32 pixels")]
+    [SerializeField] private Sprite faceImage; //image to display in dialogue box
+
     [SerializeField][TextArea] protected string QuestDialogue; //text dialogue to give quest
     protected bool questCompleted = false; //true when quest has been completed
     [SerializeField][TextArea] protected string CompletedDialogue; //text dialogue when quest complete
@@ -17,14 +20,12 @@ public class DialogueCharachter : PhysicsObject {
             dialogueBox.gameObject.SetActive(true); 
             if (!questCompleted)
             {
-                Debug.Log(QuestDialogue);
-                dialogueBox.DisplayMessage(QuestDialogue);
+                dialogueBox.DisplayMessage(QuestDialogue, faceImage);
                 questCompleted = true;
             }
             else
             {
-                Debug.Log(CompletedDialogue);
-                dialogueBox.DisplayMessage(CompletedDialogue);
+                dialogueBox.DisplayMessage(CompletedDialogue, faceImage);
             }
         }
     }
