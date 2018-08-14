@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CollectableItem : MonoBehaviour {
+public class CollectableItem : Inventory {
     private bool collected = false;
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -10,7 +8,7 @@ public class CollectableItem : MonoBehaviour {
         if (!collected && coll.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             collected = true;
-            Manager.Instance.AddItem(this.gameObject.name, this.gameObject);
+            AddItem(gameObject.name, gameObject);
             Destroy(this); //remove collectable item script from item
         }
     }

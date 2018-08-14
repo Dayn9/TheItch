@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class PhysicsObject : MonoBehaviour
+public class PhysicsObject : Inventory
 {
     #region protected fields
     [SerializeField] protected bool inheritGravity; //inherit surface gravity on collision
@@ -16,7 +16,6 @@ public class PhysicsObject : MonoBehaviour
     protected Vector2 groundNormal; //normal vector of the ground object is on
     protected Vector2 groundTangent; //Vector along ground
     protected bool grounded; //true if object is on the ground
-    protected const float buffer = 0.01f;
 
     protected Rigidbody2D rb2D; //attached rigidbody
     protected RaycastHit2D[] hits; //array of collisions

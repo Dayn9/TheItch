@@ -7,13 +7,11 @@ using UnityEngine;
 public enum Anchor { topLeft, topCenter, topRight, middleLeft, middleCenter, middleRight, bottomLeft, bottomCenter, bottomRight }
 
 [ExecuteInEditMode] //save position 
-public class UIAnchor : MonoBehaviour {
+public class UIAnchor : Global {
 
     [SerializeField] private Anchor anchor;
-    [SerializeField] private GameObject mainCamera;
     [SerializeField] private Vector2 offset;
     [SerializeField] private bool snapToPixel;
-    [SerializeField] private int pixelsPerUnit = 8;
 
     /// <summary>
     /// set the fields for the Anchor
@@ -23,23 +21,21 @@ public class UIAnchor : MonoBehaviour {
     /// <param name="off">Offset from Anchor</param>
     /// <param name="snap">snap to pixel grid?</param>
     /// <param name="ppu">Pixels per (unity) unit</param>
-    public void Set(Anchor anc, GameObject cam, Vector2 off, bool snap, int ppu)
+    public void Set(Anchor anc, Vector2 off, bool snap)
     {
         anchor = anc;
-        mainCamera = cam;
         offset = off;
         snapToPixel = snap;
-        ppu = pixelsPerUnit;
 
         SetPosition();
     }
 
     public void SetPosition()
     {
-        float cameraHeight = mainCamera.GetComponent<Camera>().orthographicSize;
+        float cameraHeight = MainCamera.GetComponent<Camera>().orthographicSize;
         float cameraWidth = Screen.width * cameraHeight / Screen.height;
 
-        transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, transform.position.z); //move to center of the screen
+        transform.position = new Vector3(MainCamera.transform.position.x, MainCamera.transform.position.y, transform.position.z); //move to center of the screen
         //adjust x position of UI element
         switch (anchor)
         {
@@ -89,11 +85,7 @@ public class UIAnchor : MonoBehaviour {
         }
     }
     void Awake () {
-        mainCamera = Manager.Instance.MainCamera;
-        if (mainCamera != null)
-        {
-            SetPosition();
-        }
+        SetPosition();
     }
 
     /// <summary>

@@ -29,15 +29,12 @@ public class Jump : PhysicsObject, IHealthObject
     [SerializeField] private bool canSprint; 
     [SerializeField] private float sprintSpeed;
 
-    private Dictionary<string, GameObject> items; //ref to inventory
-    private GameObject mainCamera; //ref to main camera in scene
     #endregion
 
     #region Properties
     public int Health { get { return health; } }
     public int MaxHealth { get { return maxHealth; } }
     public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
-    public Dictionary<string, GameObject> Items { get { return items; } }
     #endregion
 
     //Start is already being called in Base PhysicsObject Class
@@ -48,9 +45,6 @@ public class Jump : PhysicsObject, IHealthObject
 
         if (maxHealth < 1) { maxHealth = 1; } //must have at leath one health point
         health = maxHealth;
-
-        mainCamera = Manager.Instance.MainCamera;
-        items = Manager.Instance.Items;
     }
 
     protected override void FixedUpdate()

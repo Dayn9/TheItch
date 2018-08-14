@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
 public delegate void LedgeDetectedMethod(bool right); 
-
+/// <summary>
+/// determines if there is a ledge that the parent object would fall off
+/// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class EdgeDetector : MonoBehaviour {
 
@@ -18,7 +20,7 @@ public class EdgeDetector : MonoBehaviour {
     {
         if(collisions == 0 && LedgeDetected != null)
         {
-            LedgeDetected(right);
+            LedgeDetected(right); //trigger event
         }
         collisions++;
     }
@@ -28,7 +30,7 @@ public class EdgeDetector : MonoBehaviour {
         collisions--;
         if (collisions == 0 && LedgeDetected != null)
         {
-            LedgeDetected(right);
+            LedgeDetected(right); //triggre event
         }
     }
 }

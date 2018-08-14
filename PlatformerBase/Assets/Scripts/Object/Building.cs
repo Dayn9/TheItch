@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Building : MonoBehaviour {
+public class Building : Global {
 
     [SerializeField] private GameObject Exterior; //Exterior Tilemap
     [SerializeField] private BuildingLayer[] Interior; //Interior layer tilemaps and joining doors
@@ -9,7 +9,7 @@ public class Building : MonoBehaviour {
     [SerializeField] private int doorAboveLayer; //order in sorting layer of door that leads back a layer
     [SerializeField] private int doorBelowLayer; //order in sorting layer of door that leads forward a layer
 
-    [SerializeField] private PhysicsObject player;
+    private PhysicsObject player; //ref to physicsObject type script attached to player
 
     private int currentLayer = 0; //layer of the building the player is currently in
 
@@ -18,6 +18,8 @@ public class Building : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        player = Player.GetComponent<PhysicsObject>(); //UNTESTED
+
         solidDoor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         transparentDoor = new Color(1.0f, 1.0f, 1.0f, doorAboveAlpha);
 

@@ -12,16 +12,10 @@ public class DialogueCharachter : PhysicsObject {
 
     [SerializeField][TextArea] private string QuestDialogue; //text dialogue to give quest
     private bool questCompleted = false; //true when quest has been completed
-    [SerializeField] private List<string> itemsRequired; 
+    [SerializeField] private List<string> itemsRequired; //TODO: redo with (gamobjects?)
     [SerializeField][TextArea] private string CompletedDialogue; //text dialogue when quest complete
 
-    private Dictionary<string, GameObject> items; //ref to player inventory
     #endregion
-
-    private void Awake()
-    {
-        items = Manager.Instance.Items; //gain access to player inventory
-    }
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)
     {
@@ -55,7 +49,7 @@ public class DialogueCharachter : PhysicsObject {
         //check if all the required items are in the players inventory
         foreach (string item in itemsRequired)
         {
-            if (!items.ContainsKey(item))
+            if (!Items.ContainsKey(item))
             {
                 return false; //a required item is missing from player inventory
             }

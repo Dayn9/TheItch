@@ -7,8 +7,8 @@ using UnityEngine.Assertions;
 public class Global : MonoBehaviour {
 
     #region global variables
-    [SerializeField] private GameObject mainCamera; //Main Camera object in scene
-    [SerializeField] private GameObject player; //player object
+    private static GameObject mainCamera; //Main Camera object in scene
+    private static GameObject player; //player object
 
     protected const int pixelsPerUnit = 8; //number of pixels displayed in each unity unit
     protected const float buffer = 0.01f; //collision buffer 
@@ -44,7 +44,7 @@ public class Global : MonoBehaviour {
             if (player == null)
             {
                 player = GameObject.FindGameObjectWithTag("Player");
-                Assert.IsNotNull(mainCamera, "Need to tag a object \"Player\"");
+                Assert.IsNotNull(player, "Need to tag a object \"Player\"");
             }
             return player;
         }

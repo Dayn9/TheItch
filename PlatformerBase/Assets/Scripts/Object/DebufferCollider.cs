@@ -8,10 +8,7 @@ using UnityEngine;
 /// <summary>
 /// removes the buffer around an object for better collision
 /// </summary>
-public class DebufferCollider : MonoBehaviour {
-
-    [SerializeField] private float buffer; //amount to remove
-
+public class DebufferCollider : Global {
 	void Start () {
         Debuffer();
     }

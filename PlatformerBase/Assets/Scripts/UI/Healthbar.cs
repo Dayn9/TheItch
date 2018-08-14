@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-public class Healthbar : MonoBehaviour {
+public class Healthbar : Global {
 
-    [SerializeField] private GameObject player; //ref to player object
     [SerializeField] private Digit digitOne; //ref to first digit in healthbar readout
     [SerializeField] private Digit digitTwo; //ref to second digit in healthbar number readout
 
@@ -17,8 +16,8 @@ public class Healthbar : MonoBehaviour {
     private void Start()
     {
         //get the player's health and maxHealth
-        playerHealth = player.GetComponent<IHealthObject>().Health;
-        playerMaxHealth = player.GetComponent<IHealthObject>().MaxHealth;
+        playerHealth = Player.GetComponent<IHealthObject>().Health;
+        playerMaxHealth = Player.GetComponent<IHealthObject>().MaxHealth;
 
         GameObject tick;
         //fill the healthbar with ticks
@@ -36,7 +35,7 @@ public class Healthbar : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         //get the player's health
-        playerHealth = player.GetComponent<IHealthObject>().Health;
+        playerHealth = Player.GetComponent<IHealthObject>().Health;
 
         //set the digits
         digitOne.SetNumber(playerHealth < 10 ? 10 : (playerHealth - (playerHealth % 10)) / 10);
