@@ -18,6 +18,7 @@ public class FollowPlayer : PhysicsObject {
     {
         //add Ledge Detected Method to events of ledge detectors
         EdgeDetector[] detectors = GetComponentsInChildren<EdgeDetector>();
+        if(detectors.Length == 0) { Debug.Log("No edge detectors found in child objects"); }
         foreach(EdgeDetector detector in detectors)
         {
             detector.LedgeDetected += OnLedgeDetect;
