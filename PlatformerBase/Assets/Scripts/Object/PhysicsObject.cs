@@ -28,7 +28,7 @@ public class PhysicsObject : Inventory
     #endregion 
 
     // Use this for initialization
-    protected void Start()
+    protected virtual void Start()
     {
         gravity = Vector2.down * gravityMag; //default gravity vector is down
         groundNormal = -gravity.normalized;

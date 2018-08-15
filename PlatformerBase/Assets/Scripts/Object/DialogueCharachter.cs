@@ -5,6 +5,10 @@ using UnityEngine;
 public class DialogueCharachter : PhysicsObject {
 
     #region private variables
+    [SerializeField] private GameObject indicatorPrefab; //object that appears when the player can interact with object
+    [SerializeField] private Vector3 indicatorOffset; //offset from door to display above object
+    private GameObject indicator; //ref to instatiated indicatorPrefab
+
     [SerializeField] private DialogueBox dialogueBox;
 
     [Tooltip("img should be 32x32 pixels")]
@@ -12,29 +16,58 @@ public class DialogueCharachter : PhysicsObject {
 
     [SerializeField][TextArea] private string QuestDialogue; //text dialogue to give quest
     private bool questCompleted = false; //true when quest has been completed
-    [SerializeField] private List<string> itemsRequired; //TODO: redo with (gamobjects?)
+    [SerializeField] private List<GameObject> itemsRequired; //TODO: redo with (gamobjects?)
     [SerializeField][TextArea] private string CompletedDialogue; //text dialogue when quest complete
 
+    private const KeyCode dialogueTrigger = KeyCode.DownArrow; //Key that will start and advance the dialogue
+    private bool playerTouching = false; //true when dialogue is touching Charachter
+
     #endregion
+
+    protected override void Start()
+    {
+        base.Start(); //PhysicsObject Start()
+
+        //create the indicator and position it propperly 
+        indicator = Instantiate(indicatorPrefab, transform);
+        indicator.transform.position = transform.position + indicatorOffset;
+        indicator.SetActive(false);
+        indicator.name = "Dialogue Indicator";
+    }
+
+    private void Update()
+    {
+        if(playerTouching && Input.GetKeyDown(dialogueTrigger))
+        {
+            dialogueBox.gameObject.SetActive(true);
+            CheckQuest();
+            dialogueBox.OnTriggerKeyPressed("hey");
+            dialogueBox.DisplayMessage(questCompleted ? CompletedDialogue : QuestDialogue, faceImage);
+        }
+    }
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
         {
-            dialogueBox.gameObject.SetActive(true);
-            CheckQuest();
-            dialogueBox.DisplayMessage(questCompleted ? CompletedDialogue : QuestDialogue, faceImage);
+            indicator.SetActive(true);
+            playerTouching = true;
+
+            
         }
     }
 
-    //TEMP exit
     protected virtual void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
         {
-            dialogueBox.gameObject.SetActive(false);
+            playerTouching = false;
+            indicator.SetActive(false);
+
+            dialogueBox.Reset(); //reset the dialogue when the player leaves
         }
     }
+
     //test if conditions are met for quest to be completed
     private void CheckQuest()
     {
@@ -47,14 +80,17 @@ public class DialogueCharachter : PhysicsObject {
     private bool CheckItems()
     {
         //check if all the required items are in the players inventory
-        foreach (string item in itemsRequired)
+        foreach (GameObject item in itemsRequired)
         {
-            if (!Items.ContainsKey(item))
+            if (!Items.ContainsKey(item.name))
             {
                 return false; //a required item is missing from player inventory
             }
         }
-        //TODO: remove all required items from items
+        foreach(GameObject item in itemsRequired)
+        {
+            RemoveItem(item.name);
+        }
 
         return true; //all required items are in the players inventory
     }

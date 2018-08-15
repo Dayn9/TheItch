@@ -33,7 +33,7 @@ public class UIAnchor : Global {
     public void SetPosition()
     {
         float cameraHeight = MainCamera.GetComponent<Camera>().orthographicSize;
-        float cameraWidth = Screen.width * cameraHeight / Screen.height;
+        float cameraWidth = Screen.height != 0 ? Screen.width * cameraHeight / Screen.height : cameraHeight;
 
         transform.position = new Vector3(MainCamera.transform.position.x, MainCamera.transform.position.y, transform.position.z); //move to center of the screen
         //adjust x position of UI element
@@ -84,6 +84,7 @@ public class UIAnchor : Global {
             transform.position = new Vector3(RoundToPixel(transform.position.x), RoundToPixel(transform.position.y), transform.position.z);
         }
     }
+
     void Awake () {
         SetPosition();
     }

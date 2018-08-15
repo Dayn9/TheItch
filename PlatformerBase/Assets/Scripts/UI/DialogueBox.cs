@@ -13,11 +13,13 @@ public class DialogueBox : MonoBehaviour {
 
     private const int numLines = 3; //number of lines in the dialoge box
     private const int charsPerLine = 16; //number of charachters in each line
+    private int dialogueChunk; //which chunk of dialogue is currently being displayed
 
     private void Start()
     {
         gameObject.SetActive(false);
         text = new List<SpriteRenderer>();
+        dialogueChunk = -1; //no dialogue 
 
         GameObject newLetter;
         for(int line = 0; line< numLines; line++)
@@ -36,6 +38,30 @@ public class DialogueBox : MonoBehaviour {
         charachterFace.name = "faceImage";
         charachterFace.transform.position = transform.position + new Vector3(-9.0f, 0.0f, 0.0f);
         charachterImage = charachterFace.GetComponent<SpriteRenderer>();
+    }
+
+    public void OnTriggerKeyPressed(string message)
+    {
+        gameObject.SetActive(true);
+        //check if there new message
+        if(dialogueChunk == -1)
+        {
+            //break up dialogue into chunks
+            dialogueChunk = 0;
+        }
+        //message is already being displayed
+        else
+        {
+            //advance dialogue to next chunk if there is one
+
+            //exit dialogue if there are no more chunks
+        }
+    }
+
+    public void Reset()
+    {
+        dialogueChunk = -1; //reset dialogue
+        gameObject.SetActive(false);
     }
 
     public void DisplayMessage(string message, Sprite face)

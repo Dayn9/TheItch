@@ -29,7 +29,8 @@ public class Inventory : Global {
         Items.Add(name, obj);
         obj.AddComponent<UIAnchor>(); //anchor the item in UI
         obj.transform.parent = MainCamera.transform; //make child of the mainCamera
-        obj.GetComponent<UIAnchor>().Set(Anchor.topRight, new Vector2(-1.0f, items.Count * -1.125f), true); //TODO: variable pixel offset
+        //obj.GetComponent<UIAnchor>().Set(Anchor.topRight, new Vector2(-1.0f, items.Count * -1.125f), true); //TODO: variable pixel offset
+        DisplayItems();
     }
 
     /// <summary>
@@ -40,7 +41,19 @@ public class Inventory : Global {
     {
         if (Items.ContainsKey(name))
         {
+            Destroy(Items[name]); //destroy the gameObject
             Items.Remove(name);
+        }
+        DisplayItems();
+    }
+
+    private void DisplayItems()
+    {
+        int index = 1;
+        foreach(string item in Items.Keys)
+        {
+            Items[item].GetComponent<UIAnchor>().Set(Anchor.topRight, new Vector2(-1.0f, index * -1.125f), true); //TODO: variable pixel offset
+            index++;
         }
     }
 }

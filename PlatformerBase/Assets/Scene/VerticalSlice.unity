@@ -942,11 +942,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inheritGravity: 0
+  indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
+    type: 2}
+  indicatorOffset: {x: 0, y: 1.5, z: 0}
   dialogueBox: {fileID: 1206920720}
   faceImage: {fileID: 21300000, guid: a05a497ad909cd84ebf996cd3ebe61ea, type: 3}
   QuestDialogue: I seem to have lost my Keys
   itemsRequired:
-  - Key
+  - {fileID: 2015279767}
   CompletedDialogue: Thank you for finding my Keys
 --- !u!50 &676867228
 Rigidbody2D:
@@ -6520,6 +6523,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141,
     type: 2}
   m_PrefabInternal: {fileID: 1950747289}
+--- !u!1 &2015279767 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1147912919271532, guid: 1d5366e8c9c5cc148bdef1f4cd83dbd5,
+    type: 2}
+  m_PrefabInternal: {fileID: 571532987}
 --- !u!1 &2064908549
 GameObject:
   m_ObjectHideFlags: 0
