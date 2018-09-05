@@ -25,7 +25,9 @@ public class PhysicsObject : Inventory
 
     protected Vector2 moveVelocity = Vector2.zero; //initial moving Velocity
 
-    #endregion 
+    #endregion
+
+    public float MoveVelocity { get { return moveVelocity.magnitude; } } //access to the magnitude of the moveVelocity
 
     // Use this for initialization
     protected virtual void Start()

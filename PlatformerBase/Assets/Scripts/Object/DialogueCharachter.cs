@@ -37,12 +37,12 @@ public class DialogueCharachter : PhysicsObject {
 
     private void Update()
     {
+        //check if in contact with the player and player is interacting 
         if(playerTouching && Input.GetKeyDown(dialogueTrigger))
         {
-            dialogueBox.gameObject.SetActive(true);
+            dialogueBox.gameObject.SetActive(true); 
             CheckQuest();
-            dialogueBox.OnTriggerKeyPressed("hey");
-            dialogueBox.DisplayMessage(questCompleted ? CompletedDialogue : QuestDialogue, faceImage);
+            dialogueBox.OnTriggerKeyPressed(questCompleted ? CompletedDialogue : QuestDialogue, faceImage);
         }
     }
 
@@ -52,8 +52,6 @@ public class DialogueCharachter : PhysicsObject {
         {
             indicator.SetActive(true);
             playerTouching = true;
-
-            
         }
     }
 
@@ -61,14 +59,16 @@ public class DialogueCharachter : PhysicsObject {
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
         {
-            playerTouching = false;
             indicator.SetActive(false);
+            playerTouching = false;
 
             dialogueBox.Reset(); //reset the dialogue when the player leaves
         }
     }
 
-    //test if conditions are met for quest to be completed
+    /// <summary>
+    /// test if conditions are met for quest to be completed
+    /// </summary>
     private void CheckQuest()
     {
         if (!questCompleted) //only check for completion when incomplete
@@ -77,6 +77,10 @@ public class DialogueCharachter : PhysicsObject {
         }
     }
 
+    /// <summary>
+    /// check if all the required items are in the inventory of player
+    /// </summary>
+    /// <returns></returns>
     private bool CheckItems()
     {
         //check if all the required items are in the players inventory

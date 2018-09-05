@@ -15,6 +15,7 @@ public class Global : MonoBehaviour {
     #endregion
 
     #region global accesors
+    
     /// <summary>
     /// accessor for the mainCamera
     /// </summary>
