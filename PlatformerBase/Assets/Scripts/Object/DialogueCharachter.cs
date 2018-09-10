@@ -22,6 +22,7 @@ public class DialogueCharachter : PhysicsObject {
     private const KeyCode dialogueTrigger = KeyCode.DownArrow; //Key that will start and advance the dialogue
     private bool playerTouching = false; //true when dialogue is touching Charachter
 
+
     #endregion
 
     protected override void Start()
