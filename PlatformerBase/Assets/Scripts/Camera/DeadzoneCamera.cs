@@ -15,7 +15,6 @@ public enum DeadzoneCameraType {
 public class DeadzoneCamera : PixelPerfectCamera
 {
     #region private fields
-
     [SerializeField] private Transform follow; //reference to the transform of the object following 
 
     //bounds of the deadzone
@@ -32,10 +31,11 @@ public class DeadzoneCamera : PixelPerfectCamera
     private const float minMoveDistance = 0.01f; //minimum distance LerpFollow will travel
     # endregion
 
-
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         transform.position = follow.position + Vector3.forward * transform.position.z; //snap to follow
+                
     }
 
     // Update is called once per frame
@@ -86,7 +86,8 @@ public class DeadzoneCamera : PixelPerfectCamera
             //round to nearest pixel position
             transform.position = new Vector3(RoundToPixel(transform.position.x), RoundToPixel(transform.position.y), transform.position.z);
         }
-        
+
+        StayInLimits();
     }
     /// <summary>
     /// round to nearest value divisible by pixel size
@@ -102,8 +103,9 @@ public class DeadzoneCamera : PixelPerfectCamera
     /// <summary>
     /// draw the deadzone box in the scene 
     /// </summary>
-    void OnDrawGizmosSelected()
+    protected override void OnDrawGizmosSelected()
     {
+        base.OnDrawGizmosSelected();
         Gizmos.color = Color.red;
         
         //find positions of corners

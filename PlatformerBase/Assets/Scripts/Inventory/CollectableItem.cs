@@ -11,7 +11,6 @@ public class CollectableItem : Inventory
     private Vector3 targetPositionOffset = Vector3.zero;
     private Vector3 targetPosition = Vector3.zero;
     private Vector2 pickupPosition;
-    private Vector2 launch;
 
     public void Awake()
     {
@@ -30,7 +29,6 @@ public class CollectableItem : Inventory
             transform.position = pickupPosition; //return to origional position for animation
             animate = true; //start the animation
             targetPosition = MainCamera.transform.position + targetPositionOffset;
-            launch = (new Vector3(targetPosition.x + Random.Range(-3, 3), targetPosition.y + Random.Range(-3, 3)) - transform.position).normalized * speed;
         }
     }
 
