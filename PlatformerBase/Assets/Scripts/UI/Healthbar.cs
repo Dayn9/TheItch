@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//Legacy Heathbar System
 public class Healthbar : Global {
 
     [SerializeField] private Digit digitOne; //ref to first digit in healthbar readout
