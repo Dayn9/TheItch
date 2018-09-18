@@ -36,7 +36,7 @@ public class DialogueCharachter : PhysicsObject {
         indicator.name = "Dialogue Indicator";
     }
 
-    private void Update()
+    protected override void Update()
     {
         //check if in contact with the player and player is interacting 
         if(playerTouching && Input.GetKeyDown(dialogueTrigger))
@@ -45,6 +45,7 @@ public class DialogueCharachter : PhysicsObject {
             CheckQuest();
             dialogueBox.OnTriggerKeyPressed(questCompleted ? CompletedDialogue : QuestDialogue, faceImage);
         }
+        base.Update();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)

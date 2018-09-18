@@ -47,50 +47,7 @@ public class Jump : PhysicsObject, IHealthObject
         health = maxHealth;
     }
 
-    protected override void FixedUpdate()
-    {
-        if (climbing && velocity.magnitude == 0)
-        {
-            CollideOneway(false); //don't collide with oneways while climbing 
-            grounded = false;
-
-            #region climbing collision
-            float distance = moveVelocity.magnitude; //temporary distance to surface
-            Vector2 moveVector = moveVelocity; //Project the moveVelocity onto the ground
-
-            float numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
-            for (int i = 0; i < numCollisions; i++)
-            {
-                //check not collision inside an object
-                if (hits[i].distance != 0)
-                {
-                    //collide with the closest
-                    if (hits[i].distance <= distance)
-                    {
-                        distance = hits[i].distance; //set new closest distance
-                    }
-
-                    //push any moveable objects
-                    if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("SolidMoveableObject"))
-                    {
-                        MoveableObject moveObj = hits[i].transform.GetComponent<MoveableObject>();
-                        if (moveObj != null) { moveObj.InputVelocity(moveVector); }
-                    }
-
-                    if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("Spikes")) { HitSpikes(); } //collision with spikes
-                }
-            }
-            if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the shortest distance
-            if (moveVector.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
-            #endregion
-        }
-        else
-        {
-            base.FixedUpdate();
-        }
-    }
-
-    private void Update()
+    protected override void Update()
     {
         #region Movement
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -139,6 +96,47 @@ public class Jump : PhysicsObject, IHealthObject
             }
         }
         #endregion
+
+
+        if (climbing && velocity.magnitude == 0)
+        {
+            CollideOneway(false); //don't collide with oneways while climbing 
+            grounded = false;
+
+            #region climbing collision
+            float distance = moveVelocity.magnitude; //temporary distance to surface
+            Vector2 moveVector = moveVelocity; //Project the moveVelocity onto the ground
+
+            float numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
+            for (int i = 0; i < numCollisions; i++)
+            {
+                //check not collision inside an object
+                if (hits[i].distance != 0)
+                {
+                    //collide with the closest
+                    if (hits[i].distance <= distance)
+                    {
+                        distance = hits[i].distance; //set new closest distance
+                    }
+
+                    //push any moveable objects
+                    if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("SolidMoveableObject"))
+                    {
+                        MoveableObject moveObj = hits[i].transform.GetComponent<MoveableObject>();
+                        if (moveObj != null) { moveObj.InputVelocity(moveVector); }
+                    }
+
+                    if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("Spikes")) { HitSpikes(); } //collision with spikes
+                }
+            }
+            if (distance > buffer) { rb2D.position = moveVector.normalized * (distance - buffer); } //move object by the shortest distance
+            if (moveVector.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
+            #endregion
+        }
+        else
+        {
+            base.Update();
+        }
 
         #region Animation
 

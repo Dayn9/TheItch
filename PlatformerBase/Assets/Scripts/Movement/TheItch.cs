@@ -23,7 +23,7 @@ public class TheItch : MonoBehaviour {
 
     void Update () {
         //chek if object is standing still
-        if (physicsObject.MoveVelocity < movementBuffer)
+        if (physicsObject.MoveVelocity.magnitude < movementBuffer)
         {
             timeObjectStill += Time.deltaTime; //add to timer 
             //check if object has been standing still for too long

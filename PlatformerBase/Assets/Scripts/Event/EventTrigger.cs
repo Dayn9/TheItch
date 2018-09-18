@@ -39,7 +39,6 @@ public class EventTrigger : Inventory {
     /// </summary>
     private void NullEvent() { }
 
-    // Update is called once per frame
     void Update()
     {
         //check if in contact with the player and player is interacting 

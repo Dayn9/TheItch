@@ -19,14 +19,32 @@ public class AppearEvent : MonoBehaviour {
         {
             evTrig.After += new triggered(Appear);
         }
-        gameObject.SetActive(!appDis);
-	}
+        SetAllRenderers(!appDis);
+    }
 	
     /// <summary>
     /// called by event, sets acivation state
     /// </summary>
     private void Appear()
     {
-        gameObject.SetActive(appDis);
+        SetAllRenderers(appDis);
+    }
+
+    /// <summary>
+    /// sets the activation state of all of the renderers and colliders 
+    /// </summary>
+    /// <param name="active">enable / disabled</param>
+    private void SetAllRenderers(bool active)
+    {
+        Renderer[] rends = GetComponentsInChildren<Renderer>(); 
+        foreach(Renderer rend in rends)
+        {
+            rend.enabled = active;
+        }
+        Collider2D[] colls = GetComponentsInChildren<Collider2D>();
+        foreach(Collider2D coll in colls)
+        {
+            coll.enabled = active;
+        }
     }
 }

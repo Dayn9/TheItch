@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class PhysicsObject : Inventory
+public class PhysicsObject : MovingObject
 {
     #region protected fields
     [SerializeField] protected bool inheritGravity; //inherit surface gravity on collision
@@ -23,11 +23,7 @@ public class PhysicsObject : Inventory
 
     protected SpriteRenderer sprite; //attachedd spriteRenderer
 
-    protected Vector2 moveVelocity = Vector2.zero; //initial moving Velocity
-
     #endregion
-
-    public float MoveVelocity { get { return moveVelocity.magnitude; } } //access to the magnitude of the moveVelocity
 
     // Use this for initialization
     protected virtual void Start()
@@ -47,7 +43,7 @@ public class PhysicsObject : Inventory
         filter.useLayerMask = true;
     }
 
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
         velocity += gravity * Time.deltaTime; //add gravity to velocity
         grounded = false;
@@ -83,6 +79,7 @@ public class PhysicsObject : Inventory
                 }
 
                 if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("Spikes")) { HitSpikes(); } //collision with spikes
+                if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("SolidObject")) { transform.position += (Vector3)hits[i].transform.GetComponent<MovingObject>().MoveVelocity; } //collision with solidObjects
             }  
         }
         rb2D.position += moveVector.normalized * (distance - buffer); //move object by the shortest distance
@@ -114,6 +111,7 @@ public class PhysicsObject : Inventory
                 }
 
                 if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("Spikes")) { HitSpikes(); } //collision with spikes
+                if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("SolidObject")) { transform.position += (Vector3)hits[i].transform.GetComponent<MovingObject>().MoveVelocity; } //collision with solidObjects
             }
         }
 

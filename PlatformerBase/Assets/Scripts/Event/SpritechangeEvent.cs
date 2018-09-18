@@ -22,6 +22,7 @@ public class SpritechangeEvent : MonoBehaviour {
         }
     }
 
+    //called by event, changes the sprite
     private void SetSprite()
     {
         GetComponent<SpriteRenderer>().sprite = newSprite;
