@@ -8,11 +8,11 @@ using UnityEngine;
 public class Inventory : Global {
 
     private static Dictionary<string, GameObject> items; //player inventory
+    protected static Transform inventoryUI;
 
-    //Offsets and spacings measured in pixels 
-    private const int offsetX = -8; //offset from anchor along x axis
-    private const int offsetY = -8; //offset from anchor along y axis
-    private const int spacing = 9; //spacing between individual items
+    //Offsets and spacings between items in inventory
+    private const float offsetY = 3.75f; //offset from anchor along y axis
+    private const float spacing = -1.5f; //spacing between individual items
 
     public Dictionary<string, GameObject> Items {
         get {
@@ -33,9 +33,7 @@ public class Inventory : Global {
     public void AddItem(string name, GameObject obj)
     {
         Items.Add(name, obj);
-        obj.AddComponent<UIAnchor>(); //anchor the item in UI
-        obj.transform.parent = MainCamera.transform; //make child of the mainCamera
-        //obj.GetComponent<UIAnchor>().Set(Anchor.topRight, new Vector2(-1.0f, items.Count * -1.125f), true); //TODO: variable pixel offset
+        obj.transform.parent = inventoryUI; //make child of the inventoryUI
         DisplayItems();
     }
 
@@ -61,7 +59,8 @@ public class Inventory : Global {
         int index = 0;
         foreach(string item in Items.Keys)
         {
-            Items[item].GetComponent<UIAnchor>().Set(Anchor.topRight, new Vector2(offsetX, (index * -spacing) + offsetY)/pixelsPerUnit, true);
+            //position item relative to inventoryUI
+            Items[item].transform.localPosition = new Vector2(0.0f, offsetY + (index * spacing));
             index++;
         }
     }

@@ -35,26 +35,6 @@ public class CollectableItem : Inventory
     //TODO:
     //Give it a Vector Launch that is within 30 degree range of the target position and gets weaker as time passes
     //Another vector always points towards the target position and gets stronger as the distance to target decreases
-
-    /*
-    private void Update()
-    {
-        if (animate) //TODO: make thread? Started by OnTriggerEnter
-        {
-            targetPosition = MainCamera.transform.position + targetPositionOffset;
-            
-            launch = launch.magnitude > 0.01f ? launch * 0.8f : Vector2.zero;
-            Vector2 directVector = targetPosition - transform.position;
-            if(directVector.magnitude < minMoveDistance)
-            {
-                transform.position = MainCamera.transform.position + targetPositionOffset; //snap into position
-                Destroy(this); //remove collectable item script from item
-            }
-            directVector = directVector.normalized * (speed / directVector.magnitude);
-            transform.position += new Vector3(directVector.x + launch.x, directVector.y + launch.y);
-        }
-    }
-    */
     
     private void Update()
     {
