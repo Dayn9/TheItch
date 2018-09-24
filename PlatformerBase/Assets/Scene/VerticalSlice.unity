@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114399103750429746, guid: 80261ec61f9ea364592b48a675de6141,
         type: 2}
@@ -237,7 +237,7 @@ Transform:
   - {fileID: 232032996}
   - {fileID: 865855857}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232032995
 GameObject:
@@ -840,6 +840,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &255352238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1765855970924292, guid: a14f9cecd9f58c5478797ecded428b2e,
+    type: 2}
+  m_PrefabInternal: {fileID: 2108219745}
 --- !u!1 &309259232
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +920,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &438555590
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &571532987
 Prefab:
   m_ObjectHideFlags: 0
@@ -952,7 +999,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4266598031941966, guid: 1d5366e8c9c5cc148bdef1f4cd83dbd5, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d5366e8c9c5cc148bdef1f4cd83dbd5, type: 2}
@@ -1851,7 +1898,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &648112009
 MonoBehaviour:
@@ -1903,11 +1950,12 @@ MonoBehaviour:
   indicatorOffset: {x: 0, y: 1.5, z: 0}
   dialogueBox: {fileID: 1206920720}
   faceImage: {fileID: 21300000, guid: a05a497ad909cd84ebf996cd3ebe61ea, type: 3}
-  QuestDialogue: 'How do you do young traveller. The bridge back into town seems to
-    be down. Im sure theres a key to activate it around here somewhere... '
+  QuestDialogue: There should be keys around here somewhere
   itemsRequired:
-  - {fileID: 2015279767}
-  CompletedDialogue: Thank you for finding my Keys
+  - {fileID: 255352238}
+  CompletedDialogue: 'What a lovely Gem
+
+'
 --- !u!50 &676867228
 Rigidbody2D:
   serializedVersion: 4
@@ -1985,7 +2033,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &676867231
 PolygonCollider2D:
@@ -9734,7 +9782,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2096156974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.902779, y: 9.5, z: 10}
+  m_LocalPosition: {x: -12.458333, y: 9.5, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 851038948}

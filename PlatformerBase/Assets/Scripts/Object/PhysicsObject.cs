@@ -12,16 +12,25 @@ public class PhysicsObject : MovingObject
     protected const float gravityMag = 1.0f; //constant magnitude of gravity
     protected static Vector2 gravity; //down direction
 
-    protected Vector2 velocity = Vector2.zero; //initial velocity allways zero
+    protected Vector2 gravityVelocity = Vector2.zero; //initial velocity allways zero
     protected Vector2 groundNormal; //normal vector of the ground object is on
     protected Vector2 groundTangent; //Vector along ground
     protected bool grounded; //true if object is on the ground
 
     protected Rigidbody2D rb2D; //attached rigidbody
-    protected RaycastHit2D[] hits; //array of collisions
     protected ContactFilter2D filter; //collision filter
 
     protected SpriteRenderer sprite; //attachedd spriteRenderer
+
+    protected Vector2 inputVelocity = Vector2.zero; //velocity form external forces 
+    public Vector2 InputVelocity { set { inputVelocity = value; } }
+    
+    private float distance; //temporary distance to nearest collision
+    private Vector2 moveVector; //temporary vector for collision checking
+    private int numCollisions; //temporary number of collisions from collsion check
+    protected RaycastHit2D[] hits; //temporary array of collisions
+    private int layer; //temporary layer of collided object
+    private Vector2 objectNormal; //temporary normal of solid colliding with
 
     #endregion
 
@@ -45,13 +54,12 @@ public class PhysicsObject : MovingObject
 
     protected virtual void Update()
     {
-        velocity += gravity * Time.deltaTime; //add gravity to velocity
-        grounded = false;
-
         #region gravity collision
-        float distance = velocity.magnitude; //temporary distance to surface
+        gravityVelocity += gravity * Time.deltaTime; //add gravity to velocity
+        grounded = false;
+        distance = gravityVelocity.magnitude; //temporary distance to surface
         Vector2 newGroundNormal = groundNormal; //temporary normal for surface collisions
-        Vector2 moveVector = velocity * Time.deltaTime; //temporary falling vector for collision checking
+        moveVector = gravityVelocity * Time.deltaTime; //temporary falling vector for collision checking
 
         int numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
         for (int i = 0; i < numCollisions; i++)
@@ -61,9 +69,9 @@ public class PhysicsObject : MovingObject
             //check not collision inside an object or into wall
             if (hits[i].distance != 0 && Vector2.Dot(gravity, objectNormal) != 0)
             {
-                if (Vector2.Dot(velocity, gravity) >= 0) { grounded = true; } //check if velocity is in the same direction as gravity (falling)
+                if (Vector2.Dot(gravityVelocity, gravity) >= 0) { grounded = true; } //check if velocity is in the same direction as gravity (falling)
 
-                velocity = Vector2.zero; //stop moving
+                gravityVelocity = Vector2.zero; //stop moving
 
                 //collide with the closest
                 if (hits[i].distance < distance)
@@ -77,12 +85,9 @@ public class PhysicsObject : MovingObject
                         rb2D.rotation += Vector2.SignedAngle(-transform.up, gravity); //match rotation
                     }
                 }
-
-                if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("Spikes")) { HitSpikes(); } //collision with spikes
-                if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("SolidObject")) { transform.position += (Vector3)hits[i].transform.GetComponent<MovingObject>().MoveVelocity; } //collision with solidObjects
-            }  
+            }
         }
-        rb2D.position += moveVector.normalized * (distance - buffer); //move object by the shortest distance
+        rb2D.position += moveVector.normalized * (distance - buffer); //move object by the distance to nearest collision
         groundNormal = newGroundNormal; //set the ground normal to normal of closest surface
         #endregion
 
@@ -90,37 +95,101 @@ public class PhysicsObject : MovingObject
         distance = moveVelocity.magnitude; //temporary distance to surface
         groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
         moveVector = Proj(moveVelocity, groundTangent); //Project the moveVelocity onto the ground
-
         numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
         for (int i = 0; i < numCollisions; i++)
         {
-            //check not collision inside an object
-            if (hits[i].distance != 0)
+            float moveableDistance = moveVector.magnitude;
+            if(LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
             {
                 //collide with the closest
+                if (moveableDistance < distance)
+                {
+                    distance = moveableDistance;
+                }
+            }
+            //check not collision inside an object 
+            else if(hits[i].distance != 0)
+            {
+                //collide with the closest 
                 if (hits[i].distance <= distance)
                 {
                     distance = hits[i].distance; //set new closest distance
                 }
-
-                //push any moveable objects
-                if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("SolidMoveableObject"))
-                {
-                    MoveableObject moveObj = hits[i].transform.GetComponent<MoveableObject>();
-                    if (moveObj != null) { moveObj.InputVelocity(moveVector); }
-                }
-
-                if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("Spikes")) { HitSpikes(); } //collision with spikes
-                if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("SolidObject")) { transform.position += (Vector3)hits[i].transform.GetComponent<MovingObject>().MoveVelocity; } //collision with solidObjects
             }
         }
 
-        if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the shortest distance
+        if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
         if (moveVector.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
         #endregion  
     }
 
+    /// <summary>
+    /// Checks collision allong specified velocity
+    /// </summary>
+    /// <param name="velocityType"></param>
+    public float InputCollision(bool grounded)
+    {
+        //initial variable use for each velocity type
+        distance = inputVelocity.magnitude; //temporary distance to surface
+        groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
+        moveVector = moveVector = Proj(inputVelocity, groundTangent); //Project the moveVelocity onto the ground
+
+        numCollisions = rb2D.Cast(moveVector, filter, hits, distance); //cast the rigidbody into the scene and get collisions in hits
+        for (int i = 0; i < numCollisions; i++)
+        {
+            float moveableDistance = moveVector.magnitude;
+            if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
+            {
+                //collide with the closest
+                if (moveableDistance < distance)
+                {
+                    distance = moveableDistance;
+                }
+            }
+            //check not collision inside an object 
+            else if (hits[i].distance != 0)
+            {
+                //collide with the closest 
+                if (hits[i].distance <= distance)
+                {
+                    distance = hits[i].distance; //set new closest distance
+                }
+            }
+        }
+        if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
+        return distance; //return the total distance moved
+    }
+
     #region helper methods
+    /// <summary>
+    /// handles additional layer checks for specific collision behavior
+    /// </summary>
+    /// <param name="layer">layer collided with</param>
+    private bool LayerChecks(GameObject collided, Vector2 moveVector, out float distance)
+    {
+        distance = moveVector.magnitude;
+        
+        switch (collided.layer)
+        {
+            //take damage when colliding with spikes
+            case 13: //Spikes
+                HitSpikes();
+                break;
+            //Move any objects that can be moved
+            case 11: //SolidMovableObject
+            //case 8: //Player <-------------------------------------------------------------------ADD BACK IN AFTER TESTED ON MOVABLE OBJECTS
+                PhysicsObject moveObj = collided.GetComponent<PhysicsObject>();
+                if (moveObj != null)
+                {
+                    moveObj.InputVelocity = moveVector;
+                    //Debug.Log(distance);
+                    distance =  moveObj.InputCollision(grounded); //move the object and return the ditance it moved
+                    return true;
+                }
+                break;
+        }
+        return false;
+    }
 
     /// <summary>
     /// change the Physics 2D colision filter between this object layer and another

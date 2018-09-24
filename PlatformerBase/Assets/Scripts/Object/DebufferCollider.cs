@@ -19,7 +19,7 @@ public class DebufferCollider : Global {
         BoxCollider2D box = GetComponent<BoxCollider2D>();
         if (box != null)
         {
-            box.offset += new Vector2(buffer / 2, buffer / 2);
+            box.offset += new Vector2(buffer, buffer);
             box.size -= new Vector2(buffer, buffer);
         }
 
@@ -27,7 +27,7 @@ public class DebufferCollider : Global {
         CircleCollider2D circle = GetComponent<CircleCollider2D>();
         if (circle != null)
         {
-            circle.offset += new Vector2(buffer / 2, buffer / 2);
+            circle.offset += new Vector2(buffer, buffer);
             circle.radius -= buffer;
         }
 
@@ -39,7 +39,7 @@ public class DebufferCollider : Global {
             for (int i = 0; i < poly.points.Length; i++)
             {
                 //set new point to old point move [buffer] distance towards center
-                newPoints[i] = poly.points[i] - poly.points[i].normalized * (buffer / 2);
+                newPoints[i] = poly.points[i] - poly.points[i].normalized * (buffer);
                 //newPoints[i] = new Vector2(poly.points[i].x - ((buffer / 2) * Mathf.Sign(poly.points[i].x)), poly.points[i].y - ((buffer / 2) * Mathf.Sign(poly.points[i].y)));
             }
             poly.SetPath(0, newPoints);

@@ -62,17 +62,17 @@ public class Jump : PhysicsObject, IHealthObject
         //jumping when on ground
         if (jumping && (grounded || climbing))
         {
-            velocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed * 0.1f;
+            gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed * 0.1f;
             jumping = false; //insures that you can only jump once after pressing jump button
             climbing = false; //jump out of climbing
         }
 
         //add velocity while moving upwards
-        if (Vector2.Dot(gravity, velocity) < 0) //check if moving upwards
+        if (Vector2.Dot(gravity, gravityVelocity) < 0) //check if moving upwards
         {
             CollideOneway(false);
             //add to velocity in direction of velocity proportional to velocity magnitude
-            velocity += addedSpeed * velocity.normalized * Time.deltaTime;
+            gravityVelocity += addedSpeed * gravityVelocity.normalized * Time.deltaTime;
         }
         //moving downwards
         else
@@ -98,7 +98,7 @@ public class Jump : PhysicsObject, IHealthObject
         #endregion
 
 
-        if (climbing && velocity.magnitude == 0)
+        if (climbing && gravityVelocity.magnitude == 0)
         {
             CollideOneway(false); //don't collide with oneways while climbing 
             grounded = false;
@@ -118,15 +118,6 @@ public class Jump : PhysicsObject, IHealthObject
                     {
                         distance = hits[i].distance; //set new closest distance
                     }
-
-                    //push any moveable objects
-                    if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("SolidMoveableObject"))
-                    {
-                        MoveableObject moveObj = hits[i].transform.GetComponent<MoveableObject>();
-                        if (moveObj != null) { moveObj.InputVelocity(moveVector); }
-                    }
-
-                    if (hits[i].transform.gameObject.layer == LayerMask.NameToLayer("Spikes")) { HitSpikes(); } //collision with spikes
                 }
             }
             if (distance > buffer) { rb2D.position = moveVector.normalized * (distance - buffer); } //move object by the shortest distance
@@ -142,7 +133,7 @@ public class Jump : PhysicsObject, IHealthObject
 
         //send values to animator
         animator.SetBool("grounded", grounded);
-        animator.SetFloat("verticalVel", velocity.magnitude * (Vector2.Angle(gravity, velocity) > 90 ? 1 : -1));
+        animator.SetFloat("verticalVel", gravityVelocity.magnitude * (Vector2.Angle(gravity, gravityVelocity) > 90 ? 1 : -1));
         animator.SetFloat("horizontalMove", moveVelocity.magnitude * (Vector2.Dot(transform.right, moveVelocity) < 0 ? 1 : -1));
 
         render.color = Color.white;
@@ -162,6 +153,7 @@ public class Jump : PhysicsObject, IHealthObject
         }
         #endregion
     }
+
 
     /// <summary>
     /// choose whether the object should collide with oneway platforms
