@@ -174,8 +174,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1541749547
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 125c01282d8262f418c29e44d1455a5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -266,6 +266,36 @@ Prefab:
         type: 2}
       propertyPath: moveSpeed
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399103750429746, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: heartbeat
+      value: 
+      objectReference: {fileID: 2096156978}
+    - target: {fileID: 114399103750429746, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: restingHR
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399103750429746, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: waveAmp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399103750429746, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: amp
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399103750429746, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: minMove
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399103750429746, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: heartSpeed
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
@@ -1004,11 +1034,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14
+      value: 0.875
       objectReference: {fileID: 0}
     - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1033,6 +1063,11 @@ Prefab:
     - target: {fileID: 4220775168639642, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212357035565949752, guid: 858984fcadbc0c245906ece1180387a0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
@@ -1950,7 +1985,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1657582667
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 96e6912c47a2f4b4bbdd79264d1a3b03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9950,6 +9985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0271140d7be3941948097dc1d01752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restingHR: 60
+  maxHR: 200
 --- !u!1001 &2108219745
 Prefab:
   m_ObjectHideFlags: 0

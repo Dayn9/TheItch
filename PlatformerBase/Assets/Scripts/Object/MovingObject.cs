@@ -8,5 +8,4 @@ public class MovingObject : Inventory {
 
     public Vector2 MoveVelocity { get { return moveVelocity; } set { moveVelocity = value; } }//access to the magnitude of the moveVelocity
 
-
 }

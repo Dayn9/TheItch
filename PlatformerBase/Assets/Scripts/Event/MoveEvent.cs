@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class MoveEvent : MonoBehaviour {
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
@@ -18,7 +19,12 @@ public class MoveEvent : MonoBehaviour {
 
     private void Awake()
     {
-        moveObj = GetComponentInChildren<MovingObject>();
+        moveObj = GetComponent<MoveableObject>();
+        if (moveObj == null)
+        {
+            moveObj = GetComponentInChildren<MovingObject>();
+        }
+        Assert.IsNotNull(moveObj);
     }
 
 

@@ -132,7 +132,7 @@ public class PhysicsObject : MovingObject
         //initial variable use for each velocity type
         distance = inputVelocity.magnitude; //temporary distance to surface
         groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
-        moveVector = moveVector = Proj(inputVelocity, groundTangent); //Project the moveVelocity onto the ground
+        moveVector = Proj(inputVelocity, groundTangent); //Project the moveVelocity onto the ground
 
         numCollisions = rb2D.Cast(moveVector, filter, hits, distance); //cast the rigidbody into the scene and get collisions in hits
         for (int i = 0; i < numCollisions; i++)

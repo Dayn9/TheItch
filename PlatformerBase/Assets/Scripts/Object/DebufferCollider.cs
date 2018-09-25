@@ -39,7 +39,7 @@ public class DebufferCollider : Global {
             for (int i = 0; i < poly.points.Length; i++)
             {
                 //set new point to old point move [buffer] distance towards center
-                newPoints[i] = poly.points[i] - poly.points[i].normalized * (buffer);
+                newPoints[i] = poly.points[i] - poly.points[i].normalized * (2 * buffer);
                 //newPoints[i] = new Vector2(poly.points[i].x - ((buffer / 2) * Mathf.Sign(poly.points[i].x)), poly.points[i].y - ((buffer / 2) * Mathf.Sign(poly.points[i].y)));
             }
             poly.SetPath(0, newPoints);

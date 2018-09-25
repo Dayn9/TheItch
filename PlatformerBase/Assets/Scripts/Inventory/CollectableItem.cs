@@ -25,6 +25,11 @@ public class CollectableItem : Inventory
             collected = true;
             AddItem(gameObject.name, gameObject); //add item to inventory and move to final location in UI
 
+            SpriteRenderer rend = GetComponent<SpriteRenderer>(); //make sure sorting layer and order is just above inventoryUI
+            SpriteRenderer invRend = inventoryUI.GetChild(0).GetComponent<SpriteRenderer>();
+            rend.sortingLayerID = invRend.sortingLayerID;
+            rend.sortingOrder = invRend.sortingOrder + 1;
+
             targetPositionOffset = transform.position - MainCamera.transform.position; //determine tagetPosition relative to camera
             transform.position = pickupPosition; //return to origional position for animation
             animate = true; //start the animation
