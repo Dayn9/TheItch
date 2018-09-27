@@ -17,14 +17,14 @@ public class Heartbeat : Global {
 
     public int BPM {
         get { return bpm; }
-        set { bpm = value > 0 && value < 250 ? value : bpm; } //bpm must be between 0 - 250
+        set { bpm = value > restingHR - 20 && value < maxHR + 20 ? value : bpm; } //bpm must be between 0 - 250
     }
     public int RestingHR { get { return restingHR; } }
     public int MaxHR { get { return maxHR; } }
 
     // Use this for initialization
     void Awake () {
-        bpm = restingHR;
+        bpm = maxHR - restingHR;
 
         //find the nessicary components in child gameObjects
         bpmReadout = transform.GetChild(0).GetComponent<TextMesh>();

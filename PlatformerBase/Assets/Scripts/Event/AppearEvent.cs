@@ -41,10 +41,12 @@ public class AppearEvent : MonoBehaviour {
         {
             rend.enabled = active;
         }
+        /*
         Collider2D[] colls = GetComponentsInChildren<Collider2D>();
         foreach(Collider2D coll in colls)
         {
             coll.enabled = active;
         }
+        */
     }
 }

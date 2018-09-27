@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(IHealthObject))]
 [RequireComponent(typeof(PhysicsObject))]
 //FASTER HEALTH RATE DOES MORE DAMAGE
-public class TheItch : MonoBehaviour {
+public class TheItch : MonoBehaviour
+{
 
     [SerializeField] private float timeStill; //time(seconds) the object can stand still before it takes damage
     [SerializeField] private int damageDelt; //damage the object takes when they stay still for too long
@@ -16,57 +17,61 @@ public class TheItch : MonoBehaviour {
     private PhysicsObject physicsObject; //ref to attached Physics Properties of Object
 
     [SerializeField] private Heartbeat heartbeat; //ref to heartbeat controller script
-    
-    [SerializeField] [Range(0, 0.5f)]private float heartSpeed;
-    private const float amp = 0.05f;
-    private float period;
-    private float rate;
-    private float myBPM; 
+    [SerializeField] private float minHeartSpeed;
+    [SerializeField] private float maxHeartSpeed;
+    private float heartPosition;
+    private float heartSpeed = 0.0f;
+    [SerializeField] private float heartAccelerate;
+    private float heartDrag;
 
     private void Awake()
     {
         healthObject = GetComponent<IHealthObject>();
         physicsObject = GetComponent<PhysicsObject>();
-
-        period = heartbeat.MaxHR - heartbeat.RestingHR;
-        myBPM = heartbeat.RestingHR;
     }
 
-    void Update () {
+    private void Start()
+    {
+        heartPosition = heartbeat.BPM;
+    }
+
+    void Update()
+    {
         //object is standing still
-        if(physicsObject.MoveVelocity.magnitude < movementBuffer)
+        if (physicsObject.MoveVelocity.magnitude < movementBuffer)
         {
-            if(myBPM <= heartbeat.RestingHR)
+            if (heartPosition <= heartbeat.RestingHR)
             {
-                myBPM -= ((myBPM - (heartbeat.RestingHR - 20)) / 20) * heartSpeed * Time.deltaTime;  
-                rate = 0;
+                heartSpeed = (heartPosition - (heartbeat.RestingHR - 20)) * -minHeartSpeed * Time.deltaTime;
+                heartDrag = 0;
             }
             else
             {
-             
+                heartSpeed -= heartAccelerate * Time.deltaTime;
+                // increase the drag force when speed is positive 
+                heartDrag = heartSpeed > 0 ? Mathf.Pow(heartSpeed, 2) / 1.5f : Mathf.Pow(heartSpeed, 2) / 2.0f;
             }
-
         }
         //object is moving
         else
         {
-            if(myBPM >= heartbeat.MaxHR)
+            if (heartPosition >= heartbeat.MaxHR)
             {
-                myBPM -= ((myBPM - (heartbeat.MaxHR + 20)) / 20) * heartSpeed * Time.deltaTime;
-                rate = 0;
-            }
-            else if(myBPM <= heartbeat.RestingHR)
-            {
-                rate = heartSpeed * Time.deltaTime;
-                myBPM += rate;
+                heartSpeed = ((heartPosition - (heartbeat.MaxHR + 20)) / 20) * minHeartSpeed * Time.deltaTime;
+
             }
             else
             {
-                rate = WaveFormula(myBPM);
-                myBPM += (rate + heartSpeed) * Time.deltaTime;
+                heartSpeed += heartAccelerate * Time.deltaTime;
+                //increase the drag force when speed is negative
+                heartDrag = heartSpeed < 0 ? Mathf.Pow(heartSpeed, 2) / 1.5f : Mathf.Pow(heartSpeed, 2) / 2.0f;
+
             }
         }
-        heartbeat.BPM = (int)myBPM;
+
+        heartSpeed = Mathf.Clamp(heartSpeed, -maxHeartSpeed, maxHeartSpeed);
+        heartPosition += (heartSpeed - heartDrag) * 0.1f;
+        heartbeat.BPM = (int)heartPosition;
         /*
         int modifiedBPM = Mathf.Clamp(heartbeat.BPM + (physicsObject.MoveVelocity.magnitude < movementBuffer ? -1 : 1), heartbeat.RestingHR, heartbeat.MaxHR);
         rate += (WaveFormula(modifiedBPM) * (physicsObject.MoveVelocity.magnitude < movementBuffer ? -1 : 1)) * Time.deltaTime / 2.5f;
@@ -74,7 +79,7 @@ public class TheItch : MonoBehaviour {
         myBPM += rate;
         heartbeat.BPM = Mathf.Clamp((int)myBPM, heartbeat.RestingHR, heartbeat.MaxHR);
         */
-        if (myBPM < heartbeat.RestingHR + 10.0f)
+        if (heartPosition <= heartbeat.RestingHR)
         {
             timeObjectStill += Time.deltaTime; //add to timer 
             //check if object has been standing still for too long
@@ -89,9 +94,11 @@ public class TheItch : MonoBehaviour {
         }
     }
 
+    /*
     private float WaveFormula(float x)
     {
 
         return (amp / 2) - ((amp / 2) * Mathf.Cos((2 * Mathf.PI * (x - heartbeat.RestingHR)) / period));
     }
+    */
 }
