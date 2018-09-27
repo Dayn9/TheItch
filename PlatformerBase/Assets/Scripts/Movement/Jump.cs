@@ -50,7 +50,7 @@ public class Jump : PhysicsObject, IHealthObject
     protected override void Update()
     {
         #region Movement
-        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         moveVelocity = input * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed) * Time.deltaTime;
 
         if (Input.GetButtonDown("Jump"))
