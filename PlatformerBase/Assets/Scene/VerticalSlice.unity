@@ -175,7 +175,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 125c01282d8262f418c29e44d1455a5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -931,7 +931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309259233}
   - component: {fileID: 309259234}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,7 +984,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 16d5babe4adfac34497339368d6c4791, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1044,6 +1044,139 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 858984fcadbc0c245906ece1180387a0, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &446137398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 446137401}
+  - component: {fileID: 446137400}
+  - component: {fileID: 446137399}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &446137399
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446137398}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: b952018ca85a02b468b2f9c56f0fed31,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: cd17f3aed91e062439f901bac52733c7, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: -0.5
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 70
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!81 &446137400
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446137398}
+  m_Enabled: 1
+--- !u!4 &446137401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446137398}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.489796, y: -4.674138, z: -0.025221605}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &571532987
 Prefab:
   m_ObjectHideFlags: 0
@@ -1082,6 +1215,16 @@ Prefab:
     - target: {fileID: 4266598031941966, guid: 1d5366e8c9c5cc148bdef1f4cd83dbd5, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 212609408892141588, guid: 1d5366e8c9c5cc148bdef1f4cd83dbd5,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 623028581
+      objectReference: {fileID: 0}
+    - target: {fileID: 212609408892141588, guid: 1d5366e8c9c5cc148bdef1f4cd83dbd5,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d5366e8c9c5cc148bdef1f4cd83dbd5, type: 2}
@@ -1148,8 +1291,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 623028581
+  m_SortingLayer: -1
   m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -1955,9 +2098,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1657582667
-  m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingLayerID: 623028581
+  m_SortingLayer: -1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 96e6912c47a2f4b4bbdd79264d1a3b03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2157,7 +2300,6 @@ GameObject:
   - component: {fileID: 842869358}
   - component: {fileID: 842869355}
   - component: {fileID: 842869357}
-  - component: {fileID: 842869356}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2189,14 +2331,6 @@ MonoBehaviour:
   cameraType: 1
   followSpeed: 0
   snapToPixel: 0
---- !u!81 &842869356
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 81542913772486360, guid: fc0ca80543565454cba973b8b0814f8e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 842869354}
-  m_Enabled: 1
 --- !u!124 &842869357
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2274,7 +2408,7 @@ GameObject:
   - component: {fileID: 851038951}
   - component: {fileID: 851038950}
   - component: {fileID: 851038949}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: bpmReadout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2305,7 +2439,7 @@ TextMesh:
 
 
 '
-  m_OffsetZ: -1
+  m_OffsetZ: -10
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 0
@@ -2509,7 +2643,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5298fec2bb39a5345b8bc3b8bf3074c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2636,8 +2770,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 623028581
+  m_SortingLayer: -1
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -8369,7 +8503,7 @@ GameObject:
   - component: {fileID: 1609830830}
   - component: {fileID: 1609830831}
   - component: {fileID: 1609830832}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: heartbeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8422,7 +8556,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 400c6565e0cbd3740811165212658ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8477,7 +8611,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1863157571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.277779, y: 4.5, z: 10}
+  m_LocalPosition: {x: 16.152779, y: 4.5, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 99895749}
@@ -8496,7 +8630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: 2
-  offset: {x: -1.5, y: -5.5}
+  offset: {x: -1.625, y: -5.5}
   snapToPixel: 0
 --- !u!114 &1863157575
 MonoBehaviour:
@@ -9825,7 +9959,7 @@ GameObject:
   - component: {fileID: 2096156975}
   - component: {fileID: 2096156977}
   - component: {fileID: 2096156978}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Heathbeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9959,6 +10093,16 @@ Prefab:
     - target: {fileID: 4281322435846028, guid: a14f9cecd9f58c5478797ecded428b2e, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 212743927439016112, guid: a14f9cecd9f58c5478797ecded428b2e,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 623028581
+      objectReference: {fileID: 0}
+    - target: {fileID: 212743927439016112, guid: a14f9cecd9f58c5478797ecded428b2e,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a14f9cecd9f58c5478797ecded428b2e, type: 2}
