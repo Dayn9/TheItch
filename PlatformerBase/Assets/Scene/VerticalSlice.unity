@@ -245,7 +245,7 @@ Prefab:
     - target: {fileID: 60862902103302590, guid: 80261ec61f9ea364592b48a675de6141,
         type: 2}
       propertyPath: m_SpriteTilingProperty.drawMode
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212377067535547162, guid: 80261ec61f9ea364592b48a675de6141,
         type: 2}
@@ -315,12 +315,22 @@ Prefab:
     - target: {fileID: 114207416268906584, guid: 80261ec61f9ea364592b48a675de6141,
         type: 2}
       propertyPath: jumpSpeed
-      value: 4.2
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 212377067535547162, guid: 80261ec61f9ea364592b48a675de6141,
         type: 2}
       propertyPath: m_SortingOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207416268906584, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: addedSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 60862902103302590, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.528
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
@@ -8699,7 +8709,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1863157571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.152779, y: 4, z: 10}
+  m_LocalPosition: {x: 11.708333, y: 4, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 99895749}
@@ -10107,7 +10117,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2096156974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.777779, y: 9, z: 10}
+  m_LocalPosition: {x: -12.333333, y: 9, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 851038948}

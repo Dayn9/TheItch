@@ -68,8 +68,8 @@ public class Jump : PhysicsObject, IHealthObject
             climbing = false; //jump out of climbing
         }
 
-        //add velocity while moving upwards
-        if (Vector2.Dot(gravity, gravityVelocity) < 0) //check if moving upwards
+        //add velocity while moving upwards and jump key is pressed (long jumping)
+        if (Vector2.Dot(gravity, gravityVelocity) < 0 && Input.GetButton("Jump")) //check if moving upwards
         {
             CollideOneway(false);
             //add to velocity in direction of velocity proportional to velocity magnitude
