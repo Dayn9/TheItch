@@ -63,7 +63,7 @@ public class Jump : PhysicsObject, IHealthObject
         //jumping when on ground
         if (jumping && (grounded || climbing))
         {
-            gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed * 0.1f;
+            gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *0.1f;
             jumping = false; //insures that you can only jump once after pressing jump button
             climbing = false; //jump out of climbing
         }

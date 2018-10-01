@@ -13,7 +13,9 @@ public class InventoryDisplay : Inventory {
 	void Awake () {
         inventoryUI = transform; //set the inventory transform to this object
         display = transform.GetChild(0);
-	}
+        //may need to be removed later, makes sure no items stored when new level is loaded
+        Items.Clear();
+    }
 
     private void Start()
     {

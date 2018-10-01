@@ -57,10 +57,10 @@ public class PhysicsObject : MovingObject
         #region gravity collision
         gravityVelocity += gravity * Time.deltaTime; //add gravity to velocity
         grounded = false;
-        distance = gravityVelocity.magnitude; //temporary distance to surface
+        moveVector = gravityVelocity; //temporary falling vector for collision checking
+        distance = moveVector.magnitude; //temporary distance to surface
         Vector2 newGroundNormal = groundNormal; //temporary normal for surface collisions
-        moveVector = gravityVelocity * Time.deltaTime; //temporary falling vector for collision checking
-
+        
         int numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
         for (int i = 0; i < numCollisions; i++)
         {
