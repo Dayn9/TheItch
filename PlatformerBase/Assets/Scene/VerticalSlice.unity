@@ -2396,8 +2396,8 @@ GameObject:
   m_Component:
   - component: {fileID: 842869359}
   - component: {fileID: 842869358}
-  - component: {fileID: 842869355}
   - component: {fileID: 842869357}
+  - component: {fileID: 842869356}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2405,7 +2405,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &842869355
+--- !u!114 &842869356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2413,7 +2413,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 842869354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc10b7d16fb55346b650a2c63b07448, type: 3}
+  m_Script: {fileID: 11500000, guid: ddff18ac4dc671646a3de7e1db24e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   verticalUnitsOnScreen: 20
@@ -2421,14 +2421,10 @@ MonoBehaviour:
   leftLimit: -32
   bottomLimit: -20
   topLimit: 20
-  follow: {fileID: 1950747296}
-  rightBound: 2
-  leftBound: -2
-  topBound: 2
-  bottomBound: -2
-  cameraType: 0
-  followSpeed: 0
-  snapToPixel: 0
+  follow: {fileID: 1426543086}
+  leaveTime: 0.6
+  returnTime: 1.2
+  dist: 7
 --- !u!124 &842869357
 Behaviour:
   m_ObjectHideFlags: 0
@@ -8591,6 +8587,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1426543086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114207416268906584, guid: 80261ec61f9ea364592b48a675de6141,
+    type: 2}
+  m_PrefabInternal: {fileID: 142078655}
+  m_Script: {fileID: 11500000, guid: d5a37f0e4b94e7d4baf37c9c1f746a4a, type: 3}
 --- !u!1 &1609830829
 GameObject:
   m_ObjectHideFlags: 0
@@ -8743,11 +8745,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenOffset: {x: 2, y: 0}
   moveSpeed: 2
---- !u!4 &1950747296 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141,
-    type: 2}
-  m_PrefabInternal: {fileID: 142078655}
 --- !u!1 &2003942374
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ using UnityEditor;
 public enum DeadzoneCameraType {
     Regular, //keep follow inside the bounds
     Follow, //move towards follow at constant speed + Regular
-    LerpFollow //lerp to follow position + Regular
+    LerpFollow, //lerp to follow position + Regular
 }
 
 public class DeadzoneCamera : PixelPerfectCamera
@@ -17,7 +17,7 @@ public class DeadzoneCamera : PixelPerfectCamera
     #region private fields
     [SerializeField] private Transform follow; //reference to the transform of the object following 
 
-    //bounds of the deadzone
+    //bounds of the deadzone box
     [SerializeField] private float rightBound;
     [SerializeField] private float leftBound;
     [SerializeField] private float topBound;
@@ -34,8 +34,8 @@ public class DeadzoneCamera : PixelPerfectCamera
     protected override void Start()
     {
         base.Start();
-        transform.position = follow.position + Vector3.forward * transform.position.z; //snap to follow
-                
+        
+        transform.position = follow.position + Vector3.forward * transform.position.z; //snap to follow                
     }
 
     // Update is called once per frame
