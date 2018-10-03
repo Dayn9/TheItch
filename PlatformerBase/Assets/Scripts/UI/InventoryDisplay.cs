@@ -23,17 +23,20 @@ public class InventoryDisplay : Inventory {
         hidden = true;
     }
 
-    private void Update()
+    void Update()
     {
-        //display is hidden but there are items
-        if (hidden && Items.Count > 0) 
+        if (!paused)
         {
-            MoveToLocalPosition(Vector2.zero);
-        }
-        //display is showing but there are no items
-        else if(!hidden && Items.Count == 0)
-        {
-            MoveToLocalPosition(hiddenOffset);
+            //display is hidden but there are items
+            if (hidden && Items.Count > 0)
+            {
+                MoveToLocalPosition(Vector2.zero);
+            }
+            //display is showing but there are no items
+            else if (!hidden && Items.Count == 0)
+            {
+                MoveToLocalPosition(hiddenOffset);
+            }
         }
     }
 

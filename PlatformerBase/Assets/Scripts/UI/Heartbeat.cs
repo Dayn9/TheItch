@@ -39,13 +39,17 @@ public class Heartbeat : Global {
         //find the number of pixels in the healthbar
         numHealthbarTicks = (int)(healthbar.size.x * pixelsPerUnit);
     }
-	
-    //assign values to the individual components of the healthbeat 
-	void Update () {
-        SetHealth(Player.GetComponent<IHealthObject>().Health, Player.GetComponent<IHealthObject>().MaxHealth); //update health
 
-        heartAnimation.speed = bpm / 60.0f; //match animation speed to bpm
-        bpmReadout.text = bpm.ToString(); //display bpm
+    //assign values to the individual components of the healthbeat 
+    void Update()
+    {
+        if (!paused)
+        {
+            SetHealth(Player.GetComponent<IHealthObject>().Health, Player.GetComponent<IHealthObject>().MaxHealth); //update health
+
+            heartAnimation.speed = bpm / 60.0f; //match animation speed to bpm
+            bpmReadout.text = bpm.ToString(); //display bpm
+        }
 	}
 
     /// <summary>

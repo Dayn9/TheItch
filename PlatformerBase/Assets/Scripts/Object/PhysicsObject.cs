@@ -54,73 +54,77 @@ public class PhysicsObject : MovingObject
 
     protected virtual void Update()
     {
-        #region gravity collision
-        gravityVelocity += gravity * Time.deltaTime; //add gravity to velocity
-        grounded = false;
-        moveVector = gravityVelocity; //temporary falling vector for collision checking
-        distance = moveVector.magnitude; //temporary distance to surface
-        Vector2 newGroundNormal = groundNormal; //temporary normal for surface collisions
-        
-        int numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
-        for (int i = 0; i < numCollisions; i++)
+        if (!paused)
         {
-            Vector2 objectNormal = hits[i].normal; //get the normal vector of the surface
+            #region gravity collision
+            gravityVelocity += gravity * Time.deltaTime; //add gravity to velocity
+            grounded = false;
+            moveVector = gravityVelocity; //temporary falling vector for collision checking
+            distance = moveVector.magnitude; //temporary distance to surface
+            Vector2 newGroundNormal = groundNormal; //temporary normal for surface collisions
 
-            //check not collision inside an object or into wall
-            if (hits[i].distance != 0 && Vector2.Dot(gravity, objectNormal) != 0)
+            int numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
+            for (int i = 0; i < numCollisions; i++)
             {
-                if (Vector2.Dot(gravityVelocity, gravity) >= 0) { grounded = true; } //check if velocity is in the same direction as gravity (falling)
+                Vector2 objectNormal = hits[i].normal; //get the normal vector of the surface
 
-                gravityVelocity = Vector2.zero; //stop moving
-
-                //collide with the closest
-                if (hits[i].distance < distance)
+                //check not collision inside an object or into wall
+                if (hits[i].distance != 0 && Vector2.Dot(gravity, objectNormal) != 0)
                 {
-                    distance = hits[i].distance; //set new closest distance
-                    newGroundNormal = objectNormal; //set new ground normal
+                    if (Vector2.Dot(gravityVelocity, gravity) >= 0) { grounded = true; } //check if velocity is in the same direction as gravity (falling)
 
-                    if (inheritGravity)
+                    gravityVelocity = Vector2.zero; //stop moving
+
+                    //collide with the closest
+                    if (hits[i].distance < distance)
                     {
-                        gravity = -objectNormal * gravity.magnitude; //inherit gavity of new surface
-                        rb2D.rotation += Vector2.SignedAngle(-transform.up, gravity); //match rotation
+                        distance = hits[i].distance; //set new closest distance
+                        newGroundNormal = objectNormal; //set new ground normal
+
+                        if (inheritGravity)
+                        {
+                            gravity = -objectNormal * gravity.magnitude; //inherit gavity of new surface
+                            rb2D.rotation += Vector2.SignedAngle(-transform.up, gravity); //match rotation
+                        }
                     }
                 }
             }
-        }
-        rb2D.position += moveVector.normalized * (distance - buffer); //move object by the distance to nearest collision
-        groundNormal = newGroundNormal; //set the ground normal to normal of closest surface
-        #endregion
+            rb2D.position += moveVector.normalized * (distance - buffer); //move object by the distance to nearest collision
+            groundNormal = newGroundNormal; //set the ground normal to normal of closest surface
+            #endregion
 
-        #region movement collision
-        distance = moveVelocity.magnitude; //temporary distance to surface
-        groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
-        moveVector = Proj(moveVelocity, groundTangent); //Project the moveVelocity onto the ground
-        numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
-        for (int i = 0; i < numCollisions; i++)
-        {
-            float moveableDistance = moveVector.magnitude;
-            if(LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
+            #region movement collision
+            distance = moveVelocity.magnitude; //temporary distance to surface
+            groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
+            moveVector = Proj(moveVelocity, groundTangent); //Project the moveVelocity onto the ground
+            numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
+            for (int i = 0; i < numCollisions; i++)
             {
-                //collide with the closest
-                if (moveableDistance < distance)
+                float moveableDistance = moveVector.magnitude;
+                if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
                 {
-                    distance = moveableDistance;
+                    //collide with the closest
+                    if (moveableDistance < distance)
+                    {
+                        distance = moveableDistance;
+                    }
+                }
+                //check not collision inside an object 
+                else if (hits[i].distance != 0)
+                {
+                    //collide with the closest 
+                    if (hits[i].distance <= distance)
+                    {
+                        distance = hits[i].distance; //set new closest distance
+                    }
                 }
             }
-            //check not collision inside an object 
-            else if(hits[i].distance != 0)
-            {
-                //collide with the closest 
-                if (hits[i].distance <= distance)
-                {
-                    distance = hits[i].distance; //set new closest distance
-                }
-            }
+
+            if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
+            if (moveVector.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
+            #endregion
         }
 
-        if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
-        if (moveVector.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
-        #endregion  
     }
 
     /// <summary>

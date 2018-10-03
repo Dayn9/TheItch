@@ -35,15 +35,18 @@ public class Healthbar : Global {
 
     // Update is called once per frame
     void Update () {
-        //get the player's health
-        playerHealth = Player.GetComponent<IHealthObject>().Health;
+        if (!paused)
+        {
+            //get the player's health
+            playerHealth = Player.GetComponent<IHealthObject>().Health;
 
-        //set the digits
-        digitOne.SetNumber(playerHealth < 10 ? 10 : (playerHealth - (playerHealth % 10)) / 10);
-        digitTwo.SetNumber(playerHealth % 10);
+            //set the digits
+            digitOne.SetNumber(playerHealth < 10 ? 10 : (playerHealth - (playerHealth % 10)) / 10);
+            digitTwo.SetNumber(playerHealth % 10);
 
-        //Adjust ticks on the healthbar 
-        SetActive();
+            //Adjust ticks on the healthbar 
+            SetActive();
+        }
     }
 
     /// <summary>

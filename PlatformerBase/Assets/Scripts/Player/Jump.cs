@@ -49,110 +49,112 @@ public class Jump : PhysicsObject, IHealthObject
 
     protected override void Update()
     {
-        #region Movement
-        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        input = input.normalized * Mathf.Clamp(input.magnitude, 0, 1.0f);
-        moveVelocity = input * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed) * Time.deltaTime;
+        if (!paused)
+        {
+            #region Movement
+            Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            input = input.normalized * Mathf.Clamp(input.magnitude, 0, 1.0f);
+            moveVelocity = input * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed) * Time.deltaTime;
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            jumping = true;
-        } //can input a jump before you hit the ground
-        else if (Input.GetButtonUp("Jump")) { jumping = false; } //releasing jump always cancels jumping
-
-        //jumping when on ground
-        if (jumping && (grounded || climbing))
-        {
-            gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *0.1f;
-            jumping = false; //insures that you can only jump once after pressing jump button
-            climbing = false; //jump out of climbing
-        }
-
-        //add velocity while moving upwards and jump key is pressed (long jumping)
-        if (Vector2.Dot(gravity, gravityVelocity) < 0 && Input.GetButton("Jump")) //check if moving upwards
-        {
-            CollideOneway(false);
-            //add to velocity in direction of velocity proportional to velocity magnitude
-            gravityVelocity += addedSpeed * gravityVelocity.normalized * Time.deltaTime;
-        }
-        //moving downwards
-        else
-        {
-            CollideOneway(true);
-        }
-
-        //fall throught one way platforms when input is down
-        if (Vector2.Dot(gravity, moveVelocity) > 0)
-        {
-            CollideOneway(false);
-        }
-
-        //start climbing if move velocity is up or down
-        if (touchingLadder)
-        {
-            //if not moving side to side
-            if (Vector2.Dot(moveVelocity, gravity) != 0)
+            if (Input.GetButtonDown("Jump"))
             {
-                climbing = true;
+                jumping = true;
+            } //can input a jump before you hit the ground
+            else if (Input.GetButtonUp("Jump")) { jumping = false; } //releasing jump always cancels jumping
+
+            //jumping when on ground
+            if (jumping && (grounded || climbing))
+            {
+                gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed * 0.1f;
+                jumping = false; //insures that you can only jump once after pressing jump button
+                climbing = false; //jump out of climbing
             }
-        }
-        #endregion
 
-
-        if (climbing && gravityVelocity.magnitude == 0)
-        {
-            CollideOneway(false); //don't collide with oneways while climbing 
-            grounded = false;
-
-            #region climbing collision
-            float distance = moveVelocity.magnitude; //temporary distance to surface
-            Vector2 moveVector = moveVelocity; //Project the moveVelocity onto the ground
-
-            float numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
-            for (int i = 0; i < numCollisions; i++)
+            //add velocity while moving upwards and jump key is pressed (long jumping)
+            if (Vector2.Dot(gravity, gravityVelocity) < 0 && Input.GetButton("Jump")) //check if moving upwards
             {
-                //check not collision inside an object
-                if (hits[i].distance != 0)
+                CollideOneway(false);
+                //add to velocity in direction of velocity proportional to velocity magnitude
+                gravityVelocity += addedSpeed * gravityVelocity.normalized * Time.deltaTime;
+            }
+            //moving downwards
+            else
+            {
+                CollideOneway(true);
+            }
+
+            //fall throught one way platforms when input is down
+            if (Vector2.Dot(gravity, moveVelocity) > 0)
+            {
+                CollideOneway(false);
+            }
+
+            //start climbing if move velocity is up or down
+            if (touchingLadder)
+            {
+                //if not moving side to side
+                if (Vector2.Dot(moveVelocity, gravity) != 0)
                 {
-                    //collide with the closest
-                    if (hits[i].distance <= distance)
-                    {
-                        distance = hits[i].distance; //set new closest distance
-                    }
+                    climbing = true;
                 }
             }
-            if (distance > buffer) { rb2D.position = moveVector.normalized * (distance - buffer); } //move object by the shortest distance
-            if (moveVector.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
+            #endregion
+
+            if (climbing && gravityVelocity.magnitude == 0)
+            {
+                CollideOneway(false); //don't collide with oneways while climbing 
+                grounded = false;
+
+                #region climbing collision
+                float distance = moveVelocity.magnitude; //temporary distance to surface
+                Vector2 moveVector = moveVelocity; //Project the moveVelocity onto the ground
+
+                float numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
+                for (int i = 0; i < numCollisions; i++)
+                {
+                    //check not collision inside an object
+                    if (hits[i].distance != 0)
+                    {
+                        //collide with the closest
+                        if (hits[i].distance <= distance)
+                        {
+                            distance = hits[i].distance; //set new closest distance
+                        }
+                    }
+                }
+                if (distance > buffer) { rb2D.position = moveVector.normalized * (distance - buffer); } //move object by the shortest distance
+                if (moveVector.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
+                #endregion
+            }
+            else
+            {
+                base.Update();
+            }
+
+            #region Animation
+
+            //send values to animator
+            animator.SetBool("grounded", grounded);
+            animator.SetFloat("verticalVel", gravityVelocity.magnitude * (Vector2.Angle(gravity, gravityVelocity) > 90 ? 1 : -1));
+            animator.SetFloat("horizontalMove", moveVelocity.magnitude * (Vector2.Dot(transform.right, moveVelocity) < 0 ? 1 : -1));
+
+            render.color = Color.white;
+            if (invulnerable)
+            {
+                invulnerabilityTimer -= Time.deltaTime;
+                if (invulnerabilityTimer <= invulnerabilityTime - 0.2f)
+                {
+                    animator.SetBool("damage", false);
+                    render.color = Color.gray; //fade Slightly
+                }
+
+                if (invulnerabilityTimer <= 0)
+                {
+                    invulnerable = false;
+                }
+            }
             #endregion
         }
-        else
-        {
-            base.Update();
-        }
-
-        #region Animation
-
-        //send values to animator
-        animator.SetBool("grounded", grounded);
-        animator.SetFloat("verticalVel", gravityVelocity.magnitude * (Vector2.Angle(gravity, gravityVelocity) > 90 ? 1 : -1));
-        animator.SetFloat("horizontalMove", moveVelocity.magnitude * (Vector2.Dot(transform.right, moveVelocity) < 0 ? 1 : -1));
-
-        render.color = Color.white;
-        if (invulnerable)
-        {
-            invulnerabilityTimer -= Time.deltaTime;
-            if (invulnerabilityTimer <= invulnerabilityTime - 0.2f)
-            {
-                animator.SetBool("damage", false);
-                render.color = Color.gray; //fade Slightly
-            }
-
-            if (invulnerabilityTimer <= 0)
-            {
-                invulnerable = false;
-            }
-        }
-        #endregion
     }
 
 

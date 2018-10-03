@@ -10,8 +10,10 @@ public class Global : MonoBehaviour {
     private static GameObject mainCamera; //Main Camera object in scene
     private static GameObject player; //player object
 
+    protected static bool paused = false; //true when game is paused and nothing is moving
     protected const int pixelsPerUnit = 8; //number of pixels displayed in each unity unit
     protected const float buffer = 0.01f; //collision buffer 
+
     #endregion
 
     #region global accesors
@@ -56,4 +58,5 @@ public class Global : MonoBehaviour {
     /// </summary>
     protected Transform PlayerTransform { get { return Player.transform; } }
     #endregion 
+    
 }

@@ -14,17 +14,21 @@ public class LeadCamera : PixelPerfectCamera {
     private Vector2 targetOffset = Vector2.zero; //target offset from follow's current position
     private Vector3 newOffset; //temporary calculated offset to move to
 
-    private void Update () {
-        targetOffset = follow.MoveVelocity.normalized * dist; //target offset determined direction of MoveVelocity and magnitude of dist
+    void Update()
+    {
+        if (!paused)
+        {
+            targetOffset = follow.MoveVelocity.normalized * dist; //target offset determined direction of MoveVelocity and magnitude of dist
 
-        //calculate new offset with speed depending on if target is towards or away from follow
-        newOffset = Vector2.SmoothDamp(currentOffset, targetOffset, ref smoothVel, 
-            targetOffset.magnitude > buffer ? leaveTime : returnTime); 
+            //calculate new offset with speed depending on if target is towards or away from follow
+            newOffset = Vector2.SmoothDamp(currentOffset, targetOffset, ref smoothVel,
+                targetOffset.magnitude > buffer ? leaveTime : returnTime);
 
-        newOffset.z = transform.position.z; //maintain z position
-        transform.position = follow.transform.position + newOffset; //move to new Offset from follow
-        currentOffset = newOffset; //update the current offset
+            newOffset.z = transform.position.z; //maintain z position
+            transform.position = follow.transform.position + newOffset; //move to new Offset from follow
+            currentOffset = newOffset; //update the current offset
 
-        StayInLimits(); //remain within the limits of the level
+            StayInLimits(); //remain within the limits of the level
+        }
     }
 }

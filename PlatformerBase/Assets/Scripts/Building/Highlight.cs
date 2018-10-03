@@ -2,7 +2,7 @@
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider2D))]
-public class Highlight : MonoBehaviour {
+public class Highlight : Global {
 
     [SerializeField] protected Sprite active; //sprite to display when player touching
     [SerializeField] protected Sprite inactive; //sprite to display when player not touvhing

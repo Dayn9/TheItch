@@ -41,17 +41,20 @@ public class EventTrigger : Inventory {
 
     void Update()
     {
-        //check if in contact with the player and player is interacting 
-        if (playerTouching && Input.GetKeyDown(trigger))
+        if (!paused)
         {
-            CheckQuest();
-            if (questCompleted)
+            //check if in contact with the player and player is interacting 
+            if (playerTouching && Input.GetKeyDown(trigger))
             {
-                After();
-            }
-            else
-            {
-                Before();
+                CheckQuest();
+                if (questCompleted)
+                {
+                    After();
+                }
+                else
+                {
+                    Before();
+                }
             }
         }
     }

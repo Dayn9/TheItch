@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 using UnityEditor;
 using UnityEngine.Tilemaps;
 
-public class MoveEvent : MonoBehaviour {
+public class MoveEvent : Global {
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
     [Header("Before/True  -  After/False")]
     [SerializeField] private bool beforeAfter; //when (before/after questCompleted) the event is triggered
@@ -88,35 +88,40 @@ public class MoveEvent : MonoBehaviour {
 
     private void Update()
     {
-        //move from current position towards final position
-        if (move) 
+        if (!paused)
         {
-            moveVector = final - (Vector2)transform.position; //get Vector towards final destination
+            //move from current position towards final position
+            if (move)
+            {
+                moveVector = final - (Vector2)transform.position; //get Vector towards final destination
 
-            //snap into position when close enough
-            if(moveVector.magnitude < speed * Time.deltaTime)
-            {
-                transform.position = final;
-                move = false;
-                moveObj.MoveVelocity = Vector3.zero;
-                
-                if (fadeTilemap) { rend.color = snapColor; } //set the color to the snapped color
-                if (snapCollider) {
-                    foreach (Collider2D coll in colls)
+                //snap into position when close enough
+                if (moveVector.magnitude < speed * Time.deltaTime)
+                {
+                    transform.position = final;
+                    move = false;
+                    moveObj.MoveVelocity = Vector3.zero;
+
+                    if (fadeTilemap) { rend.color = snapColor; } //set the color to the snapped color
+                    if (snapCollider)
                     {
-                        coll.enabled = true;
+                        foreach (Collider2D coll in colls)
+                        {
+                            coll.enabled = true;
+                        }
                     }
-                } 
-            }
-            else
-            {
-                if (fadeTilemap) {
-                    float percent = ((Vector2)transform.position - origin).magnitude / (final - origin).magnitude;
-                    rend.color = ((1-percent)*initialColor) + (percent*finalColor);
                 }
-                transform.position += (moveVector.normalized * speed * Time.deltaTime);//move at speed along moveVector
+                else
+                {
+                    if (fadeTilemap)
+                    {
+                        float percent = ((Vector2)transform.position - origin).magnitude / (final - origin).magnitude;
+                        rend.color = ((1 - percent) * initialColor) + (percent * finalColor);
+                    }
+                    transform.position += (moveVector.normalized * speed * Time.deltaTime);//move at speed along moveVector
+                }
+
             }
-            
         }
     }
 }

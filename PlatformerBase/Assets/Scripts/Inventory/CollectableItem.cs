@@ -33,23 +33,26 @@ public class CollectableItem : Inventory
             collected = true; ; //start the animation
         }
     }
-    
-    private void Update()
+
+    void Update()
     {
-        //Lerp into position
-        if (collected && !inVentory)
+        if (!paused)
         {
-            Vector2 move = new Vector2(Mathf.Lerp(transform.localPosition.x, targetPosition.x, speed * Time.deltaTime),                    
-                                                         Mathf.Lerp(transform.localPosition.y, targetPosition.y, speed * Time.deltaTime));
-            //check if close enought to snap into position
-            if ((targetPosition - transform.localPosition).magnitude  < move.magnitude * minMoveDistance)
+            //Lerp into position
+            if (collected && !inVentory)
             {
-                transform.localPosition = targetPosition; //snap into position
-                inVentory = true;
-                return; //stop moving
+                Vector2 move = new Vector2(Mathf.Lerp(transform.localPosition.x, targetPosition.x, speed * Time.deltaTime),
+                                                             Mathf.Lerp(transform.localPosition.y, targetPosition.y, speed * Time.deltaTime));
+                //check if close enought to snap into position
+                if ((targetPosition - transform.localPosition).magnitude < move.magnitude * minMoveDistance)
+                {
+                    transform.localPosition = targetPosition; //snap into position
+                    inVentory = true;
+                    return; //stop moving
+                }
+                //move at speed greater than min move speed
+                transform.localPosition = move.magnitude > minMoveDistance ? move : move.normalized * minMoveDistance;
             }
-            //move at speed greater than min move speed
-            transform.localPosition = move.magnitude > minMoveDistance ? move : move.normalized * minMoveDistance;
         }
-    }   
+    }
 }

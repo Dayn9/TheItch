@@ -38,14 +38,17 @@ public class DialogueCharachter : PhysicsObject {
 
     protected override void Update()
     {
-        //check if in contact with the player and player is interacting 
-        if(playerTouching && Input.GetKeyDown(dialogueTrigger))
+        if (!paused)
         {
-            dialogueBox.gameObject.SetActive(true); 
-            CheckQuest();
-            dialogueBox.OnTriggerKeyPressed(questCompleted ? CompletedDialogue : QuestDialogue, faceImage);
+            //check if in contact with the player and player is interacting 
+            if (playerTouching && Input.GetKeyDown(dialogueTrigger))
+            {
+                dialogueBox.gameObject.SetActive(true);
+                CheckQuest();
+                dialogueBox.OnTriggerKeyPressed(questCompleted ? CompletedDialogue : QuestDialogue, faceImage);
+            }
+            base.Update();
         }
-        base.Update();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)

@@ -33,14 +33,18 @@ public class Door : Highlight {
 
     private void Update()
     {
-        //trigger event when player is touching door and correct key is pressed
-        if(playerTouching && Input.GetKeyDown(KeyCode.X))
+        if (!paused)
         {
-            if(OnDoorOpen != null)
+            //trigger event when player is touching door and correct key is pressed
+            if (playerTouching && Input.GetKeyDown(KeyCode.X))
             {
-                OnDoorOpen(layerInBuilding);
+                if (OnDoorOpen != null)
+                {
+                    OnDoorOpen(layerInBuilding);
+                }
             }
         }
+        
     }
 
     protected override void OnTriggerEnter2D(Collider2D coll)
