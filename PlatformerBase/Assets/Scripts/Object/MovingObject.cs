@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObject : Inventory {
+public class MovingObject : Global {
 
     protected Vector2 moveVelocity = Vector2.zero; //velocity the object manipulates on it's own
 

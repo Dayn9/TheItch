@@ -31,6 +31,11 @@ public class CollectableItem : Inventory
             targetPosition = transform.localPosition;
             transform.position = pickupPosition; //return to origional position for animation
             collected = true; ; //start the animation
+
+            collectEffect.transform.position = transform.position;
+            collectEffect.SetActive(true);
+            collectEffect.GetComponent<Animator>().SetTrigger("Collect");
+
         }
     }
 

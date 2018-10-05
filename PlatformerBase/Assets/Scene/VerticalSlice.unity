@@ -942,11 +942,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &255352238 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1765855970924292, guid: a14f9cecd9f58c5478797ecded428b2e,
-    type: 2}
-  m_PrefabInternal: {fileID: 2108219745}
 --- !u!1 &259946160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,8 +2270,10 @@ GameObject:
   - component: {fileID: 676867230}
   - component: {fileID: 676867229}
   - component: {fileID: 676867228}
-  - component: {fileID: 676867227}
   - component: {fileID: 676867231}
+  - component: {fileID: 676867232}
+  - component: {fileID: 676867233}
+  - component: {fileID: 676867227}
   m_Layer: 8
   m_Name: OldLady
   m_TagString: Untagged
@@ -2292,21 +2289,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 676867226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31b29e1bb82d6f24daed918a2de1aa5c, type: 3}
+  m_Script: {fileID: 11500000, guid: bb76b030d05bf444c9a50a333b318348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inheritGravity: 0
-  indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
-    type: 2}
-  indicatorOffset: {x: 0, y: 1.5, z: 0}
-  dialogueBox: {fileID: 1206920720}
-  faceImage: {fileID: 21300000, guid: a05a497ad909cd84ebf996cd3ebe61ea, type: 3}
-  QuestDialogue: There should be keys around here somewhere
-  itemsRequired:
-  - {fileID: 255352238}
-  CompletedDialogue: 'What a lovely Gem
-
-'
 --- !u!50 &676867228
 Rigidbody2D:
   serializedVersion: 4
@@ -2414,6 +2400,48 @@ PolygonCollider2D:
       - {x: -0.75, y: -1}
       - {x: 0.75, y: -1}
       - {x: 0.75, y: 0.875}
+--- !u!114 &676867232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 676867226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c6305f30799e548a11c165414e50bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evTrig: {fileID: 648112005}
+  beforeAfter: 0
+  origin: {x: 19.5, y: -4.5}
+  final: {x: -35, y: -5}
+  speed: 2
+  snapCollider: 0
+  fadeTilemap: 0
+  initialColor: {r: 1, g: 1, b: 1, a: 1}
+  finalColor: {r: 1, g: 1, b: 1, a: 1}
+  snapColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &676867233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 676867226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6494ee83629a442a5a57a96f71991d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorPrefab: {fileID: 1824191868636520, guid: e8afac3e5023f2d42a351e32e0f7a572,
+    type: 2}
+  indicatorOffset: {x: 0, y: 1.5, z: 0}
+  itemsRequired:
+  - {fileID: 2015279767}
+  itemsEaten: 0
+  dialogueBox: {fileID: 1206920720}
+  faceImage: {fileID: 21300000, guid: a05a497ad909cd84ebf996cd3ebe61ea, type: 3}
+  QuestDialogue: There Should be keys around here somewhere
+  CompletedDialogue: Nice Work
 --- !u!1 &707699905
 GameObject:
   m_ObjectHideFlags: 0
@@ -9099,6 +9127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenOffset: {x: 2, y: 0}
   moveSpeed: 2
+  collectEffectPrefab: {fileID: 1074751342008680, guid: b26cfb655339e4d44b76e3beb5842b62,
+    type: 2}
 --- !u!1 &2003942374
 GameObject:
   m_ObjectHideFlags: 0

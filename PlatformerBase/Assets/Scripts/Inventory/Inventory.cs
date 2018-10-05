@@ -14,6 +14,8 @@ public class Inventory : Global {
     private const float offsetY = 3.75f; //offset from anchor along y axis
     private const float spacing = -1.5f; //spacing between individual items
 
+    protected static GameObject collectEffect; //instantiated collect Effect
+
     public Dictionary<string, GameObject> Items {
         get {
             if(items == null)

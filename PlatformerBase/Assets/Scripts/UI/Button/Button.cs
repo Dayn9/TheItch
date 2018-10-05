@@ -58,7 +58,7 @@ public abstract class Button : Pause {
     /// <summary>
     /// draw a green collider based on area
     /// </summary>
-    protected void OnDrawGizmos()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
 

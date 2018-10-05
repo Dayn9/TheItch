@@ -10,13 +10,18 @@ public class InventoryDisplay : Inventory {
     private bool hidden = true; //true when inventory is empty and display not showing
     private Vector2 moveVector; //temporary vector when moving 
 
-	void Awake () {
+    [SerializeField] protected GameObject collectEffectPrefab; //prefab for collection effects
+
+    void Awake()
+    {
         inventoryUI = transform; //set the inventory transform to this object
         display = transform.GetChild(0);
         //may need to be removed later, makes sure no items stored when new level is loaded
         Items.Clear();
-    }
 
+        collectEffect = Instantiate(collectEffectPrefab, Vector2.zero, Quaternion.identity);
+        collectEffect.SetActive(false);
+    }
     private void Start()
     {
         display.localPosition = hiddenOffset; //move the display to a hidden position

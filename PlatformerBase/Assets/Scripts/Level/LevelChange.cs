@@ -14,6 +14,10 @@ public class LevelChange : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene(levelName, mode);
+        //change scene when colliding with player
+        if (collision.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(levelName, mode);
+        }
     }
 }
