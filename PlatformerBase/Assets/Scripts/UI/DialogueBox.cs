@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(UIAnchor))]
-public class DialogueBox : MonoBehaviour {
+public class DialogueBox : Pause {
 
     [SerializeField] private GameObject charPrefab; //gameobject prefab for individual letters
     [SerializeField] private Sprite[] letters; //array of all possible letter sprites
@@ -42,6 +42,11 @@ public class DialogueBox : MonoBehaviour {
         charachterFace.name = "faceImage";
         charachterFace.transform.position = transform.position + new Vector3(-9.0f, 0.0f, 0.0f);
         charachterImage = charachterFace.GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        
     }
 
     /// <summary>
@@ -90,6 +95,7 @@ public class DialogueBox : MonoBehaviour {
     {
         dialogueChunk = -1; //reset dialogue
         gameObject.SetActive(false); //close dialogue box
+        PauseGame(false);
     }
 
     /// <summary>

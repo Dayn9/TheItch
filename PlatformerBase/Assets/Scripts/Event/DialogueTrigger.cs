@@ -16,24 +16,23 @@ public class DialogueTrigger : EventTrigger {
     //public new event triggered After; //Even Triggered on player interaction when quest complete
 
     // Update is called once per frame
-    protected override void Update () {
-        if (!paused)
+    protected override void Update()
+    {
+        //check if in contact with the player and player is interacting 
+        if (playerTouching && Input.GetKeyDown(trigger))
         {
-            //check if in contact with the player and player is interacting 
-            if (playerTouching && Input.GetKeyDown(trigger))
+            dialogueBox.PauseGame(true);
+            dialogueBox.gameObject.SetActive(true);
+            CheckQuest();
+            if (questCompleted)
             {
-                dialogueBox.gameObject.SetActive(true);
-                CheckQuest();
-                if (questCompleted)
-                {
-                    dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage);
-                    //After();
-                }
-                else
-                {
-                    dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage);
-                    //Before();
-                }
+                dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage);
+                //After();
+            }
+            else
+            {
+                dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage);
+                //Before();
             }
         }
     }
