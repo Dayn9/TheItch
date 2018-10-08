@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388502412840146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.5, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,7 +83,7 @@ PolygonCollider2D:
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2, y: 2}
     newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
+    adaptiveTilingThreshold: 0.528
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inheritGravity: 0
-  moveSpeed: 10
+  moveSpeed: 12
   jumpSpeed: 4.5
   addedSpeed: 0.1
   maxHealth: 20
@@ -145,8 +145,8 @@ MonoBehaviour:
   damageDelt: 1
   heartbeat: {fileID: 0}
   minHeartSpeed: 0.4
-  maxHeartSpeed: 0.5
-  heartAccelerate: 0.1
+  maxHeartSpeed: 0.8
+  heartAccelerate: 0.05
 --- !u!212 &212377067535547162
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -188,7 +188,7 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 2}
-  m_AdaptiveModeThreshold: 0.5
+  m_AdaptiveModeThreshold: 0.528
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
