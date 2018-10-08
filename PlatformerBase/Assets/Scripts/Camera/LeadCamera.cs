@@ -14,6 +14,11 @@ public class LeadCamera : PixelPerfectCamera {
     private Vector2 targetOffset = Vector2.zero; //target offset from follow's current position
     private Vector3 newOffset; //temporary calculated offset to move to
 
+    private void Awake()
+    {
+        if(follow == null) { follow = GameObject.FindGameObjectWithTag("Player").GetComponent<PhysicsObject>(); }
+    }
+
     void Update()
     {
         if (!paused)

@@ -31,7 +31,6 @@ public class PhysicsObject : MovingObject
     protected RaycastHit2D[] hits; //temporary array of collisions
     private int layer; //temporary layer of collided object
     private Vector2 objectNormal; //temporary normal of solid colliding with
-
     #endregion
 
     // Use this for initialization

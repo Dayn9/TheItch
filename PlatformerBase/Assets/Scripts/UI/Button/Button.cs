@@ -14,6 +14,8 @@ public abstract class Button : Pause {
     [SerializeField] protected Sprite active; //sprite to display when mouse over
     [SerializeField] protected Sprite inactive; //sprite to display when mouse not over
 
+    [SerializeField] private bool requiresPause = true;
+
     protected void Awake()
     {
         buttonRender = GetComponent<SpriteRenderer>();
@@ -23,7 +25,7 @@ public abstract class Button : Pause {
     }
 
     protected void Update () {
-        if (paused)
+        if (paused || !requiresPause)
         {
             OnActive();
             //update the collider position

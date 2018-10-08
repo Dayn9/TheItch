@@ -9,20 +9,22 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1761138421383348}
+  m_RootGameObject: {fileID: 1658126897107954}
   m_IsPrefabAsset: 1
---- !u!1 &1761138421383348
+--- !u!1 &1658126897107954
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4730015350635268}
-  - component: {fileID: 212620246234063614}
-  - component: {fileID: 50504957495352564}
-  - component: {fileID: 114102545937265694}
-  - component: {fileID: 60953675225365786}
+  - component: {fileID: 4327974199604942}
+  - component: {fileID: 212806290724191650}
+  - component: {fileID: 50202617609515662}
+  - component: {fileID: 60492977892577436}
+  - component: {fileID: 114935689637423624}
+  - component: {fileID: 114930025202489026}
+  - component: {fileID: 114129706618323882}
   m_Layer: 8
   m_Name: OldLady
   m_TagString: Untagged
@@ -30,12 +32,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4730015350635268
+--- !u!4 &4327974199604942
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761138421383348}
+  m_GameObject: {fileID: 1658126897107954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.5, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -43,13 +45,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50504957495352564
+--- !u!50 &50202617609515662
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761138421383348}
+  m_GameObject: {fileID: 1658126897107954}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -63,12 +65,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60953675225365786
+--- !u!60 &60492977892577436
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761138421383348}
+  m_GameObject: {fileID: 1658126897107954}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -91,35 +93,66 @@ PolygonCollider2D:
       - {x: -0.75, y: -1}
       - {x: 0.75, y: -1}
       - {x: 0.75, y: 0.875}
---- !u!114 &114102545937265694
+--- !u!114 &114129706618323882
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761138421383348}
+  m_GameObject: {fileID: 1658126897107954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31b29e1bb82d6f24daed918a2de1aa5c, type: 3}
+  m_Script: {fileID: 11500000, guid: bb76b030d05bf444c9a50a333b318348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inheritGravity: 0
-  indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
+--- !u!114 &114930025202489026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658126897107954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6494ee83629a442a5a57a96f71991d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorPrefab: {fileID: 1824191868636520, guid: e8afac3e5023f2d42a351e32e0f7a572,
     type: 2}
   indicatorOffset: {x: 0, y: 1.5, z: 0}
-  dialogueBox: {fileID: 0}
-  faceImage: {fileID: 21300000, guid: a05a497ad909cd84ebf996cd3ebe61ea, type: 3}
-  QuestDialogue: There should be keys around here somewhere
   itemsRequired:
   - {fileID: 0}
-  CompletedDialogue: 'What a lovely Gem
-
-'
---- !u!212 &212620246234063614
+  itemsEaten: 0
+  dialogueBox: {fileID: 0}
+  faceImage: {fileID: 21300000, guid: a05a497ad909cd84ebf996cd3ebe61ea, type: 3}
+  QuestDialogue: There Should be keys around here somewhere
+  CompletedDialogue: Nice Work
+--- !u!114 &114935689637423624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658126897107954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c6305f30799e548a11c165414e50bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evTrig: {fileID: 0}
+  beforeAfter: 0
+  origin: {x: 19.5, y: -4.5}
+  final: {x: -35, y: -5}
+  speed: 2
+  snapCollider: 0
+  fadeTilemap: 0
+  initialColor: {r: 1, g: 1, b: 1, a: 1}
+  finalColor: {r: 1, g: 1, b: 1, a: 1}
+  snapColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!212 &212806290724191650
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761138421383348}
+  m_GameObject: {fileID: 1658126897107954}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

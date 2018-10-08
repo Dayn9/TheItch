@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(BoxCollider2D))]
 public class LevelChange : MonoBehaviour {
 
-    [SerializeField] string levelName;
-    [SerializeField] LoadSceneMode mode;
+    [SerializeField] private string levelName;
+    [SerializeField] private LoadSceneMode mode;
 
     private void Start()
     {

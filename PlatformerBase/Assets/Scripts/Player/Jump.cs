@@ -65,17 +65,20 @@ public class Jump : PhysicsObject, IHealthObject
             //jumping when on ground
             if (jumping && (grounded || climbing))
             {
-                gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed * 0.1f;
+                gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *  0.1f;
                 jumping = false; //insures that you can only jump once after pressing jump button
                 climbing = false; //jump out of climbing
             }
 
-            //add velocity while moving upwards and jump key is pressed (long jumping)
-            if (Vector2.Dot(gravity, gravityVelocity) < 0 && Input.GetButton("Jump")) //check if moving upwards
+            //add velocity while moving upwards 
+            if (Vector2.Dot(gravity, gravityVelocity) < 0) //check if moving upwards
             {
                 CollideOneway(false);
                 //add to velocity in direction of velocity proportional to velocity magnitude
-                gravityVelocity += addedSpeed * gravityVelocity.normalized * Time.deltaTime;
+                if (Input.GetButton("Jump"))
+                {
+                    gravityVelocity += addedSpeed * gravityVelocity.normalized * Time.deltaTime;
+                } 
             }
             //moving downwards
             else
