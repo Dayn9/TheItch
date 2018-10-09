@@ -51,7 +51,7 @@ public class PhysicsObject : MovingObject
         filter.useLayerMask = true;
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         if (!paused)
         {

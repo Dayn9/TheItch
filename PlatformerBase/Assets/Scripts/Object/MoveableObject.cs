@@ -7,11 +7,11 @@ public class MoveableObject : PhysicsObject
     [SerializeField] [Range(0.0f, 1.0f)] private float drag; //how quickly the object slows down
     
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
         if (!paused)
         {
-            base.Update(); //Do Physics stuff
+            base.FixedUpdate(); //Do Physics stuff
 
 
             moveVelocity.x = Mathf.Lerp(moveVelocity.x, 0, drag);

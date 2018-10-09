@@ -47,25 +47,36 @@ public class Jump : PhysicsObject, IHealthObject
         health = maxHealth;
     }
 
-    protected override void Update()
+    private void Update()
     {
         if (!paused)
         {
-            #region Movement
             Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             input = input.normalized * Mathf.Clamp(input.magnitude, 0, 1.0f);
             moveVelocity = input * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed) * Time.deltaTime;
 
+            //can input a jump before you hit the ground
             if (Input.GetButtonDown("Jump"))
             {
                 jumping = true;
-            } //can input a jump before you hit the ground
-            else if (Input.GetButtonUp("Jump")) { jumping = false; } //releasing jump always cancels jumping
+            }
+            //releasing jump always cancels jumping
+            else if (Input.GetButtonUp("Jump"))
+            {
+                jumping = false;
+            } 
+        }
+    }
 
+    protected override void FixedUpdate()
+    {
+        if (!paused)
+        {
+            #region Movement
             //jumping when on ground
             if (jumping && (grounded || climbing))
             {
-                gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *  0.1f;
+                gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *  Time.deltaTime;
                 jumping = false; //insures that you can only jump once after pressing jump button
                 climbing = false; //jump out of climbing
             }
@@ -131,7 +142,7 @@ public class Jump : PhysicsObject, IHealthObject
             }
             else
             {
-                base.Update();
+                base.FixedUpdate();
             }
 
             #region Animation
