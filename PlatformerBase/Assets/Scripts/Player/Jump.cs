@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class Jump : PhysicsObject, IHealthObject
+public class Jump : PhysicsObject, IHealthObject, IPlayer
 {
     # region private fields
     [SerializeField] private float moveSpeed; //how fast the object can move
@@ -29,12 +29,18 @@ public class Jump : PhysicsObject, IHealthObject
     [SerializeField] private bool canSprint; 
     [SerializeField] private float sprintSpeed;
 
+    [SerializeField] private HeartbeatPower heartBeatPower;
+    private bool moving = false;
+    [SerializeField] private float restoreRate;
+    [SerializeField] private float removeRate;
+
     #endregion
 
-    #region Properties
+    #region Properties from Interfaces
     public int Health { get { return health; } }
     public int MaxHealth { get { return maxHealth; } }
     public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
+    public HeartbeatPower Power { get { return heartBeatPower; } }
     #endregion
 
     //Start is already being called in Base PhysicsObject Class
@@ -55,6 +61,8 @@ public class Jump : PhysicsObject, IHealthObject
             input = input.normalized * Mathf.Clamp(input.magnitude, 0, 1.0f);
             moveVelocity = input * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed) * Time.deltaTime;
 
+            moving = moveVelocity.magnitude > buffer; //determine if object is moving
+
             //can input a jump before you hit the ground
             if (Input.GetButtonDown("Jump"))
             {
@@ -64,7 +72,7 @@ public class Jump : PhysicsObject, IHealthObject
             else if (Input.GetButtonUp("Jump"))
             {
                 jumping = false;
-            } 
+            }
         }
     }
 
@@ -72,6 +80,10 @@ public class Jump : PhysicsObject, IHealthObject
     {
         if (!paused)
         {
+            //update the health system
+            if (moving) { heartBeatPower.RestoreBPM(restoreRate * Time.deltaTime); }
+            else { heartBeatPower.RemoveBPM(removeRate * Time.deltaTime); }
+
             #region Movement
             //jumping when on ground
             if (jumping && (grounded || climbing))
@@ -170,7 +182,6 @@ public class Jump : PhysicsObject, IHealthObject
             #endregion
         }
     }
-
 
     /// <summary>
     /// choose whether the object should collide with oneway platforms

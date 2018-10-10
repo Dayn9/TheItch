@@ -11,21 +11,16 @@ public class Heartbeat : Global {
     private Animator heartAnimation; //ref to the animator of the heartbeat
 
     private float numHealthbarTicks; //pixel width of the healthbar
-    private int bpm; //beats per minute (60 = 1 per second)
-    [SerializeField] private int restingHR;
-    [SerializeField] private int maxHR;
+    private float bpm; //beats per minute (60 = 1 per second)
 
-    public int BPM {
+    public float BPM
+    {
         get { return bpm; }
-        set { bpm = value > restingHR - 20 && value < maxHR + 20 ? value : bpm; } //bpm must be between 0 - 250
+        set { bpm = value; }
     }
-    public int RestingHR { get { return restingHR; } }
-    public int MaxHR { get { return maxHR; } }
 
     // Use this for initialization
     void Awake () {
-        bpm = maxHR - restingHR;
-
         //find the nessicary components in child gameObjects
         bpmReadout = transform.GetChild(0).GetComponent<TextMesh>();
         healthbar = transform.GetChild(1).GetComponent<SpriteRenderer>();
@@ -48,7 +43,7 @@ public class Heartbeat : Global {
             SetHealth(Player.GetComponent<IHealthObject>().Health, Player.GetComponent<IHealthObject>().MaxHealth); //update health
 
             heartAnimation.speed = bpm / 60.0f; //match animation speed to bpm
-            bpmReadout.text = bpm.ToString(); //display bpm
+            bpmReadout.text = ((int)bpm).ToString(); //display bpm
         }
 	}
 

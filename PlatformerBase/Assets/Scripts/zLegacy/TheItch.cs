@@ -7,7 +7,7 @@ using UnityEngine;
 //FASTER HEALTH RATE DOES MORE DAMAGE
 public class TheItch : Global
 {
-
+    /*
     [SerializeField] private float timeStill; //time(seconds) the object can stand still before it takes damage
     [SerializeField] private int damageDelt; //damage the object takes when they stay still for too long
     private float timeObjectStill;  //time(seconds) the object has been still
@@ -34,7 +34,7 @@ public class TheItch : Global
     {
         heartPosition = heartbeat.BPM;
     }
-
+    
     void Update()
     {
         if (!paused)
@@ -80,7 +80,7 @@ public class TheItch : Global
             rate = Mathf.Clamp(rate, -2 * amp, 2 * amp);
             myBPM += rate;
             heartbeat.BPM = Mathf.Clamp((int)myBPM, heartbeat.RestingHR, heartbeat.MaxHR);
-            */
+            
             if (heartPosition <= heartbeat.RestingHR)
             {
                 timeObjectStill += Time.deltaTime; //add to timer 
@@ -95,5 +95,5 @@ public class TheItch : Global
                 timeObjectStill = 0.0f;
             }
         }
-    }
+    }*/
 }

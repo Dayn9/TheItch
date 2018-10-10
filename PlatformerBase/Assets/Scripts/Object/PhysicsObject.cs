@@ -8,23 +8,18 @@ public class PhysicsObject : MovingObject
 {
     #region protected fields
     [SerializeField] protected bool inheritGravity; //inherit surface gravity on collision
-
     protected const float gravityMag = 1.0f; //constant magnitude of gravity
     protected static Vector2 gravity; //down direction
-
     protected Vector2 gravityVelocity = Vector2.zero; //initial velocity allways zero
     protected Vector2 groundNormal; //normal vector of the ground object is on
     protected Vector2 groundTangent; //Vector along ground
     protected bool grounded; //true if object is on the ground
-
     protected Rigidbody2D rb2D; //attached rigidbody
     protected ContactFilter2D filter; //collision filter
-
     protected SpriteRenderer sprite; //attachedd spriteRenderer
-
     protected Vector2 inputVelocity = Vector2.zero; //velocity form external forces 
-    public Vector2 InputVelocity { set { inputVelocity = value; } }
-    
+
+    //Variables used in every collision check
     private float distance; //temporary distance to nearest collision
     private Vector2 moveVector; //temporary vector for collision checking
     private int numCollisions; //temporary number of collisions from collsion check
@@ -33,7 +28,9 @@ public class PhysicsObject : MovingObject
     private Vector2 objectNormal; //temporary normal of solid colliding with
     #endregion
 
-    // Use this for initialization
+    public Vector2 InputVelocity { set { inputVelocity = value; } }
+
+    //Called on Initialization 
     protected virtual void Start()
     {
         gravity = Vector2.down * gravityMag; //default gravity vector is down
@@ -51,6 +48,7 @@ public class PhysicsObject : MovingObject
         filter.useLayerMask = true;
     }
 
+    //called every Physics Update
     protected virtual void FixedUpdate()
     {
         if (!paused)
@@ -180,7 +178,6 @@ public class PhysicsObject : MovingObject
                 break;
             //Move any objects that can be moved
             case 11: //SolidMovableObject
-            //case 8: //Player <-------------------------------------------------------------------ADD BACK IN AFTER TESTED ON MOVABLE OBJECTS
                 PhysicsObject moveObj = collided.GetComponent<PhysicsObject>();
                 if (moveObj != null)
                 {
