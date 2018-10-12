@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(UIAnchor))]
 public class InventoryDisplay : Inventory {
@@ -16,16 +18,27 @@ public class InventoryDisplay : Inventory {
     {
         inventoryUI = transform; //set the inventory transform to this object
         display = transform.GetChild(0);
+        hidden = true;
+
         //may need to be removed later, makes sure no items stored when new level is loaded
-        Items.Clear();
+        if (Items.Count > 0)
+        {
+            Dictionary<string, GameObject> tempItems = Items;
+            foreach(GameObject item in Items.Values)
+            {
+                item.transform.parent = inventoryUI;
+            }
+            DisplayItems();
+            hidden = false; //there are items so UI should be showing
+        }
 
         collectEffect = Instantiate(collectEffectPrefab, Vector2.zero, Quaternion.identity);
         collectEffect.SetActive(false);
     }
+
     private void Start()
     {
-        display.localPosition = hiddenOffset; //move the display to a hidden position
-        hidden = true;
+        display.localPosition = hidden ? hiddenOffset : Vector2.zero; //move the display to a hidden position if hidden
     }
 
     void Update()

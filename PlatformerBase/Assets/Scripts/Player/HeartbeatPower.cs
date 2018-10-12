@@ -51,6 +51,7 @@ public class HeartbeatPower : Global {
         if (!paused && targetBPM != heartbeat.BPM)
         {
             float difference = targetBPM - heartbeat.BPM;
+            //snap to heartrate when moveDistance is small enough
             if (difference * Mathf.Sign(difference) < deltaHeartRate * Time.deltaTime)
             {
                 heartbeat.BPM = targetBPM;

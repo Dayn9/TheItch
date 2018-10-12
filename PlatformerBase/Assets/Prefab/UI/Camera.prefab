@@ -56,7 +56,8 @@ GameObject:
   - component: {fileID: 4731056252859134}
   - component: {fileID: 212151799527751886}
   - component: {fileID: 114102506285343994}
-  - component: {fileID: 114924887494920058}
+  - component: {fileID: 114589596009904590}
+  - component: {fileID: 114585576776850782}
   m_Layer: 5
   m_Name: Heathbeat
   m_TagString: Untagged
@@ -240,7 +241,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707601350657490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.152779, y: 4, z: 10}
+  m_LocalPosition: {x: 34.289455, y: 4, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4711360671464710}
@@ -405,7 +406,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1097552489848018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.777779, y: 9, z: 10}
+  m_LocalPosition: {x: -34.914455, y: 9, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4343122703431734}
@@ -581,6 +582,7 @@ MonoBehaviour:
   offset: {x: 3.25, y: -1.25}
   active: {fileID: 21300000, guid: 6b433ec0fe060934ea41c6a06048f76e, type: 3}
   inactive: {fileID: 21300000, guid: b193bbf8f5e62754294f4dd5fad50beb, type: 3}
+  requiresPause: 1
 --- !u!114 &114251461340307458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -661,6 +663,31 @@ MonoBehaviour:
   anchor: 7
   offset: {x: 0, y: 4}
   snapToPixel: 1
+--- !u!114 &114585576776850782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1097552489848018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0271140d7be3941948097dc1d01752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114589596009904590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1097552489848018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307a823733610a84ba973b25248debcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialBPM: 120
+  maxHeartRate: 200
+  deltaHeartRate: 15
 --- !u!114 &114883072395320364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -675,6 +702,7 @@ MonoBehaviour:
   offset: {x: -3.25, y: -1.25}
   active: {fileID: 21300000, guid: 59301d371981dbd49a73d34e12a29cb1, type: 3}
   inactive: {fileID: 21300000, guid: a0283549df18ea3438d26632e3ee7ae5, type: 3}
+  requiresPause: 1
   mActive: {fileID: 21300000, guid: 7aec3c9ce85958a43bcd894e72f7b1b3, type: 3}
   mInactive: {fileID: 21300000, guid: 4702306781be4a342af5079ff4002887, type: 3}
 --- !u!114 &114887358095955332
@@ -688,28 +716,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddff18ac4dc671646a3de7e1db24e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalUnitsOnScreen: 30
-  rightLimit: 30
-  leftLimit: -30
-  bottomLimit: -30
-  topLimit: 20
+  verticalUnitsOnScreen: 20
+  rightLimit: 100
+  leftLimit: -38
+  bottomLimit: -17
+  topLimit: 30
   follow: {fileID: 0}
   leaveTime: 0.8
-  returnTime: 1.2
+  returnTime: 0.6
   dist: 7
---- !u!114 &114924887494920058
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1097552489848018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f0271140d7be3941948097dc1d01752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  restingHR: 60
-  maxHR: 190
 --- !u!114 &114984491762605450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -724,6 +739,7 @@ MonoBehaviour:
   offset: {x: 0, y: -1.25}
   active: {fileID: 21300000, guid: 427eae5ab4417f042a6693f96bd52ead, type: 3}
   inactive: {fileID: 21300000, guid: 27378f8a40a2c584789dd8a1ac38b964, type: 3}
+  requiresPause: 1
 --- !u!114 &114986674608244462
 MonoBehaviour:
   m_ObjectHideFlags: 1

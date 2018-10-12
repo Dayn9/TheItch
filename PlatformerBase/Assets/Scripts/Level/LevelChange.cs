@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class LevelChange : MonoBehaviour {
+public class LevelChange : Inventory {
 
     [SerializeField] private string levelName;
     [SerializeField] private LoadSceneMode mode;
@@ -17,6 +17,12 @@ public class LevelChange : MonoBehaviour {
         //change scene when colliding with player
         if (collision.CompareTag("Player"))
         {
+            //detatch items from inventory so they can be passed on to the next scene
+            foreach(GameObject item in Items.Values)
+            {
+                item.transform.parent = null;
+                DontDestroyOnLoad(item);
+            }
             SceneManager.LoadScene(levelName, mode);
         }
     }

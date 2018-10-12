@@ -35,6 +35,7 @@ public class Inventory : Global {
     public void AddItem(string name, GameObject obj)
     {
         Items.Add(name, obj);
+
         obj.transform.parent = inventoryUI; //make child of the inventoryUI
         DisplayItems();
     }
@@ -56,7 +57,7 @@ public class Inventory : Global {
     /// <summary>
     /// make the items appear in the correct location on screen
     /// </summary>
-    private void DisplayItems()
+    protected void DisplayItems()
     {
         int index = 0;
         foreach(string item in Items.Keys)

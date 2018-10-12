@@ -44,6 +44,11 @@ public class Heartbeat : Global {
 
             heartAnimation.speed = bpm / 60.0f; //match animation speed to bpm
             bpmReadout.text = ((int)bpm).ToString(); //display bpm
+
+            if(bpm <= 0)
+            {
+                Player.GetComponent<IHealthObject>().TakeDamage(1);
+            }
         }
 	}
 
