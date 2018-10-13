@@ -29,6 +29,7 @@ public class PhysicsObject : MovingObject
     #endregion
 
     public Vector2 InputVelocity { set { inputVelocity = value; } }
+    public Vector2 GravityVelocity { get { return gravityVelocity; } }
 
     //Called on Initialization 
     protected virtual void Start()

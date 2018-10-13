@@ -16,6 +16,9 @@ public class Building : Global {
     private Color solidDoor; //color of door when on current layer
     private Color transparentDoor; //color of door when on previous layer
 
+    [SerializeField] private GameObject fadePrefab; //background fade object prefab
+    private SpriteRenderer fade; //ref to background fade
+
 	// Use this for initialization
 	void Start () {
         physPlayer = Player.GetComponent<PhysicsObject>();
@@ -34,6 +37,12 @@ public class Building : Global {
 
             Interior[i].Layer.SetActive(false); //all inyterior layers start inactive
         }
+
+        //create the fade object and assign it's render
+        fade = Instantiate(fadePrefab, this.transform).GetComponent<SpriteRenderer>();
+        fade.sortingLayerID = Exterior.GetComponent<Renderer>().sortingLayerID;
+        fade.sortingOrder = 1;
+        fade.enabled = false;
 	}
 
 	/// <summary>
@@ -90,6 +99,9 @@ public class Building : Global {
             }
             currentLayer--;
         }
+
+        //fade the background if not in the exterior layer
+        fade.enabled = (currentLayer != 0);
     }
 }
 

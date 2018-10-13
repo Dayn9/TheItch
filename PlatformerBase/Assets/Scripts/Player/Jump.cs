@@ -12,6 +12,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     [SerializeField] private float jumpSpeed; //initial jump speed
     [Range(-gravityMag, gravityMag)] [SerializeField] private float addedSpeed; //gravity added on the way up
 
+    private Vector2 movementInput; //user input that will move the player
     private bool jumping = false; //is the player jumping
 
     private Animator animator; //reference to attached animator component
@@ -57,11 +58,9 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     {
         if (!paused)
         {
-            Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            input = input.normalized * Mathf.Clamp(input.magnitude, 0, 1.0f);
-            moveVelocity = input * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed) * Time.deltaTime;
-
-            moving = moveVelocity.magnitude > buffer; //determine if object is moving
+            movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) //make sure length of input vector is less than 1;
+                * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed); //multiply be appropritate speed
 
             //can input a jump before you hit the ground
             if (Input.GetButtonDown("Jump"))
@@ -80,6 +79,10 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     {
         if (!paused)
         {
+            //determine moveVeclocity and if the object is moving
+            moveVelocity = movementInput * Time.deltaTime;
+            moving = moveVelocity.magnitude > buffer; //determine if object is moving
+            
             //update the health system
             if (moving) { heartBeatPower.RestoreBPM(restoreRate * Time.deltaTime); }
             else { heartBeatPower.RemoveBPM(removeRate * Time.deltaTime); }
