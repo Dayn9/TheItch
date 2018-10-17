@@ -16,6 +16,12 @@
     void Heal(int amount);
 
     /// <summary>
+    /// Occurs when object gains health
+    /// </summary>
+    /// <param name="amount"></param>
+    void Heal(float amount);
+
+    /// <summary>
     /// Occurs when object regains full health
     /// </summary>
     void FullHeal();

@@ -11,7 +11,7 @@ public class EventTrigger : Inventory {
     [SerializeField] protected Vector3 indicatorOffset; //offset from door to display above object
     protected GameObject indicator; //ref to instatiated indicatorPrefab
 
-    protected const KeyCode trigger = KeyCode.DownArrow; //Key that will start and advance the dialogue
+    [SerializeField] protected KeyCode trigger = KeyCode.DownArrow; //Key that will start and advance the dialogue
     protected bool playerTouching = false; //true when dialogue is touching Charachter
 
     [SerializeField] protected List<GameObject> itemsRequired; //items required to complete quest
@@ -37,7 +37,7 @@ public class EventTrigger : Inventory {
     /// <summary>
     /// default event so null ref errors are not thrown
     /// </summary>
-    private void NullEvent() { }
+    protected void NullEvent() { }
 
     protected virtual void Update()
     {
@@ -57,6 +57,16 @@ public class EventTrigger : Inventory {
                 }
             }
         }
+    }
+
+    protected void CallBefore()
+    {
+        Before();
+    }
+
+    protected void CallAfter()
+    {
+        After();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)

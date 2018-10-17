@@ -35,6 +35,11 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     [SerializeField] private float restoreRate;
     [SerializeField] private float removeRate;
 
+    private Vector2 returnPosition; //position to return to when the player falls off the map
+    private bool returning = false; //true when player is returning to returnPosition
+    private float returnTime; //Time it takes for player to return to position
+    private Vector2 returnVelocity;
+    [SerializeField] private int returnVelocityDivider;
     #endregion
 
     #region Properties from Interfaces
@@ -52,6 +57,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
         if (maxHealth < 1) { maxHealth = 1; } //must have at leath one health point
         health = maxHealth;
+        SetReturnPosition(transform.position); //set the return position to 1 unit above where the player initially spawned
     }
 
     private void Update()
@@ -79,6 +85,23 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     {
         if (!paused)
         {
+            if (returning)
+            {
+                //move back to returnPosition
+                moveVelocity = Vector2.SmoothDamp(transform.position, returnPosition, ref returnVelocity, returnTime); 
+                gravityVelocity = Vector2.up * moveVelocity.y; //set moveVelocities for camera
+                transform.position = moveVelocity;
+                if(((Vector2)transform.position - returnPosition).magnitude < 1)
+                {
+                    gravityVelocity = Vector2.zero;
+                    returning = false;
+                }
+                //manual mapipulation of animator to falling animation
+                animator.SetBool("grounded", false);
+                animator.SetFloat("verticalVel", -1);
+                return; //don't more the player conventually 
+            }
+
             //determine moveVeclocity and if the object is moving
             moveVelocity = movementInput * Time.deltaTime;
             moving = moveVelocity.magnitude > buffer; //determine if object is moving
@@ -242,10 +265,29 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         //add health up to max health
         health = (health + amount) % maxHealth;
     }
+    public void Heal(float amount)
+    {
+        //add health up to max health
+        health = (health + (int)amount) % maxHealth;
+    }
 
     public void FullHeal()
     {
         health = maxHealth;
     }
     #endregion
+
+    private void SetReturnPosition(Vector2 set)
+    {
+        returnPosition = set + Vector2.up;
+    }
+
+    public void OnPlayerFall()
+    {
+        returnVelocity = Vector2.zero; //reset the return Velocity
+        returnTime = ((Vector2)transform.position - returnPosition).magnitude / returnVelocityDivider;
+
+        returning = true; //start returning to return position
+    }
 }
+ 

@@ -21,6 +21,8 @@ public class PixelPerfectCamera : Global {
     Vector2 bottomLeft;
     Vector2 bottomRight;
 
+    private IPlayer player;
+
     protected virtual void Start()
     {
         MainCamera.GetComponent<Camera>().orthographicSize = Screen.height / (GetNearestMultiple(Screen.height / verticalUnitsOnScreen, pixelsPerUnit) * 2.0f);
@@ -32,6 +34,8 @@ public class PixelPerfectCamera : Global {
         topRight = new Vector2(rightLimit + transform.position.x, topLimit + transform.position.y);
         bottomLeft = new Vector2(leftLimit + transform.position.x, bottomLimit + transform.position.y);
         bottomRight = new Vector2(rightLimit + transform.position.x, bottomLimit + transform.position.y);
+
+        player = Player.GetComponent<IPlayer>();
     }
 
     //black magic
@@ -49,6 +53,18 @@ public class PixelPerfectCamera : Global {
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, leftLimit + width, rightLimit - width),
                                          Mathf.Clamp(transform.position.y, bottomLimit + height, topLimit - height),
                                          transform.position.z);
+        KeepPlayerInLimits();
+    }
+
+    protected void KeepPlayerInLimits()
+    {
+        //keep the player withing the horizontal limits 
+        Player.transform.position = new Vector2(Mathf.Clamp(Player.transform.position.x, leftLimit + 0.5f, rightLimit - 0.5f), Player.transform.position.y);
+        //check if player has fallen past the bottom limit of the map
+        if (Player.transform.position.y < bottomLimit - 1.0f)
+        {
+            player.OnPlayerFall();
+        }
     }
 
     protected void OnDrawGizmos()

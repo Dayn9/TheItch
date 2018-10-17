@@ -12,9 +12,6 @@ public class DialogueTrigger : EventTrigger {
     [SerializeField] [TextArea] private string QuestDialogue; //text dialogue to give quest
     [SerializeField] [TextArea] private string CompletedDialogue; //text dialogue when quest complete2
 
-    //public new event triggered Before; //Event Triggered on player iteraction when quest incomplete
-    //public new event triggered After; //Even Triggered on player interaction when quest complete
-
     // Update is called once per frame
     protected override void Update()
     {
@@ -27,12 +24,12 @@ public class DialogueTrigger : EventTrigger {
             if (questCompleted)
             {
                 dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage);
-                //After();
+                CallAfter();
             }
             else
             {
                 dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage);
-                //Before();
+                CallBefore();
             }
         }
     }
