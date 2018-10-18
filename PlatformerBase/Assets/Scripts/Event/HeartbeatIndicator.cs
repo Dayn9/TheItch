@@ -15,7 +15,6 @@ public class HeartbeatIndicator : MonoBehaviour {
         set {
             totalHealth = value;
             healthbarEmpty.size = new Vector2(totalHealth / 10, healthbarEmpty.size.y);
-            healthbarFull.gameObject.transform.localPosition = new Vector2(-healthbarEmpty.size.x / 2, 1);
         }
     }
     public float CurrentHealth {
