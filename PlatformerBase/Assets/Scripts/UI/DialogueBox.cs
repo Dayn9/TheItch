@@ -2,23 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TextSize { Small, Large }
+
 [RequireComponent(typeof(UIAnchor))]
 public class DialogueBox : Pause {
+    
 
     [SerializeField] private GameObject charPrefab; //gameobject prefab for individual letters
+    [SerializeField] private TextSize size; //size of the text to display
     [SerializeField] private Sprite[] letters; //array of all possible letter sprites
 
     private SpriteRenderer charachterImage; //ref to spriteRenderer of the image location 
     private List<SpriteRenderer> text; //refs to the spriteRenderers of the letter locations
 
-    private const int numLines = 3; //number of lines in the dialoge box
-    private const int charsPerLine = 16; //number of charachters in each line
+    private int numLines; //number of lines in the dialoge box
+    private int charsPerLine; //number of charachters in each line
+    private Vector2 initialOffset;
+    private Vector2 offset;
     private int dialogueChunk; //which chunk of dialogue is currently being displayed
 
     private List<string> chunks; //chunks of dialogue that are displayed one at a time
 
+    public TextSize Size
+    {
+        get { return size; }
+        set
+        {
+            //set the values based on text size
+            switch (value)
+            {
+                case TextSize.Small:
+                    numLines = 4;
+                    charsPerLine = 24;
+                    initialOffset = new Vector2(-6.5625f, 1.6875f);
+                    offset = new Vector2(0.75f, -1.125f);
+                    break;
+                case TextSize.Large:
+                    numLines = 3;
+                    charsPerLine = 16;
+                    initialOffset = new Vector2(-6.375f, 1.375f);
+                    offset = new Vector2(1.125f, -1.375f);
+                    break;
+            }
+        }
+    }
+
     private void Awake()
     {
+        Size = size; //set values based on size value
+
         gameObject.SetActive(false);
         dialogueChunk = -1; //default no dialogue 
         chunks = new List<string>(); 
@@ -33,7 +65,7 @@ public class DialogueBox : Pause {
                 newLetter = Instantiate(charPrefab, transform);
                 newLetter.name = "char" + line + "." + cha; 
                 newLetter.transform.position = transform.position + 
-                    new Vector3((cha * 1.125f) - 6.375f, (line * -1.375f) + 1.375f, 0); //TODO: make variables for adjustable 'font size'
+                    new Vector3((cha * offset.x) + initialOffset.x, (line * offset.y) + initialOffset.y, 0); //TODO: make variables for adjustable 'font size'
                 text.Add(newLetter.GetComponent<SpriteRenderer>());
             }
         }

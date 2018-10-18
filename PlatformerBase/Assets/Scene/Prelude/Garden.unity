@@ -843,6 +843,7 @@ MonoBehaviour:
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 2}
   indicatorOffset: {x: 0, y: 1.5, z: 0}
+  trigger: 274
   itemsRequired:
   - {fileID: 1721138889}
   itemsEaten: 1
@@ -12185,6 +12186,46 @@ Prefab:
         type: 2}
       propertyPath: offsetFromPlayer.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: rightLimit
+      value: 97
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: leftLimit
+      value: -38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251461340307458, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: initialOffset.y
+      value: 1.6875
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251461340307458, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: offset.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251461340307458, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: offset.y
+      value: -1.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251461340307458, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: numLines
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251461340307458, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: charsPerLine
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 114251461340307458, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: initialOffset.x
+      value: -6.5625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
