@@ -11,7 +11,7 @@ public class EventTrigger : Inventory {
     [SerializeField] protected Vector3 indicatorOffset; //offset from door to display above object
     protected GameObject indicator; //ref to instatiated indicatorPrefab
 
-    [SerializeField] protected KeyCode trigger = KeyCode.DownArrow; //Key that will start and advance the dialogue
+    protected KeyCode[] triggers = new KeyCode[] { KeyCode.DownArrow, KeyCode.S }; //Keys that will start and advance the dialogue
     protected bool playerTouching = false; //true when dialogue is touching Charachter
 
     [SerializeField] protected List<GameObject> itemsRequired; //items required to complete quest
@@ -44,7 +44,7 @@ public class EventTrigger : Inventory {
         if (!paused)
         {
             //check if in contact with the player and player is interacting 
-            if (playerTouching && Input.GetKeyDown(trigger))
+            if (playerTouching && (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])))
             {
                 CheckQuest();
                 if (questCompleted)

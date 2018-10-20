@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4923605455244846}
   - component: {fileID: 212517607898185924}
   - component: {fileID: 114470297938890138}
-  - component: {fileID: 95322292314461456}
   m_Layer: 0
   m_Name: IndicatorHelthbarX
   m_TagString: Untagged
@@ -94,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1003893449775974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.94, y: 6.4, z: 0}
+  m_LocalPosition: {x: -45.348164, y: 8.604642, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4803359531097922}
@@ -102,24 +101,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95322292314461456
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1003893449775974}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: caf109833663ff94cb9f210f6e21eec3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114470297938890138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,7 +147,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0aba1b1ccb992c245b501b8061daf388, type: 3}
+  m_Sprite: {fileID: 21300240, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

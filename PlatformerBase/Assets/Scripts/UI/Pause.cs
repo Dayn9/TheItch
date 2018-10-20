@@ -5,25 +5,29 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Pause : Global {
 
-    private SpriteRenderer render; //ref to spriteRenderer on this gameobject
-    private SpriteRenderer[] childRender; //ref to the spriteRenderers on all the child gameObjects
+    private SpriteRenderer[] myRenderers; //ref to the spriteRenderers on this and all the child gameObjects
 
     protected static Animator[] animators; //ref to all the animators in the scene
 
     protected static AudioSource[] audios; //ref t all audioSources in the scene
     public static bool mute = false; //true when audio is muted 
 
+    [SerializeField] private Fade fade; //ref to the fade object in the scene 
     private bool menuPaused; //true when menu is paused
     protected static bool otherPause = false; //true when something else is paused
 
     private void Awake()
     {
         //find all the required references
-        render = GetComponent<SpriteRenderer>();
-        render.enabled = false;
+        SpriteRenderer[] childRender = GetComponentsInChildren<SpriteRenderer>();
+        myRenderers = new SpriteRenderer[childRender.Length + 1];
+        for(int r = 0; r< childRender.Length; r++)
+        {
+            myRenderers[r] = childRender[r];
+        }
+        myRenderers[myRenderers.Length - 1] = GetComponent<SpriteRenderer>();
 
-        childRender = GetComponentsInChildren<SpriteRenderer>();
-        SetChildRenders(false);
+        SetRenders(false);
 
         animators = FindObjectsOfType<Animator>();
         audios = FindObjectsOfType<AudioSource>(); 
@@ -35,7 +39,6 @@ public class Pause : Global {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             menuPaused = !menuPaused;
-            render.enabled = menuPaused;
             paused = menuPaused || otherPause;
 
             //disable all animators when paused
@@ -44,8 +47,14 @@ public class Pause : Global {
                 anim.enabled = !paused;
             }
 
-            SetChildRenders(menuPaused);
-
+            SetRenders(menuPaused);
+            //send the fade object the attached sprite rendereres
+            if (menuPaused) {
+                fade.EnableFade(myRenderers);
+            } else {
+                fade.DisableFade(myRenderers);
+            }
+            
         }
         paused = menuPaused || otherPause;
         //toggle audio when M key is pressed (Quick action, can also be done through pause menu)
@@ -63,9 +72,9 @@ public class Pause : Global {
     /// set enabled of all the child renderes
     /// </summary>
     /// <param name="state">activation state</param>
-    private void SetChildRenders(bool state)
+    private void SetRenders(bool state)
     {
-        foreach(SpriteRenderer rend in childRender)
+        foreach(SpriteRenderer rend in myRenderers)
         {
             rend.enabled = state;
         }

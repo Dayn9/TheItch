@@ -16,7 +16,7 @@ public class DialogueTrigger : EventTrigger {
     protected override void Update()
     {
         //check if in contact with the player and player is interacting 
-        if (playerTouching && Input.GetKeyDown(trigger))
+        if (playerTouching && (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])))
         {
             dialogueBox.PauseGame(true);
             dialogueBox.gameObject.SetActive(true);

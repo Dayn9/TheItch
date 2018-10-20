@@ -35,7 +35,7 @@ public class TransferTrigger : EventTrigger
         if (!paused)
         {
             //check if in contact with the player and player is interacting 
-            if (playerTouching && Input.GetKey(trigger))
+            if (playerTouching && (Input.GetKey(triggers[0]) || Input.GetKey(triggers[1])))
             {   
                 if (questCompleted && FullyHealed)
                 {
@@ -44,7 +44,7 @@ public class TransferTrigger : EventTrigger
                 }
                 else
                 {
-                    if (Input.GetKeyDown(trigger)) { CallBefore(); }
+                    if (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])) { CallBefore(); }
 
                     heartbeatToTransfer = transferRate * Time.deltaTime;
                     Player.GetComponent<IPlayer>().Power.RemoveBPM(heartbeatToTransfer);

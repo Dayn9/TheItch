@@ -16,8 +16,8 @@ public class Building : Global {
     private Color solidDoor; //color of door when on current layer
     private Color transparentDoor; //color of door when on previous layer
 
-    [SerializeField] private GameObject fadePrefab; //background fade object prefab
-    private SpriteRenderer fade; //ref to background fade
+    [SerializeField] private Fade fade;
+    private Renderer[] myRenderers;
 
 	// Use this for initialization
 	void Start () {
@@ -26,8 +26,10 @@ public class Building : Global {
         solidDoor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         transparentDoor = new Color(1.0f, 1.0f, 1.0f, doorAboveAlpha);
 
+        myRenderers = GetComponentsInChildren<Renderer>();
+
         Exterior.SetActive(true); //exterior layer always starts active
-        for(int i = 0; i<Interior.Length; i++)
+        for (int i = 0; i < Interior.Length; i++)
         {
             Interior[i].Door.SetActive(i == 0 ? true : false); //only first door starts active
             Interior[i].Door.GetComponent<Door>().LayerInBuilding = i; //set layer of door to the layer they appear fully on
@@ -37,12 +39,6 @@ public class Building : Global {
 
             Interior[i].Layer.SetActive(false); //all inyterior layers start inactive
         }
-
-        //create the fade object and assign it's render
-        fade = Instantiate(fadePrefab, this.transform).GetComponent<SpriteRenderer>();
-        fade.sortingLayerID = Exterior.GetComponent<Renderer>().sortingLayerID;
-        fade.sortingOrder = 1;
-        fade.enabled = false;
 	}
 
 	/// <summary>
@@ -101,7 +97,13 @@ public class Building : Global {
         }
 
         //fade the background if not in the exterior layer
-        fade.enabled = (currentLayer != 0);
+        if(currentLayer != 0) { 
+            fade.EnableFade(myRenderers);
+            fade.EnableFade(Player.GetComponent<Renderer>());
+        } else {
+            fade.DisableFade(myRenderers);
+            fade.DisableFade(Player.GetComponent<Renderer>());
+        }
     }
 }
 
