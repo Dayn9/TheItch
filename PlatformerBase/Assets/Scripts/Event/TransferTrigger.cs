@@ -10,6 +10,8 @@ public class TransferTrigger : EventTrigger
     private const float transferRate = 5.0f;
     private float heartbeatToTransfer;
 
+    private bool transfering = false;
+
     private HeartbeatIndicator hbIndicator;
 
     public HeartbeatIndicator HbIndicator { get { return hbIndicator; } }
@@ -34,8 +36,13 @@ public class TransferTrigger : EventTrigger
     {
         if (!paused)
         {
+            if(transfering && (!playerTouching || FullyHealed))
+            {
+                transfering = false;
+                Player.GetComponent<IPlayer>().Power.SetDamageColor(false);
+            }
             //check if in contact with the player and player is interacting 
-            if (playerTouching && (Input.GetKey(triggers[0]) || Input.GetKey(triggers[1])))
+            else if (playerTouching && (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])))
             {   
                 if (questCompleted && FullyHealed)
                 {
@@ -44,15 +51,22 @@ public class TransferTrigger : EventTrigger
                 }
                 else
                 {
-                    if (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])) { CallBefore(); }
-
-                    heartbeatToTransfer = transferRate * Time.deltaTime;
-                    Player.GetComponent<IPlayer>().Power.RemoveBPM(heartbeatToTransfer);
-                    healthObj.Heal(heartbeatToTransfer);
+                    transfering = true;
                 }
-                //update the heartbeatIndicator
-                hbIndicator.CurrentHealth = healthObj.Health;
             }
+
+
+            if (transfering)
+            {
+                heartbeatToTransfer = transferRate * Time.deltaTime;
+                Player.GetComponent<IPlayer>().Power.RemoveBPM(heartbeatToTransfer);
+                Player.GetComponent<IPlayer>().Power.SetDamageColor(true);
+                healthObj.Heal(heartbeatToTransfer);
+
+                CallBefore();
+            }
+            //update the heartbeatIndicator
+            hbIndicator.CurrentHealth = healthObj.Health;
         }
     }
 }

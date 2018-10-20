@@ -14,11 +14,19 @@ public class HeartbeatPower : Global {
 
     private Heartbeat heartbeat;
 
+    [SerializeField] private Color bpmReadoutNormal;
+    [SerializeField] private Color bpmReadoutDamage;
+
     void Awake()
     {
         heartbeat = GetComponent<Heartbeat>();
         heartbeat.BPM = initialBPM;
         targetBPM = initialBPM;
+    }
+
+    public void SetDamageColor(bool damage) 
+    {
+        heartbeat.SetNumColor(damage ? bpmReadoutDamage : bpmReadoutNormal);
     }
 
     /// <summary>

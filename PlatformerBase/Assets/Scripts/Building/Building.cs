@@ -47,8 +47,20 @@ public class Building : Global {
     /// <param name="layer">layer of door interacting with</param>
     private void RoomChange(int layer)
     {
+        //fade the background
+        if (currentLayer == 0)
+        {
+            fade.EnableFade(myRenderers);
+            fade.EnableFade(Player.GetComponent<Renderer>());
+        }
+        else
+        {
+            fade.DisableFade(myRenderers);
+            fade.DisableFade(Player.GetComponent<Renderer>());
+        }
+
         //go back a layer
-        if(layer == currentLayer)
+        if (layer == currentLayer)
         {
             if(layer == 0)
             {
@@ -94,15 +106,6 @@ public class Building : Global {
                 Interior[layer + 1].Door.SetActive(false);
             }
             currentLayer--;
-        }
-
-        //fade the background if not in the exterior layer
-        if(currentLayer != 0) { 
-            fade.EnableFade(myRenderers);
-            fade.EnableFade(Player.GetComponent<Renderer>());
-        } else {
-            fade.DisableFade(myRenderers);
-            fade.DisableFade(Player.GetComponent<Renderer>());
         }
     }
 }

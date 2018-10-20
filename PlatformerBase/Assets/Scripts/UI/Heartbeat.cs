@@ -19,6 +19,11 @@ public class Heartbeat : Global {
         set { bpm = value; }
     }
 
+    public void SetNumColor(Color color)
+    {
+        bpmReadout.color = color;
+    }
+
     // Use this for initialization
     void Awake () {
         //find the nessicary components in child gameObjects

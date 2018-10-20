@@ -22,8 +22,9 @@ public class Door : Highlight {
 
     public int LayerInBuilding { set { layerInBuilding = value; } }
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         //create the indicator
         indicator = Instantiate(indicatorPrefab, transform);
         indicator.transform.position = transform.position + indicatorOffset;

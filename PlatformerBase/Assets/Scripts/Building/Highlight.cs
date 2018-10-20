@@ -8,7 +8,7 @@ public class Highlight : Global {
     [SerializeField] protected Sprite inactive; //sprite to display when player not touvhing
     private SpriteRenderer render; //ref to object's sprite renderer
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         render = GetComponent<SpriteRenderer>();
         render.sprite = inactive;
