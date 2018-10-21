@@ -5,11 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public abstract class Button : Pause {
 
-    [SerializeField] protected Vector2 offset; //offset of collider from transform center
-    protected const float radius = 1.5f; //half the width of the collider box
-
     protected SpriteRenderer buttonRender; //ref to spriteRenderer component
-    protected Rect area; //bounds to the collider
+    [SerializeField] protected Vector2 offset; //offset of collider from transform center
+    [SerializeField] protected Rect area; //bounding shape of the button, never gets adjusted 
+
+    private Vector2 pos; //position of the button with offset
+    private Rect bounds; //actual bounds of the button
 
     [SerializeField] protected Sprite active; //sprite to display when mouse over
     [SerializeField] protected Sprite inactive; //sprite to display when mouse not over
@@ -20,8 +21,7 @@ public abstract class Button : Pause {
     {
         buttonRender = GetComponent<SpriteRenderer>();
         //set the area based on starting position and offset
-        Vector2 pos = (Vector2)transform.position + offset;
-        area = new Rect(pos.x - radius, pos.y - radius, 2 * radius, 2 * radius);
+        pos = (Vector2)transform.position + offset;
     }
 
     protected void Update () {
@@ -29,10 +29,11 @@ public abstract class Button : Pause {
         {
             OnActive();
             //update the collider position
-            area.x = transform.position.x + offset.x - radius;
-            area.y = transform.position.y + offset.y - radius;
+            pos = (Vector2)transform.position + offset;
+            bounds = new Rect(pos.x + area.x, pos.y + area.y, area.width, area.height);
+
             //check if the mouse is withing the collider space
-            if (area.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+            if (bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
             {
                 OnEnter();
                 //check if clicking (left mouse button)
@@ -64,12 +65,13 @@ public abstract class Button : Pause {
     {
         Gizmos.color = Color.green;
 
-        Vector2 pos = (Vector2)transform.position + offset;
+        pos = (Vector2)transform.position + offset;
+        bounds = new Rect(pos.x + area.x, pos.y + area.y, area.width, area.height);
 
-        Vector2 topLeft = new Vector2(pos.x - radius, pos.y + radius);
-        Vector2 topRight = new Vector2(pos.x + radius, pos.y + radius);
-        Vector2 bottomLeft = new Vector2(pos.x - radius, pos.y - radius);
-        Vector2 bottomRight = new Vector2(pos.x + radius, pos.y - radius);
+        Vector2 topLeft = new Vector2(bounds.x, bounds.y);
+        Vector2 topRight = new Vector2(bounds.x + bounds.width, bounds.y);
+        Vector2 bottomLeft = new Vector2(bounds.x, bounds.y + bounds.height);
+        Vector2 bottomRight = new Vector2(bounds.x + bounds.width, bounds.y + bounds.height);
 
         //draw lines between corners
         Gizmos.DrawLine(topLeft, topRight); //top

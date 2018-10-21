@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class Fade : MonoBehaviour
+public class Fade : Global
 { 
     private SpriteRenderer render; //ref to this objects sprite renderer 
     private Dictionary<GameObject, int> origionalLayers; //keeps track of the origional sorting layers of objects that go above the fade
@@ -34,6 +34,8 @@ public class Fade : MonoBehaviour
                 aboveFade[i].sortingOrder += 1; //make sure always above the fade
             }
         }
+
+        render.sortingOrder = paused ? 10 : 0;
     }
 
     /// <summary>
@@ -59,7 +61,7 @@ public class Fade : MonoBehaviour
         {
             render.enabled = false;
         }
+
+        render.sortingOrder = paused ? 10 : 0;
     }
-
-
 }

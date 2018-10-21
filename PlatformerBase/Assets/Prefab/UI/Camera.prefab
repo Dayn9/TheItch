@@ -242,7 +242,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707601350657490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.708333, y: 4, z: 10}
+  m_LocalPosition: {x: 16.152779, y: 4, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4711360671464710}
@@ -257,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 1131938659880346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4342388965853568}
   m_RootOrder: 4
@@ -407,7 +407,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1097552489848018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.333333, y: 9, z: 10}
+  m_LocalPosition: {x: -16.777779, y: 9, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4343122703431734}
@@ -583,6 +583,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 0}
   offset: {x: 3.25, y: -1.25}
+  area:
+    serializedVersion: 2
+    x: -1.5
+    y: -1.5
+    width: 3
+    height: 3
   active: {fileID: 21300000, guid: 6b433ec0fe060934ea41c6a06048f76e, type: 3}
   inactive: {fileID: 21300000, guid: b193bbf8f5e62754294f4dd5fad50beb, type: 3}
   requiresPause: 1
@@ -693,6 +699,8 @@ MonoBehaviour:
   initialBPM: 120
   maxHeartRate: 200
   deltaHeartRate: 15
+  bpmReadoutNormal: {r: 0.70980394, g: 0.21568628, b: 0, a: 1}
+  bpmReadoutDamage: {r: 0.9568628, g: 0.5058824, b: 0.30980393, a: 1}
 --- !u!114 &114772390002021634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -717,6 +725,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 0}
   offset: {x: -3.25, y: -1.25}
+  area:
+    serializedVersion: 2
+    x: -1.5
+    y: -1.5
+    width: 3
+    height: 3
   active: {fileID: 21300000, guid: 59301d371981dbd49a73d34e12a29cb1, type: 3}
   inactive: {fileID: 21300000, guid: a0283549df18ea3438d26632e3ee7ae5, type: 3}
   requiresPause: 1
@@ -734,15 +748,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalUnitsOnScreen: 20
-  rightLimit: 4
-  leftLimit: -93
+  rightLimit: 97
+  leftLimit: -38
   bottomLimit: -17
   topLimit: 30
   follow: {fileID: 0}
   leaveTime: 0.8
   returnTime: 0.6
   dist: 5
-  offsetFromPlayer: {x: 0, y: 2.625}
+  offsetFromPlayer: {x: 0, y: 1.5}
 --- !u!114 &114984491762605450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -756,6 +770,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 0}
   offset: {x: 0, y: -1.25}
+  area:
+    serializedVersion: 2
+    x: -1.5
+    y: -1.5
+    width: 3
+    height: 3
   active: {fileID: 21300000, guid: 427eae5ab4417f042a6693f96bd52ead, type: 3}
   inactive: {fileID: 21300000, guid: 27378f8a40a2c584789dd8a1ac38b964, type: 3}
   requiresPause: 1
@@ -815,7 +835,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: 2
-  m_SortingOrder: 7
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 64687ae418d5a654fb6a9c8b04817c8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -953,7 +973,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: 2
-  m_SortingOrder: 8
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: 27378f8a40a2c584789dd8a1ac38b964, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1045,7 +1065,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: 2
-  m_SortingOrder: 8
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: b193bbf8f5e62754294f4dd5fad50beb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1091,7 +1111,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: 2
-  m_SortingOrder: 8
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: a0283549df18ea3438d26632e3ee7ae5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
