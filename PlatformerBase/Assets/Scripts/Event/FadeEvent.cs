@@ -68,7 +68,10 @@ public class FadeEvent : Global {
             if(percent >= 1.0f)
             {
                 render.color = snapColor;
-                coll.enabled = true;
+                if (snapCollider)
+                {
+                    coll.enabled = true;
+                }
                 fade = false; //stop fading the object in
             }
             else

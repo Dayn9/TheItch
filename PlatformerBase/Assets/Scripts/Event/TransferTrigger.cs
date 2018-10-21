@@ -30,16 +30,21 @@ public class TransferTrigger : EventTrigger
         hbIndicator.CurrentHealth = 0;
     }
 
+    /// <summary>
+    /// returns true when the attached heart Object is fully healed
+    /// </summary>
     public bool FullyHealed { get { return healthObj.Health == healthObj.MaxHealth; } }
 
     protected override void Update()
     {
         if (!paused)
         {
+            //check if transfering but shouldn't be
             if(transfering && (!playerTouching || FullyHealed))
             {
                 transfering = false;
                 Player.GetComponent<IPlayer>().Power.SetDamageColor(false);
+                questCompleted = true; //
             }
             //check if in contact with the player and player is interacting 
             else if (playerTouching && (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])))
@@ -47,7 +52,6 @@ public class TransferTrigger : EventTrigger
                 if (questCompleted && FullyHealed)
                 {
                     CallAfter();
-                    Debug.Log(FullyHealed);
                 }
                 else
                 {
@@ -55,12 +59,14 @@ public class TransferTrigger : EventTrigger
                 }
             }
 
-
+            //transfer heartrate from player to heartrate object
             if (transfering)
             {
                 heartbeatToTransfer = transferRate * Time.deltaTime;
                 Player.GetComponent<IPlayer>().Power.RemoveBPM(heartbeatToTransfer);
                 Player.GetComponent<IPlayer>().Power.SetDamageColor(true);
+
+                Player.GetComponent<IHealthObject>().TakeDamage(0); //triggers the damage animation
                 healthObj.Heal(heartbeatToTransfer);
 
                 CallBefore();

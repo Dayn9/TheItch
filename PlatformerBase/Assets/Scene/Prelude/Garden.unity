@@ -842,8 +842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 2}
-  indicatorOffset: {x: 0, y: 1.5, z: 0}
-  trigger: 274
+  indicatorOffset: {x: 0, y: 1.625, z: 0}
   itemsRequired:
   - {fileID: 1721138889}
   itemsEaten: 1
@@ -12171,11 +12170,11 @@ Prefab:
       objectReference: {fileID: 298767483}
     - target: {fileID: 4731056252859134, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -16.777779
+      value: -12.333333
       objectReference: {fileID: 0}
     - target: {fileID: 4223507278124102, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 16.152779
+      value: 11.708333
       objectReference: {fileID: 0}
     - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 2}
