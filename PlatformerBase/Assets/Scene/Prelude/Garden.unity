@@ -12195,6 +12195,14 @@ Prefab:
       propertyPath: follow
       value: 
       objectReference: {fileID: 298767483}
+    - target: {fileID: 4223507278124102, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 32.911083
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731056252859134, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -33.536083
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_IsPrefabAsset: 0
@@ -13694,6 +13702,11 @@ Prefab:
       propertyPath: heartBeatPower
       value: 
       objectReference: {fileID: 1561165239}
+    - target: {fileID: 114207416268906584, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: returnVelocityDivider
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
   m_IsPrefabAsset: 0
