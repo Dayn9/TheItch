@@ -8,5 +8,5 @@ public interface IPlayer{
     /// <summary>
     /// occurs when the player falls off the map
     /// </summary>
-    void OnPlayerFall(); 
+    void OnPlayerFall();
 }

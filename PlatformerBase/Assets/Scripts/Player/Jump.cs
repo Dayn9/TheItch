@@ -136,7 +136,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             }
 
             //fall throught one way platforms when input is down
-            if (Vector2.Dot(gravity, moveVelocity) > 0)
+
+            if (grounded && Vector2.Dot(gravity, moveVelocity) > 0)
             {
                 CollideOneway(false);
             }

@@ -11,7 +11,7 @@ public class Heartbeat : Global {
     private Animator heartAnimation; //ref to the animator of the heartbeat
 
     private float numHealthbarTicks; //pixel width of the healthbar
-    private float bpm; //beats per minute (60 = 1 per second)
+    private static float bpm = -1; //beats per minute (60 = 1 per second)
 
     public float BPM
     {

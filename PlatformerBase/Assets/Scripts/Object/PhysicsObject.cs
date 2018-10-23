@@ -8,6 +8,7 @@ public class PhysicsObject : MovingObject
 {
     #region protected fields
     [SerializeField] protected bool inheritGravity; //inherit surface gravity on collision
+    protected const float maxGravity = 2.0f;
     protected const float gravityMag = 1.0f; //constant magnitude of gravity
     protected static Vector2 gravity; //down direction
     protected Vector2 gravityVelocity = Vector2.zero; //initial velocity allways zero
@@ -29,7 +30,10 @@ public class PhysicsObject : MovingObject
     #endregion
 
     public Vector2 InputVelocity { set { inputVelocity = value; } }
-    public Vector2 GravityVelocity { get { return gravityVelocity; } }
+    public Vector2 GravityVelocity {
+        get { return gravityVelocity; }
+        set { gravityVelocity = value; }
+    }
 
     //Called on Initialization 
     protected virtual void Start()
@@ -58,7 +62,7 @@ public class PhysicsObject : MovingObject
             gravityVelocity += gravity * Time.deltaTime; //add gravity to velocity
             grounded = false;
             moveVector = gravityVelocity; //temporary falling vector for collision checking
-            distance = moveVector.magnitude; //temporary distance to surface
+            distance = Mathf.Clamp(moveVector.magnitude, 0, maxGravity); //temporary distance to surface
             Vector2 newGroundNormal = groundNormal; //temporary normal for surface collisions
 
             int numCollisions = rb2D.Cast(moveVector, filter, hits, distance);

@@ -23,10 +23,12 @@ public class EventTrigger : Inventory {
 
     protected void Awake () {
         //create the indicator and position it propperly 
-        indicator = Instantiate(indicatorPrefab, transform);
+        indicator = indicatorPrefab != null ? Instantiate(indicatorPrefab, transform) : new GameObject();
+
         indicator.transform.position = transform.position + indicatorOffset;
         indicator.SetActive(false);
         indicator.name = "Event Indicator";
+
         gameObject.GetComponent<Collider2D>().isTrigger = true;
 
         //insure there is never a null event

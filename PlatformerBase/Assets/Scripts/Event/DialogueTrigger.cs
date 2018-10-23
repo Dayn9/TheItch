@@ -16,20 +16,27 @@ public class DialogueTrigger : EventTrigger {
     protected override void Update()
     {
         //check if in contact with the player and player is interacting 
-        if (playerTouching && (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])))
+        if (playerTouching)
         {
-            dialogueBox.PauseGame(true);
-            dialogueBox.gameObject.SetActive(true);
-            CheckQuest();
-            if (questCompleted)
+            if(Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]))
             {
-                dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage);
-                CallAfter();
+                dialogueBox.PauseGame(true);
+                dialogueBox.gameObject.SetActive(true);
+                CheckQuest();
+                if (questCompleted)
+                {
+                    dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage);
+                    CallAfter();
+                }
+                else
+                {
+                    dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage);
+                    CallBefore();
+                }
             }
-            else
+            else if (Input.GetButton("Jump"))
             {
-                dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage);
-                CallBefore();
+                dialogueBox.Reset();
             }
         }
     }

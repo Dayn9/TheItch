@@ -20,8 +20,11 @@ public class HeartbeatPower : Global {
     void Awake()
     {
         heartbeat = GetComponent<Heartbeat>();
-        heartbeat.BPM = initialBPM;
-        targetBPM = initialBPM;
+        if(heartbeat.BPM == -1)
+        {
+            heartbeat.BPM = initialBPM;
+        }
+        targetBPM = heartbeat.BPM;
     }
 
     public void SetDamageColor(bool damage) 
