@@ -27,14 +27,14 @@ public class PhysicsObject : MovingObject
     protected RaycastHit2D[] hits; //temporary array of collisions
     private int layer; //temporary layer of collided object
     private Vector2 objectNormal; //temporary normal of solid colliding with
+
+    protected bool inFallZone; //true when the player is in a fallZone
     #endregion
 
     public Vector2 InputVelocity { set { inputVelocity = value; } }
-    public Vector2 GravityVelocity {
-        get { return gravityVelocity; }
-        set { gravityVelocity = value; }
-    }
-
+    public Vector2 GravityVelocity { get { return gravityVelocity; } }
+    public float MaxGravity { get { return maxGravity; } }
+    public Vector2 Gravity { get { return gravity; } }
     //Called on Initialization 
     protected virtual void Start()
     {
@@ -61,38 +61,40 @@ public class PhysicsObject : MovingObject
             #region gravity collision
             gravityVelocity += gravity * Time.deltaTime; //add gravity to velocity
             grounded = false;
-            moveVector = gravityVelocity; //temporary falling vector for collision checking
-            distance = Mathf.Clamp(moveVector.magnitude, 0, maxGravity); //temporary distance to surface
-            Vector2 newGroundNormal = groundNormal; //temporary normal for surface collisions
-
-            int numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
-            for (int i = 0; i < numCollisions; i++)
+            if (!inFallZone)
             {
-                Vector2 objectNormal = hits[i].normal; //get the normal vector of the surface
-
-                //check not collision inside an object or into wall
-                if (hits[i].distance != 0 && Vector2.Dot(gravity, objectNormal) != 0)
+                moveVector = gravityVelocity; //temporary falling vector for collision checking
+                distance = Mathf.Clamp(moveVector.magnitude, 0, maxGravity); //temporary distance to surface
+                Vector2 newGroundNormal = groundNormal; //temporary normal for surface collisions
+                int numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
+                for (int i = 0; i < numCollisions; i++)
                 {
-                    if (Vector2.Dot(gravityVelocity, gravity) >= 0) { grounded = true; } //check if velocity is in the same direction as gravity (falling)
+                    Vector2 objectNormal = hits[i].normal; //get the normal vector of the surface
 
-                    gravityVelocity = Vector2.zero; //stop moving
-
-                    //collide with the closest
-                    if (hits[i].distance < distance)
+                    //check not collision inside an object or into wall
+                    if (hits[i].distance != 0 && Vector2.Dot(gravity, objectNormal) != 0)
                     {
-                        distance = hits[i].distance; //set new closest distance
-                        newGroundNormal = objectNormal; //set new ground normal
+                        if (Vector2.Dot(gravityVelocity, gravity) >= 0) { grounded = true; } //check if velocity is in the same direction as gravity (falling)
 
-                        if (inheritGravity)
+                        gravityVelocity = Vector2.zero; //stop moving
+
+                        //collide with the closest
+                        if (hits[i].distance < distance)
                         {
-                            gravity = -objectNormal * gravity.magnitude; //inherit gavity of new surface
-                            rb2D.rotation += Vector2.SignedAngle(-transform.up, gravity); //match rotation
+                            distance = hits[i].distance; //set new closest distance
+                            newGroundNormal = objectNormal; //set new ground normal
+
+                            if (inheritGravity)
+                            {
+                                gravity = -objectNormal * gravity.magnitude; //inherit gavity of new surface
+                                rb2D.rotation += Vector2.SignedAngle(-transform.up, gravity); //match rotation
+                            }
                         }
                     }
                 }
+                rb2D.position += moveVector.normalized * (distance - buffer); //move object by the distance to nearest collision
+                groundNormal = newGroundNormal; //set the ground normal to normal of closest surface
             }
-            rb2D.position += moveVector.normalized * (distance - buffer); //move object by the distance to nearest collision
-            groundNormal = newGroundNormal; //set the ground normal to normal of closest surface
             #endregion
 
             #region movement collision

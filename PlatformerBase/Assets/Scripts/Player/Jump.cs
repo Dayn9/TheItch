@@ -40,13 +40,15 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     private float returnTime; //Time it takes for player to return to position
     private Vector2 returnVelocity;
     [SerializeField] private int returnVelocityDivider;
+
     #endregion
 
-    #region Properties from Interfaces
+    #region Properties 
     public int Health { get { return health; } }
     public int MaxHealth { get { return maxHealth; } }
     public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
     public HeartbeatPower Power { get { return heartBeatPower; } }
+    public bool InFallZone { set { inFallZone = value; } }
     #endregion
 
     //Start is already being called in Base PhysicsObject Class
@@ -110,6 +112,20 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             if (moving) { heartBeatPower.RestoreBPM(restoreRate * Time.deltaTime); }
             else { heartBeatPower.RemoveBPM(removeRate * Time.deltaTime); }
 
+            if (inFallZone)
+            {
+                //manual mapipulation of animator to falling animation
+                animator.SetBool("grounded", false);
+                animator.SetFloat("verticalVel", -1);
+
+                gravityVelocity = Vector2.zero;
+
+                base.FixedUpdate();
+
+                gravityVelocity = gravity.normalized * maxGravity;
+                return; //don't let the player move 
+            }
+            
             #region Movement
             //jumping when on ground
             if (jumping && (grounded || climbing))
