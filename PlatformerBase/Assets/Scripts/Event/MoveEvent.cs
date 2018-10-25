@@ -69,7 +69,7 @@ public class MoveEvent : Global {
             evTrig.After += new triggered(Move);
         }
         
-        transform.position = origin; //start at the origin
+        transform.localPosition = origin; //start at the origin
         if (fadeTilemap) { rend.color = initialColor; }
         if (snapCollider) {
             foreach (Collider2D coll in colls)
@@ -93,12 +93,12 @@ public class MoveEvent : Global {
             //move from current position towards final position
             if (move)
             {
-                moveVector = final - (Vector2)transform.position; //get Vector towards final destination
+                moveVector = final - (Vector2)transform.localPosition; //get Vector towards final destination
 
                 //snap into position when close enough
                 if (moveVector.magnitude < speed * Time.deltaTime)
                 {
-                    transform.position = final;
+                    transform.localPosition = final;
                     move = false;
                     moveObj.MoveVelocity = Vector3.zero;
 
@@ -115,10 +115,10 @@ public class MoveEvent : Global {
                 {
                     if (fadeTilemap)
                     {
-                        float percent = ((Vector2)transform.position - origin).magnitude / (final - origin).magnitude;
+                        float percent = ((Vector2)transform.localPosition - origin).magnitude / (final - origin).magnitude;
                         rend.color = ((1 - percent) * initialColor) + (percent * finalColor);
                     }
-                    transform.position += (moveVector.normalized * speed * Time.deltaTime);//move at speed along moveVector
+                    transform.localPosition += (moveVector.normalized * speed * Time.deltaTime);//move at speed along moveVector
                 }
 
             }

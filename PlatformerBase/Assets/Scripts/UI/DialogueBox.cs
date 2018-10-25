@@ -20,9 +20,9 @@ public class DialogueBox : Pause {
     private Vector2 initialOffset;
     private Vector2 offset;
     private int dialogueChunk; //which chunk of dialogue is currently being displayed
-
     private List<string> chunks; //chunks of dialogue that are displayed one at a time
 
+    
     public TextSize Size
     {
         get { return size; }
@@ -57,7 +57,6 @@ public class DialogueBox : Pause {
     {
         Size = size; //set values based on size value
 
-        gameObject.SetActive(false);
         dialogueChunk = -1; //default no dialogue 
         chunks = new List<string>(); 
 
@@ -80,12 +79,13 @@ public class DialogueBox : Pause {
         charachterFace.name = "faceImage";
         charachterFace.transform.position = transform.position + new Vector3(-9.0f, 0.0f, 0.0f);
         charachterImage = charachterFace.GetComponent<SpriteRenderer>();
-        charachterImage.enabled = false;
+        charachterImage.sprite = letters[12];
+
+        SetAllRenderers(false);
     }
 
     private void Update()
     {
-        
     }
 
     /// <summary>
@@ -96,7 +96,6 @@ public class DialogueBox : Pause {
     public void OnTriggerKeyPressed(string message, Sprite face)
     {
         OnTriggerKeyPressed(message);
-        charachterImage.enabled = true;
         charachterImage.sprite = face;
     }
 
@@ -106,7 +105,7 @@ public class DialogueBox : Pause {
     /// <param name="message">full message to display</param>
     public void OnTriggerKeyPressed(string message)
     {
-        gameObject.SetActive(true);
+        SetAllRenderers(true);
         //check if there new message
         if (dialogueChunk == -1)
         {
@@ -125,7 +124,6 @@ public class DialogueBox : Pause {
             }
             DisplayChunk(chunks[dialogueChunk]);
         }
-       
     }
 
     /// <summary>
@@ -134,8 +132,9 @@ public class DialogueBox : Pause {
     public void Reset()
     {
         dialogueChunk = -1; //reset dialogue
-        gameObject.SetActive(false); //close dialogue box
+        SetAllRenderers(false);
         PauseGame(false);
+        charachterImage.enabled = false;
     }
 
     /// <summary>
@@ -184,12 +183,12 @@ public class DialogueBox : Pause {
     private void DisplayChunk(string message)
     {
         //make sure message is valid
-        if(message.Length <= (numLines * charsPerLine))
+        if (message.Length <= (numLines * charsPerLine))
         {
             message = message.ToLower(); //make all letters lowercase
-            for(int i = 0; i < message.Length; i++)
-            { 
-                char letter = message[i]; 
+            for (int i = 0; i < message.Length; i++)
+            {
+                char letter = message[i];
                 int spriteNum = 12; //default to blank space in case of unassign char
                 //is letter an number 
                 if (letter >= 48 && letter <= 57) //ASCII: ('0' = 48) ('9' = 57)
@@ -197,7 +196,7 @@ public class DialogueBox : Pause {
                     spriteNum = letter - 48; //Sprites: ('0' = 0) ('9' = 9)
                 }
                 //is letter part of the alpabet
-                else if(letter >= 97 && letter <= 122) //ASCII: ('a' = 97) ('z' = 122)
+                else if (letter >= 97 && letter <= 122) //ASCII: ('a' = 97) ('z' = 122)
                 {
                     spriteNum = letter - 84; //Sprites: ('a' = 13) ('z' = 38)
                 }
@@ -221,6 +220,17 @@ public class DialogueBox : Pause {
         else
         {
             Debug.Log("message has more than" + (numLines * charsPerLine) + "charachters");
+        }
+    }
+
+
+    private void SetAllRenderers(bool enable)
+    {
+        GetComponent<SpriteRenderer>().enabled = enable;
+        charachterImage.enabled = enable;
+        foreach (Renderer rend in text)
+        {
+            rend.enabled = enable;
         }
     }
 }

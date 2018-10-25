@@ -18,6 +18,8 @@ public class FallZone : Global {
 
     private bool brake = false; //true when fall sections should stop moving
 
+    public bool Brake { set { brake = value; } }
+
 	// Use this for initialization
 	void Awake () {
         //make sure there are at least 2 fall sections available
@@ -77,12 +79,6 @@ public class FallZone : Global {
                 bottomFallSection.localPosition = topFallSection.localPosition + (Vector3.down * zone.height);
                 bottomFallSection.gameObject.SetActive(true);
                 bottomFallSection.position += (Vector3)velocity;
-            }
-
-            //temp brake trigger
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                brake = true;
             }
         }
 	}
