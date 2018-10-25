@@ -6,23 +6,24 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(BoxCollider2D))]
 public class FallZone : Global {
 
-    private Transform[] fallSections;
+    private Transform[] fallSections; //fall Sections that scroll up when player is in the fall zone
     [SerializeField] private Rect zone; // zone should be greater than camera zone
 
-    private Vector2 velocity = Vector2.zero;
-    private float verticalPosOnContact; // y coordinate of the player when they entered the trigger of the fall zone
-    private bool playerInZone = false;
+    private Vector2 velocity = Vector2.zero; //velocity of the fallZone sections
+    private bool playerInZone = false; //true when player enters the collider
 
-    private Transform topFallSection;
-    private Transform bottomFallSection;
-    private int fallSectionsIndex;
+    private Transform topFallSection; //ref to the active fall section that covers top part of screen
+    private Transform bottomFallSection; //ref to the active fall section that covers bottom part of screen
+    private int fallSectionsIndex; //index of the botttom fall section for looping through fallSections
 
-    private bool brake = false;
+    private bool brake = false; //true when fall sections should stop moving
 
 	// Use this for initialization
 	void Awake () {
-        //make sure ther is 
+        //make sure there are at least 2 fall sections available
         Assert.IsTrue(transform.childCount > 1, "Fall section must contain at least 2 fall sections");
+
+        //find all the fall sections
         fallSections = new Transform[transform.childCount];
 		for(int i = 0; i< transform.childCount; i++)
         {
@@ -38,24 +39,27 @@ public class FallZone : Global {
                 fallSections[i].position += Vector3.down * zone.height;
             }
         }
+        
+        //select the first two fall sections to be displayed
         topFallSection = fallSections[0];
         bottomFallSection = fallSections[1];
     }
 	
-	// Update is called once per frame
 	void FixedUpdate () {
 		if(!paused && playerInZone)
         {
+            //move the fall sections in direction of velocity
             topFallSection.position += (Vector3)velocity;
             bottomFallSection.position += (Vector3)velocity;
 
+            //check if top fall section is no longer visible
             if (topFallSection.localPosition.y >= zone.height)
             {
                 //reset the top section
                 topFallSection.localPosition = Vector3.down * zone.height;
                 topFallSection.gameObject.SetActive(false);
 
-                //break the loop
+                //break the loop if necissary
                 if (brake)
                 {
                     bottomFallSection.localPosition = Vector2.zero;
@@ -69,12 +73,13 @@ public class FallZone : Global {
                 topFallSection = bottomFallSection;
                 bottomFallSection = fallSections[fallSectionsIndex];
 
-                //start the bottom section
+                //start the bottom fall section
                 bottomFallSection.localPosition = topFallSection.localPosition + (Vector3.down * zone.height);
                 bottomFallSection.gameObject.SetActive(true);
                 bottomFallSection.position += (Vector3)velocity;
             }
 
+            //temp brake trigger
             if (Input.GetKeyDown(KeyCode.X))
             {
                 brake = true;
@@ -84,14 +89,18 @@ public class FallZone : Global {
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) 
         {
-            verticalPosOnContact = coll.transform.position.y;
+            //player stops moving
             playerInZone = true;
             Player.GetComponent<IPlayer>().InFallZone = true;
+
+            //start the fall sections moving
             velocity = -Player.GetComponent<PhysicsObject>().GravityVelocity;
             bottomFallSection.gameObject.SetActive(true);
             fallSectionsIndex = 1;
+
+            //reset the brake if needed
             brake = false;
         }
     }

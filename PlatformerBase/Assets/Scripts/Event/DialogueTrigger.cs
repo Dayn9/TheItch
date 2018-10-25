@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTrigger : EventTrigger {
+public class DialogueTrigger : IndicatorTrigger {
 
     [SerializeField] private DialogueBox dialogueBox;
 

@@ -6,12 +6,6 @@ public delegate void triggered();
 
 [RequireComponent(typeof(Collider2D))]
 public class EventTrigger : Inventory {
-
-    [SerializeField] protected GameObject indicatorPrefab; //object that appears when the player can interact with object
-    [SerializeField] protected Vector3 indicatorOffset; //offset from door to display above object
-    protected GameObject indicator; //ref to instatiated indicatorPrefab
-
-    protected KeyCode[] triggers = new KeyCode[] { KeyCode.DownArrow, KeyCode.S }; //Keys that will start and advance the dialogue
     protected bool playerTouching = false; //true when dialogue is touching Charachter
 
     [SerializeField] protected List<GameObject> itemsRequired; //items required to complete quest
@@ -21,14 +15,7 @@ public class EventTrigger : Inventory {
     public event triggered Before; //Event Triggered on player iteraction when quest incomplete
     public event triggered After; //Even Triggered on player interaction when quest complete
 
-    protected void Awake () {
-        //create the indicator and position it propperly 
-        indicator = indicatorPrefab != null ? Instantiate(indicatorPrefab, transform) : new GameObject();
-
-        indicator.transform.position = transform.position + indicatorOffset;
-        indicator.SetActive(false);
-        indicator.name = "Event Indicator";
-
+    protected virtual void Awake () {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
 
         //insure there is never a null event
@@ -46,7 +33,7 @@ public class EventTrigger : Inventory {
         if (!paused)
         {
             //check if in contact with the player and player is interacting 
-            if (playerTouching && (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])))
+            if (playerTouching)
             {
                 CheckQuest();
                 if (questCompleted)
@@ -75,17 +62,14 @@ public class EventTrigger : Inventory {
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
         {
-            indicator.SetActive(true);
             playerTouching = true;
         }
     }
-
 
     protected virtual void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
         {
-            indicator.SetActive(false);
             playerTouching = false;
         }
     }

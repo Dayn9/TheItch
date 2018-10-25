@@ -769,12 +769,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4016547624261662, guid: dd9586f87d9b4cb49b874270f71ec290,
     type: 2}
   m_PrefabInternal: {fileID: 1301666581}
---- !u!114 &133671654 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114115864855394966, guid: dd9586f87d9b4cb49b874270f71ec290,
-    type: 2}
-  m_PrefabInternal: {fileID: 1301666581}
-  m_Script: {fileID: 11500000, guid: 2d7159b4d3200464da2aaa4fcad3cf09, type: 3}
 --- !u!1 &159872628
 GameObject:
   m_ObjectHideFlags: 0
@@ -7463,8 +7457,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -8, y: -2, z: 0}
     second:
-      m_TileIndex: 24
-      m_TileSpriteIndex: 24
+      m_TileIndex: 67
+      m_TileSpriteIndex: 36
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -7481,8 +7475,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -6, y: -2, z: 0}
     second:
-      m_TileIndex: 25
-      m_TileSpriteIndex: 25
+      m_TileIndex: 69
+      m_TileSpriteIndex: 39
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -7841,8 +7835,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -8, y: -1, z: 0}
     second:
-      m_TileIndex: 24
-      m_TileSpriteIndex: 24
+      m_TileIndex: 67
+      m_TileSpriteIndex: 36
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -7859,8 +7853,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -6, y: -1, z: 0}
     second:
-      m_TileIndex: 25
-      m_TileSpriteIndex: 25
+      m_TileIndex: 69
+      m_TileSpriteIndex: 39
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -11750,10 +11744,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: f50b410a0eaf837428909818782419da, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 8183d8ea7997a81479e1cd5e9cdc9413, type: 2}
-  - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: a1a31990013b14d4f96765d66498c292, type: 2}
-  - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: cfd42a34f284da6428eae7a33f5ad579, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 22
     m_Data: {fileID: 11400000, guid: 33b4ec6125ade6344810025d0d1cd93b, type: 2}
   - m_RefCount: 27
@@ -11836,12 +11830,12 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 34b780433e2e96a49856f15cfe022b57, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 66ffc7ca4da40734aa047c9eac5d2052, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: 68810115beb3dcb498d55629317d0e16, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 0495ad93394b6514d89955de79ef80ca, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: 99fcc95e17d8c6e459b1c187fb334df3, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -11891,10 +11885,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 2
-    m_Data: {fileID: 21300382, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: 21300380, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 22
     m_Data: {fileID: 21300154, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
   - m_RefCount: 27
@@ -11915,14 +11909,14 @@ Tilemap:
     m_Data: {fileID: 21300086, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
   - m_RefCount: 19
     m_Data: {fileID: 21300156, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 21300440, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
   - m_RefCount: 16
     m_Data: {fileID: 21300112, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 21300104, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 21300432, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 21300160, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
   - m_RefCount: 11
@@ -12074,11 +12068,11 @@ Prefab:
       objectReference: {fileID: 298767483}
     - target: {fileID: 4223507278124102, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 32.077065
+      value: 16.152779
       objectReference: {fileID: 0}
     - target: {fileID: 4731056252859134, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -32.702065
+      value: -16.777779
       objectReference: {fileID: 0}
     - target: {fileID: 212987612000284852, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 2}
@@ -14218,6 +14212,11 @@ Prefab:
       propertyPath: itemsRequired.Array.data[0]
       value: 
       objectReference: {fileID: 1721138889}
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 2}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 1721138889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 2}
   m_IsPrefabAsset: 0
@@ -15966,6 +15965,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1381855063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+    type: 2}
+  m_PrefabInternal: {fileID: 1301666581}
+  m_Script: {fileID: 11500000, guid: d821d176512e9f54d8b2cb99ae3a0173, type: 3}
 --- !u!1 &1385774839
 GameObject:
   m_ObjectHideFlags: 0
@@ -16042,7 +16047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c6305f30799e548a11c165414e50bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evTrig: {fileID: 133671654}
+  evTrig: {fileID: 1381855063}
   beforeAfter: 0
   origin: {x: 0, y: -10}
   final: {x: 0, y: 0}

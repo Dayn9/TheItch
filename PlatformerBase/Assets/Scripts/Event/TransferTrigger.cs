@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(IHealthObject))]
-public class TransferTrigger : EventTrigger
+public class TransferTrigger : IndicatorTrigger
 {
     private IHealthObject healthObj;
 
     private const float transferRate = 5.0f;
     private float heartbeatToTransfer;
-
     private bool transfering = false;
 
     private HeartbeatIndicator hbIndicator;
 
     public HeartbeatIndicator HbIndicator { get { return hbIndicator; } }
-
     private void Start()
     {
         healthObj = GetComponent<IHealthObject>();
