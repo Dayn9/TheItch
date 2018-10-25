@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TextSize { Small, Large }
+public enum TextSize { Small, Large, SmallFull }
 
 [RequireComponent(typeof(UIAnchor))]
 public class DialogueBox : Pause {
@@ -35,6 +35,12 @@ public class DialogueBox : Pause {
                     numLines = 4;
                     charsPerLine = 24;
                     initialOffset = new Vector2(-6.5625f, 1.6875f);
+                    offset = new Vector2(0.75f, -1.125f);
+                    break;
+                case TextSize.SmallFull:
+                    numLines = 3;
+                    charsPerLine = 29;
+                    initialOffset = new Vector2(-10.5625f, 1.6875f);
                     offset = new Vector2(0.75f, -1.125f);
                     break;
                 case TextSize.Large:
@@ -74,6 +80,7 @@ public class DialogueBox : Pause {
         charachterFace.name = "faceImage";
         charachterFace.transform.position = transform.position + new Vector3(-9.0f, 0.0f, 0.0f);
         charachterImage = charachterFace.GetComponent<SpriteRenderer>();
+        charachterImage.enabled = false;
     }
 
     private void Update()
@@ -89,6 +96,7 @@ public class DialogueBox : Pause {
     public void OnTriggerKeyPressed(string message, Sprite face)
     {
         OnTriggerKeyPressed(message);
+        charachterImage.enabled = true;
         charachterImage.sprite = face;
     }
 
