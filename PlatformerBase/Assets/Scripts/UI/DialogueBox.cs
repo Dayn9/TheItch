@@ -22,6 +22,7 @@ public class DialogueBox : Pause {
     private int dialogueChunk; //which chunk of dialogue is currently being displayed
     private List<string> chunks; //chunks of dialogue that are displayed one at a time
 
+    [SerializeField] private Color letterColor;
     
     public TextSize Size
     {
@@ -71,6 +72,7 @@ public class DialogueBox : Pause {
                 newLetter.name = "char" + line + "." + cha; 
                 newLetter.transform.position = transform.position + 
                     new Vector3((cha * offset.x) + initialOffset.x, (line * offset.y) + initialOffset.y, 0); //TODO: make variables for adjustable 'font size'
+                newLetter.GetComponent<SpriteRenderer>().color = letterColor;
                 text.Add(newLetter.GetComponent<SpriteRenderer>());
             }
         }
@@ -86,6 +88,7 @@ public class DialogueBox : Pause {
 
     private void Update()
     {
+
     }
 
     /// <summary>

@@ -9,11 +9,6 @@ public class ZoneDialogueTrigger : ZoneTrigger {
 
     [SerializeField] [TextArea] private string enterDialogue; //text dialogue to give quest
 
-    public bool Brake { set {
-            GetComponent<FallZone>().Brake = value;
-            CallAfter();
-        }
-    }
 
     //call the before event when player enters zone
     protected override void OnTriggerEnter2D(Collider2D coll)
@@ -29,5 +24,9 @@ public class ZoneDialogueTrigger : ZoneTrigger {
     //call the after event when player exits zone
     protected override void OnTriggerExit2D(Collider2D coll)
     {
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
+        {
+            CallAfter();
+        }
     }
 }

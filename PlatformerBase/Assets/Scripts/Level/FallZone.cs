@@ -6,6 +6,8 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(BoxCollider2D))]
 public class FallZone : Global {
 
+    [SerializeField] private EventTrigger evTrig; //eventTrigger 
+
     private Transform[] fallSections; //fall Sections that scroll up when player is in the fall zone
     [SerializeField] private Rect zone; // zone should be greater than camera zone
 
@@ -17,8 +19,6 @@ public class FallZone : Global {
     private int fallSectionsIndex; //index of the botttom fall section for looping through fallSections
 
     private bool brake = false; //true when fall sections should stop moving
-
-    public bool Brake { set { brake = value; } }
 
 	// Use this for initialization
 	void Awake () {
@@ -45,9 +45,16 @@ public class FallZone : Global {
         //select the first two fall sections to be displayed
         topFallSection = fallSections[0];
         bottomFallSection = fallSections[1];
+
+        
     }
-	
-	void FixedUpdate () {
+
+    private void Start()
+    {
+        evTrig.After += new triggered(Brake);
+    }
+
+    void FixedUpdate () {
 		if(!paused && playerInZone)
         {
             //move the fall sections in direction of velocity
@@ -100,6 +107,8 @@ public class FallZone : Global {
             brake = false;
         }
     }
+
+    public void Brake() { brake = true; }
 
     private void OnDrawGizmosSelected()
     {
