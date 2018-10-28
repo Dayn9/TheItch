@@ -9,7 +9,7 @@ public class DialogueBox : Pause {
     
 
     [SerializeField] private GameObject charPrefab; //gameobject prefab for individual letters
-    [SerializeField] private TextSize size; //size of the text to display
+    [SerializeField] private TextSize size; //size of the text to display 
     [SerializeField] private Sprite[] letters; //array of all possible letter sprites
 
     private SpriteRenderer charachterImage; //ref to spriteRenderer of the image location 
@@ -23,6 +23,8 @@ public class DialogueBox : Pause {
     private List<string> chunks; //chunks of dialogue that are displayed one at a time
 
     [SerializeField] private Color letterColor;
+   
+    public bool FirstChunk { get { return dialogueChunk == -1; } }
     
     public TextSize Size
     {
@@ -122,11 +124,22 @@ public class DialogueBox : Pause {
             //exit dialogue if there are no more chunks
             if (dialogueChunk >= chunks.Count)
             {
-                Reset();
+                ExitReset();
                 return; //don't display the dialogue becuase there is none
             }
             DisplayChunk(chunks[dialogueChunk]);
         }
+    }
+
+    public void ExitReset()
+    {
+        //textbox event will handle resetting if it exits
+        if (GetComponent<TextboxEvent>() != null)
+        {
+            GetComponent<TextboxEvent>().MoveOut();
+            return;
+        }
+        Reset();
     }
 
     /// <summary>

@@ -48,7 +48,8 @@ public class Inventory : Global {
     {
         if (Items.ContainsKey(name))
         {
-            Destroy(Items[name]); //destroy the gameObject
+            Items[name].GetComponent<CollectableItem>().Eaten(transform);
+            //Destroy(Items[name]); //destroy the gameObject
             Items.Remove(name);
         }
         DisplayItems();

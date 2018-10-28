@@ -6,11 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class TextboxEvent : EventTrigger
 {
-    [SerializeField] private ZoneDialogueTrigger evTrig; //eventTrigger 
+    [SerializeField] private EventTrigger[] evTrigs; //eventTrigger 
 
     [SerializeField] private Vector3 animatedOffset;
     [SerializeField] private float speed;
 
+    private Vector3 visiblePosition; //position to reset to
     private Vector3 targetPos;
     private Vector2 moveVector; //temp vector to the target 
 
@@ -22,18 +23,27 @@ public class TextboxEvent : EventTrigger
 
     private SpriteRenderer render;
 
+    [SerializeField] private bool useTimer;
     [SerializeField] private float maxTime;
     private float timer;
 
     void Start()
     {
-        evTrig.Before += new triggered(MoveIn);
+        foreach(EventTrigger evTrig in evTrigs)
+        {
+            evTrig.Before += new triggered(MoveIn);
+            evTrig.After += new triggered(MoveIn);
+        }        
         render = GetComponent<SpriteRenderer>();
+
+        visiblePosition = transform.localPosition;
+        transform.localPosition = visiblePosition + animatedOffset;
+        timer = maxTime + 1;
     }
 
     protected override void Update()
     {
-        if (!paused)
+        if (!paused || true)
         {
             if (moveIn || moveOut)
             {
@@ -52,6 +62,7 @@ public class TextboxEvent : EventTrigger
                     {
                         CallAfter();
                         GetComponent<DialogueBox>().Reset();
+                        transform.localPosition = visiblePosition + animatedOffset; //reset the localPosition
                     }
                     moveOut = false;
                     SetAlpha(1.0f);
@@ -63,11 +74,11 @@ public class TextboxEvent : EventTrigger
                     SetAlpha(1 - (((Vector2)(transform.localPosition - targetPos)).magnitude / animatedOffset.magnitude));
                 }
             }
-            else if(timer < maxTime)
+            else if(useTimer && timer < maxTime)
             {
                 timer += Time.deltaTime;
                 //temp brake trigger
-                if (timer >= maxTime || Input.GetAxis("Vertical") < -buffer)
+                if (timer >= maxTime)
                 {
                     MoveOut();
                 }
@@ -76,19 +87,22 @@ public class TextboxEvent : EventTrigger
     }
 
     /// <summary>
-    /// called by event, sets acivation state
+    /// starts the process of moving onto screen
     /// </summary>
-    private void MoveIn()
+    public void MoveIn()
     {
-        targetPos = transform.localPosition;
-        transform.localPosition += animatedOffset;
+        targetPos = visiblePosition;
+        transform.localPosition = visiblePosition + animatedOffset;
 
         moveIn = true;
     }
 
-    private void MoveOut()
+    /// <summary>
+    /// starts the process of moving off of screen
+    /// </summary>
+    public void MoveOut()
     {
-        targetPos = transform.localPosition + animatedOffset;
+        targetPos = visiblePosition + animatedOffset;
         moveOut = true;
     }
 

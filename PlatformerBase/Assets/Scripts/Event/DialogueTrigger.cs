@@ -21,22 +21,22 @@ public class DialogueTrigger : IndicatorTrigger {
             if(Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]))
             {
                 dialogueBox.PauseGame(true);
-                dialogueBox.gameObject.SetActive(true);
                 CheckQuest();
                 if (questCompleted)
                 {
+                    if (dialogueBox.FirstChunk) { CallAfter(); }
                     dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage);
-                    CallAfter();
                 }
                 else
                 {
+                    if (dialogueBox.FirstChunk) { CallBefore(); } //only trigger event during the first chunk
                     dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage);
-                    CallBefore();
                 }
             }
-            else if (Input.GetButton("Jump"))
+            //exit the dialogue if the player jumps out
+            else if (Input.GetButtonDown("Jump"))
             {
-                dialogueBox.Reset();
+                dialogueBox.ExitReset();
             }
         }
     }
@@ -48,7 +48,7 @@ public class DialogueTrigger : IndicatorTrigger {
             indicator.SetActive(false);
             playerTouching = false;
 
-            dialogueBox.Reset(); //reset the dialogue when the player leaves
+            //dialogueBox.Reset(); //reset the dialogue when the player leaves
         }
     }
 }

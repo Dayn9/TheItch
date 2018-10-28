@@ -9,6 +9,13 @@ public class ZoneDialogueTrigger : ZoneTrigger {
 
     [SerializeField] [TextArea] private string enterDialogue; //text dialogue to give quest
 
+    protected override void Update()
+    {
+        if(!paused && playerTouching && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
+        {
+            dialogueBox.OnTriggerKeyPressed(enterDialogue);
+        }
+    }
 
     //call the before event when player enters zone
     protected override void OnTriggerEnter2D(Collider2D coll)
@@ -16,7 +23,7 @@ public class ZoneDialogueTrigger : ZoneTrigger {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
         {
             CallBefore();
-            
+            playerTouching = true;
             dialogueBox.OnTriggerKeyPressed(enterDialogue);
         }
     }
@@ -26,7 +33,7 @@ public class ZoneDialogueTrigger : ZoneTrigger {
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
         {
-            CallAfter();
+            playerTouching = false;
         }
     }
 }
