@@ -41,6 +41,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     private Vector2 returnVelocity;
     [SerializeField] private int returnVelocityDivider;
 
+    private bool frozen = false;
+
     #endregion
 
     #region Properties 
@@ -49,6 +51,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
     public HeartbeatPower Power { get { return heartBeatPower; } }
     public bool InFallZone { set { inFallZone = value; } }
+    public bool Frozen { set { frozen = value; } }
     #endregion
 
     //Start is already being called in Base PhysicsObject Class
@@ -66,6 +69,13 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     {
         if (!paused)
         {
+            //don't accept input when frozen
+            if (frozen) {
+                movementInput = Vector2.zero;
+                jumping = false;
+                return;
+            }
+
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) //make sure length of input vector is less than 1;
                 * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed); //multiply be appropritate speed
