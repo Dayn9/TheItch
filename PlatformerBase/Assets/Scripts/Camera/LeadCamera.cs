@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeadCamera : PixelPerfectCamera {
+public class LeadCamera : BaseCamera {
 
     [SerializeField] private PhysicsObject follow; //object to follow and move base on it's Move velociity
     [SerializeField] private float leaveTime; //time it takes to move away from follow object

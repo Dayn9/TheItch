@@ -58,7 +58,7 @@ public class CollectableItem : Inventory
                 if ((targetPosition - transform.localPosition).magnitude <=  minMoveDistance)
                 {
                     transform.localPosition = targetPosition; //snap into position
-                    if (used) { render.enabled = false; } 
+                    //if (used) { render.enabled = false; } 
 
                     moving = false;
                     return; //stop moving

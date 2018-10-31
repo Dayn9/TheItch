@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 // modified from: https://github.com/cmilr/DeadSimple-Pixel-Perfect-Camera
 
-public class PixelPerfectCamera : Global {
-    
+public class BaseCamera : Global {
     [SerializeField] private int verticalUnitsOnScreen = 20;
 
     //global limits of the camera
@@ -69,7 +70,7 @@ public class PixelPerfectCamera : Global {
 
     protected void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;  
+        Gizmos.color = Color.blue;
 
         //draw lines between corners
         Gizmos.DrawLine(topLeft, topRight); //top

@@ -63,6 +63,11 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         if (maxHealth < 1) { maxHealth = 1; } //must have at leath one health point
         health = maxHealth;
         SetReturnPosition(transform.position); //set the return position to 1 unit above where the player initially spawned
+
+        if (startPosition != Vector2.zero)
+        {
+            transform.position = startPosition;
+        }
     }
 
     private void Update()

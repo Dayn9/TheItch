@@ -143,13 +143,15 @@ GameObject:
   - component: {fileID: 212272335048391600}
   - component: {fileID: 114347334167612222}
   - component: {fileID: 114251461340307458}
+  - component: {fileID: 61335839215504880}
+  - component: {fileID: 114709180211702438}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1707601350657490
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +244,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707601350657490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3934503, y: 4, z: 10}
+  m_LocalPosition: {x: 22.676075, y: 4, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4711360671464710}
@@ -407,7 +409,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1097552489848018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.0184503, y: 9, z: 10}
+  m_LocalPosition: {x: -23.301075, y: 9, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4343122703431734}
@@ -491,6 +493,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!61 &61335839215504880
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651297200517884}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 26, y: 8}
+    newSize: {x: 26, y: 8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 26, y: 8}
+  m_EdgeRadius: 0
 --- !u!95 &95590681363907094
 Animator:
   serializedVersion: 3
@@ -646,6 +673,7 @@ MonoBehaviour:
   - {fileID: 21300072, guid: 8564a6ff0001ea84fad2a150c783c28a, type: 3}
   - {fileID: 21300074, guid: 8564a6ff0001ea84fad2a150c783c28a, type: 3}
   - {fileID: 21300076, guid: 8564a6ff0001ea84fad2a150c783c28a, type: 3}
+  letterColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114261738233253598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -701,6 +729,27 @@ MonoBehaviour:
   deltaHeartRate: 15
   bpmReadoutNormal: {r: 0.70980394, g: 0.21568628, b: 0, a: 1}
   bpmReadoutDamage: {r: 0.9568628, g: 0.5058824, b: 0.30980393, a: 1}
+--- !u!114 &114709180211702438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651297200517884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6304bfc70621f7b4293d00670f2c1861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsRequired: []
+  itemsEaten: 0
+  evTrigs:
+  - {fileID: 0}
+  animatedOffset: {x: 0, y: -10, z: 0}
+  speed: 50
+  initialColor: {r: 1, g: 1, b: 1, a: 1}
+  finalColor: {r: 1, g: 1, b: 1, a: 1}
+  useTimer: 0
+  maxTime: 0
 --- !u!114 &114772390002021634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -991,7 +1040,7 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651297200517884}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

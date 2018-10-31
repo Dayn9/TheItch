@@ -12,7 +12,7 @@ public enum DeadzoneCameraType {
     LerpFollow, //lerp to follow position + Regular
 }
 
-public class DeadzoneCamera : PixelPerfectCamera
+public class DeadzoneCamera : BaseCamera
 {
     #region private fields
     [SerializeField] private Transform follow; //reference to the transform of the object following 

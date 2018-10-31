@@ -14,6 +14,8 @@ public class Global : MonoBehaviour {
     protected const int pixelsPerUnit = 8; //number of pixels displayed in each unity unit
     protected const float buffer = 0.01f; //collision buffer 
 
+    protected static Vector2 startPosition = Vector2.zero;
+
     #endregion
 
     #region global accesors
@@ -56,7 +58,8 @@ public class Global : MonoBehaviour {
     /// <summary>
     /// accessor for player transform
     /// </summary>
-    protected Transform PlayerTransform { get { return Player.transform; } }
+    protected Transform
+        PlayerTransform { get { return Player.transform; } }
     #endregion 
     
 }
