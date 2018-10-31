@@ -126,11 +126,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: evTrigs.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -168,44 +163,6 @@ Prefab:
       propertyPath: follow
       value: 
       objectReference: {fileID: 92267581}
-    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: leftLimit
-      value: -93
-      objectReference: {fileID: 0}
-    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: rightLimit
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223507278124102, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 26.802128
-      objectReference: {fileID: 0}
-    - target: {fileID: 4731056252859134, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -27.427128
-      objectReference: {fileID: 0}
-    - target: {fileID: 212987612000284852, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212987612000284852, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212138625791905630, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212138625791905630, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_IsPrefabAsset: 0
@@ -369,8 +326,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1657582667
-  m_SortingLayer: -3
+  m_SortingLayerID: 623028581
+  m_SortingLayer: -4
   m_SortingOrder: 5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -3466,7 +3423,7 @@ GameObject:
   - component: {fileID: 1751336686}
   - component: {fileID: 1751336685}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

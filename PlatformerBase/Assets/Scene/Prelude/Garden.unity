@@ -12473,6 +12473,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12517,16 +12522,45 @@ Prefab:
       objectReference: {fileID: 1505801050}
     - target: {fileID: 4223507278124102, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 16.152779
+      value: 18.375
       objectReference: {fileID: 0}
     - target: {fileID: 4731056252859134, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -16.777779
+      value: -19
       objectReference: {fileID: 0}
     - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20212956390328804, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: leftLimit
+      value: -38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: rightLimit
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114347334167612222, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: offset.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545296697105324, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -8.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: animatedOffset.y
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
@@ -13948,30 +13982,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 1}
   m_EdgeRadius: 0
---- !u!1 &541972928 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1052343858816414, guid: efe8d3421c638854e9020fd5d02a8bf8,
-    type: 2}
-  m_PrefabInternal: {fileID: 257885456}
---- !u!114 &541972933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 541972928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AssetsPPU: 16
-  m_RefResolutionX: 640
-  m_RefResolutionY: 360
-  m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 1
-  m_CropFrameY: 1
-  m_StretchFill: 1
 --- !u!1 &875449097
 GameObject:
   m_ObjectHideFlags: 0

@@ -78,8 +78,17 @@ public class PhysicsObject : MovingObject
 
                         gravityVelocity = Vector2.zero; //stop moving
 
+                        float moveableDistance = moveVector.magnitude;
+                        if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
+                        {
+                            //collide with the closest
+                            if (moveableDistance < distance)
+                            {
+                                distance = moveableDistance;
+                            }
+                        }
                         //collide with the closest
-                        if (hits[i].distance < distance)
+                        else if (hits[i].distance < distance)
                         {
                             distance = hits[i].distance; //set new closest distance
                             newGroundNormal = objectNormal; //set new ground normal

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityTransfer : MonoBehaviour {
+public class AbilityTransfer : Global {
 
     [SerializeField] private GameObject testRing;
     private GameObject ring; 
@@ -15,13 +15,16 @@ public class AbilityTransfer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetMouseButtonDown(0))
+        if (!paused)
         {
-            ring.SetActive(true);
-        }
-        else if(Input.GetKeyUp(KeyCode.X) || Input.GetMouseButtonUp(0))
-        {
-            ring.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.X) || Input.GetMouseButtonDown(0))
+            {
+                ring.SetActive(true);
+            }
+            else if (Input.GetKeyUp(KeyCode.X) || Input.GetMouseButtonUp(0))
+            {
+                ring.SetActive(false);
+            }
         }
 	}
 }

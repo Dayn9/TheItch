@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 //TO DO: comment
 
 public enum Anchor { topLeft, topCenter, topRight, middleLeft, middleCenter, middleRight, bottomLeft, bottomCenter, bottomRight }
@@ -32,8 +31,8 @@ public class UIAnchor : Global {
 
     public void SetPosition()
     {
-        float cameraHeight = MainCamera.GetComponent<Camera>().orthographicSize;
-        float cameraWidth = Screen.height != 0 ? Screen.width * cameraHeight / Screen.height : cameraHeight;
+        float cameraHeight = MainCamera.GetComponent<BaseCamera>().CamHeight;
+        float cameraWidth = MainCamera.GetComponent<BaseCamera>().CamWidth;
 
         transform.position = new Vector3(MainCamera.transform.position.x, MainCamera.transform.position.y, transform.position.z); //move to center of the screen
         //adjust x position of UI element

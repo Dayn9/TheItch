@@ -6,6 +6,7 @@ public class LevelChange : Inventory {
 
     [SerializeField] private string levelName;
     [SerializeField] private LoadSceneMode mode;
+    [Header("don't make (1, 1)")]
     [SerializeField] private Vector2 playerStart;
 
     private void Start()

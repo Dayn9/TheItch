@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 20212956390328804}
   - component: {fileID: 124275390952944778}
   - component: {fileID: 114887358095955332}
+  - component: {fileID: 114248661821687570}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -244,7 +245,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707601350657490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.676075, y: 4, z: 10}
+  m_LocalPosition: {x: 18.375, y: 5.25, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4711360671464710}
@@ -357,7 +358,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651297200517884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: 10}
+  m_LocalPosition: {x: 0, y: -7.25, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4342388965853568}
@@ -409,7 +410,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1097552489848018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.301075, y: 9, z: 10}
+  m_LocalPosition: {x: -19, y: 10.25, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4343122703431734}
@@ -619,6 +620,25 @@ MonoBehaviour:
   active: {fileID: 21300000, guid: 6b433ec0fe060934ea41c6a06048f76e, type: 3}
   inactive: {fileID: 21300000, guid: b193bbf8f5e62754294f4dd5fad50beb, type: 3}
   requiresPause: 1
+--- !u!114 &114248661821687570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052343858816414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 8
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!114 &114251461340307458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -742,8 +762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsRequired: []
   itemsEaten: 0
-  evTrigs:
-  - {fileID: 0}
+  evTrigs: []
   animatedOffset: {x: 0, y: -10, z: 0}
   speed: 50
   initialColor: {r: 1, g: 1, b: 1, a: 1}
@@ -796,9 +815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddff18ac4dc671646a3de7e1db24e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalUnitsOnScreen: 20
-  rightLimit: 97
-  leftLimit: -38
+  rightLimit: 4
+  leftLimit: -93
   bottomLimit: -17
   topLimit: 30
   follow: {fileID: 0}
@@ -839,7 +857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92b5d21d3836c24db0c2ee20f78fca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hiddenOffset: {x: 2, y: 0}
+  hiddenOffset: {x: 3, y: 0}
   moveSpeed: 2
   collectEffectPrefab: {fileID: 1074751342008680, guid: b26cfb655339e4d44b76e3beb5842b62,
     type: 2}

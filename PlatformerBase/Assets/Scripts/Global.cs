@@ -14,7 +14,7 @@ public class Global : MonoBehaviour {
     protected const int pixelsPerUnit = 8; //number of pixels displayed in each unity unit
     protected const float buffer = 0.01f; //collision buffer 
 
-    protected static Vector2 startPosition = Vector2.zero;
+    protected static Vector2 startPosition = Vector2.one;
 
     #endregion
 
