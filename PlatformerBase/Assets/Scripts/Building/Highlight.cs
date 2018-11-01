@@ -6,7 +6,7 @@ public class Highlight : Global {
 
     [SerializeField] protected Sprite active; //sprite to display when player touching
     [SerializeField] protected Sprite inactive; //sprite to display when player not touvhing
-    private SpriteRenderer render; //ref to object's sprite renderer
+    protected SpriteRenderer render; //ref to object's sprite renderer
 
     protected virtual void Awake()
     {

@@ -49,17 +49,22 @@ public class Door : Highlight {
 
     protected override void OnTriggerEnter2D(Collider2D coll)
     {
-        base.OnTriggerEnter2D(coll); //Highlight the object
-
-        indicator.SetActive(true);
-        playerTouching = true; 
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            render.sprite = active;
+            indicator.SetActive(true);
+            playerTouching = true;
+        }
+        
     }
 
     protected override void OnTriggerExit2D(Collider2D coll)
     {
-        base.OnTriggerExit2D(coll); //Stop Highlighting the object
-
-        indicator.SetActive(false);
-        playerTouching = false;
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            render.sprite = inactive;
+            indicator.SetActive(false);
+            playerTouching = false;
+        }
     }
 }

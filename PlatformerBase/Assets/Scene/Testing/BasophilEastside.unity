@@ -270,9 +270,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 623028581
+  m_SortingLayer: -4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7c496d44256f7bb46818569fcf5f1ac9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2109,7 +2109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 776353673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52294b0f0b0bb9f49821403e2f9047e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a7b63e21f35e064086c8f6a9e0103a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   testRing: {fileID: 1500954718578226, guid: cc4267246395ebe47b5fcccfb2852799, type: 2}
@@ -3059,6 +3059,35 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 286345632}
   m_Script: {fileID: 11500000, guid: 307a823733610a84ba973b25248debcc, type: 3}
+--- !u!1 &1301356679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1787781012067722, guid: efe8d3421c638854e9020fd5d02a8bf8,
+    type: 2}
+  m_PrefabInternal: {fileID: 286345632}
+--- !u!114 &1301356683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1301356679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6de947b067d7542b3b57e6da95f008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: {fileID: 0}
+  offset: {x: 3.25, y: -1.25}
+  area:
+    serializedVersion: 2
+    x: -1.5
+    y: -1.5
+    width: 3
+    height: 3
+  active: {fileID: 21300000, guid: 6b433ec0fe060934ea41c6a06048f76e, type: 3}
+  inactive: {fileID: 21300000, guid: b193bbf8f5e62754294f4dd5fad50beb, type: 3}
+  requiresPause: 1
+  levelName: MainMenu
+  mode: 0
 --- !u!1 &1312663331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,7 +3133,7 @@ MonoBehaviour:
   evTrig: {fileID: 1727667837}
   beforeAfter: 1
   snapCollider: 0
-  initialColor: {r: 0.7960785, g: 0.36078432, b: 0.17254902, a: 1}
+  initialColor: {r: 0.7137255, g: 0.65882355, b: 0.38431376, a: 1}
   finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
   snapColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
 --- !u!483693784 &1312663334
@@ -3226,7 +3255,7 @@ Tilemap:
   - m_RefCount: 3
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.7960785, g: 0.36078432, b: 0.17254902, a: 1}
+  m_Color: {r: 0.7137255, g: 0.65882355, b: 0.38431376, a: 1}
   m_Origin: {x: -37, y: -3, z: 0}
   m_Size: {x: 37, y: 6, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -3296,8 +3325,8 @@ MonoBehaviour:
   - door: {fileID: 1680451787}
     layer: {fileID: 1189086170}
   doorAboveAlpha: 0.7
-  doorAboveLayer: 5
-  doorBelowLayer: 3
+  doorAboveLayer: 6
+  doorBelowLayer: 4
   fade: {fileID: 466032261}
 --- !u!1 &1541685657
 GameObject:
@@ -3890,12 +3919,12 @@ Prefab:
     - target: {fileID: 212031285761261780, guid: ec6eb7373ca346c4b80f9a71270d93ef,
         type: 2}
       propertyPath: m_SortingLayer
-      value: -1
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 212031285761261780, guid: ec6eb7373ca346c4b80f9a71270d93ef,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114808977591943390, guid: ec6eb7373ca346c4b80f9a71270d93ef,
         type: 2}
@@ -4040,7 +4069,7 @@ Transform:
   - {fileID: 1516225356}
   - {fileID: 546005531}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1808755719
 GameObject:
@@ -10154,7 +10183,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4747846318752318, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1199002321168980, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 2}
       propertyPath: m_Name
@@ -10295,7 +10324,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   - first: {x: -23, y: 1, z: 0}
     second:
