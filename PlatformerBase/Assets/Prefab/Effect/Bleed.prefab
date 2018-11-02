@@ -9,50 +9,50 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1500954718578226}
+  m_RootGameObject: {fileID: 1873573271058534}
   m_IsPrefabAsset: 1
---- !u!1 &1500954718578226
+--- !u!1 &1873573271058534
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4964440818402194}
-  - component: {fileID: 212109816782829036}
-  - component: {fileID: 58403922692431902}
-  - component: {fileID: 114539964064889736}
-  - component: {fileID: 50938489866698776}
-  - component: {fileID: 95302408795757342}
-  - component: {fileID: 198282217572979136}
-  - component: {fileID: 199524687558042918}
+  - component: {fileID: 4402945832343604}
+  - component: {fileID: 212185685091816786}
+  - component: {fileID: 58775067093955746}
+  - component: {fileID: 114443264758771014}
+  - component: {fileID: 50089863134260228}
+  - component: {fileID: 95452621691608880}
+  - component: {fileID: 198176735726982514}
+  - component: {fileID: 199555879119616626}
   m_Layer: 15
-  m_Name: Ring64
+  m_Name: Bleed
   m_TagString: AbilityOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4964440818402194
+--- !u!4 &4402945832343604
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500954718578226}
+  m_GameObject: {fileID: 1873573271058534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59.15739, y: -6.753165, z: 0}
+  m_LocalPosition: {x: -24.336666, y: -22.802307, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50938489866698776
+--- !u!50 &50089863134260228
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500954718578226}
+  m_GameObject: {fileID: 1873573271058534}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -66,12 +66,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58403922692431902
+--- !u!58 &58775067093955746
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500954718578226}
+  m_GameObject: {fileID: 1873573271058534}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -80,15 +80,15 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
---- !u!95 &95302408795757342
+  m_Radius: 1
+--- !u!95 &95452621691608880
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500954718578226}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1873573271058534}
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: fa651419d96b0ec4cab2a2f088f76aee, type: 2}
   m_CullingMode: 0
@@ -99,12 +99,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114539964064889736
+--- !u!114 &114443264758771014
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500954718578226}
+  m_GameObject: {fileID: 1873573271058534}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52294b0f0b0bb9f49821403e2f9047e7, type: 3}
@@ -112,12 +112,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSpeed: 100
   heartrateUsed: 2
---- !u!198 &198282217572979136
+--- !u!198 &198176735726982514
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500954718578226}
+  m_GameObject: {fileID: 1873573271058534}
   serializedVersion: 5
   lengthInSec: 5
   simulationSpeed: 1
@@ -191,7 +191,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -244,7 +244,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -298,7 +298,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.34117648, g: 0.16078432, b: 0.09019608, a: 1}
+      maxColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -676,7 +676,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 350
+    maxNumParticles: 150
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -766,7 +766,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 4
+      value: 1.1
       mode: 0
       spread: 0
       speed:
@@ -4645,13 +4645,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &199524687558042918
+--- !u!199 &199555879119616626
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500954718578226}
+  m_GameObject: {fileID: 1873573271058534}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -4702,13 +4702,13 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!212 &212109816782829036
+--- !u!212 &212185685091816786
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1500954718578226}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1873573271058534}
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

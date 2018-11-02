@@ -126,6 +126,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -204,7 +209,31 @@ Prefab:
     - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 621104103}
+    - target: {fileID: 114347334167612222, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: offset.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545296697105324, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -8.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 212272335048391600, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -1541749547
+      objectReference: {fileID: 0}
+    - target: {fileID: 212272335048391600, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
@@ -290,6 +319,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 286345632}
   m_Script: {fileID: 11500000, guid: c4fee181c902f2648af0b2f41dddc105, type: 3}
+--- !u!4 &469295468 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1132633460}
 --- !u!1 &546005530
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,6 +899,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &621104103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114930025202489026, guid: 6e550d450efdc8c4f869c1931a6883c1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1132633460}
+  m_Script: {fileID: 11500000, guid: 0c6494ee83629a442a5a57a96f71991d, type: 3}
 --- !u!1 &756885483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,7 +2152,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7b63e21f35e064086c8f6a9e0103a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testRing: {fileID: 1500954718578226, guid: cc4267246395ebe47b5fcccfb2852799, type: 2}
+  testRing: {fileID: 1873573271058534, guid: 327866135c5615a4dbec87289a2a7cc7, type: 2}
+--- !u!1001 &1132633460
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1189086171}
+    m_Modifications:
+    - target: {fileID: 114930025202489026, guid: 6e550d450efdc8c4f869c1931a6883c1,
+        type: 2}
+      propertyPath: itemsRequired.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212806290724191650, guid: 6e550d450efdc8c4f869c1931a6883c1,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114930025202489026, guid: 6e550d450efdc8c4f869c1931a6883c1,
+        type: 2}
+      propertyPath: QuestDialogue
+      value: WHAT THE FUCK DUDE
+      objectReference: {fileID: 0}
+    - target: {fileID: 114930025202489026, guid: 6e550d450efdc8c4f869c1931a6883c1,
+        type: 2}
+      propertyPath: CompletedDialogue
+      value: You can Press X or Left Click to expell heart rate
+      objectReference: {fileID: 0}
+    - target: {fileID: 212806290724191650, guid: 6e550d450efdc8c4f869c1931a6883c1,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114930025202489026, guid: 6e550d450efdc8c4f869c1931a6883c1,
+        type: 2}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 1592433467}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1189086170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2254,7 @@ Transform:
   m_Children:
   - {fileID: 756885484}
   - {fileID: 2091657503}
+  - {fileID: 469295468}
   m_Father: {fileID: 1516225356}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3866,7 +3979,7 @@ MonoBehaviour:
   beforeAfter: 1
   snapCollider: 1
   initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 1, g: 1, b: 1, a: 0.7058824}
+  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1586818068
 Prefab:
@@ -3934,6 +4047,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec6eb7373ca346c4b80f9a71270d93ef, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1592433467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114251461340307458, guid: efe8d3421c638854e9020fd5d02a8bf8,
+    type: 2}
+  m_PrefabInternal: {fileID: 286345632}
+  m_Script: {fileID: 11500000, guid: 3b3d8e701954e214fb76e053db694276, type: 3}
 --- !u!1 &1680451787 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1424940506478550, guid: ec6eb7373ca346c4b80f9a71270d93ef,
@@ -10324,7 +10443,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: -23, y: 1, z: 0}
     second:
@@ -10336,7 +10455,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 2

@@ -914,7 +914,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 97064106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.688053, y: 10.25, z: 10}
+  m_LocalPosition: {x: -19, y: 10.25, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1806982388}
@@ -4491,8 +4491,7 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1045997147}
-  enterDialogue: " The Virus first appeared 2 years ago, we thought finding a cure
-    would be easy         \nBut the virus spread and the epidemic got out of control"
+  enterDialogue: Welcome to The Itch, a game about heart rate and health.
 --- !u!61 &855868535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94221,8 +94220,7 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1045997147}
-  enterDialogue: " It lives in the bloodstream and causes rashes that are irresistable
-    to scratch \nPeople started tearing up their own skin and bleeding out"
+  enterDialogue: Moving will cause your heart rate to increase.
 --- !u!1 &1490146273
 GameObject:
   m_ObjectHideFlags: 0
@@ -103864,8 +103862,7 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1045997147}
-  enterDialogue: "Efforts to find the doctor all failed\nand with no cure, the virus
-    kept spreading       \nThey call it..."
+  enterDialogue: Enjoy
 --- !u!61 &1772847490
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -104699,7 +104696,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1793105529}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.063053, y: 5.25, z: 10}
+  m_LocalPosition: {x: 18.375, y: 5.25, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 859833051}
@@ -109227,9 +109224,7 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1045997147}
-  enterDialogue: " We slowly figured out that the virus is less effective when your
-    heartrate is high\n One doctor claimed to have a cure, but disapperaed underground
-    soon after"
+  enterDialogue: 'Standing still will cause your heart rate to decrease. '
 --- !u!1001 &1948307149
 Prefab:
   m_ObjectHideFlags: 0
