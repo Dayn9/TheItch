@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 95452621691608880}
   - component: {fileID: 198176735726982514}
   - component: {fileID: 199555879119616626}
-  m_Layer: 15
+  m_Layer: 16
   m_Name: Bleed
   m_TagString: AbilityOne
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
 --- !u!95 &95452621691608880
 Animator:
   serializedVersion: 3
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52294b0f0b0bb9f49821403e2f9047e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSpeed: 100
+  particleSpeed: 75
   heartrateUsed: 2
 --- !u!198 &198176735726982514
 ParticleSystem:
@@ -766,7 +766,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1.1
+      value: 1.6
       mode: 0
       spread: 0
       speed:
@@ -3690,7 +3690,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 98560
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

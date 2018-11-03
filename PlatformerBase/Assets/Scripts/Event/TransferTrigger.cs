@@ -12,8 +12,8 @@ public class TransferTrigger : IndicatorTrigger
     private bool transfering = false;
 
     private HeartbeatIndicator hbIndicator;
-
     public HeartbeatIndicator HbIndicator { get { return hbIndicator; } }
+
     private void Start()
     {
         healthObj = GetComponent<IHealthObject>();
@@ -53,41 +53,6 @@ public class TransferTrigger : IndicatorTrigger
                 //update the heartbeatIndicator
                 hbIndicator.CurrentHealth = healthObj.Health;
             }
-            /*
-            //check if transfering but shouldn't be
-            if(transfering && (!playerTouching || FullyHealed))
-            {
-                transfering = false;
-                Player.GetComponent<IPlayer>().Power.SetDamageColor(false);
-                questCompleted = true; //
-            }
-            //check if in contact with the player and player is interacting 
-            else if (playerTouching && (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])))
-            {   
-                if (questCompleted && FullyHealed)
-                {
-                    CallAfter();
-                }
-                else
-                {
-                    transfering = true;
-                }
-            }
-
-            //transfer heartrate from player to heartrate object
-            if (transfering)
-            {
-                heartbeatToTransfer = transferRate * Time.deltaTime;
-                Player.GetComponent<IPlayer>().Power.RemoveBPM(heartbeatToTransfer);
-                Player.GetComponent<IPlayer>().Power.SetDamageColor(true);
-
-                Player.GetComponent<IHealthObject>().TakeDamage(0); //triggers the damage animation
-                healthObj.Heal(heartbeatToTransfer);
-
-                CallBefore();
-            }
-            //update the heartbeatIndicator
-            hbIndicator.CurrentHealth = healthObj.Health;*/
         }
     }
 
@@ -105,6 +70,8 @@ public class TransferTrigger : IndicatorTrigger
 
                 Player.GetComponent<IHealthObject>().TakeDamage(0); //triggers the damage animation
                 CallBefore();
+
+                coll.GetComponent<AbilityTransfer>().SendParticlesTo(transform.position);
             }
             //playerTouching = true;
         }

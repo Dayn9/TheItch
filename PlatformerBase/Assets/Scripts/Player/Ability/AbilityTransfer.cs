@@ -18,8 +18,10 @@ public class AbilityTransfer : Global {
 
     private SpriteRenderer playerRend; //ref to players sprite renderer
 
-    private ParticleSystem.Particle[] particles;
-    private bool sending;
+    private ParticleSystem.Particle[] particles; //array of particles being controlled 
+    private int sentParticles;
+    private bool sending; //true when particles arde being sent to a location
+    private Vector2 target;
 
     private HeartbeatPower hbPower; //red to the hearybeat power script
 
@@ -45,29 +47,26 @@ public class AbilityTransfer : Global {
     /// <param name="targets">target positions</param>
     public void SendParticlesTo(Vector2 target)
     {
+        this.target = target;
         //disable particle collision
         ParticleSystem.CollisionModule coll = part.collision;
-        coll.enabled = false;
-
+        coll.enabled = false;        
+  
         //loop through all particles
         int numParticles = part.GetParticles(particles);
+        sentParticles = numParticles;
         for(int i = 0; i < numParticles; i++)
         {
             ParticleSystem.Particle particle = particles[i]; //get the individual particle
 
             Vector2 moveVector = ((Vector3)target - particle.position);
 
-            if (moveVector.magnitude < 1.0f) {
-                particle.remainingLifetime = 0;
-                particle.velocity = Vector3.zero;
-                continue;
-            } //don't move the particle if it's close to target
-
             particle.remainingLifetime += Time.deltaTime; //keep particle alive
             particle.velocity =  moveVector * Time.deltaTime * particleSpeed; //move the particle
             particles[i] = particle; //set the particle's data back into particles array
         }
-        
+
+        sending = true;
         part.SetParticles(particles, numParticles); //apply changes to particle system
     }
 	
@@ -75,7 +74,30 @@ public class AbilityTransfer : Global {
 	void Update () {
         if (!paused)
         {
-            if(Input.GetKeyUp(KeyCode.X) || Input.GetMouseButtonUp(0))
+            if (sending)
+            {
+                //loop through all particles
+                int numParticles = part.GetParticles(particles);
+                for (int i = 0; i < numParticles; i++)
+                {
+                    ParticleSystem.Particle particle = particles[i];
+                    if (Vector2.Distance(particle.position, target) < 0.2f)
+                    {
+                        particle.remainingLifetime = 0;
+                        particle.velocity = Vector3.zero;
+                    }
+                    particles[i] = particle; //set the particle's data back into particles array
+                }
+                
+                if(sentParticles <= 0 || numParticles <= 0)
+                {
+                    Debug.Log("stops");
+                    sending = false;
+                }
+                part.SetParticles(particles, numParticles); //apply changes to particle system
+            }
+
+            if (Input.GetKeyUp(KeyCode.X) || Input.GetMouseButtonUp(0))
             {
                 //try and turn set regular color when key released
                 hbPower.SetDamageColor(false);
