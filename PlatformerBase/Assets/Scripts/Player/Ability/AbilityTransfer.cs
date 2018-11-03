@@ -47,10 +47,7 @@ public class AbilityTransfer : Global {
     /// <param name="targets">target positions</param>
     public void SendParticlesTo(Vector2 target)
     {
-        this.target = target;
-        //disable particle collision
-        ParticleSystem.CollisionModule coll = part.collision;
-        coll.enabled = false;        
+        this.target = target;   
   
         //loop through all particles
         int numParticles = part.GetParticles(particles);
@@ -74,6 +71,7 @@ public class AbilityTransfer : Global {
 	void Update () {
         if (!paused)
         {
+            if (part.isPaused) { part.Play(); }
             if (sending)
             {
                 //loop through all particles
