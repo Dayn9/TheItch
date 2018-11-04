@@ -45,13 +45,18 @@ public class AbilityTransfer : Global {
     /// Send Particles to a specified world positions
     /// </summary>
     /// <param name="targets">target positions</param>
-    public void SendParticlesTo(Vector2 target)
+    /// <param name="minNum">minimum number of particles</param>
+    public void SendParticlesTo(Vector2 target, int minNum)
     {
-        this.target = target;   
-  
+        this.target = target;
+
+        //emit additional particles 
+        part.Emit(minNum);
+
         //loop through all particles
         int numParticles = part.GetParticles(particles);
         sentParticles = numParticles;
+
         for(int i = 0; i < numParticles; i++)
         {
             ParticleSystem.Particle particle = particles[i]; //get the individual particle
@@ -89,7 +94,6 @@ public class AbilityTransfer : Global {
                 
                 if(sentParticles <= 0 || numParticles <= 0)
                 {
-                    Debug.Log("stops");
                     sending = false;
                 }
                 part.SetParticles(particles, numParticles); //apply changes to particle system

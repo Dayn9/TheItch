@@ -12,12 +12,15 @@ public class Pause : Global {
     protected static AudioSource[] audios; //ref t all audioSources in the scene
     public static bool mute = false; //true when audio is muted 
 
-    [SerializeField] private Fade fade; //ref to the fade object in the scene 
-    private bool menuPaused; //true when menu is paused
+    private Fade fade; //ref to the fade object in the scene 
+    protected static bool menuPaused = false; //true when menu is paused
     protected static bool otherPause = false; //true when something else is paused
+
 
     private void Awake()
     {
+        fade = transform.parent.GetComponentInChildren<Fade>();
+
         //find all the required references
         SpriteRenderer[] childRender = GetComponentsInChildren<SpriteRenderer>();
         myRenderers = new SpriteRenderer[childRender.Length + 1];
@@ -50,6 +53,7 @@ public class Pause : Global {
             SetRenders(menuPaused);
             //send the fade object the attached sprite rendereres
             if (menuPaused) {
+                
                 fade.EnableFade(myRenderers);
             } else {
                 fade.DisableFade(myRenderers);

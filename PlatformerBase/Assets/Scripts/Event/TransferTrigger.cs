@@ -71,7 +71,7 @@ public class TransferTrigger : IndicatorTrigger
                 Player.GetComponent<IHealthObject>().TakeDamage(0); //triggers the damage animation
                 CallBefore();
 
-                coll.GetComponentInParent<AbilityTransfer>().SendParticlesTo(transform.position);
+                coll.GetComponentInParent<AbilityTransfer>().SendParticlesTo(transform.position, healthObj.MaxHealth);
             }
             //playerTouching = true;
         }

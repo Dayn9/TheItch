@@ -65,6 +65,7 @@ public class DialogueBox : Pause {
 
         text = new List<SpriteRenderer>();
         GameObject newLetter;
+        SpriteRenderer textRender;
         //Create all the placeHolders for charachter positions
         for(int line = 0; line< numLines; line++)
         {
@@ -74,7 +75,11 @@ public class DialogueBox : Pause {
                 newLetter.name = "char" + line + "." + cha; 
                 newLetter.transform.position = transform.position + 
                     new Vector3((cha * offset.x) + initialOffset.x, (line * offset.y) + initialOffset.y, 0); //TODO: make variables for adjustable 'font size'
-                newLetter.GetComponent<SpriteRenderer>().color = letterColor;
+                textRender = newLetter.GetComponent<SpriteRenderer>();
+
+                textRender.color = letterColor;
+                textRender.sortingLayerID = GetComponent<SpriteRenderer>().sortingLayerID;
+                
                 text.Add(newLetter.GetComponent<SpriteRenderer>());
             }
         }
@@ -83,6 +88,7 @@ public class DialogueBox : Pause {
         charachterFace.name = "faceImage";
         charachterFace.transform.position = transform.position + new Vector3(-9.0f, 0.0f, 0.0f);
         charachterImage = charachterFace.GetComponent<SpriteRenderer>();
+        charachterImage.sortingLayerID = GetComponent<SpriteRenderer>().sortingLayerID;
         charachterImage.sprite = letters[12];
 
         SetAllRenderers(false);
