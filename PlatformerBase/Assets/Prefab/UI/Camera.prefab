@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4523308064751270}
   - component: {fileID: 212497565103882870}
-  - component: {fileID: 114161359252392812}
+  - component: {fileID: 114211540640337274}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -358,7 +358,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651297200517884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -7.25, z: 10}
+  m_LocalPosition: {x: 0, y: -8.25, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4342388965853568}
@@ -572,7 +572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fcd1d0df700ab42aba52357397ae22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fade: {fileID: 114772390002021634}
 --- !u!114 &114102506285343994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -598,7 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4642d7643593e524bb1320d5a2a91a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114161359252392812
+--- !u!114 &114211540640337274
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -606,10 +605,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1787781012067722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd03c40d1625d8643b0fbe3dd64cd07c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc6de947b067d7542b3b57e6da95f008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fade: {fileID: 0}
   offset: {x: 3.25, y: -1.25}
   area:
     serializedVersion: 2
@@ -620,6 +618,8 @@ MonoBehaviour:
   active: {fileID: 21300000, guid: 6b433ec0fe060934ea41c6a06048f76e, type: 3}
   inactive: {fileID: 21300000, guid: b193bbf8f5e62754294f4dd5fad50beb, type: 3}
   requiresPause: 1
+  levelName: MainMenu
+  mode: 0
 --- !u!114 &114248661821687570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -650,7 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3d8e701954e214fb76e053db694276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fade: {fileID: 114772390002021634}
   charPrefab: {fileID: 1062847128474542, guid: 10837b1c7506ffc4eaf8430d992013b1, type: 2}
   size: 0
   letters:
@@ -720,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: 7
-  offset: {x: 0, y: 4}
+  offset: {x: 0, y: 3}
   snapToPixel: 1
 --- !u!114 &114585576776850782
 MonoBehaviour:
@@ -762,7 +761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsRequired: []
   itemsEaten: 0
-  evTrigs: []
+  evTrigs:
+  - {fileID: 0}
   animatedOffset: {x: 0, y: -10, z: 0}
   speed: 50
   initialColor: {r: 1, g: 1, b: 1, a: 1}
@@ -791,7 +791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d14b57bfe7f9eb439d1e687b65dc660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fade: {fileID: 0}
   offset: {x: -3.25, y: -1.25}
   area:
     serializedVersion: 2
@@ -835,7 +834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd03c40d1625d8643b0fbe3dd64cd07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fade: {fileID: 0}
   offset: {x: 0, y: -1.25}
   area:
     serializedVersion: 2
@@ -1084,8 +1082,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1541749547
-  m_SortingLayer: -2
+  m_SortingLayerID: 1317652639
+  m_SortingLayer: -1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 552f48cf619b82f42be6dea70f08ee1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

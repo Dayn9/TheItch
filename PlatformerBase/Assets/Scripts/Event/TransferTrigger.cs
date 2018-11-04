@@ -18,11 +18,10 @@ public class TransferTrigger : IndicatorTrigger
     {
         healthObj = GetComponent<IHealthObject>();
         //make sure the indicator has a heartbeat indicator
-        if(indicator.GetComponent<HeartbeatIndicator>() == null)
+        if ((hbIndicator = indicator.GetComponent<HeartbeatIndicator>()) == null)
         {
-            indicator.AddComponent<HeartbeatIndicator>();
+            hbIndicator = indicator.AddComponent<HeartbeatIndicator>();
         }
-        hbIndicator = indicator.GetComponent<HeartbeatIndicator>();
 
         hbIndicator.Total = healthObj.MaxHealth;
         hbIndicator.CurrentHealth = 0;
@@ -37,6 +36,9 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (!paused)
         {
+            //indicator is active when transfering can happen
+            indicator.SetActive(transfering || (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0)));
+
             if (transfering)
             {
                 if (FullyHealed)
@@ -60,7 +62,7 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (coll.tag == "AbilityOne") //trigger dialogue when player touches 
         {
-            indicator.SetActive(true);
+            //indicator.SetActive(true);
 
             if(!transfering && !FullyHealed)
             {
@@ -81,7 +83,7 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (coll.tag == "AbilityOne") //exit dialogue when player leaves
         {
-            indicator.SetActive(false);
+            //indicator.SetActive(false);
             //playerTouching = false;
         }
     }
