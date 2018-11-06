@@ -52,6 +52,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public HeartbeatPower Power { get { return heartBeatPower; } }
     public bool InFallZone { set { inFallZone = value; } }
     public bool Frozen { set { frozen = value; } }
+    public Vector2 ResetPosition { set { ResetPosition = value; } }
     #endregion
 
     //Start is already being called in Base PhysicsObject Class

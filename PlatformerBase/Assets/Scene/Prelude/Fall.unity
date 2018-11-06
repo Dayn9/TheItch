@@ -4490,7 +4490,9 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1045997147}
-  enterDialogue: Welcome to The Itch, a game about heart rate and health.
+  enterDialogue: 'The virus first appeared 2 years ago in a small farming village.
+    the entire village developed skin rashes and became unable to work because of
+    the pain.  '
 --- !u!61 &855868535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94222,7 +94224,9 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1045997147}
-  enterDialogue: Moving will cause your heart rate to increase.
+  enterDialogue: 'Scientists discovered that the virus lives in the bloodstream and
+    that a high heartrate would prevent the virus from causing rashes, so People began
+    exercising more. but the virus continued to spread. '
 --- !u!1 &1490146273
 GameObject:
   m_ObjectHideFlags: 0
@@ -109226,7 +109230,8 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1045997147}
-  enterDialogue: 'Standing still will cause your heart rate to decrease. '
+  enterDialogue: "One doctor claimed he had developed a cure that would destroy the
+    virus. \n"
 --- !u!1001 &1948307149
 Prefab:
   m_ObjectHideFlags: 0

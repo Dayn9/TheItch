@@ -14,6 +14,13 @@ public class TransferTrigger : IndicatorTrigger
     private HeartbeatIndicator hbIndicator;
     public HeartbeatIndicator HbIndicator { get { return hbIndicator; } }
 
+    //clicking related variables
+    private BoxCollider2D zone;
+    private bool active = false;
+
+    [SerializeField] private Sprite mouseOff;
+    [SerializeField] private Sprite mouseOn;
+
     private void Start()
     {
         healthObj = GetComponent<IHealthObject>();
@@ -25,6 +32,8 @@ public class TransferTrigger : IndicatorTrigger
 
         hbIndicator.Total = healthObj.MaxHealth;
         hbIndicator.CurrentHealth = 0;
+
+        zone = GetComponent<BoxCollider2D>();
     }
 
     /// <summary>
@@ -36,8 +45,11 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (!paused)
         {
+            active = transfering || (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0));
             //indicator is active when transfering can happen
-            indicator.SetActive(transfering || (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0)));
+            indicator.SetActive(active);
+
+            GetMouseClick();
 
             if (transfering)
             {
@@ -58,12 +70,35 @@ public class TransferTrigger : IndicatorTrigger
         }
     }
 
+    private void GetMouseClick()
+    {
+        if (active && zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+        {
+            GetComponent<SpriteRenderer>().sprite = mouseOn;
+            if (!transfering && !FullyHealed)
+            {
+                transfering = true;
+                Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
+                Player.GetComponent<IPlayer>().Power.SetDamageColor(true);
+
+                Player.GetComponent<IHealthObject>().TakeDamage(0); //triggers the damage animation
+                CallBefore();
+
+                Player.GetComponentInChildren<AbilityHandler>().PowerOne.SendParticlesTo(transform.position, healthObj.MaxHealth);
+            }
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = mouseOff;
+        }
+    }
+
     protected override void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.tag == "AbilityOne") //trigger dialogue when player touches 
         {
             //indicator.SetActive(true);
-
+            /*
             if(!transfering && !FullyHealed)
             {
                 transfering = true;
@@ -75,7 +110,7 @@ public class TransferTrigger : IndicatorTrigger
 
                 coll.GetComponentInParent<AbilityTransfer>().SendParticlesTo(transform.position, healthObj.MaxHealth);
             }
-            //playerTouching = true;
+            //playerTouching = true;*/
         }
     }
 
