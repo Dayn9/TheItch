@@ -49,14 +49,17 @@ public class AbilityTransfer : Global {
     public void SendParticlesTo(Vector2 target, int minNum)
     {
         this.target = target;
-
         //emit additional particles 
         part.Emit(minNum);
+        sentParticles = minNum;
 
+       
+        /*
         //loop through all particles
         int numParticles = part.GetParticles(particles);
-        sentParticles = numParticles;
 
+        sentParticles = numParticles;
+        
         for(int i = 0; i < numParticles; i++)
         {
             ParticleSystem.Particle particle = particles[i]; //get the individual particle
@@ -67,9 +70,9 @@ public class AbilityTransfer : Global {
             particle.velocity =  moveVector * Time.deltaTime * particleSpeed; //move the particle
             particles[i] = particle; //set the particle's data back into particles array
         }
-
+        */
         sending = true;
-        part.SetParticles(particles, numParticles); //apply changes to particle system
+        //part.SetParticles(particles, numParticles); //apply changes to particle system
     }
 	
 	// Update is called once per frame
@@ -84,7 +87,11 @@ public class AbilityTransfer : Global {
                 for (int i = 0; i < numParticles; i++)
                 {
                     ParticleSystem.Particle particle = particles[i];
-                    if (Vector2.Distance(particle.position, target) < 0.2f)
+
+                    particle.remainingLifetime += Time.deltaTime;
+                    particle.velocity += ((((Vector3)target - particle.position).normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
+
+                    if (Vector2.Distance(particle.position, target) < 0.5f)
                     {
                         particle.remainingLifetime = 0;
                         particle.velocity = Vector3.zero;
