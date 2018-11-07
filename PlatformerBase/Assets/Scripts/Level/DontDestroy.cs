@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 public class DontDestroy : MonoBehaviour {
 
+    /// <summary>
+    /// Keeps the attached object constant across scenes
+    /// </summary>
+
     private static List<string> objectsToKeep; //list of objects in don't destroy on load by name
 
 	// Use this for initialization
