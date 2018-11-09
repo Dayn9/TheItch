@@ -39,6 +39,8 @@ public class AbilityTransfer : Global {
         hbPower = Player.GetComponent<IPlayer>().Power;
 
         coll.enabled = false;
+
+        part.Stop();
     }
 
     /// <summary>
@@ -50,8 +52,8 @@ public class AbilityTransfer : Global {
     {
         this.target = target;
         //emit additional particles 
-        part.Emit(minNum);
-        sentParticles = minNum;
+        part.Emit(minNum * 3);
+        sentParticles = minNum * 3;
 
        
         /*
@@ -79,12 +81,12 @@ public class AbilityTransfer : Global {
 	void Update () {
         if (!paused)
         {
-            if (part.isPaused) { part.Play(); }
+            //if (part.isPaused) { part.Play(); }
             if (sending)
             {
                 //loop through all particles
                 int numParticles = part.GetParticles(particles);
-                for (int i = 0; i < numParticles; i++)
+                for (int i = 0; i < sentParticles; i++)
                 {
                     ParticleSystem.Particle particle = particles[i];
 
@@ -95,6 +97,7 @@ public class AbilityTransfer : Global {
                     {
                         particle.remainingLifetime = 0;
                         particle.velocity = Vector3.zero;
+                        sentParticles -= 1;
                     }
                     particles[i] = particle; //set the particle's data back into particles array
                 }
@@ -116,7 +119,7 @@ public class AbilityTransfer : Global {
                 //anim.SetBool("Grow", true);
                 //anim.SetBool("Shrink", false);
                 coll.enabled = true;
-                part.Play();
+                //part.Play();
 
                 //snap to players position
                 transform.position = Player.transform.position;
@@ -136,7 +139,7 @@ public class AbilityTransfer : Global {
                 //anim.SetBool("Grow", false);
                 //anim.SetBool("Shrink", true);
                 coll.enabled = false;
-                part.Stop();
+                //part.Stop();
             }
         }
         else

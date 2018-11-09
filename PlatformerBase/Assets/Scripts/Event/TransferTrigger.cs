@@ -53,6 +53,7 @@ public class TransferTrigger : IndicatorTrigger
 
             if (transfering)
             {
+                Player.GetComponent<IPlayer>().Power.SetDamageColor(true);
                 if (FullyHealed)
                 {
                     Player.GetComponent<IPlayer>().Power.SetDamageColor(false);
