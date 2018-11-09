@@ -33,7 +33,10 @@ public class Pause : Global {
         SetRenders(false);
 
         animators = FindObjectsOfType<Animator>();
-        audios = FindObjectsOfType<AudioSource>(); 
+        audios = FindObjectsOfType<AudioSource>();
+
+        menuPaused = false; //level should never start paused
+        otherPause = false;
     }
 
     private void Update()
