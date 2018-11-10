@@ -32,6 +32,9 @@ public class AbilityTransfer : BloodParticle {
 	void Update () {
         if (!paused)
         {
+            //snap to players position
+            transform.position = Player.transform.position;
+
             MoveParticles();
 
             if (Input.GetKeyUp(KeyCode.X) || Input.GetMouseButtonUp(0))
@@ -46,8 +49,7 @@ public class AbilityTransfer : BloodParticle {
                 coll.enabled = true;
                 //part.Play();
 
-                //snap to players position
-                transform.position = Player.transform.position;
+                
 
                 //set render properties to be right behind player
                 //rend.sortingLayerID = playerRend.sortingLayerID;

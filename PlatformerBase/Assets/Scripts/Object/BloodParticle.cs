@@ -10,6 +10,7 @@ public class BloodParticle : Global {
     /// <summary>
     /// methods and properties for controlling the movement of blood particles
     /// </summary>
+    /// 
     protected ParticleSystem part; //ref to this objects particle system
     protected ParticleSystemRenderer partRend;
     protected ParticleSystem.Particle[] particles; //array of particles being controlled 
@@ -50,18 +51,17 @@ public class BloodParticle : Global {
 
     protected void MoveParticles()
     {
-        //if (part.isPaused) { part.Play(); }
         if (sending)
         {
             //loop through all particles
             int numParticles = part.GetParticles(particles);
+
             for (int i = 0; i < sentParticles; i++)
             {
                 ParticleSystem.Particle particle = particles[i];
 
                 particle.remainingLifetime += Time.deltaTime;
                 particle.velocity += ((((Vector3)target - particle.position).normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
-
                 if (Vector2.Distance(particle.position, target) < 0.5f)
                 {
                     particle.remainingLifetime = 0;
@@ -74,6 +74,7 @@ public class BloodParticle : Global {
             if (sentParticles <= 0 || numParticles <= 0)
             {
                 sending = false;
+                part.Stop();
             }
             part.SetParticles(particles, numParticles); //apply changes to particle system
         }
