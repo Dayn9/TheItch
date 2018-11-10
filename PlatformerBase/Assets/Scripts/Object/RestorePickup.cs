@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class RestorePickup : Global {
+public class RestorePickup : BloodParticle {
 
     //TODO MAKE GENERAL BASE CLASS FOR PARTICLES THAT HAS SEND TO POINT METHOD
 
