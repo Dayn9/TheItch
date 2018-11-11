@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Profiling;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class CollectableItem : Inventory
@@ -25,7 +26,7 @@ public class CollectableItem : Inventory
     private void OnTriggerEnter2D(Collider2D coll)
     {
         //check if collision with player
-        if (!collected && coll.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (!collected && coll.tag == "Player")
         {
             AddItem(gameObject.name, gameObject); //add item to inventory and move to final location in UI
 
@@ -42,7 +43,6 @@ public class CollectableItem : Inventory
             collectEffect.transform.position = transform.position;
             collectEffect.SetActive(true);
             collectEffect.GetComponent<Animator>().SetTrigger("Collect");
-
         }
     }
 

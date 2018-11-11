@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: 0627608e0fd44e54993d492ba9e4dca8
+guid: 4f119c4935fc7834a8d7d1eb2ed65a10
 TextureImporter:
   fileIDToRecycleName:
-    21300000: MouseIndicator_0
-    21300002: MouseIndicator_1
-    21300004: MouseIndicator_2
-    21300006: MouseIndicator_3
+    21300000: VineExtraTwo_0
+    21300002: VineExtraTwo_1
+    21300004: VineExtraTwo_2
+    21300006: VineExtraTwo_3
+    21300008: VineExtraTwo_4
+    21300010: VineExtraTwo_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -85,28 +87,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -121,7 +101,55 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MouseIndicator_0
+      name: VineExtraTwo_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -2, y: 4}
+        - {x: -2, y: -4}
+        - {x: 2, y: -4}
+        - {x: 2, y: 4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14abcf1cf7496c047aae8d0ad9b9151c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VineExtraTwo_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -2, y: 4}
+        - {x: -2, y: -4}
+        - {x: 2, y: -4}
+        - {x: 2, y: 4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f241dc220ffb84542832458d3db7cecf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VineExtraTwo_2
       rect:
         serializedVersion: 2
         x: 0
@@ -129,19 +157,19 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d4d76eb6a6e1e64db0dbfce14f2be89
+      spriteID: c166c78d7bab36842aea93b62b72e38e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MouseIndicator_1
+      name: VineExtraTwo_3
       rect:
         serializedVersion: 2
         x: 8
@@ -149,19 +177,19 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b97889de79207af47b7ac5c4f6d539f9
+      spriteID: 587245f60d49c59408772cf69f7e7b86
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MouseIndicator_2
+      name: VineExtraTwo_4
       rect:
         serializedVersion: 2
         x: 0
@@ -169,19 +197,19 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a32634d8c97db84aad9358d53e4a6ef
+      spriteID: 77da859240f01da4fb4525ce14ff555e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MouseIndicator_3
+      name: VineExtraTwo_5
       rect:
         serializedVersion: 2
         x: 8
@@ -189,13 +217,13 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4f1db6657c17394ca62721b23b2675e
+      spriteID: b837f4efe59f614499b5da93fee4fc12
       vertices: []
       indices: 
       edges: []
@@ -203,7 +231,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ed04eb7c0170a5e47a993c15243f3a5c
+    spriteID: dc58e31fcc0c91649a780be8250c1ddb
     vertices: []
     indices: 
     edges: []
