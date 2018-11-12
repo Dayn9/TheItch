@@ -46,13 +46,12 @@ public class TransferTrigger : IndicatorTrigger
         if (!paused)
         {
             active = transfering || ((Input.GetKey(KeyCode.X) || Input.GetMouseButton(0)) && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth);
-            //indicator is active when transfering can happen
-            indicator.SetActive(active);
 
             GetMouseClick();
 
             if (transfering)
             {
+                indicator.SetActive(true);
                 Player.GetComponent<IPlayer>().Power.SetDamageColor(true);
                 if (FullyHealed)
                 {
@@ -73,10 +72,12 @@ public class TransferTrigger : IndicatorTrigger
 
     private void GetMouseClick()
     {
-        if (active && zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+        if (zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
         {
             GetComponent<SpriteRenderer>().sprite = mouseOn;
-            if (!transfering && !FullyHealed)
+            indicator.SetActive(true);
+
+            if (active && !transfering && !FullyHealed)
             {
                 transfering = true;
                 Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
@@ -88,11 +89,14 @@ public class TransferTrigger : IndicatorTrigger
                 Player.GetComponentInChildren<AbilityHandler>().PowerOne.SendParticlesTo(transform.position, healthObj.MaxHealth);
             }
         }
-        else
-        {
+        else {
             GetComponent<SpriteRenderer>().sprite = mouseOff;
+            indicator.SetActive(false);
         }
     }
+
+
+
 
     protected override void OnTriggerEnter2D(Collider2D coll)
     {

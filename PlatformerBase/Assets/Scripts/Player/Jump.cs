@@ -85,9 +85,6 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) //make sure length of input vector is less than 1;
                 * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed); //multiply be appropritate speed\
 
-            if (grounded) { movementInput = Proj(movementInput, groundTangent); } //No running down on ground
-
-
             //can input a jump before you hit the ground
             if (Input.GetButtonDown("Jump"))
             {
@@ -124,11 +121,6 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
             //determine moveVeclocity and if the object is moving
             moveVelocity = movementInput * Time.deltaTime;
-            moving = moveVelocity.magnitude > buffer; //determine if object is moving
-            
-            //update the health system
-            if (moving) { heartBeatPower.RestoreBPM(restoreRate * Time.deltaTime); }
-            else { heartBeatPower.RemoveBPM(removeRate * Time.deltaTime); }
 
             if (inFallZone)
             {
@@ -175,6 +167,15 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             {
                 CollideOneway(false);
             }
+
+
+            //update moveVelocity to be only in direction of ground normal
+            if (grounded) { moveVelocity = Proj(moveVelocity, groundTangent); }
+            moving = moveVelocity.magnitude > buffer; //determine if object is moving
+
+            //update the health system
+            if (moving) { heartBeatPower.RestoreBPM(restoreRate * Time.deltaTime); }
+            else { heartBeatPower.RemoveBPM(removeRate * Time.deltaTime); }
 
             //start climbing if move velocity is up or down
             if (touchingLadder)

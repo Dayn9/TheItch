@@ -15,6 +15,8 @@ public class HeartbeatIndicator : MonoBehaviour {
         set {
             totalHealth = value;
             healthbarEmpty.size = new Vector2(totalHealth / 10, healthbarEmpty.size.y);
+
+            healthbarFull.transform.localPosition = new Vector3(-totalHealth / 20, healthbarFull.transform.localPosition.y);
         }
     }
     public float CurrentHealth {
@@ -30,6 +32,7 @@ public class HeartbeatIndicator : MonoBehaviour {
     {
         healthbarEmpty = transform.GetChild(0).GetComponent<SpriteRenderer>();
         healthbarFull = transform.GetChild(1).GetComponent<SpriteRenderer>();
+
         totalHealth = 0;
         CurrentHealth = 0;
     }
