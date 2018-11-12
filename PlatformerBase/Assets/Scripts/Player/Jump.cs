@@ -83,7 +83,10 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) //make sure length of input vector is less than 1;
-                * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed); //multiply be appropritate speed
+                * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed); //multiply be appropritate speed\
+
+            if (grounded) { movementInput = Proj(movementInput, groundTangent); } //No running down on ground
+
 
             //can input a jump before you hit the ground
             if (Input.GetButtonDown("Jump"))
