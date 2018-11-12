@@ -45,7 +45,7 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (!paused)
         {
-            active = transfering || (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0));
+            active = transfering || ((Input.GetKey(KeyCode.X) || Input.GetMouseButton(0)) && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth);
             //indicator is active when transfering can happen
             indicator.SetActive(active);
 

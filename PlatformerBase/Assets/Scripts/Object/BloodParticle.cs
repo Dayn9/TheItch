@@ -21,6 +21,9 @@ public class BloodParticle : Global {
 
     protected HeartbeatPower hbPower; //ref to the hearybeat power script
 
+    private bool useable = true; //true when object can use particle effect (better name needed)
+    public bool Useable { set { useable = value; } }
+
     protected virtual void Awake()
     {
         part = GetComponent<ParticleSystem>();
@@ -39,14 +42,16 @@ public class BloodParticle : Global {
     /// <param name="minNum">minimum number of particles</param>
     public void SendParticlesTo(Vector2 target, int minNum)
     {
-        this.target = target;
-        //emit additional particles 
-        part.Emit(minNum * particleMultiplier);
-        sentParticles = minNum * particleMultiplier;
+        if (useable)
+        {
+            this.target = target;
+            //emit additional particles 
+            part.Emit(minNum * particleMultiplier);
+            sentParticles = minNum * particleMultiplier;
 
-        //start sending p[articles to point
-        sending = true;
-        
+            //start sending p[articles to point
+            sending = true;
+        }
     }
 
     protected void MoveParticles()

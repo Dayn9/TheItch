@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Keeps track of common global variables that objects need access to
@@ -61,5 +62,4 @@ public class Global : MonoBehaviour {
     protected Transform
         PlayerTransform { get { return Player.transform; } }
     #endregion 
-    
 }

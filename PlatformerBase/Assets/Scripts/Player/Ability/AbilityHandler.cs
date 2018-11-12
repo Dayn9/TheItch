@@ -14,6 +14,8 @@ public class AbilityHandler : Global {
 
     private AbilityTransfer powerOne; //ref to the abilityTransfer Compnent of the First ability
 
+    private Heartbeat hb; //ref to the heartbeat component 
+
     public AbilityTransfer PowerOne { get { return powerOne; } }
     //private GameObject ring;
 
@@ -21,18 +23,38 @@ public class AbilityHandler : Global {
     void Awake () {
         powerOne = Instantiate(abilityOnePrefab).GetComponent<AbilityTransfer>();
         part = GetComponent<ParticleSystem>();
+
+        hb = Player.GetComponent<IPlayer>().Power.Heartbeat;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //play the blled particle effect when mouse down
-        if (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0))
+
+        if (!paused)
         {
-            part.Play();
+            if(hb.BPM > 1)
+            {
+                powerOne.Useable = true;
+                //play the blled particle effect when mouse down or coming out of pause
+                if (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0) || part.isPaused)
+                {
+                    part.Play();
+                }
+                else
+                {
+                    part.Stop();
+                }
+            }
+            else
+            {
+                part.Stop();
+                powerOne.Useable = false;
+            }
         }
         else
         {
-            part.Stop();
-        }
+            part.Pause();
+            powerOne.Useable = false;
+        } 
     }
 }

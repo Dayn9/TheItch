@@ -179,7 +179,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4523308064751270}
   - component: {fileID: 212497565103882870}
-  - component: {fileID: 114211540640337274}
+  - component: {fileID: 114992356885446968}
+  - component: {fileID: 114561447350493222}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -597,29 +598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4642d7643593e524bb1320d5a2a91a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114211540640337274
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1787781012067722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc6de947b067d7542b3b57e6da95f008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 3.25, y: -1.25}
-  area:
-    serializedVersion: 2
-    x: -1.5
-    y: -1.5
-    width: 3
-    height: 3
-  active: {fileID: 21300000, guid: 6b433ec0fe060934ea41c6a06048f76e, type: 3}
-  inactive: {fileID: 21300000, guid: b193bbf8f5e62754294f4dd5fad50beb, type: 3}
-  requiresPause: 1
-  levelName: MainMenu
-  mode: 0
 --- !u!114 &114248661821687570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -721,6 +699,17 @@ MonoBehaviour:
   anchor: 7
   offset: {x: 0, y: 3}
   snapToPixel: 1
+--- !u!114 &114561447350493222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1787781012067722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb119e1886a466247a3a057ac9b6f3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114585576776850782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -743,7 +732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307a823733610a84ba973b25248debcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialBPM: 120
+  initialBPM: 20
   maxHeartRate: 200
   deltaHeartRate: 15
   bpmReadoutNormal: {r: 0.70980394, g: 0.21568628, b: 0, a: 1}
@@ -814,10 +803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddff18ac4dc671646a3de7e1db24e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightLimit: 4
-  leftLimit: -93
+  rightLimit: 200
+  leftLimit: -38
   bottomLimit: -17
-  topLimit: 30
+  topLimit: 61
   follow: {fileID: 0}
   leaveTime: 0.8
   returnTime: 0.6
@@ -859,6 +848,27 @@ MonoBehaviour:
   moveSpeed: 2
   collectEffectPrefab: {fileID: 1074751342008680, guid: b26cfb655339e4d44b76e3beb5842b62,
     type: 2}
+--- !u!114 &114992356885446968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1787781012067722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790c0ade949c74f449c62ae9c5f12e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 3.25, y: -1.25}
+  area:
+    serializedVersion: 2
+    x: -1.5
+    y: -1.5
+    width: 3
+    height: 3
+  active: {fileID: 21300000, guid: 6b433ec0fe060934ea41c6a06048f76e, type: 3}
+  inactive: {fileID: 21300000, guid: b193bbf8f5e62754294f4dd5fad50beb, type: 3}
+  requiresPause: 1
 --- !u!124 &124275390952944778
 Behaviour:
   m_ObjectHideFlags: 1

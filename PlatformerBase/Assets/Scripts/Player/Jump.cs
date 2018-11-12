@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Reseter))]
 public class Jump : PhysicsObject, IHealthObject, IPlayer
 {
     # region private fields
@@ -289,6 +288,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             if (health <= 0)
             {
                 health = 0;
+
+                GetComponent<Reseter>().ResetGame();
             }
         }
     }

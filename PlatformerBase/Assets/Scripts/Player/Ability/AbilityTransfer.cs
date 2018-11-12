@@ -25,9 +25,7 @@ public class AbilityTransfer : BloodParticle {
 
         playerRend = Player.GetComponent<SpriteRenderer>();
     }
-
     
-	
 	// Update is called once per frame
 	void Update () {
         if (!paused)
@@ -48,9 +46,6 @@ public class AbilityTransfer : BloodParticle {
                 //anim.SetBool("Shrink", false);
                 coll.enabled = true;
                 //part.Play();
-
-                
-
                 //set render properties to be right behind player
                 //rend.sortingLayerID = playerRend.sortingLayerID;
                 //rend.sortingOrder = playerRend.sortingOrder - 2;
