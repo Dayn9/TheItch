@@ -17,7 +17,9 @@ public class BloodParticle : Global {
 
     protected int sentParticles;
     protected bool sending; //true when particles arde being sent to a location
+
     protected Vector2 target;
+    protected Transform targetTrans;
 
     protected HeartbeatPower hbPower; //ref to the hearybeat power script
 
@@ -35,16 +37,31 @@ public class BloodParticle : Global {
         part.Stop();
     }
 
-    /// <summary>
-    /// Send Particles to a specified world positions
-    /// </summary>
-    /// <param name="targets">target positions</param>
-    /// <param name="minNum">minimum number of particles</param>
+    
     public void SendParticlesTo(Vector2 target, int minNum)
     {
         if (useable)
         {
             this.target = target;
+            //emit additional particles 
+            part.Emit(minNum * particleMultiplier);
+            sentParticles = minNum * particleMultiplier;
+
+            //start sending p[articles to point
+            sending = true;
+        }
+    }
+
+    /// <summary>
+    /// Send Particles to a specified world positions
+    /// </summary>
+    /// <param name="targets">target positions</param>
+    /// <param name="minNum">minimum number of particles</param>
+    public void SendParticlesTo(Transform target, int minNum)
+    {
+        if (useable)
+        {
+            targetTrans = target;
             //emit additional particles 
             part.Emit(minNum * particleMultiplier);
             sentParticles = minNum * particleMultiplier;
@@ -60,20 +77,22 @@ public class BloodParticle : Global {
         {
             //loop through all particles
             int numParticles = part.GetParticles(particles);
-
+            target = targetTrans.position;
             for (int i = 0; i < sentParticles; i++)
             {
                 ParticleSystem.Particle particle = particles[i];
 
-                particle.remainingLifetime += Time.deltaTime;
+                particle.remainingLifetime += Time.deltaTime; //keep particle alive
                 particle.velocity += ((((Vector3)target - particle.position).normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
-                if (Vector2.Distance(particle.position, target) < 0.5f)
+
+                if (Vector2.Distance(particle.position, target) < 1.0f)
                 {
                     particle.remainingLifetime = 0;
                     particle.velocity = Vector3.zero;
                     sentParticles -= 1;
                 }
                 particles[i] = particle; //set the particle's data back into particles array
+                //Debug.Log("Seth is dim");
             }
 
             if (sentParticles <= 0 || numParticles <= 0)

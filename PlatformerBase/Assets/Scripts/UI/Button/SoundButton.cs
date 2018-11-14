@@ -10,21 +10,21 @@ public class SoundButton : Button {
 
     protected override void OnActive()
     {
-        buttonRender.sprite = mute ? mInactive : inactive;
+        buttonRender.sprite = muted ? mInactive : inactive;
     }
 
     protected override void OnClick()
     {
-        mute = !mute;
+        muted = !muted;
         foreach (AudioSource source in audios)
         {
-            source.mute = mute;
+            source.mute = muted;
         }
     }
 
     protected override void OnEnter()
     {
-        buttonRender.sprite = mute ? mActive : active;
+        buttonRender.sprite = muted ? mActive : active;
     }
    
 }

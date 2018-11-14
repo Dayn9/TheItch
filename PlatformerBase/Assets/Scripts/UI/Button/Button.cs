@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public abstract class Button : Pause {
@@ -17,11 +18,14 @@ public abstract class Button : Pause {
 
     [SerializeField] private bool requiresPause = true;
 
+
     protected void Awake()
     {
         buttonRender = GetComponent<SpriteRenderer>();
         //set the area based on starting position and offset
         pos = (Vector2)transform.position + offset;
+
+        GetAudioPlayer();
     }
 
     protected void Update () {
@@ -35,10 +39,12 @@ public abstract class Button : Pause {
             //check if the mouse is withing the collider space
             if (bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
             {
+                
                 OnEnter();
                 //check if clicking (left mouse button)
                 if (Input.GetMouseButtonDown(0))
                 {
+                    audioPlayer.PlaySound(0);
                     OnClick();
                 }
             }

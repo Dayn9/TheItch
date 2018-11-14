@@ -43,9 +43,9 @@ public class RestorePickup : BloodParticle {
 
     private void Restore()
     {
-        transform.parent = Player.transform;
+        //transform.parent = Player.transform;
 
-        SendParticlesTo(Player.transform.position - transform.position, restoreAmount);
+        SendParticlesTo(Player.transform, restoreAmount);
 
         Player.GetComponent<IPlayer>().Power.RestoreBPM(restoreAmount);
         render.enabled = false;

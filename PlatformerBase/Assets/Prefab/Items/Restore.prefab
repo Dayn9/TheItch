@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6bbd6c4310c42149b2548bcc9560f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSpeed: 30
+  particleSpeed: 50
 --- !u!198 &198446864858763450
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -169,7 +169,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0

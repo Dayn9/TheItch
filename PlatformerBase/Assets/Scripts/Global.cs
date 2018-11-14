@@ -12,6 +12,8 @@ public class Global : MonoBehaviour {
     private static GameObject player; //player object
 
     protected static bool paused = false; //true when game is paused and nothing is moving
+    public static bool muted = false;
+
     protected const int pixelsPerUnit = 8; //number of pixels displayed in each unity unit
     protected const float buffer = 0.01f; //collision buffer 
 

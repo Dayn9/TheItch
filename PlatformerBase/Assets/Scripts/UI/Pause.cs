@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Pause : Global {
@@ -10,12 +11,12 @@ public class Pause : Global {
     protected static Animator[] animators; //ref to all the animators in the scene
 
     protected static AudioSource[] audios; //ref t all audioSources in the scene
-    public static bool mute = false; //true when audio is muted 
 
     private Fade fade; //ref to the fade object in the scene 
     protected static bool menuPaused = false; //true when menu is paused
     protected static bool otherPause = false; //true when something else is paused
 
+    protected AudioPlayer audioPlayer;
 
     private void Awake()
     {
@@ -37,6 +38,18 @@ public class Pause : Global {
 
         menuPaused = false; //level should never start paused
         otherPause = false;
+
+        GetAudioPlayer();
+    }
+
+    protected void GetAudioPlayer()
+    {
+        //find the audio player
+        if ((audioPlayer = GetComponent<AudioPlayer>()) == null)
+        {
+            audioPlayer = GetComponentInParent<AudioPlayer>();
+        }
+        Assert.IsNotNull(audioPlayer, gameObject.name + " cannot find an audioplayer");
     }
 
     private void Update()
@@ -44,6 +57,7 @@ public class Pause : Global {
         //toggle paused when P or Esc key is pressed
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
+            audioPlayer.PlaySound(0);
             menuPaused = !menuPaused;
             paused = menuPaused || otherPause;
 
@@ -67,10 +81,10 @@ public class Pause : Global {
         //toggle audio when M key is pressed (Quick action, can also be done through pause menu)
         if (Input.GetKeyDown(KeyCode.M))
         {
-            mute = !mute;
+            muted = !muted;
             foreach (AudioSource source in audios)
             {
-                source.mute = mute;
+                source.mute = muted;
             }
         }
     }

@@ -20,8 +20,11 @@ public class DontDestroy : MonoBehaviour {
         //add object to list if it isn't already
         if (objectsToKeep.Contains(gameObject.name))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            return;
         }
-        DontDestroyOnLoad(this.gameObject);
+
+        DontDestroyOnLoad(gameObject);
+        objectsToKeep.Add(gameObject.name);
     }
 }

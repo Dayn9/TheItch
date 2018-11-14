@@ -56,11 +56,6 @@ public class HeartbeatPower : Global {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            RemoveBPM(20);
-        }
-
         if (!paused && targetBPM != heartbeat.BPM)
         {
             float difference = targetBPM - heartbeat.BPM;
