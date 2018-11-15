@@ -73,34 +73,43 @@ public class BloodParticle : Global {
 
     protected void MoveParticles()
     {
-        if (sending)
+        if (!paused)
         {
-            //loop through all particles
-            int numParticles = part.GetParticles(particles);
-            target = targetTrans.position;
-            for (int i = 0; i < sentParticles; i++)
+            if (sending)
             {
-                ParticleSystem.Particle particle = particles[i];
+                if (part.isPaused) { part.Play();  }
 
-                particle.remainingLifetime += Time.deltaTime; //keep particle alive
-                particle.velocity += ((((Vector3)target - particle.position).normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
-
-                if (Vector2.Distance(particle.position, target) < 1.0f)
+                //loop through all particles
+                int numParticles = part.GetParticles(particles);
+                target = targetTrans.position;
+                for (int i = 0; i < sentParticles; i++)
                 {
-                    particle.remainingLifetime = 0;
-                    particle.velocity = Vector3.zero;
-                    sentParticles -= 1;
-                }
-                particles[i] = particle; //set the particle's data back into particles array
-                //Debug.Log("Seth is dim");
-            }
+                    ParticleSystem.Particle particle = particles[i];
 
-            if (sentParticles <= 0 || numParticles <= 0)
-            {
-                sending = false;
-                part.Stop();
+                    //particle.remainingLifetime += Time.deltaTime; //keep particle alive
+                    particle.velocity += ((((Vector3)target - particle.position).normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
+
+                    if (Vector2.Distance(particle.position, target) < 1.0f)
+                    {
+                        particle.remainingLifetime = 0;
+                        particle.velocity = Vector3.zero;
+                        sentParticles -= 1;
+                    }
+                    particles[i] = particle; //set the particle's data back into particles array
+                                             //Debug.Log("Seth is dim");
+                }
+
+                if (sentParticles <= 0 || numParticles <= 0)
+                {
+                    sending = false;
+                    part.Stop();
+                }
+                part.SetParticles(particles, numParticles); //apply changes to particle system
             }
-            part.SetParticles(particles, numParticles); //apply changes to particle system
+        }
+        else
+        {
+            part.Pause();
         }
     }
 }
