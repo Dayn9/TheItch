@@ -26,6 +26,9 @@ public class BloodParticle : Global {
     private bool useable = true; //true when object can use particle effect (better name needed)
     public bool Useable { set { useable = value; } }
 
+    private const float overshoot = 0.75f;
+    private const float slowRadius = 5;
+
     protected virtual void Awake()
     {
         part = GetComponent<ParticleSystem>();
@@ -88,9 +91,13 @@ public class BloodParticle : Global {
                 {
                     ParticleSystem.Particle particle = particles[i];
                     //particle.remainingLifetime += Time.deltaTime; //keep particle alive
-                    particle.velocity += ((((Vector3)target - particle.position).normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
+                    Vector3 moveVector = ((Vector3)target - particle.position);
+                    moveVector += moveVector.normalized * overshoot;
 
-                    if (Vector2.Distance(particle.position, target) < 1.0f)
+                    particle.velocity += ((moveVector.normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
+                    particle.velocity *= Mathf.Clamp((moveVector.magnitude + slowRadius) / (slowRadius * 2), slowRadius * 0.1f , 1);
+
+                    if (moveVector.magnitude - overshoot < 1f)
                     {
                         particle.remainingLifetime = 0;
                         particle.velocity = Vector3.zero;
