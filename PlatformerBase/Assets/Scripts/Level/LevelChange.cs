@@ -9,6 +9,8 @@ public class LevelChange : Inventory {
     [Header("don't make (1, 1)")]
     [SerializeField] private Vector2 playerStart;
 
+    [SerializeField] private bool resetToMenu = false;
+
     private void Start()
     {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
@@ -19,6 +21,13 @@ public class LevelChange : Inventory {
         //change scene when colliding with player
         if (collision.CompareTag("Player"))
         {
+            if (resetToMenu)
+            {
+                GetComponent<Reseter>().ResetGame();
+                return;
+            }
+
+
             startPosition = playerStart;
             //detatch items from inventory so they can be passed on to the next scene
             foreach(GameObject item in Items.Values)
