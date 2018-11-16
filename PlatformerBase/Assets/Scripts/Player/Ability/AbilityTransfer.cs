@@ -67,6 +67,7 @@ public class AbilityTransfer : BloodParticle {
         else
         {
             part.Pause();
+            hbPower.SetDamageColor(false);
         }
 	}
 }

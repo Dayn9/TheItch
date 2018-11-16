@@ -61,10 +61,12 @@ public class BloodParticle : Global {
     {
         if (useable)
         {
+            //part.Stop(); //stop all the current particles 
             targetTrans = target;
+
             //emit additional particles 
             part.Emit(minNum * particleMultiplier);
-            sentParticles = minNum * particleMultiplier;
+            sentParticles += minNum * particleMultiplier;
 
             //start sending p[articles to point
             sending = true;
@@ -82,10 +84,9 @@ public class BloodParticle : Global {
                 //loop through all particles
                 int numParticles = part.GetParticles(particles);
                 target = targetTrans.position;
-                for (int i = 0; i < sentParticles; i++)
+                for (int i = 0; i < numParticles; i++)
                 {
                     ParticleSystem.Particle particle = particles[i];
-
                     //particle.remainingLifetime += Time.deltaTime; //keep particle alive
                     particle.velocity += ((((Vector3)target - particle.position).normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
 
@@ -101,6 +102,7 @@ public class BloodParticle : Global {
 
                 if (sentParticles <= 0 || numParticles <= 0)
                 {
+                    sentParticles = 0;
                     sending = false;
                     part.Stop();
                 }

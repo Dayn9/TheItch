@@ -11,6 +11,7 @@ public class AbilityHandler : Global {
 
     [SerializeField] private GameObject abilityOnePrefab; //prefab of the first bleed ability
     private ParticleSystem part; //particle system attached to object
+    protected ParticleSystem.Particle[] particles; //array of particles being controlled 
 
     private AbilityTransfer powerOne; //ref to the abilityTransfer Compnent of the First ability
 
@@ -23,6 +24,7 @@ public class AbilityHandler : Global {
     void Awake () {
         powerOne = Instantiate(abilityOnePrefab).GetComponent<AbilityTransfer>();
         part = GetComponent<ParticleSystem>();
+        particles = new ParticleSystem.Particle[1]; //array of length one for checks if part has ANY active particles
 
         hb = Player.GetComponent<IPlayer>().Power.Heartbeat;
     }
@@ -36,7 +38,7 @@ public class AbilityHandler : Global {
             {
                 powerOne.Useable = true;
                 //play the blled particle effect when mouse down or coming out of pause
-                if (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0) || part.isPaused)
+                if (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0) || (part.isPaused && part.GetParticles(particles) > 0))
                 {
                     part.Play();
                 }
