@@ -34,22 +34,26 @@ public class DialogueBox : Pause {
             //set the values based on text size
             switch (value)
             {
-                case TextSize.Small:
+                case TextSize.Small: //used for charachter dialogue
                     numLines = 4;
                     charsPerLine = 24;
-                    initialOffset = new Vector2(-6.5625f, 1.6875f);
+                    initialOffset = new Vector2(- 6.875f, 2.125f );
                     offset = new Vector2(0.75f, -1.125f);
                     break;
-                case TextSize.SmallFull:
+                case TextSize.SmallFull: //used for narration dialogue
                     numLines = 3;
                     charsPerLine = 29;
-                    initialOffset = new Vector2(-10.5625f, 1.6875f);
+                    initialOffset = new Vector2(-10.875f, 2.125f);
                     offset = new Vector2(0.75f, -1.125f);
                     break;
+
+                //TODO: fix values when doing disability settings
+                //Also make the sprites pure white for re-coloring in Inspector
+                //Also make narration full version
                 case TextSize.Large:
                     numLines = 3;
                     charsPerLine = 16;
-                    initialOffset = new Vector2(-6.375f, 1.375f);
+                    initialOffset = new Vector2(-6.375f, 1.375f); 
                     offset = new Vector2(1.125f, -1.375f);
                     break;
             }
