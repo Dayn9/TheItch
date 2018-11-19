@@ -73269,6 +73269,30 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69408c89d3cea3043be30c4a6f88bfce, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1999894274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1052343858816414, guid: efe8d3421c638854e9020fd5d02a8bf8,
+    type: 2}
+  m_PrefabInternal: {fileID: 2036594406}
+--- !u!114 &1999894276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1999894274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef6336e1776a23468d35736d865a35f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightLimit: 200
+  leftLimit: -38
+  bottomLimit: -17
+  topLimit: 61
+  follow: {fileID: 298767483}
+  moveTime: 1
+  dist: 5
+  offsetFromPlayer: {x: 0, y: 1.5}
 --- !u!4 &2013945734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4927971617090270, guid: a14f9cecd9f58c5478797ecded428b2e,
@@ -73350,6 +73374,11 @@ Prefab:
         type: 2}
       propertyPath: topLimit
       value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
