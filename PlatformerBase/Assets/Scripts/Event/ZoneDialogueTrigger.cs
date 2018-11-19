@@ -11,7 +11,7 @@ public class ZoneDialogueTrigger : ZoneTrigger {
 
     protected override void Update()
     {
-        if(!paused && playerTouching && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
+        if(!paused && playerTouching && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0)))
         {
             dialogueBox.OnTriggerKeyPressed(enterDialogue);
         }

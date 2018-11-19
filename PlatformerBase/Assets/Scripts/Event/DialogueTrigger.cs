@@ -18,7 +18,7 @@ public class DialogueTrigger : IndicatorTrigger {
         //check if in contact with the player and player is interacting 
         if (playerTouching)
         {
-            if(Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]))
+            if(Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]) || Input.GetMouseButtonDown(0))
             {
                 dialogueBox.PauseGame(true);
                 CheckQuest();

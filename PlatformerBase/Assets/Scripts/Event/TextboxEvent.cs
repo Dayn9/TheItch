@@ -60,7 +60,6 @@ public class TextboxEvent : EventTrigger
                     moveIn = false;
                     if (moveOut)
                     {
-                        Debug.Log("hello");
                         CallAfter();
                         GetComponent<DialogueBox>().Reset();
                         transform.localPosition = visiblePosition + animatedOffset; //reset the localPosition
