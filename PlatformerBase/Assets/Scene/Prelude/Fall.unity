@@ -93535,6 +93535,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1636313770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1663279356}
+  m_Script: {fileID: 11500000, guid: 3583b46ac2ce73d469c378c709e27fee, type: 3}
 --- !u!1 &1647317361
 GameObject:
   m_ObjectHideFlags: 0
@@ -101896,6 +101902,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -101962,7 +101973,61 @@ Prefab:
       propertyPath: maxTime
       value: 30
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1785448006}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: rightLimit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: leftLimit
+      value: -27
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bottomLimit
+      value: -188
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: topLimit
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 855868534}
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1464934332}
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1909219682}
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1772847489}
+    - target: {fileID: 1880135008475186, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651297200517884, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114369302653312008, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1702873673
@@ -103160,6 +103225,12 @@ MonoBehaviour:
     y: -16
     width: 8
     height: 32
+--- !u!114 &1785448006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1948307149}
+  m_Script: {fileID: 11500000, guid: ad6c16669d5f39f46a76d6773a8751ec, type: 3}
 --- !u!1 &1789608635
 GameObject:
   m_ObjectHideFlags: 0
@@ -108655,6 +108726,16 @@ Prefab:
       propertyPath: playerStart.y
       value: 110
       objectReference: {fileID: 0}
+    - target: {fileID: 61071147075607924, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
+        type: 2}
+      propertyPath: evTrig
+      value: 
+      objectReference: {fileID: 1636313770}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 2}
   m_IsPrefabAsset: 0

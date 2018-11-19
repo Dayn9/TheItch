@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueTrigger : IndicatorTrigger {
-
     [SerializeField] private DialogueBox dialogueBox;
 
     [Tooltip("img should be 32x32 pixels")]

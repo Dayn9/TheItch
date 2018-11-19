@@ -10,10 +10,10 @@ public class Fade : Pause
     // Use this for initialization
     void Awake()
     {
+        origionalLayers = new Dictionary<GameObject, int>();
+
         render = GetComponent<SpriteRenderer>();
         render.enabled = false;
-
-        origionalLayers = new Dictionary<GameObject, int>();
     }
 
     //blocks pause Update
