@@ -134,6 +134,7 @@ public class DialogueBox : Pause {
             //exit dialogue if there are no more chunks
             if (dialogueChunk >= chunks.Count)
             {
+                
                 ExitReset();
                 return; //don't display the dialogue becuase there is none
             }

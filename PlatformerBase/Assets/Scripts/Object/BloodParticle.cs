@@ -27,7 +27,7 @@ public class BloodParticle : Global {
     public bool Useable { set { useable = value; } }
 
     private const float overshoot = 0.75f;
-    private const float slowRadius = 5;
+    private const float slowRadius = 6;
 
     protected virtual void Awake()
     {
@@ -95,7 +95,7 @@ public class BloodParticle : Global {
                     moveVector += moveVector.normalized * overshoot;
 
                     particle.velocity += ((moveVector.normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
-                    particle.velocity *= Mathf.Clamp((moveVector.magnitude + slowRadius) / (slowRadius * 2), slowRadius * 0.1f , 1);
+                    particle.velocity *= Mathf.Clamp((moveVector.magnitude + slowRadius) / 10 , slowRadius * 0.1f , 1);
 
                     if (moveVector.magnitude - overshoot < 1f)
                     {

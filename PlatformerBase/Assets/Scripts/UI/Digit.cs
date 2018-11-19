@@ -12,9 +12,13 @@ public class Digit : MonoBehaviour {
     [SerializeField] private Sprite[] numbers;
     private SpriteRenderer render;
 
-    private void Start()
+    private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
         SetNumber(10); //start blank
     }
 
@@ -23,6 +27,13 @@ public class Digit : MonoBehaviour {
         if (num < 0 || num > 10) { return; }
         render.sprite = numbers[num];
     }
+
+    public void SetColor(Color newColor)
+    {
+        render.color = newColor;
+    }
+
+
     /*                                                     IM JUST TRYNA DO SOMETIN COOL!
 #if UNITY_EDITOR
     //custom editor for BasicFullTile

@@ -29,9 +29,14 @@ public class HeartbeatPower : Global {
         targetBPM = heartbeat.BPM;
     }
 
+    private void Start()
+    {
+        heartbeat.SetDigitColor(bpmReadoutNormal);
+    }
+
     public void SetDamageColor(bool damage) 
     {
-        heartbeat.SetNumColor(damage ? bpmReadoutDamage : bpmReadoutNormal);
+        heartbeat.SetDigitColor(damage ? bpmReadoutDamage : bpmReadoutNormal);
     }
 
     /// <summary>
