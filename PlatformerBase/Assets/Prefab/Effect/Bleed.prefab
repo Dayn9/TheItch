@@ -134,7 +134,8 @@ AudioSource:
   m_GameObject: {fileID: 1873573271058534}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7cdbfe1f53812ad40bc361062e0827cd,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -237,6 +238,8 @@ MonoBehaviour:
     overrides: 1
   - clip: {fileID: 8300000, guid: b62a7f43ff7d3094d958f1c1f991b96f, type: 3}
     overrides: 1
+  - clip: {fileID: 8300000, guid: 1f5a59fa81e6d1c42b2f23676cea7427, type: 3}
+    overrides: 0
 --- !u!114 &114443264758771014
 MonoBehaviour:
   m_ObjectHideFlags: 1

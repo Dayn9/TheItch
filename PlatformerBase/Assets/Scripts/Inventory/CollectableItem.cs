@@ -17,10 +17,14 @@ public class CollectableItem : Inventory
 
     private SpriteRenderer render;
 
+    private AudioPlayer audioPlayer;
+
     public void Awake()
     {
         render = GetComponent<SpriteRenderer>();
         pickupPosition = transform.position;
+
+        audioPlayer = GetComponentInParent<AudioPlayer>();
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -44,7 +48,7 @@ public class CollectableItem : Inventory
             collectEffect.SetActive(true);
             collectEffect.GetComponent<Animator>().SetTrigger("Collect");
 
-            audioPlayer.PlaySound(0);
+            audioPlayer.PlaySound("itemCollect");
         }
     }
 
@@ -85,6 +89,6 @@ public class CollectableItem : Inventory
         used = true;
         moving = true;
 
-        audioPlayer.PlaySound(0);
+        audioPlayer.PlaySound("itemCollect");
     }
 }

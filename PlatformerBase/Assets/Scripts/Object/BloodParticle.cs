@@ -29,7 +29,7 @@ public class BloodParticle : Global {
     private const float overshoot = 0.75f;
     private const float slowRadius = 6;
 
-    protected static AudioPlayer audioPlayer;
+    protected AudioPlayer audioPlayer; //references gotten in inheriting classes
 
     protected virtual void Awake()
     {
@@ -54,6 +54,8 @@ public class BloodParticle : Global {
 
             //start sending p[articles to point
             sending = true;
+
+            audioPlayer.PlaySound("bloodSparkle");
         }
     }
 
@@ -75,6 +77,8 @@ public class BloodParticle : Global {
 
             //start sending p[articles to point
             sending = true;
+
+            audioPlayer.PlaySound("bloodSparkle");
         }
     }
 

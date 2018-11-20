@@ -28,9 +28,9 @@ public class AbilityHandler : Global {
 
         hb = Player.GetComponent<IPlayer>().Power.Heartbeat;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         if (!paused)
         {
@@ -41,6 +41,7 @@ public class AbilityHandler : Global {
                 if (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0) || (part.isPaused && part.GetParticles(particles) > 0))
                 {
                     part.Play();
+                    powerOne.AudioPlayer.PlaySound("ContinueSparkle");
                 }
                 else
                 {

@@ -9,16 +9,15 @@ public class AbilityTransfer : BloodParticle {
 
     private SpriteRenderer playerRend; //ref to players sprite renderer
 
-
+    //accessor for audioPlayer (used by Ability Handler)
+    public AudioPlayer AudioPlayer { get { return audioPlayer; } }
 
     // Use this for initialization
     protected override void Awake () {
 
         base.Awake();
         playerRend = Player.GetComponent<SpriteRenderer>();
-
         audioPlayer = GetComponent<AudioPlayer>();
-        Assert.IsNotNull(audioPlayer);
     }
     
 	// Update is called once per frame

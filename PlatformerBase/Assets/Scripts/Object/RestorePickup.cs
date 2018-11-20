@@ -23,7 +23,7 @@ public class RestorePickup : BloodParticle {
         render = GetComponent<SpriteRenderer>();
         render.enabled = true;
 
-        
+        audioPlayer = GetComponentInParent<AudioPlayer>();
     }
 
     private void Update()
@@ -52,7 +52,5 @@ public class RestorePickup : BloodParticle {
         zone.enabled = false;
 
         part.Play();
-
-        audioPlayer.PlaySound(1);
     }
 }

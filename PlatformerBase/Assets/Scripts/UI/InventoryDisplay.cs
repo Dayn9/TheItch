@@ -2,7 +2,6 @@
 using UnityEngine;
 
 [RequireComponent(typeof(UIAnchor))]
-[RequireComponent(typeof(AudioPlayer))]
 public class InventoryDisplay : Inventory {
 
     [SerializeField] private Vector2 hiddenOffset; //relative position of display when hidden
@@ -34,8 +33,6 @@ public class InventoryDisplay : Inventory {
 
         collectEffect = Instantiate(collectEffectPrefab, Vector2.zero, Quaternion.identity);
         collectEffect.SetActive(false);
-
-        audioPlayer = GetComponent<AudioPlayer>();
     }
 
     private void Start()
