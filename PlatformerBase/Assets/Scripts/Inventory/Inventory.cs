@@ -8,7 +8,9 @@ using UnityEngine;
 public class Inventory : Global {
 
     private static Dictionary<string, GameObject> items; //player inventory
-    protected static Transform inventoryUI;
+
+    protected static Transform inventoryUI; //ref to the transform of the inventory display
+    protected static AudioPlayer audioPlayer; //ref to Audio Player attached to inventory display
 
     //Offsets and spacings between items in inventory
     private const float offsetY = 3.75f; //offset from anchor along y axis

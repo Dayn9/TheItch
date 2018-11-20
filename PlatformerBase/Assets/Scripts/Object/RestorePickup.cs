@@ -52,5 +52,7 @@ public class RestorePickup : BloodParticle {
         zone.enabled = false;
 
         part.Play();
+
+        audioPlayer.PlaySound(1);
     }
 }

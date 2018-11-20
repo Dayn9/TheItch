@@ -15,16 +15,20 @@ public class Transition : EventTrigger{
 
     [SerializeField] private float fadeRate = 1.0f;
 
+    private IPlayer playerFreeze;
+
     private void Start()
     {
         render = GetComponent<SpriteRenderer>();
 
-        foreach(EventTrigger evTrig in evTrigs)
+        foreach (EventTrigger evTrig in evTrigs)
         {
             evTrig.Before += new triggered(FadeOut);
         }
 
         render.enabled = true;
+        playerFreeze = Player.GetComponent<IPlayer>();
+
         FadeIn();
     }
 
@@ -33,13 +37,18 @@ public class Transition : EventTrigger{
         render.enabled = true;
         render.color = new Color(0, 0, 0, 1);
         fadeIn = true;
+        playerFreeze.Frozen = true; //stop the player from moving
+        playerFreeze.InFallZone = true; 
     }
+
 
     private void FadeOut()
     {
         render.enabled = true;
         render.color = new Color(0, 0, 0, 0);
         fadeOut = true;
+        playerFreeze.Frozen = true; //stop the player from moving
+        playerFreeze.InFallZone = true;
     }
 
     protected override void Update()
@@ -55,6 +64,8 @@ public class Transition : EventTrigger{
                     fadeIn = false;
                     render.enabled = false;
                     CallBefore();
+                    playerFreeze.Frozen = false; //stop the player from moving
+                    playerFreeze.InFallZone = false;
                     return;
                 }
                 render.color = new Color(0, 0, 0, render.color.a - change);
@@ -67,6 +78,8 @@ public class Transition : EventTrigger{
                     render.color = new Color(0, 0, 0, 1);
                     fadeOut = false;
                     CallAfter();
+                    playerFreeze.Frozen = false; //stop the player from moving
+                    playerFreeze.InFallZone = false;
                     return;
                 }
                 render.color = new Color(0, 0, 0, render.color.a + change);

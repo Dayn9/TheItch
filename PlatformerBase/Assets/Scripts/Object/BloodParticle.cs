@@ -29,6 +29,8 @@ public class BloodParticle : Global {
     private const float overshoot = 0.75f;
     private const float slowRadius = 6;
 
+    protected static AudioPlayer audioPlayer;
+
     protected virtual void Awake()
     {
         part = GetComponent<ParticleSystem>();

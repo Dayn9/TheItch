@@ -43,6 +43,8 @@ public class CollectableItem : Inventory
             collectEffect.transform.position = transform.position;
             collectEffect.SetActive(true);
             collectEffect.GetComponent<Animator>().SetTrigger("Collect");
+
+            audioPlayer.PlaySound(0);
         }
     }
 
@@ -82,5 +84,7 @@ public class CollectableItem : Inventory
         }
         used = true;
         moving = true;
+
+        audioPlayer.PlaySound(0);
     }
 }

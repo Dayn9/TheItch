@@ -27,7 +27,7 @@ public class LevelChange : EventTrigger
         {
             //start the transition
             CallBefore();
-            Player.GetComponent<IPlayer>().Frozen = true; //stop the player from moving
+            
         }
     }
 

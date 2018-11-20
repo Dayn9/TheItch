@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Assertions;
 
+[RequireComponent(typeof(AudioPlayer))]
 public class AbilityTransfer : BloodParticle {
 
     [SerializeField] private float heartrateUsed; //heartrate used when ability transfer is used
 
     private SpriteRenderer playerRend; //ref to players sprite renderer
 
+
+
     // Use this for initialization
     protected override void Awake () {
 
         base.Awake();
         playerRend = Player.GetComponent<SpriteRenderer>();
+
+        audioPlayer = GetComponent<AudioPlayer>();
+        Assert.IsNotNull(audioPlayer);
     }
     
 	// Update is called once per frame
