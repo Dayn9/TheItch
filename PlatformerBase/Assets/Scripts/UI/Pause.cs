@@ -6,13 +6,13 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Pause : Global {
 
-    private SpriteRenderer[] myRenderers; //ref to the spriteRenderers on this and all the child gameObjects
+    protected SpriteRenderer[] myRenderers; //ref to the spriteRenderers on this and all the child gameObjects
 
     protected static Animator[] animators; //ref to all the animators in the scene
 
     protected static AudioSource[] audios; //ref t all audioSources in the scene
 
-    private Fade fade; //ref to the fade object in the scene 
+    protected Fade fade; //ref to the fade object in the scene 
     protected static bool menuPaused = false; //true when menu is paused
     protected static bool otherPause = false; //true when something else is paused
 
@@ -57,6 +57,7 @@ public class Pause : Global {
         //toggle paused when P or Esc key is pressed
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log(gameObject.name);
             audioPlayer.PlaySound(0);
             menuPaused = !menuPaused;
             paused = menuPaused || otherPause;
@@ -70,7 +71,6 @@ public class Pause : Global {
             SetRenders(menuPaused);
             //send the fade object the attached sprite rendereres
             if (menuPaused) {
-                
                 fade.EnableFade(myRenderers);
             } else {
                 fade.DisableFade(myRenderers);
@@ -93,7 +93,7 @@ public class Pause : Global {
     /// set enabled of all the child renderes
     /// </summary>
     /// <param name="state">activation state</param>
-    private void SetRenders(bool state)
+    protected void SetRenders(bool state)
     {
         foreach(SpriteRenderer rend in myRenderers)
         {

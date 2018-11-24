@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 public class GenericButton : Button
 {
+    /// <summary>
+    /// used for buttons that hava an active and inactive sprite
+    /// </summary>
+    
     protected override void OnActive()
     {
         buttonRender.sprite = inactive;
@@ -11,7 +12,7 @@ public class GenericButton : Button
 
     protected override void OnClick()
     {
-        
+        //nothing happens
     }
 
     protected override void OnEnter()

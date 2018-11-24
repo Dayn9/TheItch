@@ -19,7 +19,7 @@ public abstract class Button : Pause {
     [SerializeField] private bool requiresPause = true;
 
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         buttonRender = GetComponent<SpriteRenderer>();
         //set the area based on starting position and offset
