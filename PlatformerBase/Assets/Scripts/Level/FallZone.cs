@@ -100,6 +100,7 @@ public class FallZone : Global {
 
             //start the fall sections moving
             velocity = -Player.GetComponent<PhysicsObject>().GravityVelocity;
+            velocity = velocity.normalized * Mathf.Clamp(velocity.magnitude, 1.0f, 1.2f);
             bottomFallSection.gameObject.SetActive(true);
             fallSectionsIndex = 1;
 
