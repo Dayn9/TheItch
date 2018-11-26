@@ -12,7 +12,7 @@ public class AudioPlayer : Global {
     [SerializeField] private SoundFile[] sounds; //array of all sounds available to this Audio Player
     private Dictionary<string, SoundFile> soundDict; //dictionary to get sound files by name 
 
-    private AudioSource source; //ref to the attached audioSource
+    protected AudioSource source; //ref to the attached audioSource
 
     private void Awake()
     {
@@ -93,3 +93,33 @@ public struct SoundFile
     public AudioClip Clip { get { return clip; } }
     public bool Overrides { get { return overrides; } }
 }
+
+[System.Serializable]
+public struct SoundFiles
+{
+    /// <summary>
+    /// Contains data about sound files
+    /// </summary>
+    [SerializeField] private AudioClip[] clips; //clip to play
+    [SerializeField] private bool overrides; //true if the clip overrides current sound being played
+
+    private string name; //name of the clip
+
+    public string Name
+    {
+        get
+        {
+            //find the name of the clip 
+            if (name == null || name.Trim() == "")
+            {
+                name = clips[0].name; //set the clip name
+            }
+            return name;
+        }
+    }
+    public AudioClip[] Clips { get { return clips; } }
+    public bool Overrides { get { return overrides; } }
+}
+
+
+
