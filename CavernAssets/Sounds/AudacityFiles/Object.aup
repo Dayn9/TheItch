@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Object_data" version="1.3.0" audacityversion="2.1.3" sel0="0.3764601039" sel1="0.3764601039" vpos="96" h="0.0000000000" zoom="409.0738922813" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="GENRE" value="Game Audio"/>
+		<tag name="ALBUM" value="The Itch"/>
+		<tag name="TITLE" value="ObjectSnap"/>
+		<tag name="YEAR" value="2018"/>
+		<tag name="ARTIST" value="InspectorJ modified by Dane Sherman"/>
+	</tags>
+	<wavetrack name="245462__rhulk__mechanism" channel="2" linked="0" mute="1" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="70446">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000bf1.au" len="70446" min="-0.244721" max="0.153683" rms="0.016655"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="6">
+				<controlpoint t="0.993272916596" val="1.000000000000"/>
+				<controlpoint t="1.028098034099" val="0.732394337654"/>
+				<controlpoint t="1.055352473883" val="1.000000000000"/>
+				<controlpoint t="1.376349209125" val="1.000000000000"/>
+				<controlpoint t="1.394518835648" val="0.633802831173"/>
+				<controlpoint t="1.411174326627" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="352182__inspectorj__snapping-wooden-fence-h" channel="0" linked="1" mute="0" solo="1" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="11098">
+				<waveblock start="0">
+					<simpleblockfile filename="e00005e9.au" len="11098" min="-1.191442" max="1.106618" rms="0.182563"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="352182__inspectorj__snapping-wooden-fence-h" channel="1" linked="0" mute="0" solo="1" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="11098">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000718.au" len="11098" min="-1.166136" max="1.164122" rms="0.234584"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

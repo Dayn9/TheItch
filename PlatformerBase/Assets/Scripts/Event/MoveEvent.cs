@@ -5,6 +5,7 @@ using UnityEngine.Assertions;
 using UnityEditor;
 using UnityEngine.Tilemaps;
 
+[RequireComponent(typeof(AudioPlayer))]
 public class MoveEvent : Global {
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
     [Header("Before/True  -  After/False")]
@@ -27,6 +28,8 @@ public class MoveEvent : Global {
     private MovingObject moveObj; //ref to the objects moveVelocity of parent
     private Tilemap rend; //ref to renderer in the object
     private Collider2D[] colls;
+
+    private AudioPlayer audioPlayer;
 
     private void Awake()
     {
@@ -55,6 +58,8 @@ public class MoveEvent : Global {
             colls = GetComponentsInChildren<Collider2D>();
             Assert.IsNotNull(colls);
         }
+
+        audioPlayer = GetComponent<AudioPlayer>();
     }
 
 
@@ -84,6 +89,10 @@ public class MoveEvent : Global {
     private void Move()
     {
         move = true;
+
+        //loop the moving sound
+        audioPlayer.PlaySound(0);
+        audioPlayer.Loop = true;
     }
 
     private void Update()
@@ -110,6 +119,10 @@ public class MoveEvent : Global {
                             coll.enabled = true;
                         }
                     }
+
+                    //play the snap sound and stop looping the moving SFX
+                    audioPlayer.Loop = false;
+                    audioPlayer.PlaySound(1);
                 }
                 else
                 {

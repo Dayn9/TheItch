@@ -34,12 +34,17 @@ public class Pause : Global {
         SetRenders(false);
 
         animators = FindObjectsOfType<Animator>();
-        audios = FindObjectsOfType<AudioSource>();
 
         menuPaused = false; //level should never start paused
         otherPause = false;
 
         GetAudioPlayer();
+    }
+
+    private void Start()
+    {
+        //find all the AudioSorces in the scene once everything has been Instantiated
+        audios = FindObjectsOfType<AudioSource>();
     }
 
     protected void GetAudioPlayer()

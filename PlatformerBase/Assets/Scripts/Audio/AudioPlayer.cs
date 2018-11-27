@@ -13,6 +13,7 @@ public class AudioPlayer : Global {
     private Dictionary<string, SoundFile> soundDict; //dictionary to get sound files by name 
 
     protected AudioSource source; //ref to the attached audioSource
+    public bool Loop { set { source.loop = value; } }
 
     private void Awake()
     {
