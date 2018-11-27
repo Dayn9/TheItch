@@ -17,7 +17,12 @@ public class HeartbeatPower : Global {
     [SerializeField] private Color bpmReadoutNormal;
     [SerializeField] private Color bpmReadoutDamage;
 
-    public Heartbeat Heartbeat { get { return heartbeat; } }
+    public Heartbeat Heartbeat { get {
+            if(heartbeat == null) { heartbeat = GetComponent<Heartbeat>(); }
+            return heartbeat;
+        }
+    }
+
 
     void Awake()
     {

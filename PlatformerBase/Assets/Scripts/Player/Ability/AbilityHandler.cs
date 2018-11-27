@@ -24,6 +24,7 @@ public class AbilityHandler : Global {
     void Awake () {
         powerOne = Instantiate(abilityOnePrefab).GetComponent<AbilityTransfer>();
         part = GetComponent<ParticleSystem>();
+        //part.Stop();
         particles = new ParticleSystem.Particle[1]; //array of length one for checks if part has ANY active particles
 
         hb = Player.GetComponent<IPlayer>().Power.Heartbeat;

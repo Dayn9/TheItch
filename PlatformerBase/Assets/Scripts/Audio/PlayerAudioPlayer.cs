@@ -4,7 +4,8 @@ public class PlayerAudioPlayer : AudioPlayer {
 
     [SerializeField] private SoundFiles steps;
 
-    private bool jumpSound = false;
+    private bool jumpSoundPlayed = false;
+    private bool landSoundPlayed = false;
 
     /// <summary>
     /// Play a random step sound
@@ -19,15 +20,33 @@ public class PlayerAudioPlayer : AudioPlayer {
         }
     }
 
+    #region animator calls
+
+    /// <summary>
+    /// Play the jump sound if it hasn't already been played
+    /// </summary>
     public void PlayJumpSound()
     {
-        if (!jumpSound)
+        if (!jumpSoundPlayed)
         {
-            jumpSound = true;
+            jumpSoundPlayed = true;
             PlaySound(0);
         }
        
-    }   
+    }
+
+    /// <summary>
+    /// Play the land sound if it hasn't already been played
+    /// </summary>
+    public void PlayLandSound()
+    {
+        if (!landSoundPlayed)
+        {
+            landSoundPlayed = true;
+            PlaySound(1);
+        }
+
+    }
 
     public void PlayDamageSound()
     {
@@ -36,6 +55,13 @@ public class PlayerAudioPlayer : AudioPlayer {
 
     public void ResetJumpSound()
     {
-        jumpSound = false;
+        jumpSoundPlayed = false;
     }
+
+    public void ResetLandSound()
+    {
+        landSoundPlayed = false;
+    }
+
+    #endregion
 }

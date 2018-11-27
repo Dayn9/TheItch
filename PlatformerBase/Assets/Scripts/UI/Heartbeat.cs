@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [RequireComponent(typeof(UIAnchor))]
+[RequireComponent(typeof(HeartbeatAudioPlayer))]
 public class Heartbeat : Global {
 
     private SpriteRenderer healthbar; //ref to renderer of healthbar
@@ -13,6 +14,8 @@ public class Heartbeat : Global {
 
     private float numHealthbarTicks; //pixel width of the healthbar
     private static float bpm = -1; //beats per minute (60 = 1 per second)
+
+    private HeartbeatAudioPlayer audioPlayer;
 
     public float BPM
     {
@@ -26,6 +29,7 @@ public class Heartbeat : Global {
         //find the nessicary components in child gameObjects
         healthbar = transform.GetChild(0).GetComponent<SpriteRenderer>();
         heartAnimation = transform.GetChild(1).GetComponent<Animator>();
+        audioPlayer = GetComponent<HeartbeatAudioPlayer>();
 
         digits = transform.GetComponentsInChildren<Digit>();
 
@@ -46,6 +50,7 @@ public class Heartbeat : Global {
             SetHealth(Player.GetComponent<IHealthObject>().Health, Player.GetComponent<IHealthObject>().MaxHealth); //update health
 
             heartAnimation.speed = bpm / 60.0f; //match animation speed to bpm
+            audioPlayer.Speed = bpm / 60.0f; //match the audio speed to bpm
 
             if(bpm < 1)
             {
