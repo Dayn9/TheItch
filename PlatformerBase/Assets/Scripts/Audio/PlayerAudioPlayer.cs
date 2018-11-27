@@ -2,10 +2,15 @@
 
 public class PlayerAudioPlayer : AudioPlayer {
 
-    [SerializeField] private SoundFiles steps;
+    /// <summary>
+    /// Used by Player animator to play AudioClips at right time in animation
+    /// </summary>
+
+    [SerializeField] private SoundFiles steps; //group of step SFX to randomly select
 
     private bool jumpSoundPlayed = false;
     private bool landSoundPlayed = false;
+    private bool damageSoundPlayed = false;
 
     /// <summary>
     /// Play a random step sound
@@ -31,8 +36,7 @@ public class PlayerAudioPlayer : AudioPlayer {
         {
             jumpSoundPlayed = true;
             PlaySound(0);
-        }
-       
+        } 
     }
 
     /// <summary>
@@ -48,20 +52,24 @@ public class PlayerAudioPlayer : AudioPlayer {
 
     }
 
+    /// <summary>
+    ///  Play the damage sound if it hasn't already been played
+    /// </summary>
     public void PlayDamageSound()
     {
-        PlaySound(0);
+        if (!damageSoundPlayed)
+        {
+            damageSoundPlayed = true;
+            PlaySound(2);
+        }
     }
 
-    public void ResetJumpSound()
-    {
-        jumpSoundPlayed = false;
-    }
-
-    public void ResetLandSound()
-    {
-        landSoundPlayed = false;
-    }
+    /// <summary>
+    /// Allow specific sounds to be played again by the Animator
+    /// </summary>
+    public void ResetJumpSound() { jumpSoundPlayed = false; }
+    public void ResetLandSound() { landSoundPlayed = false; }
+    public void ResetDamageSound() { damageSoundPlayed = false; }
 
     #endregion
 }

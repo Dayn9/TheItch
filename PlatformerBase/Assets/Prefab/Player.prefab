@@ -111,7 +111,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.1
-  m_Pitch: 1.5
+  m_Pitch: 0.9
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -263,12 +263,14 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 0846d05e87ca89f43bbca43aa6347772, type: 3}
     overrides: 1
   - clip: {fileID: 8300000, guid: 2fcfed554769c6946958a56d124f2d5a, type: 3}
+    overrides: 0
+  - clip: {fileID: 8300000, guid: a64c075404fdc904e9dcd1d4a47bc9dc, type: 3}
     overrides: 1
   steps:
     clips:
     - {fileID: 8300000, guid: f11b7fad89aa4974885b4b8d80699bc1, type: 3}
     - {fileID: 8300000, guid: bd17febe4816f7a4aa64e5df7e364733, type: 3}
-    overrides: 1
+    overrides: 0
 --- !u!114 &114660610519067962
 MonoBehaviour:
   m_ObjectHideFlags: 1

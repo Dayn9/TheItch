@@ -57,7 +57,6 @@ public class Pause : Global {
         //toggle paused when P or Esc key is pressed
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log(gameObject.name);
             audioPlayer.PlaySound(0);
             menuPaused = !menuPaused;
             paused = menuPaused || otherPause;
