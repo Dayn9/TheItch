@@ -20,16 +20,21 @@ public class Door : Highlight {
     private int layerInBuilding; //layer where the door will be completly displayed
     public event DoorOpenMethod OnDoorOpen; //event triggered when door is interacted with
 
+    private AudioPlayer audioPlayer; //ref to the buildings AudioPlayer
+
     public int LayerInBuilding { set { layerInBuilding = value; } }
 
     protected override void Awake()
     {
         base.Awake();
+
         //create the indicator
         indicator = Instantiate(indicatorPrefab, transform);
         indicator.transform.position = transform.position + indicatorOffset;
         indicator.SetActive(false);
         indicator.name = "Door Indicator";
+
+        audioPlayer = GetComponentInParent<AudioPlayer>();
     }
 
     private void Update()
@@ -41,7 +46,8 @@ public class Door : Highlight {
             {
                 if (OnDoorOpen != null)
                 {
-                    OnDoorOpen(layerInBuilding);
+                    OnDoorOpen(layerInBuilding); //trigger event
+                    audioPlayer.PlaySound(0); //play the unlocking sound
                 }
             }
         }

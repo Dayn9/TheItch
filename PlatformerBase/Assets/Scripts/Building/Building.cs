@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(AudioPlayer))]
 public class Building : Global {
 
     [SerializeField] private GameObject Exterior; //Exterior Tilemap
@@ -16,11 +17,11 @@ public class Building : Global {
     private Color solidDoor; //color of door when on current layer
     private Color transparentDoor; //color of door when on previous layer
 
-    [SerializeField] private Fade fade;
+    [SerializeField] private Fade fade; 
     private Renderer[] myRenderers;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         physPlayer = Player.GetComponent<PhysicsObject>();
 
         solidDoor = new Color(1.0f, 1.0f, 1.0f, 1.0f);

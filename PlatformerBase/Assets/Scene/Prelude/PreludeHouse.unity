@@ -58294,6 +58294,8 @@ MonoBehaviour:
     overrides: 0
   - clip: {fileID: 8300000, guid: b62a7f43ff7d3094d958f1c1f991b96f, type: 3}
     overrides: 0
+  - clip: {fileID: 8300000, guid: d27fcdf2fd5df5c468aa9bf7bcd13967, type: 3}
+    overrides: 1
 --- !u!82 &636484411
 AudioSource:
   m_ObjectHideFlags: 0
@@ -59018,6 +59020,11 @@ Prefab:
       propertyPath: heartBeatPower
       value: 
       objectReference: {fileID: 1561165239}
+    - target: {fileID: 114461869609821004, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: steps.overrides
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
   m_IsPrefabAsset: 0
@@ -68673,6 +68680,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1900949553}
   - component: {fileID: 1900949554}
+  - component: {fileID: 1900949556}
+  - component: {fileID: 1900949555}
   m_Layer: 0
   m_Name: HouseOne
   m_TagString: Untagged
@@ -68715,6 +68724,116 @@ MonoBehaviour:
   doorAboveLayer: 6
   doorBelowLayer: 3
   fade: {fileID: 1503472133}
+--- !u!114 &1900949555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1900949552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290f164ee06b69649affe5f5fbfef6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: 71e77f1644afd9342a08a20bbacd8df8, type: 3}
+    overrides: 1
+--- !u!82 &1900949556
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1900949552}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7cdbfe1f53812ad40bc361062e0827cd,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 0.7
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1903583848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4325671825974164, guid: 6223b1abdb5000a41bd6833a46cd0787,
