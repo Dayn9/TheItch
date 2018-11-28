@@ -296,10 +296,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 frozen = true;
                 animator.SetTrigger("death");
                 jumping = false;
-
-
                 //reset game is called by the death animation
-                //GetComponent<Reseter>().ResetGame();
             }
         }
     }
