@@ -18,8 +18,10 @@ public class TransferTrigger : IndicatorTrigger
     private BoxCollider2D zone;
     private bool active = false;
 
-    [SerializeField] private Sprite mouseOff;
-    [SerializeField] private Sprite mouseOn;
+    [SerializeField] private Sprite mouseOffSprite;
+    [SerializeField] private Sprite mouseOnSprite;
+
+    private bool containsMouse = false;
 
     private void Start()
     {
@@ -74,8 +76,10 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
         {
-            GetComponent<SpriteRenderer>().sprite = mouseOn;
+            GetComponent<SpriteRenderer>().sprite = mouseOnSprite;
             indicator.SetActive(true);
+
+            if (!containsMouse) { audioPlayer.PlaySound(0); }//play the hover sound
 
             if (active && !transfering && !FullyHealed)
             {
@@ -88,10 +92,12 @@ public class TransferTrigger : IndicatorTrigger
 
                 Player.GetComponentInChildren<AbilityHandler>().PowerOne.SendParticlesTo(transform, healthObj.MaxHealth);
             }
+            containsMouse = true;
         }
         else {
-            GetComponent<SpriteRenderer>().sprite = mouseOff;
+            GetComponent<SpriteRenderer>().sprite = mouseOffSprite;
             indicator.SetActive(false);
+            containsMouse = false;
         }
     }
 

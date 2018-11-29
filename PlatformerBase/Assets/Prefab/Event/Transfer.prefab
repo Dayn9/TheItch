@@ -36,8 +36,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1302446344699280}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.5, y: -1.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 45.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,8 +96,8 @@ MonoBehaviour:
   indicatorPrefab: {fileID: 1435391692787956, guid: 870ce5c5ce6aa514e97db03a25e96d56,
     type: 2}
   indicatorOffset: {x: 0, y: 0, z: 0}
-  mouseOff: {fileID: 21300008, guid: f0320cda9ef17f04a8a28998482c5b13, type: 3}
-  mouseOn: {fileID: 21300006, guid: f0320cda9ef17f04a8a28998482c5b13, type: 3}
+  mouseOffSprite: {fileID: 21300008, guid: f0320cda9ef17f04a8a28998482c5b13, type: 3}
+  mouseOnSprite: {fileID: 21300006, guid: f0320cda9ef17f04a8a28998482c5b13, type: 3}
 --- !u!212 &212247232951266668
 SpriteRenderer:
   m_ObjectHideFlags: 1

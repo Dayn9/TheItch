@@ -43,6 +43,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     private bool frozen = false;
 
+    private AudioPlayer audioPlayer;
+
     #endregion
 
     #region Properties 
@@ -69,6 +71,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         {
             transform.position = startPosition;
         }
+
+        audioPlayer = GetComponent<AudioPlayer>();
     }
 
     private void Update()
@@ -327,7 +331,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     {
         returnVelocity = Vector2.zero; //reset the return Velocity
         returnTime = ((Vector2)transform.position - returnPosition).magnitude / returnVelocityDivider;
-
+        audioPlayer.PlaySound("Return");
         returning = true; //start returning to return position
     }
 }

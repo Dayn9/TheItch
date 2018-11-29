@@ -13,7 +13,7 @@ public class HeartbeatAudioPlayer : AudioPlayer
         set
         {
             source.pitch = value; //pitch [0, 10/3]
-            source.volume = 0.9f - ((value * 0.8f) / (10 / 3.0f)); //volume [0.1, 0.9]
+            source.volume = 0.5f - ((value * 0.4f) / (10 / 3.0f)); //volume [0.1, 0.9]
         }
     }
 

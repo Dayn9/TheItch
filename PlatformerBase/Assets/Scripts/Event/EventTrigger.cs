@@ -15,12 +15,16 @@ public class EventTrigger : Inventory {
     public event triggered Before; //Event Triggered on player iteraction when quest incomplete
     public event triggered After; //Even Triggered on player interaction when quest complete
 
+    protected AudioPlayer audioPlayer;
+
     protected virtual void Awake () {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
 
         //insure there is never a null event
         Before = new triggered(NullEvent);
         After = new triggered(NullEvent);
+
+        audioPlayer = GetComponentInParent<AudioPlayer>();
     }
 
     /// <summary>
@@ -79,9 +83,15 @@ public class EventTrigger : Inventory {
     /// </summary>
     protected void CheckQuest()
     {
+        
         if (!questCompleted) //only check for completion when incomplete
         {
+            
             questCompleted = CheckItems();
+            if (!questCompleted && audioPlayer != null) {
+
+                audioPlayer.PlaySound(0); //play the null Sound
+            }
         }
     }
 
@@ -91,11 +101,12 @@ public class EventTrigger : Inventory {
     /// <returns></returns>
     private bool CheckItems()
     {
+        
         //check if all the required items are in the players inventory
         foreach (GameObject item in itemsRequired)
         {
             if (item == null || !Items.ContainsKey(item.name))
-            {
+            {                
                 return false; //a required item is missing from player inventory or gone
             }
         }
