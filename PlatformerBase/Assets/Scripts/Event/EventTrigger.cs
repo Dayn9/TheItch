@@ -83,10 +83,8 @@ public class EventTrigger : Inventory {
     /// </summary>
     protected void CheckQuest()
     {
-        
         if (!questCompleted) //only check for completion when incomplete
         {
-            
             questCompleted = CheckItems();
             if (!questCompleted && audioPlayer != null) {
 
