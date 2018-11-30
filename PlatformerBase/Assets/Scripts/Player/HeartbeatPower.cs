@@ -23,7 +23,6 @@ public class HeartbeatPower : Global {
         }
     }
 
-
     void Awake()
     {
         heartbeat = GetComponent<Heartbeat>();

@@ -5,9 +5,9 @@ using UnityEngine;
 public enum TextSize { Small, Large, SmallFull }
 
 [RequireComponent(typeof(UIAnchor))]
+[RequireComponent(typeof(AudioPlayer))]
 public class DialogueBox : Pause {
     
-
     [SerializeField] private GameObject charPrefab; //gameobject prefab for individual letters
     [SerializeField] private TextSize size; //size of the text to display 
     [SerializeField] private Sprite[] letters; //array of all possible letter sprites
@@ -96,6 +96,8 @@ public class DialogueBox : Pause {
         charachterImage.sprite = letters[12];
 
         SetAllRenderers(false);
+
+        audioPlayer = GetComponent<AudioPlayer>();
     }
 
     private void Update()
@@ -112,6 +114,7 @@ public class DialogueBox : Pause {
     {
         OnTriggerKeyPressed(message);
         charachterImage.sprite = face;
+
     }
 
     /// <summary>
@@ -121,6 +124,7 @@ public class DialogueBox : Pause {
     public void OnTriggerKeyPressed(string message)
     {
         SetAllRenderers(true);
+        audioPlayer.PlaySound(0);
         //check if there new message
         if (dialogueChunk == -1)
         {
