@@ -68,6 +68,11 @@ public class AudioPlayer : Global {
             PlaySound(Random.Range(min, max));
         }
     }
+
+    public void Mute(bool mute)
+    {
+        source.mute = mute;
+    }
 }
 
 [System.Serializable]

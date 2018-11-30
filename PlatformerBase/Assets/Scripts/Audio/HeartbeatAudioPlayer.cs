@@ -17,6 +17,12 @@ public class HeartbeatAudioPlayer : AudioPlayer
         }
     }
 
+    public float Volume
+    {
+        get { return source.volume; }
+        set { source.volume = value; }
+    }
+
     void Start()
     {
         //insure the corret heartbeat clip is repeating

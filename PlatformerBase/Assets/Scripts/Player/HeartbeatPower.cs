@@ -12,10 +12,10 @@ public class HeartbeatPower : Global {
 
     private float targetBPM; //value bpm is animating towards
 
-    private Heartbeat heartbeat;
+    private Heartbeat heartbeat; //ref to the attched Heartbeat controller
 
-    [SerializeField] private Color bpmReadoutNormal;
-    [SerializeField] private Color bpmReadoutDamage;
+    [SerializeField] private Color bpmReadoutNormal; //base color of BPM readout
+    [SerializeField] private Color bpmReadoutDamage; //color of BPM readoutr when damaged
 
     public Heartbeat Heartbeat { get {
             if(heartbeat == null) { heartbeat = GetComponent<Heartbeat>(); }
@@ -39,6 +39,10 @@ public class HeartbeatPower : Global {
         heartbeat.SetDigitColor(bpmReadoutNormal);
     }
 
+    /// <summary>
+    /// update the color of the BPM readout
+    /// </summary>
+    /// <param name="damage">true if player is taking damage</param>
     public void SetDamageColor(bool damage) 
     {
         heartbeat.SetDigitColor(damage ? bpmReadoutDamage : bpmReadoutNormal);
@@ -69,6 +73,7 @@ public class HeartbeatPower : Global {
         if (!paused && targetBPM != heartbeat.BPM)
         {
             float difference = targetBPM - heartbeat.BPM;
+            heartbeat.ChangeRate = Mathf.Abs(difference);
             //snap to heartrate when moveDistance is small enough
             if (difference * Mathf.Sign(difference) < deltaHeartRate * Time.deltaTime)
             {
@@ -78,6 +83,7 @@ public class HeartbeatPower : Global {
             {
                 heartbeat.BPM += Mathf.Sign(difference) * deltaHeartRate * Time.deltaTime;
             }
+
         }
     }
 }

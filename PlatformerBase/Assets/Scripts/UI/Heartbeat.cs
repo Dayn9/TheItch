@@ -10,12 +10,21 @@ public class Heartbeat : Global {
     private SpriteRenderer healthbar; //ref to renderer of healthbar
     private Animator heartAnimation; //ref to the animator of the heartbeat
 
-    private Digit[] digits;
+    private Digit[] digits; //ref to the digit readouts
 
     private float numHealthbarTicks; //pixel width of the healthbar
     private static float bpm = -1; //beats per minute (60 = 1 per second)
 
-    private HeartbeatAudioPlayer audioPlayer;
+    private HeartbeatAudioPlayer audioPlayer; //ref to the attached AudioPlayer
+
+    private const float audioThreshhold = 0.5f; //min change rate to hear heartbeat
+    private float changeRate = 0; //rate bpm is currently changing
+    private float timer = 0; //fade timer
+    private const float fadeTime = 6.0f; //time it takes for heartbeat audio to completely fade out
+
+
+
+    public float ChangeRate { set { changeRate = value; } }
 
     public float BPM
     {
@@ -50,8 +59,20 @@ public class Heartbeat : Global {
             SetHealth(Player.GetComponent<IHealthObject>().Health, Player.GetComponent<IHealthObject>().MaxHealth); //update health
 
             heartAnimation.speed = bpm / 60.0f; //match animation speed to bpm
-            audioPlayer.Speed = bpm / 60.0f; //match the audio speed to bpm
 
+            audioPlayer.Speed = bpm / 60.0f; //match the audio speed to bpm
+            if (changeRate > audioThreshhold)
+            {
+                timer = 0;
+            }
+            else
+            {
+                timer = Mathf.Clamp(timer + Time.deltaTime, 0, fadeTime);
+                audioPlayer.Volume -= (timer/fadeTime) * audioPlayer.Volume;
+            }
+            
+
+            //player takes damage when heartrate stops
             if(bpm < 1)
             {
                 Player.GetComponent<IHealthObject>().TakeDamage(1);
@@ -63,24 +84,37 @@ public class Heartbeat : Global {
 
     /// <summary>
     /// update the digit readouts to match bpm
+    /// aligns digit readout to right
     /// </summary>
     private void SetDigitNum()
     {
-        if(bpm >= 100)
+        //3 digits
+        if (bpm >= 100)
         {
             digits[0].SetNumber((int)(bpm / 100));
             digits[1].SetNumber((int)((bpm % 100) / 10));
             digits[2].SetNumber((int)(bpm % 10));
         }
-        else
+        //2 digits
+        else if (bpm >= 10)
         {
-            //aligns digit readout to right
             digits[0].SetNumber((int)(bpm / 10));
             digits[1].SetNumber((int)(bpm % 10));
             digits[2].SetNumber(10);
         }
+        //1 digit
+        else
+        {
+            digits[0].SetNumber((int)bpm);
+            digits[1].SetNumber(10);
+            digits[2].SetNumber(10);
+        }
     }
 
+    /// <summary>
+    /// sets the color of all the digits
+    /// </summary>
+    /// <param name="color">new Color</param>
     public void SetDigitColor(Color color)
     {
         digits[0].SetColor(color);
@@ -98,4 +132,6 @@ public class Heartbeat : Global {
         float width = (currentHealth / (float)maxHealth) * (numHealthbarTicks / (float)pixelsPerUnit); //perfectly scaled width
         healthbar.size = new Vector2(width - width % (1.0f / pixelsPerUnit), healthbar.size.y); //set healthbar size and make sure pixel size 
     }
+
+    
 }
