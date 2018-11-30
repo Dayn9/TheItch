@@ -1045,8 +1045,6 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: 91a48c7738f3eeb4ba57f2d9574edd94, type: 3}
     overrides: 0
-  - clip: {fileID: 8300000, guid: d27fcdf2fd5df5c468aa9bf7bcd13967, type: 3}
-    overrides: 1
 --- !u!82 &356277162
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2051,7 +2049,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -102412,6 +102410,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82709164512540536, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114369302653312008, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
@@ -109145,7 +109148,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4747846318752318, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -187
+      value: -188.5
       objectReference: {fileID: 0}
     - target: {fileID: 4747846318752318, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -109260,7 +109263,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: eb1712ee7b3d8704b9b080dca2674f53, type: 3}
-    overrides: 1
+    overrides: 0
+  - clip: {fileID: 8300000, guid: b37d3b2b6f516564db5dd578d7349af5, type: 3}
+    overrides: 0
 --- !u!82 &1964721292
 AudioSource:
   m_ObjectHideFlags: 0

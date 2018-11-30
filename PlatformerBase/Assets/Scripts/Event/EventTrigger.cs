@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void triggered();
@@ -15,7 +14,7 @@ public class EventTrigger : Inventory {
     public event triggered Before; //Event Triggered on player iteraction when quest incomplete
     public event triggered After; //Even Triggered on player interaction when quest complete
 
-    protected AudioPlayer audioPlayer;
+    protected AudioPlayer audioPlayer; //ref to the attached audio player
 
     protected virtual void Awake () {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
@@ -52,11 +51,16 @@ public class EventTrigger : Inventory {
         }
     }
 
+    /// <summary>
+    /// used by child classes to call Before Event
+    /// </summary>
     protected void CallBefore()
     {
         Before();
     }
-
+    /// <summary>
+    /// used by shild classes to call After Event
+    /// </summary>
     protected void CallAfter()
     {
         After();
@@ -86,11 +90,8 @@ public class EventTrigger : Inventory {
         if (!questCompleted) //only check for completion when incomplete
         {
             questCompleted = CheckItems();
-            if (!questCompleted && audioPlayer != null) {
-
-                audioPlayer.PlaySound(0); //play the null Sound
-            }
         }
+        if (audioPlayer != null) { audioPlayer.PlaySound(questCompleted ? 1 : 0); } //play audio bsed on quest completion
     }
 
     /// <summary>
@@ -98,8 +99,7 @@ public class EventTrigger : Inventory {
     /// </summary>
     /// <returns></returns>
     private bool CheckItems()
-    {
-        
+    {   
         //check if all the required items are in the players inventory
         foreach (GameObject item in itemsRequired)
         {

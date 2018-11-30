@@ -1,0 +1,56 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Blood_data" version="1.3.0" audacityversion="2.1.3" sel0="0.0000000000" sel1="0.6079459036" vpos="0" h="0.0000000000" zoom="1113.5859226379" rate="48000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="GENRE" value="Game Audio"/>
+		<tag name="Software" value="Adobe Premiere Pro 5.5"/>
+		<tag name="ALBUM" value="The Itch"/>
+		<tag name="YEAR" value="2018"/>
+		<tag name="TITLE" value="Stabbed"/>
+		<tag name="ARTIST" value="deleted_user_3277771 modified by Dane Sherman"/>
+	</tags>
+	<wavetrack name="bloodCollect" channel="0" linked="1" mute="0" solo="0" height="133" minimized="0" isSelected="0" rate="48000" gain="0.562341" pan="0.0">
+		<waveclip offset="0.00450000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="15067">
+				<waveblock start="0">
+					<simpleblockfile filename="e000040c.au" len="15067" min="-0.778962" max="0.690836" rms="0.208573"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="0.313875000000" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="bloodCollect" channel="1" linked="0" mute="0" solo="0" height="133" minimized="0" isSelected="0" rate="48000" gain="0.562341" pan="0.0">
+		<waveclip offset="0.00450000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="15067">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e07.au" len="15067" min="-0.516119" max="0.529363" rms="0.161378"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="0.313875000000" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Stabbed" channel="0" linked="1" mute="0" solo="0" height="141" minimized="0" isSelected="1" rate="48000" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="25758">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000ed4.au" len="25758" min="-0.339142" max="0.372345" rms="0.064104"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Stabbed" channel="1" linked="0" mute="0" solo="0" height="141" minimized="0" isSelected="1" rate="48000" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="25758">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000541.au" len="25758" min="-0.339142" max="0.372437" rms="0.064104"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

@@ -89,6 +89,6 @@ public class CollectableItem : Inventory
         used = true;
         moving = true;
 
-        audioPlayer.PlaySound("keyUnlock");
+        //audioPlayer.PlaySound("keyUnlock");
     }
 }
