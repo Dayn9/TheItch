@@ -19,7 +19,7 @@ public class BloodParticle : Global {
     protected bool sending; //true when particles arde being sent to a location
 
     protected Vector2 target;
-    protected Transform targetTrans;
+    protected Transform stillTarget;
 
     protected HeartbeatPower hbPower; //ref to the hearybeat power script
 
@@ -42,23 +42,6 @@ public class BloodParticle : Global {
         part.Stop();
     }
 
-    
-    public void SendParticlesTo(Vector2 target, int minNum)
-    {
-        if (useable)
-        {
-            this.target = target;
-            //emit additional particles 
-            part.Emit(minNum * particleMultiplier);
-            sentParticles = minNum * particleMultiplier;
-
-            //start sending p[articles to point
-            sending = true;
-
-            audioPlayer.PlaySound("bloodSparkle");
-        }
-    }
-
     /// <summary>
     /// Send Particles to a specified world positions
     /// </summary>
@@ -68,8 +51,35 @@ public class BloodParticle : Global {
     {
         if (useable)
         {
-            //part.Stop(); //stop all the current particles 
-            targetTrans = target;
+            stillTarget = target;
+            moving = false;
+
+            //emit additional particles 
+            part.Emit(minNum * particleMultiplier);
+            sentParticles += minNum * particleMultiplier;
+
+            //start sending p[articles to point
+            sending = true;
+
+            audioPlayer.PlaySound("bloodSparkle");
+        }
+    }
+
+    private bool moving = false;
+    private MovingObject movingTarget;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="min"></param>
+    /// <param name=""></param>
+    public void SendParticlesTo(MovingObject target, int minNum)
+    {
+        if (useable)
+        {
+            movingTarget = target;
+            moving = true;
 
             //emit additional particles 
             part.Emit(minNum * particleMultiplier);
@@ -92,7 +102,7 @@ public class BloodParticle : Global {
 
                 //loop through all particles
                 int numParticles = part.GetParticles(particles);
-                target = targetTrans.position;
+                target = moving ? (movingTarget.transform.position + (Vector3)movingTarget.MoveVelocity) : stillTarget.position;
                 for (int i = 0; i < numParticles; i++)
                 {
                     ParticleSystem.Particle particle = particles[i];
