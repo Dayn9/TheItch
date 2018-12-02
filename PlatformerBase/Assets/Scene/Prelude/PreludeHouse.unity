@@ -69428,6 +69428,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -69480,6 +69490,34 @@ Prefab:
       propertyPath: evTrigs.Array.data[0]
       value: 
       objectReference: {fileID: 212205846}
+    - target: {fileID: 1880135008475186, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651297200517884, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: rightLimit
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: leftLimit
+      value: -38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bottomLimit
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: topLimit
+      value: 61
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_IsPrefabAsset: 0
