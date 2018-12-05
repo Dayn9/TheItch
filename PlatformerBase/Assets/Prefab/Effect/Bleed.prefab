@@ -236,8 +236,10 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: 1f5a59fa81e6d1c42b2f23676cea7427, type: 3}
     priority: 0
+    loops: 1
   - clip: {fileID: 8300000, guid: b62a7f43ff7d3094d958f1c1f991b96f, type: 3}
     priority: 1
+    loops: 0
 --- !u!114 &114443264758771014
 MonoBehaviour:
   m_ObjectHideFlags: 1

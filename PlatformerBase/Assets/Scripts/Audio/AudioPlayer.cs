@@ -36,7 +36,8 @@ public class AudioPlayer : Global {
     public void PlaySound(int index)
     {
         //make sure source can play sound and 
-        if((!source.isPlaying || sounds[index].Priority >= currentPriority) && (index >= 0 && index < sounds.Length))
+        if((!source.isPlaying || (sounds[index].Priority >= currentPriority && !sounds[index].Loops)) 
+            && (index >= 0 && index < sounds.Length))
         {
             currentPriority = sounds[index].Priority;
             source.clip = sounds[index].Clip;
@@ -51,7 +52,8 @@ public class AudioPlayer : Global {
     public void PlaySound(string name)
     {
         //make sure the sound exists and able to play sound
-        if (soundDict.ContainsKey(name) && (!source.isPlaying || soundDict[name].Priority >= currentPriority))
+        if ((!source.isPlaying || (soundDict[name].Priority >= currentPriority && !soundDict[name].Loops)) 
+            && soundDict.ContainsKey(name))
         {
             currentPriority = soundDict[name].Priority;
             source.clip = soundDict[name].Clip;
@@ -87,6 +89,7 @@ public struct SoundFile
     /// </summary>
     [SerializeField] private AudioClip clip; //clip to play
     [SerializeField] private int priority; //priority given to this sound effect
+    [SerializeField] private bool loops;
     private string name; //name of the clip
 
     public string Name {
@@ -101,6 +104,7 @@ public struct SoundFile
     }
     public AudioClip Clip { get { return clip; } }
     public int Priority { get { return priority; } }
+    public bool Loops { get { return loops; } }
 }
 
 [System.Serializable]
