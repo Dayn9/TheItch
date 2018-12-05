@@ -930,7 +930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: 91a48c7738f3eeb4ba57f2d9574edd94, type: 3}
-    overrides: 0
+    priority: 0
 --- !u!82 &356277162
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1920,9 +1920,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: 8cc4b08e5f7616a44b4323c7afe26c73, type: 3}
-    overrides: 0
+    priority: 0
   - clip: {fileID: 8300000, guid: dc29bac98d2f7ee48986e28af7eaa86c, type: 3}
-    overrides: 1
+    priority: 1
 --- !u!82 &601922032
 AudioSource:
   m_ObjectHideFlags: 0
@@ -101382,15 +101382,10 @@ Prefab:
       propertyPath: heartBeatPower
       value: 
       objectReference: {fileID: 1149899384}
-    - target: {fileID: 114067799734821534, guid: 80261ec61f9ea364592b48a675de6141,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114461869609821004, guid: 80261ec61f9ea364592b48a675de6141,
         type: 2}
-      propertyPath: steps.overrides
-      value: 1
+      propertyPath: steps.priority
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
@@ -107741,7 +107736,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: 16, y: -132, z: 0}
     second:
@@ -107753,7 +107748,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   - first: {x: -10, y: -80, z: 0}
     second:
@@ -107765,7 +107760,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 2
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   - first: {x: 1, y: -71, z: 0}
     second:
@@ -107777,7 +107772,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 4
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: 5, y: -18, z: 0}
     second:
@@ -107789,7 +107784,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   - first: {x: 14, y: -18, z: 0}
     second:
@@ -107801,7 +107796,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 5
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 1
@@ -109101,9 +109096,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: eb1712ee7b3d8704b9b080dca2674f53, type: 3}
-    overrides: 0
+    priority: 0
   - clip: {fileID: 8300000, guid: b37d3b2b6f516564db5dd578d7349af5, type: 3}
-    overrides: 0
+    priority: 0
 --- !u!82 &1964721292
 AudioSource:
   m_ObjectHideFlags: 0

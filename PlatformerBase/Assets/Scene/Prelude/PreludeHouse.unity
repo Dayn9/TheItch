@@ -57053,7 +57053,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: 61, y: 2, z: 0}
     second:
@@ -57065,7 +57065,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 104, y: 5, z: 0}
     second:
@@ -57077,7 +57077,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 4
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: 168, y: 13, z: 0}
     second:
@@ -57089,7 +57089,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 116, y: 35, z: 0}
     second:
@@ -57101,7 +57101,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: 126, y: 35, z: 0}
     second:
@@ -57113,7 +57113,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 4
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 2
@@ -58880,9 +58880,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: 91a48c7738f3eeb4ba57f2d9574edd94, type: 3}
-    overrides: 0
+    priority: 0
   - clip: {fileID: 8300000, guid: b62a7f43ff7d3094d958f1c1f991b96f, type: 3}
-    overrides: 0
+    priority: 0
 --- !u!82 &636484411
 AudioSource:
   m_ObjectHideFlags: 0
@@ -59607,11 +59607,6 @@ Prefab:
       propertyPath: heartBeatPower
       value: 
       objectReference: {fileID: 1561165239}
-    - target: {fileID: 114461869609821004, guid: 80261ec61f9ea364592b48a675de6141,
-        type: 2}
-      propertyPath: sounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: f69a6f72e783432488f85f516623f110, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
   m_IsPrefabAsset: 0
@@ -65294,7 +65289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: 7c91d2a05affdf4428a6ff382ae4f619, type: 3}
-    overrides: 1
+    priority: 0
 --- !u!82 &1325057904
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65920,9 +65915,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: eb1712ee7b3d8704b9b080dca2674f53, type: 3}
-    overrides: 1
+    priority: 0
   - clip: {fileID: 8300000, guid: b37d3b2b6f516564db5dd578d7349af5, type: 3}
-    overrides: 1
+    priority: 0
 --- !u!82 &1385774842
 AudioSource:
   m_ObjectHideFlags: 0
@@ -66799,9 +66794,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: 8cc4b08e5f7616a44b4323c7afe26c73, type: 3}
-    overrides: 0
+    priority: 0
   - clip: {fileID: 8300000, guid: dc29bac98d2f7ee48986e28af7eaa86c, type: 3}
-    overrides: 1
+    priority: 0
 --- !u!82 &1494553888
 AudioSource:
   m_ObjectHideFlags: 0
@@ -67117,7 +67112,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   - first: {x: -22, y: 1, z: 0}
     second:
@@ -69549,7 +69544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: 71e77f1644afd9342a08a20bbacd8df8, type: 3}
-    overrides: 1
+    priority: 0
 --- !u!82 &1900949556
 AudioSource:
   m_ObjectHideFlags: 0

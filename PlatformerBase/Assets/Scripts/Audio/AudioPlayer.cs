@@ -15,6 +15,8 @@ public class AudioPlayer : Global {
     protected AudioSource source; //ref to the attached audioSource
     public bool Loop { set { source.loop = value; } }
 
+    protected int currentPriority = 0;
+
     private void Awake()
     {
         source = GetComponent<AudioSource>();
@@ -34,8 +36,9 @@ public class AudioPlayer : Global {
     public void PlaySound(int index)
     {
         //make sure source can play sound and 
-        if((!source.isPlaying || sounds[index].Overrides) && (index >= 0 && index < sounds.Length))
+        if((!source.isPlaying || sounds[index].Priority >= currentPriority) && (index >= 0 && index < sounds.Length))
         {
+            currentPriority = sounds[index].Priority;
             source.clip = sounds[index].Clip;
             source.Play();
         }
@@ -48,8 +51,9 @@ public class AudioPlayer : Global {
     public void PlaySound(string name)
     {
         //make sure the sound exists and able to play sound
-        if (soundDict.ContainsKey(name) && (!source.isPlaying || soundDict[name].Overrides))
+        if (soundDict.ContainsKey(name) && (!source.isPlaying || soundDict[name].Priority >= currentPriority))
         {
+            currentPriority = soundDict[name].Priority;
             source.clip = soundDict[name].Clip;
             source.Play();
         }
@@ -82,8 +86,7 @@ public struct SoundFile
     /// Contains data about sound files
     /// </summary>
     [SerializeField] private AudioClip clip; //clip to play
-    [SerializeField] private bool overrides; //true if the clip overrides current sound being played
-
+    [SerializeField] private int priority; //priority given to this sound effect
     private string name; //name of the clip
 
     public string Name {
@@ -97,7 +100,7 @@ public struct SoundFile
         }
     }
     public AudioClip Clip { get { return clip; } }
-    public bool Overrides { get { return overrides; } }
+    public int Priority { get { return priority; } }
 }
 
 [System.Serializable]
@@ -107,7 +110,7 @@ public struct SoundFiles
     /// Contains data about sound files
     /// </summary>
     [SerializeField] private AudioClip[] clips; //clip to play
-    [SerializeField] private bool overrides; //true if the clip overrides current sound being played
+    [SerializeField] private int priority; //priority give to these sound effects
 
     private string name; //name of the clip
 
@@ -124,7 +127,7 @@ public struct SoundFiles
         }
     }
     public AudioClip[] Clips { get { return clips; } }
-    public bool Overrides { get { return overrides; } }
+    public int Priority { get { return priority; } }
 }
 
 

@@ -26,6 +26,7 @@ public class HeartbeatAudioPlayer : AudioPlayer
     void Start()
     {
         //insure the corret heartbeat clip is repeating
+        currentPriority = heartbeat.Priority;
         source.clip = heartbeat.Clip;
         source.loop = true;
         source.Play();
