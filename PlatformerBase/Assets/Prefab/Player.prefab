@@ -110,7 +110,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 0.9
   Loop: 0
   Mute: 0
@@ -262,12 +262,16 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: 0846d05e87ca89f43bbca43aa6347772, type: 3}
     priority: 1
+    loops: 0
   - clip: {fileID: 8300000, guid: 2fcfed554769c6946958a56d124f2d5a, type: 3}
     priority: 1
+    loops: 0
   - clip: {fileID: 8300000, guid: f69a6f72e783432488f85f516623f110, type: 3}
     priority: 3
+    loops: 0
   - clip: {fileID: 8300000, guid: 5a5e47944906bf8498c01866f1d01f35, type: 3}
     priority: 0
+    loops: 0
   steps:
     clips:
     - {fileID: 8300000, guid: f11b7fad89aa4974885b4b8d80699bc1, type: 3}

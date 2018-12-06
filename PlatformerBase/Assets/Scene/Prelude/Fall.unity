@@ -931,6 +931,7 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: 91a48c7738f3eeb4ba57f2d9574edd94, type: 3}
     priority: 0
+    loops: 0
 --- !u!82 &356277162
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1921,8 +1922,10 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: 8cc4b08e5f7616a44b4323c7afe26c73, type: 3}
     priority: 0
+    loops: 0
   - clip: {fileID: 8300000, guid: dc29bac98d2f7ee48986e28af7eaa86c, type: 3}
     priority: 1
+    loops: 0
 --- !u!82 &601922032
 AudioSource:
   m_ObjectHideFlags: 0
@@ -101385,7 +101388,7 @@ Prefab:
     - target: {fileID: 114461869609821004, guid: 80261ec61f9ea364592b48a675de6141,
         type: 2}
       propertyPath: steps.priority
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
@@ -109097,8 +109100,10 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: eb1712ee7b3d8704b9b080dca2674f53, type: 3}
     priority: 0
+    loops: 0
   - clip: {fileID: 8300000, guid: b37d3b2b6f516564db5dd578d7349af5, type: 3}
     priority: 0
+    loops: 0
 --- !u!82 &1964721292
 AudioSource:
   m_ObjectHideFlags: 0

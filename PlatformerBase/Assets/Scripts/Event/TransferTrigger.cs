@@ -21,6 +21,9 @@ public class TransferTrigger : IndicatorTrigger
     [SerializeField] private Sprite mouseOffSprite;
     [SerializeField] private Sprite mouseOnSprite;
 
+    [SerializeField] private Texture2D cursor;
+    [SerializeField] private Texture2D cursorH;
+
     private bool containsMouse = false;
 
     private void Start()
@@ -79,7 +82,10 @@ public class TransferTrigger : IndicatorTrigger
             GetComponent<SpriteRenderer>().sprite = mouseOnSprite;
             indicator.SetActive(true);
 
-            if (!containsMouse) { audioPlayer.PlaySound(0); }//play the hover sound
+            if (!containsMouse) {
+                Cursor.SetCursor(cursorH, Vector2.zero, CursorMode.Auto);
+                audioPlayer.PlaySound(0); //play the hover sound
+            } 
 
             if (active && !transfering && !FullyHealed)
             {
@@ -97,31 +103,20 @@ public class TransferTrigger : IndicatorTrigger
         else {
             GetComponent<SpriteRenderer>().sprite = mouseOffSprite;
             indicator.SetActive(false);
-            containsMouse = false;
+            if (containsMouse)
+            {
+                Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+                containsMouse = false;
+            }
+            
         }
     }
 
-
-
-
     protected override void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.tag == "AbilityOne") //trigger dialogue when player touches 
+        if (coll.tag == "Player") //trigger sound when player enters 
         {
-            //indicator.SetActive(true);
-            /*
-            if(!transfering && !FullyHealed)
-            {
-                transfering = true;
-                Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
-                Player.GetComponent<IPlayer>().Power.SetDamageColor(true);
-
-                Player.GetComponent<IHealthObject>().TakeDamage(0); //triggers the damage animation
-                CallBefore();
-
-                coll.GetComponentInParent<AbilityTransfer>().SendParticlesTo(transform.position, healthObj.MaxHealth);
-            }
-            //playerTouching = true;*/
+            if (!containsMouse) { audioPlayer.PlaySound(0); }
         }
     }
 
