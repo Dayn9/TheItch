@@ -75,6 +75,10 @@ public class AudioPlayer : Global {
         }
     }
 
+    /// <summary>
+    /// set the mute state of the attached audioPlayer
+    /// </summary>
+    /// <param name="mute"></param>
     public void Mute(bool mute)
     {
         source.mute = mute;

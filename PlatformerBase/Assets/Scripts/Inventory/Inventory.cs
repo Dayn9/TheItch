@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// add on to Global for classes that interact with inventory 
-/// </summary>
 public class Inventory : Global {
+
+    /// <summary>
+    /// add on to Global for classes that interact with inventory 
+    /// </summary>
 
     private static Dictionary<string, GameObject> items; //player inventory
 

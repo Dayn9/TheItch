@@ -2,10 +2,11 @@
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Keeps track of common global variables that objects need access to
-/// </summary>
 public class Global : MonoBehaviour {
+
+    /// <summary>
+    /// Keeps track of common global variables that objects need access to
+    /// </summary>
 
     #region global variables
     private static GameObject mainCamera; //Main Camera object in scene
