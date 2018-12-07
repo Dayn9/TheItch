@@ -1,5 +1,13 @@
 # TheItch
-*The Itch* is a 2D platformer about heartrate and health developed using Unity C#. 
+*The Itch* is a 2D platformer about heartrate and health developed using Unity C#. I've been working on this project since the summer of 2018. 
+
+## Demo
+A free demo of the game can be found [Here](https://people.rit.edu/dms7827/games/TheItch/Build/index.html "Demo") on my personal website
+It works best in firefox 
+
+## Links
+* Check out the [Wiki](https://github.com/Dayn9/TheItch/wiki "Wiki") for feature and implementation documentation 
+* Check out my [Trello](https://trello.com/b/McqO6zw9/the-itch "Trello") to check on progress 
 
 ![TitleImange](https://people.rit.edu/dms7827/images/TheItchTitle.png "The Itch")
 
@@ -14,4 +22,3 @@ A virus has spread around the world that causes it's host to break out in rashes
 
 ## Dane Sherman
 I'm Game Design & Develoment and Psychology student at the Rochester Intstitute of Technology. 
-I've been working on this project in my free time between classes since June 2018. 
