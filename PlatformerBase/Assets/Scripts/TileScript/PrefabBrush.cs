@@ -33,6 +33,7 @@ public class PrefabBrush : GridBrushBase
         }
     }
 
+    [ExecuteInEditMode]
     public override void Paint(GridLayout grid, GameObject brushTarget, Vector3Int position)
     {
         // Do not allow editing palettes
@@ -45,15 +46,14 @@ public class PrefabBrush : GridBrushBase
             //set the undo properties
             Undo.MoveGameObjectToScene(instance, brushTarget.scene, "Paint Prefabs");
             Undo.RegisterCreatedObjectUndo((Object)instance, "Paint Prefabs");
-            instance.transform.position = grid.LocalToWorld(grid.CellToLocalInterpolated(position + new Vector3(.5f, .5f, .5f)));
+
+            instance.transform.position = grid.LocalToWorld(grid.CellToLocalInterpolated(position + new Vector3(.5f, .5f, .5f))); 
             if (item)
             {
                 instance.transform.SetParent(ItemsParent.transform);
-                //instance.name = ItemName();
                 return;
             }
             instance.transform.SetParent(brushTarget.transform);
-            
         }
     }
 
@@ -62,6 +62,11 @@ public class PrefabBrush : GridBrushBase
         // Do not allow editing palettes
         if (brushTarget.layer == 31)
             return;
+
+        if (item)
+        {
+            brushTarget = ItemsParent;
+        }
 
         Transform erased = GetObjectInCell(gridLayout, brushTarget.transform, position);
         if(erased != null)
@@ -83,24 +88,6 @@ public class PrefabBrush : GridBrushBase
             if (bounds.Contains(child.position)) { return child; }
         }
         return null;
-    }
-
-    [ExecuteInEditMode]
-    private string ItemName()
-    {
-        int childCount = ItemsParent.transform.childCount;
-        int highestItemNum = -1;
-        for (int i = 0; i < childCount; i++)
-        {
-            string name = itemsParent.transform.GetChild(i).name;
-            if(name.Substring(0, prefab.name.Length) == prefab.name)
-            {
-                int childNum = int.Parse(name);
-                if(childNum > highestItemNum) { highestItemNum = childNum; }
-            }
-        }
-        Debug.Log(prefab.name + (highestItemNum + 1));
-        return prefab.name + (highestItemNum + 1);
     }
 
     #if UNITY_EDITOR
