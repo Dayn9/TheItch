@@ -15,6 +15,24 @@ public class PrefabBrush : GridBrushBase
     [SerializeField] private GameObject prefab; //prefab to create
     [SerializeField] private bool item; //true if prefab is an item
 
+    private static GameObject itemsParent; //ref to the items parent gameobject
+
+    //get / find / create the itemsParent game object
+    [ExecuteInEditMode]
+    private GameObject ItemsParent
+    {
+        get
+        {
+            if(itemsParent != null) { return itemsParent; } //ref exists 
+            itemsParent = GameObject.Find("Items"); //need to find ref
+            if (itemsParent != null) { return itemsParent; }
+            itemsParent = Instantiate(new GameObject()); //need to create ref
+            itemsParent.name = "Items";
+            itemsParent.AddComponent<AudioPlayer>();
+            return itemsParent;
+        }
+    }
+
     public override void Paint(GridLayout grid, GameObject brushTarget, Vector3Int position)
     {
         // Do not allow editing palettes
@@ -30,7 +48,9 @@ public class PrefabBrush : GridBrushBase
             instance.transform.position = grid.LocalToWorld(grid.CellToLocalInterpolated(position + new Vector3(.5f, .5f, .5f)));
             if (item)
             {
-                //mak a new Items gameObject
+                instance.transform.SetParent(ItemsParent.transform);
+                //instance.name = ItemName();
+                return;
             }
             instance.transform.SetParent(brushTarget.transform);
             
@@ -57,36 +77,41 @@ public class PrefabBrush : GridBrushBase
         Bounds bounds = new Bounds((max + min) * 0.5f, max - min);
 
         int children = parent.childCount;
-        for(int i = 0; i< children; i++)
+        for (int i = 0; i < children; i++)
         {
             Transform child = parent.GetChild(i);
             if (bounds.Contains(child.position)) { return child; }
         }
         return null;
     }
-}
 
-[CustomEditor(typeof(PrefabBrush))]
-public class PrefabBrushEditor : GridBrushEditorBase
-{
-    private PrefabBrush prefabBrush { get { return target as PrefabBrush; } }
-
-    private SerializedProperty Prefab;
-    private SerializedObject SerializedObject;
-    private SerializedProperty Item;
-
-    protected void OnEnable()
+    [ExecuteInEditMode]
+    private string ItemName()
     {
-        SerializedObject = new SerializedObject(target);
-        Prefab = SerializedObject.FindProperty("Prefab");
-        Item = SerializedObject.FindProperty("Item");
+        int childCount = ItemsParent.transform.childCount;
+        int highestItemNum = -1;
+        for (int i = 0; i < childCount; i++)
+        {
+            string name = itemsParent.transform.GetChild(i).name;
+            if(name.Substring(0, prefab.name.Length) == prefab.name)
+            {
+                int childNum = int.Parse(name);
+                if(childNum > highestItemNum) { highestItemNum = childNum; }
+            }
+        }
+        Debug.Log(prefab.name + (highestItemNum + 1));
+        return prefab.name + (highestItemNum + 1);
     }
 
-    public override void OnPaintInspectorGUI()
+    #if UNITY_EDITOR
+    //create asset menu for prefab brush
+    [MenuItem("Assets/Create/PrefabBrush")]
+    public static void CreatePrefabBrush()
     {
-        SerializedObject.UpdateIfRequiredOrScript();
-        EditorGUILayout.PropertyField(Prefab, true);
-        EditorGUILayout.PropertyField(Item, true);
-        SerializedObject.ApplyModifiedPropertiesWithoutUndo();
+        string path = EditorUtility.SaveFilePanelInProject("Save PrefabBrush", "New PrefabBrush", "asset", "Save PrefabBrush", "Assets");
+        if (path == "") { return; }
+
+        AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<PrefabBrush>(), path);
     }
+    #endif
 }
