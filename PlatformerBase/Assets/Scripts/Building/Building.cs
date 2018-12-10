@@ -53,11 +53,13 @@ public class Building : Global {
         {
             fade.EnableFade(myRenderers);
             fade.EnableFade(Player.GetComponent<Renderer>());
+            fade.EnableFade(MainCamera.GetComponentsInChildren<Renderer>());
         }
         else
         {
             fade.DisableFade(myRenderers);
             fade.DisableFade(Player.GetComponent<Renderer>());
+            fade.DisableFade(MainCamera.GetComponentsInChildren<Renderer>());
         }
 
         //go back a layer
