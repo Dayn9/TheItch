@@ -45,8 +45,6 @@ public class FallZone : Global {
         //select the first two fall sections to be displayed
         topFallSection = fallSections[0];
         bottomFallSection = fallSections[1];
-
-        
     }
 
     private void Start()

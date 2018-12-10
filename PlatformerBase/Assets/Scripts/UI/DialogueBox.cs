@@ -114,7 +114,6 @@ public class DialogueBox : Pause {
     {
         OnTriggerKeyPressed(message);
         charachterImage.sprite = face;
-
     }
 
     /// <summary>
@@ -154,13 +153,13 @@ public class DialogueBox : Pause {
             GetComponent<TextboxEvent>().MoveOut();
             return;
         }
-        Reset();
+        this.Reset();
     }
 
     /// <summary>
     /// exit out of the dialogue and reset it back to the beginning 
     /// </summary>
-    public void Reset()
+    public virtual void Reset()
     {
         dialogueChunk = -1; //reset dialogue
         SetAllRenderers(false);

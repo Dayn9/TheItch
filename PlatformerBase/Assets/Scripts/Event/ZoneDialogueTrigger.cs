@@ -24,6 +24,7 @@ public class ZoneDialogueTrigger : ZoneTrigger {
         {
             CallBefore();
             playerTouching = true;
+            dialogueBox.Reset(); //make sure the dialogue box is wipeed
             dialogueBox.OnTriggerKeyPressed(enterDialogue);
         }
     }

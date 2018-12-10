@@ -4359,7 +4359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsRequired: []
   itemsEaten: 0
-  dialogueBox: {fileID: 1045997147}
+  dialogueBox: {fileID: 1762118547}
   enterDialogue: 'The virus first appeared 2 years ago in a small farming village.
     the entire village developed skin rashes and became unable to work because of
     the pain.  '
@@ -92882,12 +92882,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1045997147 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114234621822061746, guid: efe8d3421c638854e9020fd5d02a8bf8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1663279356}
-  m_Script: {fileID: 11500000, guid: 3b3d8e701954e214fb76e053db694276, type: 3}
 --- !u!114 &1059279781 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
@@ -93747,7 +93741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsRequired: []
   itemsEaten: 0
-  dialogueBox: {fileID: 1045997147}
+  dialogueBox: {fileID: 1762118547}
   enterDialogue: 'Scientists discovered that the virus lives in the bloodstream and
     that a high heartrate would prevent the virus from causing rashes, so People began
     exercising more. but the virus continued to spread. '
@@ -102170,6 +102164,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -102252,6 +102251,26 @@ Prefab:
       propertyPath: evTrigs.Array.data[0]
       value: 
       objectReference: {fileID: 1785448006}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: rightLimit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: leftLimit
+      value: -27
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bottomLimit
+      value: -188
+      objectReference: {fileID: 0}
+    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: topLimit
+      value: 33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_IsPrefabAsset: 0
@@ -103356,6 +103375,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1762118547 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114201275773291352, guid: efe8d3421c638854e9020fd5d02a8bf8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1663279356}
+  m_Script: {fileID: 11500000, guid: 7713678c7d81d5347ba673a4d45c73f1, type: 3}
 --- !u!1 &1772847487
 GameObject:
   m_ObjectHideFlags: 0
@@ -103403,7 +103428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsRequired: []
   itemsEaten: 0
-  dialogueBox: {fileID: 1045997147}
+  dialogueBox: {fileID: 1762118547}
   enterDialogue: Many explorers traveled into the caverns in search of the doctor
     but none succeeded. With no cure, the virus continued to spread around the world.
     They call it... THE ITCH
@@ -108966,7 +108991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsRequired: []
   itemsEaten: 0
-  dialogueBox: {fileID: 1045997147}
+  dialogueBox: {fileID: 1762118547}
   enterDialogue: 'One doctor claimed he had developed a cure that would destroy the
     virus forever. A few days later he disappeared without ever revealing the cure
 

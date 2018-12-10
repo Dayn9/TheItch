@@ -29,9 +29,9 @@ public class DialogueScrollBox : DialogueBox
         //make sure there are chunks of dialogue to display
         if (chunks.Count != 0)
         {
-            if (scroll)
+            if (currentLetterIndex < totallChunkLength)
             {
-                Skip();
+                currentLetterIndex = totallChunkLength;
                 return;
             }
 
@@ -45,6 +45,18 @@ public class DialogueScrollBox : DialogueBox
             }
             DisplayChunk(chunks[dialogueChunk]);
         }
+    }
+
+
+    /// <summary>
+    /// exit out of the dialogue and reset it back to the beginning 
+    /// </summary>
+    public override void Reset()
+    {
+        totallChunkLength = 0;
+        currentLetterIndex = 0;
+        scroll = false;
+        base.Reset();
     }
 
     protected override void DisplayChunk(string message)
@@ -62,11 +74,6 @@ public class DialogueScrollBox : DialogueBox
         {
             Debug.Log("message has more than" + (numLines * charsPerLine) + "charachters");
         }
-    }
-
-    public void Skip()
-    {
-        currentLetterIndex = totallChunkLength;
     }
 
     private void Update()

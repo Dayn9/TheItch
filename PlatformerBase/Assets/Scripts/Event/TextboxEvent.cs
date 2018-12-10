@@ -93,7 +93,6 @@ public class TextboxEvent : EventTrigger
     {
         targetPos = visiblePosition;
         transform.localPosition = visiblePosition + animatedOffset;
-
         moveIn = true;
     }
 
