@@ -9,18 +9,18 @@ public enum TextSize { Small, Large, SmallFull }
 public class DialogueBox : Pause {
     
     [SerializeField] private GameObject charPrefab; //gameobject prefab for individual letters
-    [SerializeField] private TextSize size; //size of the text to display 
-    [SerializeField] private Sprite[] letters; //array of all possible letter sprites
+    [SerializeField] protected TextSize size; //size of the text to display 
+    [SerializeField] protected Sprite[] letters; //array of all possible letter sprites
 
     private SpriteRenderer charachterImage; //ref to spriteRenderer of the image location 
-    private List<SpriteRenderer> text; //refs to the spriteRenderers of the letter locations
+    protected List<SpriteRenderer> text; //refs to the spriteRenderers of the letter locations
 
-    private int numLines; //number of lines in the dialoge box
-    private int charsPerLine; //number of charachters in each line
+    protected int numLines; //number of lines in the dialoge box
+    protected int charsPerLine; //number of charachters in each line
     private Vector2 initialOffset;
     private Vector2 offset;
-    private int dialogueChunk; //which chunk of dialogue is currently being displayed
-    private List<string> chunks; //chunks of dialogue that are displayed one at a time
+    protected int dialogueChunk; //which chunk of dialogue is currently being displayed
+    protected List<string> chunks; //chunks of dialogue that are displayed one at a time
 
     [SerializeField] private Color letterColor;
    
@@ -121,7 +121,7 @@ public class DialogueBox : Pause {
     /// display the next chunk of dialogue and an image in the dialogue box
     /// </summary>
     /// <param name="message">full message to display</param>
-    public void OnTriggerKeyPressed(string message)
+    public virtual void OnTriggerKeyPressed(string message)
     {
         SetAllRenderers(true);
         audioPlayer.PlaySound(0);
@@ -211,7 +211,7 @@ public class DialogueBox : Pause {
     /// sets the images for each of the individual charachters in the dialogue box
     /// </summary>
     /// <param name="message">charachters to display</param>
-    private void DisplayChunk(string message)
+    protected virtual void DisplayChunk(string message)
     {
         //make sure message is valid
         if (message.Length <= (numLines * charsPerLine))
@@ -255,7 +255,7 @@ public class DialogueBox : Pause {
     }
 
 
-    private void SetAllRenderers(bool enable)
+    protected void SetAllRenderers(bool enable)
     {
         GetComponent<SpriteRenderer>().enabled = enable;
         charachterImage.enabled = enable;

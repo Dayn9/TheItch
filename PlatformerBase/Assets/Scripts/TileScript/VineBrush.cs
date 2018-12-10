@@ -10,8 +10,6 @@ public class VineBrush : GridBrushBase
 {
     [SerializeField] private GameObject transferPrefab;
 
-    private bool startVine = true; //true when this is the first tile being placed
-
     //transform parent references 
     private static GameObject transferParent;
     private static GameObject vinesParent;
@@ -28,7 +26,6 @@ public class VineBrush : GridBrushBase
 
             instance.transform.position = grid.LocalToWorld(grid.CellToLocalInterpolated(position + new Vector3(.5f, .5f, .5f)));
             instance.transform.SetParent(brushTarget.transform);
-            startVine = false;
         }
         
     }
