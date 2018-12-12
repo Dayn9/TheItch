@@ -6,8 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class RestorePickup : BloodParticle {
 
-    //TODO MAKE GENERAL BASE CLASS FOR PARTICLES THAT HAS SEND TO POINT METHOD
-
     private const int restoreAmount = 10;
 
     private BoxCollider2D zone;

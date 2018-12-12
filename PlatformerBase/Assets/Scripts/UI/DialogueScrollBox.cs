@@ -65,7 +65,7 @@ public class DialogueScrollBox : DialogueBox
         if (message.Length <= (numLines * charsPerLine))
         {
             recievedMessage = message.ToLower();
-            totallChunkLength = message.Length;
+            totallChunkLength = message.TrimEnd(' ').Length; //length of actual message
             currentLetterIndex = 0;
             scroll = true;
         }
@@ -87,7 +87,7 @@ public class DialogueScrollBox : DialogueBox
                 scroll = false;
             }
 
-            for (int i = 0; i < totallChunkLength; i++)
+            for (int i = 0; i < (numLines * charsPerLine); i++)
             {
                 char letter = recievedMessage[i];
                 int spriteNum = 12; //default to blank space in case of unassign char
