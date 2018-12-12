@@ -57,10 +57,8 @@ public class TransferTrigger : IndicatorTrigger
             if (transfering)
             {
                 indicator.SetActive(true);
-                Player.GetComponent<IPlayer>().Power.SetDamageColor(true);
                 if (FullyHealed)
                 {
-                    Player.GetComponent<IPlayer>().Power.SetDamageColor(false);
                     CallAfter();
                     transfering = false;
                 }
@@ -91,7 +89,6 @@ public class TransferTrigger : IndicatorTrigger
             {
                 transfering = true;
                 Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
-                Player.GetComponent<IPlayer>().Power.SetDamageColor(true);
 
                 Player.GetComponent<IHealthObject>().TakeDamage(0); //triggers the damage animation
                 CallBefore();

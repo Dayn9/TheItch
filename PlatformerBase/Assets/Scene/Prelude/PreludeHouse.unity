@@ -58196,7 +58196,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   - first: {x: 61, y: 2, z: 0}
     second:
@@ -58208,7 +58208,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 2
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: 104, y: 5, z: 0}
     second:
@@ -58220,7 +58220,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 4
+      m_AnimationTimeOffset: 5
       m_IsLooping: 1
   - first: {x: 168, y: 13, z: 0}
     second:
@@ -58232,7 +58232,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 5
       m_IsLooping: 1
   - first: {x: 116, y: 35, z: 0}
     second:
@@ -58244,7 +58244,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: 126, y: 35, z: 0}
     second:
@@ -60991,6 +60991,11 @@ Prefab:
       propertyPath: heartBeatPower
       value: 
       objectReference: {fileID: 1561165239}
+    - target: {fileID: 198604776603993230, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: NoiseModule.damping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
   m_IsPrefabAsset: 0
@@ -68904,7 +68909,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 4
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: -22, y: 1, z: 0}
     second:
@@ -72108,6 +72113,41 @@ Prefab:
       propertyPath: evTrigs.Array.data[0]
       value: 
       objectReference: {fileID: 212205846}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bpmReadoutHeal.r
+      value: 0.7960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bpmReadoutHeal.g
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bpmReadoutHeal.b
+      value: 0.17254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bpmReadoutHeal.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bpmReadoutDamage.r
+      value: 0.9568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bpmReadoutDamage.g
+      value: 0.5058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: bpmReadoutDamage.b
+      value: 0.30980393
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_IsPrefabAsset: 0

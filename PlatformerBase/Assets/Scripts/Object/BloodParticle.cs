@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BloodParticle : Global {
+public abstract class BloodParticle : Global {
 
     [SerializeField] private float particleSpeed;
     private const int particleMultiplier = 3;
@@ -10,7 +10,7 @@ public class BloodParticle : Global {
     /// <summary>
     /// methods and properties for controlling the movement of blood particles
     /// </summary>
-    /// 
+
     protected ParticleSystem part; //ref to this objects particle system
     protected ParticleSystemRenderer partRend;
     protected ParticleSystem.Particle[] particles; //array of particles being controlled 
@@ -19,7 +19,9 @@ public class BloodParticle : Global {
     protected bool sending; //true when particles arde being sent to a location
 
     protected Vector2 target;
+    private bool moving = false;
     protected Transform stillTarget;
+    private MovingObject movingTarget;
 
     protected HeartbeatPower hbPower; //ref to the hearybeat power script
 
@@ -45,7 +47,7 @@ public class BloodParticle : Global {
     /// <summary>
     /// Send Particles to a specified world positions
     /// </summary>
-    /// <param name="targets">target positions</param>
+    /// <param name="target">target positions</param>
     /// <param name="minNum">minimum number of particles</param>
     public void SendParticlesTo(Transform target, int minNum)
     {
@@ -65,15 +67,11 @@ public class BloodParticle : Global {
         }
     }
 
-    private bool moving = false;
-    private MovingObject movingTarget;
-
     /// <summary>
     /// 
     /// </summary>
     /// <param name="target"></param>
     /// <param name="min"></param>
-    /// <param name=""></param>
     public void SendParticlesTo(MovingObject target, int minNum)
     {
         if (useable)

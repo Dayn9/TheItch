@@ -16,6 +16,7 @@ public class HeartbeatPower : Global {
 
     [SerializeField] private Color bpmReadoutNormal; //base color of BPM readout
     [SerializeField] private Color bpmReadoutDamage; //color of BPM readoutr when damaged
+    [SerializeField] private Color bpmReadoutHeal; //color of BPM raeadout when healing
 
     public Heartbeat Heartbeat { get {
             if(heartbeat == null) { heartbeat = GetComponent<Heartbeat>(); }
@@ -37,16 +38,7 @@ public class HeartbeatPower : Global {
     {
         heartbeat.SetDigitColor(bpmReadoutNormal);
     }
-
-    /// <summary>
-    /// update the color of the BPM readout
-    /// </summary>
-    /// <param name="damage">true if player is taking damage</param>
-    public void SetDamageColor(bool damage) 
-    {
-        heartbeat.SetDigitColor(damage ? bpmReadoutDamage : bpmReadoutNormal);
-    }
-
+    
     /// <summary>
     /// increase target BPM
     /// </summary>
@@ -77,10 +69,12 @@ public class HeartbeatPower : Global {
             if (difference * Mathf.Sign(difference) < deltaHeartRate * Time.deltaTime)
             {
                 heartbeat.BPM = targetBPM;
+                heartbeat.SetDigitColor(bpmReadoutNormal);
             }
             else
             {
                 heartbeat.BPM += Mathf.Sign(difference) * deltaHeartRate * Time.deltaTime;
+                heartbeat.SetDigitColor(Mathf.Sign(difference) > 0 ? bpmReadoutHeal : bpmReadoutDamage);
             }
 
         }
