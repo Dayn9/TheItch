@@ -16,7 +16,6 @@ public class UnlockText : Global {
 
     private SpriteRenderer render;
 
-
     private void Awake()
     {
         timer = timeActive;
@@ -47,6 +46,7 @@ public class UnlockText : Global {
 
     public void ShowText()
     {
+        render.enabled = true;
         timer = 0;
     }
 

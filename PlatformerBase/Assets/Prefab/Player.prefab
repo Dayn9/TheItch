@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7b63e21f35e064086c8f6a9e0103a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityOnePrefab: {fileID: 1873573271058534, guid: 327866135c5615a4dbec87289a2a7cc7,
+  abilityZeroPrefab: {fileID: 1873573271058534, guid: 327866135c5615a4dbec87289a2a7cc7,
     type: 2}
 --- !u!114 &114207416268906584
 MonoBehaviour:
@@ -300,7 +300,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 0

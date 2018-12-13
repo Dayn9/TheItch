@@ -35,9 +35,18 @@ public class AbilityHandler : Global {
         if(unlockedAbilities == null)
         {
             unlockedAbilities = new bool[1]; //SET number of abilities here
-            for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
+            LockAll();
         }
     }
+
+    /// <summary>
+    /// set all the abilities to locked
+    /// </summary>
+    public void LockAll()
+    {
+        for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
+    }
+
 
     /// <summary>
     /// used to unlock a specific ability the player can posess

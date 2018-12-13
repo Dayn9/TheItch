@@ -11,12 +11,14 @@ public class AbilityUnlock : BloodParticle {
     [SerializeField] private UnlockText text;
 
     private SpriteRenderer render;
+    private Collider2D coll;
 
     protected override void Awake()
     {
         base.Awake();
         render = GetComponent<SpriteRenderer>();
         audioPlayer = GetComponentInParent<AudioPlayer>();
+        coll = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -33,6 +35,7 @@ public class AbilityUnlock : BloodParticle {
             render.enabled = false;
             SendParticlesTo(Player.GetComponent<MovingObject>(), numParticles);
             text.ShowText();
+            coll.enabled = false;
             part.Play();
         }
     }

@@ -4,6 +4,7 @@
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Reseter))]
 [RequireComponent(typeof(PlayerAudioPlayer))]
+[RequireComponent(typeof(AbilityHandler))]
 public class Jump : PhysicsObject, IHealthObject, IPlayer
 {
     # region private fields

@@ -13,6 +13,7 @@ public class Reseter : Inventory {
     {
         Player.GetComponent<IHealthObject>().FullHeal(); //fully heal the player
         Player.GetComponent<IPlayer>().Power.Heartbeat.BPM = 81; //set the BPM to default value to be set in first scene
+        Player.GetComponent<AbilityHandler>().LockAll(); //re lock all the abilities
         Items.Clear();
         startPosition = Vector2.one;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
