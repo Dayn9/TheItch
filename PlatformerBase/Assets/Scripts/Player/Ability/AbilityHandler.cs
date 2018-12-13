@@ -45,6 +45,7 @@ public class AbilityHandler : Global {
     public void LockAll()
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
+        Unlock(0); //automatically unlock the first ability
     }
 
 
