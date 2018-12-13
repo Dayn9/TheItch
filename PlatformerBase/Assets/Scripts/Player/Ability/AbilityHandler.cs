@@ -37,6 +37,15 @@ public class AbilityHandler : Global {
             unlockedAbilities = new bool[1]; //SET number of abilities here
             LockAll();
         }
+        else
+        {
+            if (unlockedAbilities[0])
+            {
+                powerZero.gameObject.SetActive(true);
+            }
+        }
+
+
     }
 
     /// <summary>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Tilemaps;
-
+/*
 [CreateAssetMenu(fileName = "Vine Brush", menuName = "Brushes/Vine Brush")]
 [CustomGridBrush(false, true, false, "Vine Brush")]
 public class VineBrush : GridBrushBase
@@ -30,3 +30,4 @@ public class VineBrush : GridBrushBase
         
     }
 }
+*/
