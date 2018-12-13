@@ -102,6 +102,7 @@ MonoBehaviour:
   particleSpeed: 60
   numParticles: 20
   abilityUnlocked: 0
+  text: {fileID: 0}
 --- !u!198 &198574538471670682
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -181,7 +182,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 7
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2

@@ -8,6 +8,7 @@ public class AbilityUnlock : BloodParticle {
 
     [SerializeField] private int numParticles;
     [SerializeField] private int abilityUnlocked;
+    [SerializeField] private UnlockText text;
 
     private SpriteRenderer render;
 
@@ -15,7 +16,6 @@ public class AbilityUnlock : BloodParticle {
     {
         base.Awake();
         render = GetComponent<SpriteRenderer>();
-
         audioPlayer = GetComponentInParent<AudioPlayer>();
     }
 
@@ -28,10 +28,11 @@ public class AbilityUnlock : BloodParticle {
     {
         if(collision.tag == "Player")
         {
+            audioPlayer.PlaySound(0);
             Player.GetComponent<AbilityHandler>().Unlock(abilityUnlocked);
             render.enabled = false;
             SendParticlesTo(Player.GetComponent<MovingObject>(), numParticles);
-
+            text.ShowText();
             part.Play();
         }
     }
