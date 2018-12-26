@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioPlayer))]
 public class BuildingMulti : Global
 {
-
     [SerializeField] private GameObject Exterior; //Exterior Tilemap
     [SerializeField] private BuildingMultiLayer[] Interiors; //Interior layer tilemaps and joining doors
     [SerializeField] [Range(0.0f, 1.0f)] private float doorAboveAlpha; //alpha when door leads back a layer
@@ -61,7 +60,7 @@ public class BuildingMulti : Global
             fade.EnableFade(Player.GetComponent<Renderer>());
             fade.EnableFade(MainCamera.GetComponentsInChildren<Renderer>());
         }
-        else
+        else if (layer == 0)
         {
             fade.DisableFade(myRenderers);
             fade.DisableFade(Player.GetComponent<Renderer>());

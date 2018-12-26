@@ -55,7 +55,7 @@ public class Building : Global {
             fade.EnableFade(Player.GetComponent<Renderer>());
             fade.EnableFade(MainCamera.GetComponentsInChildren<Renderer>());
         }
-        else
+        else if (layer == 0)
         {
             fade.DisableFade(myRenderers);
             fade.DisableFade(Player.GetComponent<Renderer>());
