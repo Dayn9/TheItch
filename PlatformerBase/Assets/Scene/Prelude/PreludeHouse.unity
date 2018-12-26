@@ -59030,6 +59030,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 875449099}
     m_Modifications:
+    - target: {fileID: 114791011543130906, guid: b3ca14d092ec35c4fa2720aeae9513c5,
+        type: 2}
+      propertyPath: Interiors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791011543130906, guid: b3ca14d092ec35c4fa2720aeae9513c5,
+        type: 2}
+      propertyPath: Interiors.Array.data[0].doors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4795782693718888, guid: b3ca14d092ec35c4fa2720aeae9513c5, type: 2}
       propertyPath: m_LocalPosition.x
       value: 45
@@ -59307,6 +59317,16 @@ Prefab:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[25].Y
       value: 50000000
       objectReference: {fileID: 0}
+    - target: {fileID: 114791011543130906, guid: b3ca14d092ec35c4fa2720aeae9513c5,
+        type: 2}
+      propertyPath: Interiors.Array.data[0].doors.Array.data[0]
+      value: 
+      objectReference: {fileID: 2081874881}
+    - target: {fileID: 114791011543130906, guid: b3ca14d092ec35c4fa2720aeae9513c5,
+        type: 2}
+      propertyPath: Interiors.Array.data[0].layer
+      value: 
+      objectReference: {fileID: 926050934}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ca14d092ec35c4fa2720aeae9513c5, type: 2}
   m_IsPrefabAsset: 0
@@ -59475,6 +59495,11 @@ Transform:
   m_Father: {fileID: 1385774840}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &926050934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1752515291285844, guid: b3ca14d092ec35c4fa2720aeae9513c5,
+    type: 2}
+  m_PrefabInternal: {fileID: 876532282}
 --- !u!1 &928960764
 GameObject:
   m_ObjectHideFlags: 0
@@ -70106,6 +70131,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6223b1abdb5000a41bd6833a46cd0787, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &2081874881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1730502706405814, guid: b3ca14d092ec35c4fa2720aeae9513c5,
+    type: 2}
+  m_PrefabInternal: {fileID: 876532282}
 --- !u!1 &2108247657
 GameObject:
   m_ObjectHideFlags: 0
