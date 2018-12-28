@@ -10,6 +10,7 @@ public interface IPlayer{
     HeartbeatPower Power { get; } //ref to heartbeatPower Component
     bool InFallZone { set; }
     bool Frozen { set; }
+    bool CanSprint { set; }
 
     /// <summary>
     /// occurs when the player falls off the map

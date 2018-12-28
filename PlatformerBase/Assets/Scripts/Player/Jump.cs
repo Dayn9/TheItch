@@ -8,6 +8,7 @@
 public class Jump : PhysicsObject, IHealthObject, IPlayer
 {
     # region private fields
+    [Header("Movement")]
     [SerializeField] private float moveSpeed; //how fast the object can move
 
     [SerializeField] private float jumpSpeed; //initial jump speed
@@ -19,6 +20,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     private Animator animator; //reference to attached animator component
     private SpriteRenderer render; //attached sprite renderer
 
+    [Header("Health")]
     [SerializeField] private int maxHealth; //maximum health of the player
     private int health; //health of the object
     [SerializeField] private float invulnerabilityTime; //how long the invulnerability timer lasts
@@ -27,15 +29,20 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     private bool touchingLadder; //true when player is touching the ladder
     protected bool climbing;
+    
+    [Header ("Sprinting")]
+    [SerializeField] private bool canSprint; //true when the player is able to sprint
+    [SerializeField] private float sprintMoveSpeed; //movement speed while sprinting
+    [SerializeField] private float sprintJumpSpeed; //jump speed while sprinting
+    private bool sprinting = false; //true when the player is sprinting
 
-    [SerializeField] private bool canSprint; 
-    [SerializeField] private float sprintSpeed;
-
-    [SerializeField] private HeartbeatPower heartBeatPower;
+    [Header("Heartrate ")]
+    [SerializeField] private HeartbeatPower heartBeatPower; //ref to the heartbeat power script
     private bool moving = false;
     [SerializeField] private float restoreRate;
     [SerializeField] private float removeRate;
-
+    
+    [Header ("Reseting")]
     private Vector2 returnPosition; //position to return to when the player falls off the map
     private bool returning = false; //true when player is returning to returnPosition
     private float returnTime; //Time it takes for player to return to position
@@ -43,8 +50,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     [SerializeField] private int returnVelocityDivider;
 
     private bool frozen = false;
-
-    private AudioPlayer audioPlayer;
+    private AudioPlayer audioPlayer; //ref to the attached audio player 
 
     #endregion
 
@@ -56,6 +62,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public bool InFallZone { set { inFallZone = value; } }
     public bool Frozen { set { frozen = value; } }
     public Vector2 ReturnPosition { set { returnPosition = value; } }
+    public bool CanSprint { set { canSprint = value; } }
     #endregion
 
     //Start is already being called in Base PhysicsObject Class
@@ -87,9 +94,11 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 return;
             }
 
+            sprinting = canSprint && Input.GetButton("Sprint"); //determine if the player is sprinting
+
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) //make sure length of input vector is less than 1;
-                * (canSprint && Input.GetAxis("Fire3") > 0 ? sprintSpeed : moveSpeed); //multiply be appropritate speed\
+                * (sprinting ? sprintMoveSpeed : moveSpeed); //multiply be appropritate speed\
 
             //can input a jump before you hit the ground
             if (Input.GetButtonDown("Jump"))
@@ -146,7 +155,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             //jumping when on ground
             if (jumping && (grounded || climbing))
             {
-                gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *  Time.deltaTime;
+                gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * (sprinting ? sprintJumpSpeed : jumpSpeed) *  Time.deltaTime;
                 jumping = false; //insures that you can only jump once after pressing jump button
                 climbing = false; //jump out of climbing
             }

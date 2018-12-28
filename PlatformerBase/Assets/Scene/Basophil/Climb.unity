@@ -162,6 +162,26 @@ Prefab:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114207416268906584, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: canSprint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207416268906584, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: sprintSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207416268906584, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: sprintMoveSpeed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207416268906584, guid: 80261ec61f9ea364592b48a675de6141,
+        type: 2}
+      propertyPath: sprintJumpSpeed
+      value: 24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
   m_IsPrefabAsset: 0
@@ -203,6 +223,16 @@ Prefab:
     - target: {fileID: 4795782693718888, guid: b3ca14d092ec35c4fa2720aeae9513c5, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094280238963508, guid: b3ca14d092ec35c4fa2720aeae9513c5,
+        type: 2}
+      propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationTimeOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094280238963508, guid: b3ca14d092ec35c4fa2720aeae9513c5,
+        type: 2}
+      propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationTimeOffset
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ca14d092ec35c4fa2720aeae9513c5, type: 2}
