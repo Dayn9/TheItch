@@ -77,5 +77,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6c16669d5f39f46a76d6773a8751ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsRequired: []
+  itemsEaten: 0
   levelName: BasophilEastside
   mode: 0
+  playerStart: {x: 0, y: 0}
+  resetToMenu: 0
+  evTrig: {fileID: 0}

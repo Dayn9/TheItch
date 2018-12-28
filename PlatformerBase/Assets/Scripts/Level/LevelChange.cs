@@ -13,6 +13,7 @@ public class LevelChange : EventTrigger
     [SerializeField] private bool resetToMenu = false; //for demo builds that need to reset whole game
 
     [SerializeField] private EventTrigger evTrig;
+    private bool changing = false;
 
     private void Start()
     {
@@ -25,28 +26,31 @@ public class LevelChange : EventTrigger
         //change scene when colliding with player
         if (collision.CompareTag("Player"))
         {
+            changing = true;
             //start the transition
             CallBefore();
-            
         }
     }
 
     private void Advance()
     {
-        if (resetToMenu)
+        if (changing) //only one level change should happen on advance
         {
-            GetComponent<Reseter>().ResetGame();
-            return;
-        }
+            if (resetToMenu)
+            {
+                GetComponent<Reseter>().ResetGame();
+                return;
+            }
 
-        startPosition = playerStart;
-        //detatch items from inventory so they can be passed on to the next scene
-        foreach (GameObject item in Items.Values)
-        {
-            item.transform.parent = null;
-            DontDestroyOnLoad(item);
+            startPosition = playerStart;
+            //detatch items from inventory so they can be passed on to the next scene
+            foreach (GameObject item in Items.Values)
+            {
+                item.transform.parent = null;
+                DontDestroyOnLoad(item);
+            }
+            SceneManager.LoadScene(levelName, mode);
         }
-        SceneManager.LoadScene(levelName, mode);
     }
 
 }

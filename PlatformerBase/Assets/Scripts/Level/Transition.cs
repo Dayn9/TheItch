@@ -77,7 +77,7 @@ public class Transition : EventTrigger{
                 {
                     render.color = new Color(0, 0, 0, 1);
                     fadeOut = false;
-                    CallAfter();
+                    CallAfter(); 
                     playerFreeze.Frozen = false; //stop the player from moving
                     playerFreeze.InFallZone = false;
                     return;

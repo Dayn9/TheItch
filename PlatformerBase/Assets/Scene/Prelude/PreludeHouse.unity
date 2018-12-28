@@ -67792,33 +67792,38 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1199002321168980, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 2}
       propertyPath: m_Name
-      value: OldLadyHouse
+      value: BasophilMidtown
       objectReference: {fileID: 0}
     - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
         type: 2}
       propertyPath: levelName
-      value: MainMenu
+      value: Midtown
       objectReference: {fileID: 0}
     - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
         type: 2}
       propertyPath: playerStart.x
-      value: 10.25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
         type: 2}
       propertyPath: playerStart.y
-      value: 39
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
         type: 2}
       propertyPath: resetToMenu
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
         type: 2}
       propertyPath: evTrig
       value: 
       objectReference: {fileID: 412718112}
+    - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
+        type: 2}
+      propertyPath: itemsEaten
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 2}
   m_IsPrefabAsset: 0
