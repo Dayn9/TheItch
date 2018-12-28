@@ -211,7 +211,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1756366534938898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 45, y: -24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4670250543210708}
@@ -377,7 +377,17 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 2113883504372230396}
     m_ColliderPaths:
-    - - X: -317500000
+    - - X: -300000000
+        Y: 46250000
+      - X: -310000000
+        Y: 40000000
+      - X: -316249984
+        Y: 30000000
+      - X: -320000000
+        Y: 20000000
+      - X: -320000000
+        Y: -20000000
+      - X: -317500000
         Y: -20000000
       - X: -317500000
         Y: 20000000
@@ -419,16 +429,6 @@ CompositeCollider2D:
         Y: 50000000
       - X: -290000000
         Y: 50000000
-      - X: -300000000
-        Y: 46250000
-      - X: -310000000
-        Y: 40000000
-      - X: -316249984
-        Y: 30000000
-      - X: -320000000
-        Y: 20000000
-      - X: -320000000
-        Y: -20000000
   m_CompositePaths:
     m_Paths:
     - - {x: -31.75, y: 2}
@@ -582,13 +582,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Exterior: {fileID: 1577400160968296}
-  Interior:
-  - door: {fileID: 1730502706405814}
+  Interiors:
+  - doors:
+    - {fileID: 1730502706405814}
     layer: {fileID: 1752515291285844}
-  doorAboveAlpha: 0.4
-  doorAboveLayer: 6
-  doorBelowLayer: 3
-  fade: {fileID: 0}
 --- !u!114 &114955391416624430
 MonoBehaviour:
   m_ObjectHideFlags: 1
