@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388502412840146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalPosition: {x: 0, y: 11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -242,8 +242,9 @@ MonoBehaviour:
   addedSpeed: 0.3
   maxHealth: 20
   invulnerabilityTime: 1.2
-  canSprint: 0
-  sprintSpeed: 0
+  canSprint: 1
+  sprintMoveSpeed: 16
+  sprintJumpSpeed: 24
   heartBeatPower: {fileID: 0}
   restoreRate: 1
   removeRate: 0.3
@@ -4915,7 +4916,7 @@ SpriteRenderer:
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: e6d7c8b91a9309c4082ecb3626a1ef75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 2}

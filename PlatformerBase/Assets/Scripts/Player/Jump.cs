@@ -7,7 +7,7 @@
 [RequireComponent(typeof(AbilityHandler))]
 public class Jump : PhysicsObject, IHealthObject, IPlayer
 {
-    # region private fields
+    #region private fields
     [Header("Movement")]
     [SerializeField] private float moveSpeed; //how fast the object can move
 
@@ -95,6 +95,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             }
 
             sprinting = canSprint && Input.GetButton("Sprint"); //determine if the player is sprinting
+            animator.speed = sprinting ? sprintMoveSpeed/moveSpeed : 1; //set animation speed to match 
 
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) //make sure length of input vector is less than 1;
@@ -345,4 +346,3 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         returning = true; //start returning to return position
     }
 }
- 
