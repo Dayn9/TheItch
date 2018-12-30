@@ -43,7 +43,7 @@ public class HeartbeatPower : Global {
     /// increase target BPM
     /// </summary>
     /// <param name="restore">amount to add</param>
-    public void RestoreBPM(float restore)
+    public void RestoreBPM(float restore = 1)
     {
         targetBPM = targetBPM + restore;
         targetBPM = Mathf.Clamp(targetBPM, 0, maxHeartRate);
@@ -53,7 +53,7 @@ public class HeartbeatPower : Global {
     /// decrease target BPM
     /// </summary>
     /// <param name="remove">amount to take away</param>
-    public void RemoveBPM(float remove)
+    public void RemoveBPM(float remove = 1)
     {
         targetBPM = targetBPM - remove;
         targetBPM = Mathf.Clamp(targetBPM, 0, maxHeartRate);

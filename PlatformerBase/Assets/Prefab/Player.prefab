@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388502412840146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11, z: 0}
+  m_LocalPosition: {x: -117.5, y: 14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -225,6 +225,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityZeroPrefab: {fileID: 1873573271058534, guid: 327866135c5615a4dbec87289a2a7cc7,
     type: 2}
+  sprintMoveSpeed: 16
+  sprintJumpSpeed: 24
+  increaseRate: 2
+  heartRateRemoved: 40
 --- !u!114 &114207416268906584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,9 +246,6 @@ MonoBehaviour:
   addedSpeed: 0.3
   maxHealth: 20
   invulnerabilityTime: 1.2
-  canSprint: 1
-  sprintMoveSpeed: 16
-  sprintJumpSpeed: 24
   heartBeatPower: {fileID: 0}
   restoreRate: 1
   removeRate: 0.3

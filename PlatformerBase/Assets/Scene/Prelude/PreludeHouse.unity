@@ -69982,6 +69982,11 @@ Prefab:
       propertyPath: follow
       value: 
       objectReference: {fileID: 298767483}
+    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1505801050}
     - target: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 2}
       propertyPath: evTrigs.Array.data[0]
@@ -69992,59 +69997,11 @@ Prefab:
       propertyPath: evTrigs.Array.data[1]
       value: 
       objectReference: {fileID: 758263153}
-    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1505801050}
     - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 2}
       propertyPath: evTrigs.Array.data[0]
       value: 
       objectReference: {fileID: 212205846}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: bpmReadoutHeal.r
-      value: 0.7960785
-      objectReference: {fileID: 0}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: bpmReadoutHeal.g
-      value: 0.36078432
-      objectReference: {fileID: 0}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: bpmReadoutHeal.b
-      value: 0.17254902
-      objectReference: {fileID: 0}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: bpmReadoutHeal.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: bpmReadoutDamage.r
-      value: 0.9568628
-      objectReference: {fileID: 0}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: bpmReadoutDamage.g
-      value: 0.5058824
-      objectReference: {fileID: 0}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 2}
-      propertyPath: bpmReadoutDamage.b
-      value: 0.30980393
-      objectReference: {fileID: 0}
-    - target: {fileID: 4205073578232714, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4287477761807844, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_IsPrefabAsset: 0

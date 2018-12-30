@@ -157,35 +157,10 @@ Prefab:
       propertyPath: heartBeatPower
       value: 
       objectReference: {fileID: 997205038}
-    - target: {fileID: 212377067535547162, guid: 80261ec61f9ea364592b48a675de6141,
-        type: 2}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207416268906584, guid: 80261ec61f9ea364592b48a675de6141,
-        type: 2}
-      propertyPath: canSprint
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114067799734821534, guid: 80261ec61f9ea364592b48a675de6141,
         type: 2}
-      propertyPath: sprintMoveSpeed
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 114067799734821534, guid: 80261ec61f9ea364592b48a675de6141,
-        type: 2}
-      propertyPath: sprintJumpSpeed
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 114067799734821534, guid: 80261ec61f9ea364592b48a675de6141,
-        type: 2}
-      propertyPath: exhaustMoveSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114067799734821534, guid: 80261ec61f9ea364592b48a675de6141,
-        type: 2}
-      propertyPath: exhaustJumpSpeed
-      value: 16
+      propertyPath: increaseRate
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 2}
@@ -28475,7 +28450,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: -22, y: 1, z: 0}
     second:
@@ -34035,6 +34010,16 @@ Prefab:
       propertyPath: evTrigs.Array.data[1]
       value: 
       objectReference: {fileID: 797097686}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: initialBPM
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 2}
+      propertyPath: deltaHeartRate
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 2}
   m_IsPrefabAsset: 0

@@ -17,21 +17,24 @@ public class AbilityHandler : Global {
     private ParticleSystem part; //particle system attached to object
     protected ParticleSystem.Particle[] particles; //array of particles being controlled 
     private AbilityTransfer powerZero; //ref to the abilityTransfer Compnent of the First ability
-    public AbilityTransfer PowerZero { get { return powerZero; } }
 
     [Header("Ability 1: Sprinting")]
-    private float normalMoveSpeed;
-    private float normalJumpSpeed;
     [SerializeField] private float sprintMoveSpeed; //movement speed while sprinting
     [SerializeField] private float sprintJumpSpeed; //jump speed while sprinting
-    [SerializeField] private float exhaustMoveSpeed; //movement speed after sprinting
-    [SerializeField] private float exhaustJumpSpeed; //jump speed after sprinting
+    private float orignMoveSpeed; //origional player move speed
+    private float originJumpSpeed; //origional player jump speed
+    [SerializeField] private int increaseRate;
+    [SerializeField] private int heartRateRemoved; //heartrate removed when sprinting stops
     private bool sprinting = false; //true when the player is sprinting
     private const int minSprintBPM = 170; //minimum heartrate the player can use the sprint ability at
-     
+    private const int sprintTime = 5; //time spent sprinting / exhausted
+    private float sprintTimer = 0; //timer used to keep track of sprinting
+
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
 
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
+
+    public AbilityTransfer PowerZero { get { return powerZero; } }
 
     // Use this for initialization
     void Awake () {
@@ -40,8 +43,8 @@ public class AbilityHandler : Global {
         hb = player.Power.Heartbeat;
 
         //get the normal speeds as the origional values
-        normalMoveSpeed = player.MoveSpeed;
-        normalJumpSpeed = player.JumpSpeed;
+        orignMoveSpeed = player.MoveSpeed;
+        originJumpSpeed = player.JumpSpeed;
 
         //find power zero refs 
         powerZero = Instantiate(abilityZeroPrefab).GetComponent<AbilityTransfer>();
@@ -89,11 +92,9 @@ public class AbilityHandler : Global {
             {
                 powerZero.gameObject.SetActive(true);
             }
-
         }
     }
 
-    // Update is called once per frame
     void Update () {
         if (!paused)
         {
@@ -121,10 +122,34 @@ public class AbilityHandler : Global {
             }
             if (unlockedAbilities[1])
             {
-                sprinting = Input.GetButton("Sprint");
-                player.MoveSpeed = sprinting ? sprintMoveSpeed : normalMoveSpeed;
-                player.JumpSpeed = sprinting ? sprintJumpSpeed : normalJumpSpeed;
-                player.Animator.speed = sprinting ? sprintMoveSpeed / normalMoveSpeed : 1; //set animation speed to match 
+                //start sprinting when BPM is above certian range and not already sprinting
+                if (hb.BPM > minSprintBPM && !sprinting && sprintTimer == 0)
+                {
+                    sprinting = true;
+                }
+
+                if (sprinting)
+                {
+                    //increase timers and heartrate while sprinting
+                    sprintTimer += Time.deltaTime;
+                    player.Power.RestoreBPM(increaseRate * Time.deltaTime);
+                    //start reset process after timer reaches limit
+                    if (sprintTimer >= sprintTime)
+                    {
+                        sprinting = false;
+                        player.Power.RemoveBPM(heartRateRemoved);
+                        sprintTimer = sprintTime;
+                    }
+                }
+                else
+                {
+                    //decrease the timer back to zero (cooldown)
+                    sprintTimer = Mathf.Clamp(sprintTimer - Time.deltaTime, 0, sprintTime);
+                }
+                //set the move speeds to match 
+                player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
+                player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
+                player.Animator.speed = sprinting ? sprintMoveSpeed / orignMoveSpeed : 1; //set animation speed to match 
             }
         }
         else
