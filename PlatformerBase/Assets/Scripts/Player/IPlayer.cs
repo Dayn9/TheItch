@@ -8,9 +8,15 @@ public interface IPlayer{
 
     Vector2 ReturnPosition { set; } //set reset postion for checkpoints
     HeartbeatPower Power { get; } //ref to heartbeatPower Component
+    Animator Animator { get; }
+
+    //player states
     bool InFallZone { set; }
     bool Frozen { set; }
-    bool CanSprint { set; }
+
+    //movement speeds
+    float MoveSpeed { get; set; }
+    float JumpSpeed { get; set; }
 
     /// <summary>
     /// occurs when the player falls off the map

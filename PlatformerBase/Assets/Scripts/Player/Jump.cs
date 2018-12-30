@@ -28,13 +28,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     private bool invulnerable; //true when player is immune to damage
 
     private bool touchingLadder; //true when player is touching the ladder
-    protected bool climbing;
-    
-    [Header ("Sprinting")]
-    [SerializeField] private bool canSprint; //true when the player is able to sprint
-    [SerializeField] private float sprintMoveSpeed; //movement speed while sprinting
-    [SerializeField] private float sprintJumpSpeed; //jump speed while sprinting
-    private bool sprinting = false; //true when the player is sprinting
+    protected bool climbing;  
 
     [Header("Heartrate ")]
     [SerializeField] private HeartbeatPower heartBeatPower; //ref to the heartbeat power script
@@ -62,7 +56,16 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public bool InFallZone { set { inFallZone = value; } }
     public bool Frozen { set { frozen = value; } }
     public Vector2 ReturnPosition { set { returnPosition = value; } }
-    public bool CanSprint { set { canSprint = value; } }
+    public Animator Animator { get { return animator; } }
+
+    public float MoveSpeed {
+        get { return moveSpeed; }
+        set { moveSpeed = value; }
+    }
+    public float JumpSpeed {
+        get { return jumpSpeed; }
+        set { jumpSpeed = value; }
+    }
     #endregion
 
     //Start is already being called in Base PhysicsObject Class
@@ -88,18 +91,15 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         if (!paused)
         {
             //don't accept input when frozen
-            if (frozen) {
+            if (frozen)
+            {
                 movementInput = Vector2.zero;
                 jumping = false;
                 return;
             }
 
-            sprinting = canSprint && Input.GetButton("Sprint"); //determine if the player is sprinting
-            animator.speed = sprinting ? sprintMoveSpeed/moveSpeed : 1; //set animation speed to match 
-
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) //make sure length of input vector is less than 1;
-                * (sprinting ? sprintMoveSpeed : moveSpeed); //multiply be appropritate speed\
+            movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) * moveSpeed; //make sure length of input vector is less than 1; 
 
             //can input a jump before you hit the ground
             if (Input.GetButtonDown("Jump"))
@@ -156,7 +156,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             //jumping when on ground
             if (jumping && (grounded || climbing))
             {
-                gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * (sprinting ? sprintJumpSpeed : jumpSpeed) *  Time.deltaTime;
+                gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *  Time.deltaTime;
                 jumping = false; //insures that you can only jump once after pressing jump button
                 climbing = false; //jump out of climbing
             }
@@ -166,7 +166,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             {
                 CollideOneway(false);
                 //add to velocity in direction of velocity proportional to velocity magnitude
-                if (Input.GetButton("Jump"))
+                if (Input.GetButton("Jump")) 
                 {
                     gravityVelocity += addedSpeed * gravityVelocity.normalized * Time.deltaTime;
                 } 

@@ -9,32 +9,51 @@ public class AbilityHandler : Global {
     /// in charge of the different abilities the player has
     /// </summary>
 
+    private IPlayer player;
+    private Heartbeat hb; //ref to the heartbeat component 
+
+    [Header("Ability 0: Transfer")]
     [SerializeField] private GameObject abilityZeroPrefab; //prefab of the first bleed ability
     private ParticleSystem part; //particle system attached to object
     protected ParticleSystem.Particle[] particles; //array of particles being controlled 
-
     private AbilityTransfer powerZero; //ref to the abilityTransfer Compnent of the First ability
-
-    private Heartbeat hb; //ref to the heartbeat component 
-
     public AbilityTransfer PowerZero { get { return powerZero; } }
+
+    [Header("Ability 1: Sprinting")]
+    private float normalMoveSpeed;
+    private float normalJumpSpeed;
+    [SerializeField] private float sprintMoveSpeed; //movement speed while sprinting
+    [SerializeField] private float sprintJumpSpeed; //jump speed while sprinting
+    [SerializeField] private float exhaustMoveSpeed; //movement speed after sprinting
+    [SerializeField] private float exhaustJumpSpeed; //jump speed after sprinting
+    private bool sprinting = false; //true when the player is sprinting
+    private const int minSprintBPM = 170; //minimum heartrate the player can use the sprint ability at
+     
+    //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
 
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
 
     // Use this for initialization
     void Awake () {
+        //find player refs
+        player = Player.GetComponent<IPlayer>();
+        hb = player.Power.Heartbeat;
+
+        //get the normal speeds as the origional values
+        normalMoveSpeed = player.MoveSpeed;
+        normalJumpSpeed = player.JumpSpeed;
+
+        //find power zero refs 
         powerZero = Instantiate(abilityZeroPrefab).GetComponent<AbilityTransfer>();
         powerZero.gameObject.SetActive(false);
         part = GetComponent<ParticleSystem>();
         //part.Stop();
         particles = new ParticleSystem.Particle[1]; //array of length one for checks if part has ANY active particles
 
-        hb = Player.GetComponent<IPlayer>().Power.Heartbeat;
-
         //all abilities start out false
         if(unlockedAbilities == null)
         {
-            unlockedAbilities = new bool[1]; //SET number of abilities here
+            unlockedAbilities = new bool[2]; //SET number of abilities here
             LockAll();
         }
         else
@@ -44,8 +63,6 @@ public class AbilityHandler : Global {
                 powerZero.gameObject.SetActive(true);
             }
         }
-
-
     }
 
     /// <summary>
@@ -54,7 +71,8 @@ public class AbilityHandler : Global {
     public void LockAll()
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
-        Unlock(0); //automatically unlock the first ability
+        Unlock(0); //unlock the ability transfer powers
+        Unlock(1); //unlock the sprint ability
     }
 
 
@@ -71,6 +89,7 @@ public class AbilityHandler : Global {
             {
                 powerZero.gameObject.SetActive(true);
             }
+
         }
     }
 
@@ -99,6 +118,13 @@ public class AbilityHandler : Global {
                     part.Stop();
                     powerZero.Useable = false;
                 }
+            }
+            if (unlockedAbilities[1])
+            {
+                sprinting = Input.GetButton("Sprint");
+                player.MoveSpeed = sprinting ? sprintMoveSpeed : normalMoveSpeed;
+                player.JumpSpeed = sprinting ? sprintJumpSpeed : normalJumpSpeed;
+                player.Animator.speed = sprinting ? sprintMoveSpeed / normalMoveSpeed : 1; //set animation speed to match 
             }
         }
         else
