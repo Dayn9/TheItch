@@ -184,57 +184,31 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 CollideOneway(false);
             }
 
-
-            //update moveVelocity to be only in direction of ground normal
-            if (grounded) { moveVelocity = Proj(moveVelocity, groundTangent); }
             moving = moveVelocity.magnitude > buffer; //determine if object is moving
-
             //update the health system
-            if (moving) { heartBeatPower.RestoreBPM(restoreRate * Time.deltaTime); }
+            if (moving) { heartBeatPower.RestoreBPM  (restoreRate * Time.deltaTime); }
             else { heartBeatPower.RemoveBPM(removeRate * Time.deltaTime); }
 
-            //start climbing if move velocity is up or down
-            if (touchingLadder)
+            //start climbing if move velocity is up or down (not side to side)
+            if (touchingLadder && Vector2.Dot(moveVelocity, gravity) != 0)
             {
-                //if not moving side to side
-                if (Vector2.Dot(moveVelocity, gravity) != 0)
-                {
-                    climbing = true;
-                }
+                climbing = true;
             }
-            #endregion
 
-            if (climbing && gravityVelocity.magnitude == 0)
+            if (climbing)
             {
-                CollideOneway(false); //don't collide with oneways while climbing 
-                grounded = false;
-
-                #region climbing collision
-                float distance = moveVelocity.magnitude; //temporary distance to surface
-                Vector2 moveVector = moveVelocity; //Project the moveVelocity onto the ground
-
-                float numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
-                for (int i = 0; i < numCollisions; i++)
-                {
-                    //check not collision inside an object
-                    if (hits[i].distance != 0)
-                    {
-                        //collide with the closest
-                        if (hits[i].distance <= distance)
-                        {
-                            distance = hits[i].distance; //set new closest distance
-                        }
-                    }
-                }
-                if (distance > buffer) { rb2D.position = moveVector.normalized * (distance - buffer); } //move object by the shortest distance
-                if (moveVector.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
-                #endregion
+                gravityVelocity = Proj(moveVelocity, groundNormal);
+                moveVelocity = Proj(moveVelocity, groundTangent);
             }
             else
             {
-                base.FixedUpdate();
+                //update moveVelocity to be only in direction of ground normal
+                if (grounded) { moveVelocity = Proj(moveVelocity, groundTangent); }        
             }
+            base.FixedUpdate();
 
+            #endregion
+            
             #region Animation
 
             //send values to animator
@@ -282,12 +256,14 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         if (coll.gameObject.layer == LayerMask.NameToLayer("Ladder")) {
 
             touchingLadder = true;
+            Debug.Log("touching ladder");
         }
     }
 
     private void OnTriggerExit2D(Collider2D coll)
     {
         //stop climbing when no longer touching ladder
+        
         if (coll.gameObject.layer == LayerMask.NameToLayer("Ladder"))
         {
             touchingLadder = false;
