@@ -194,11 +194,12 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             {
                 climbing = true;
             }
-
+            touchingLadder = false;
             if (climbing)
             {
                 gravityVelocity = Proj(moveVelocity, groundNormal);
                 moveVelocity = Proj(moveVelocity, groundTangent);
+                climbing = false;
             }
             else
             {
@@ -249,25 +250,13 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     {
         TakeDamage(2);
     }
-
-    //Sent when another object enters a trigger collider attached to this object (2D physics only).
-    private void OnTriggerEnter2D(Collider2D coll)
+    protected override void TouchLadder()
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Ladder")) {
-
-            touchingLadder = true;
-            Debug.Log("touching ladder");
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D coll)
-    {
-        //stop climbing when no longer touching ladder
-        
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Ladder"))
+        touchingLadder = true;
+        //start climbing if move velocity is up or down (not side to side)
+        if (Vector2.Dot(moveVelocity, gravity) != 0)
         {
-            touchingLadder = false;
-            climbing = false;
+            climbing = true;
         }
     }
 

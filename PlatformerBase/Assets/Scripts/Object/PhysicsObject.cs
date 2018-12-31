@@ -64,7 +64,7 @@ public class PhysicsObject : MovingObject
             if (!inFallZone)
             {
                 moveVector = gravityVelocity; //temporary falling vector for collision checking
-                distance = Mathf.Clamp(moveVector.magnitude, 0, maxGravity); //temporary distance to surface
+                distance = Mathf.Clamp(moveVector.magnitude, 0, maxGravity) + buffer; //temporary distance to surface
                 Vector2 newGroundNormal = groundNormal; //temporary normal for surface collisions
                 int numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
                 for (int i = 0; i < numCollisions; i++)
@@ -107,7 +107,7 @@ public class PhysicsObject : MovingObject
             #endregion
 
             #region movement collision
-            distance = moveVelocity.magnitude; //temporary distance to surface
+            distance = moveVelocity.magnitude + buffer; //temporary distance to surface
             groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
             moveVector = Proj(moveVelocity, groundTangent); //Project the moveVelocity onto the ground
             numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
@@ -185,7 +185,6 @@ public class PhysicsObject : MovingObject
     private bool LayerChecks(GameObject collided, Vector2 moveVector, out float distance)
     {
         distance = moveVector.magnitude;
-        
         switch (collided.layer)
         {
             //take damage when colliding with spikes
@@ -203,6 +202,10 @@ public class PhysicsObject : MovingObject
                     return true;
                 }
                 break;
+            //don't collide with ladder 
+            case 14:
+                TouchLadder();
+                return true;
         }
         return false;
     }
@@ -217,6 +220,11 @@ public class PhysicsObject : MovingObject
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(layer), collide);
         filter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
     }
+
+    /// <summary>
+    /// to be overridden in child classes when object collides with ladders
+    /// </summary>
+    protected virtual void TouchLadder() { }
 
     /// <summary>
     /// to be overridden in child classes when object collides with spikes
