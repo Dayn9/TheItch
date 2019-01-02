@@ -1131,7 +1131,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: -17, y: -4, z: 0}
     second:
@@ -1143,7 +1143,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: -72, y: 1, z: 0}
     second:
@@ -1155,7 +1155,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   - first: {x: 8, y: 1, z: 0}
     second:
@@ -1179,7 +1179,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 2
+      m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 5
@@ -11365,32 +11365,32 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1601729572}
     m_ColliderPaths:
-    - - X: -220000000
+    - - X: -225000000
         Y: 80000000
-      - X: -240000000
+      - X: -235000000
         Y: 80000000
-      - X: -240000000
+      - X: -235000000
         Y: 0
-      - X: -220000000
+      - X: -225000000
         Y: 0
-    - - X: 110000000
+    - - X: 105000000
         Y: 60000000
-      - X: 90000000
+      - X: 95000000
         Y: 60000000
-      - X: 90000000
+      - X: 95000000
         Y: -10000000
-      - X: 110000000
+      - X: 105000000
         Y: -10000000
   m_CompositePaths:
     m_Paths:
-    - - {x: -22, y: 8}
-      - {x: -24, y: 8}
-      - {x: -24, y: 0}
-      - {x: -22, y: 0}
-    - - {x: 11, y: 6}
-      - {x: 9, y: 6}
-      - {x: 9, y: -1}
-      - {x: 11, y: -1}
+    - - {x: -22.5, y: 8}
+      - {x: -23.5, y: 8}
+      - {x: -23.5, y: 0}
+      - {x: -22.5, y: 0}
+    - - {x: 10.5, y: 6}
+      - {x: 9.5, y: 6}
+      - {x: 9.5, y: -1}
+      - {x: 10.5, y: -1}
   m_VertexDistance: 0.0005
 --- !u!50 &1601729571
 Rigidbody2D:
@@ -11421,7 +11421,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
@@ -11788,8 +11788,8 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -24, y: -1, z: 0}
-  m_Size: {x: 35, y: 10, z: 1}
+  m_Origin: {x: -48, y: -3, z: 0}
+  m_Size: {x: 59, y: 14, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:

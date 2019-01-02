@@ -158,7 +158,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             {
                 gravityVelocity = (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *  Time.deltaTime;
                 jumping = false; //insures that you can only jump once after pressing jump button
-                climbing = false; //jump out of climbing
+                //climbing = false; //jump out of climbing
             }
 
             //add velocity while moving upwards 
@@ -190,7 +190,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             else { heartBeatPower.RemoveBPM(removeRate * Time.deltaTime); }
 
             //start climbing if move velocity is up or down (not side to side)
-            if (touchingLadder && Vector2.Dot(moveVelocity, gravity) != 0)
+            if (touchingLadder && moveVelocity.y != 0)
             {
                 climbing = true;
             }
@@ -254,7 +254,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     {
         touchingLadder = true;
         //start climbing if move velocity is up or down (not side to side)
-        if (Vector2.Dot(moveVelocity, gravity) != 0)
+        if (moveVelocity.y != 0)
         {
             climbing = true;
         }
