@@ -97,7 +97,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 jumping = false;
                 return;
             }
-
+            //get and then modify cardinal input 
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) * moveSpeed; //make sure length of input vector is less than 1; 
 
@@ -178,7 +178,6 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             }
 
             //fall throught one way platforms when input is down
-
             if (grounded && Vector2.Dot(gravity, moveVelocity) > 0)
             {
                 CollideOneway(false);
@@ -189,17 +188,17 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             if (moving) { heartBeatPower.RestoreBPM  (restoreRate * Time.deltaTime); }
             else { heartBeatPower.RemoveBPM(removeRate * Time.deltaTime); }
 
-            //start climbing if move velocity is up or down (not side to side)
+            //start climbing if move velocity is up or down (not just side to side)
             if (touchingLadder && moveVelocity.y != 0)
             {
                 climbing = true;
             }
-            touchingLadder = false;
+            touchingLadder = false; //reset every time 
             if (climbing)
             {
-                gravityVelocity = Proj(moveVelocity, groundNormal);
+                //while climbing player can move in all 4 directions
+                gravityVelocity = Proj(moveVelocity, groundNormal) - (gravity * Time.deltaTime);
                 moveVelocity = Proj(moveVelocity, groundTangent);
-                climbing = false;
             }
             else
             {
@@ -207,26 +206,40 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 if (grounded) { moveVelocity = Proj(moveVelocity, groundTangent); }        
             }
             base.FixedUpdate();
-
+            if (!touchingLadder)
+            {
+                climbing = false;
+            }
             #endregion
-            
+
             #region Animation
-
             //send values to animator
-            animator.SetBool("grounded", grounded);
-            animator.SetFloat("verticalVel", gravityVelocity.magnitude * (Vector2.Angle(gravity, gravityVelocity) > 90 ? 1 : -1));
-            animator.SetFloat("horizontalMove", moveVelocity.magnitude * (Vector2.Dot(transform.right, moveVelocity) < 0 ? 1 : -1));
+            animator.SetBool("grounded", grounded || climbing);
+            if (climbing)
+            {
+                animator.SetFloat("verticalVel", 0); //cancel fall animation
+                //use greatest movement direction for movement animation
+                animator.SetFloat("horizontalMove", gravityVelocity.magnitude > moveVelocity.magnitude 
+                    ? gravityVelocity.magnitude : moveVelocity.magnitude);
+            }
+            else
+            {
+                animator.SetFloat("verticalVel", gravityVelocity.magnitude * (Vector2.Angle(gravity, gravityVelocity) > 90 ? 1 : -1));
+                animator.SetFloat("horizontalMove", moveVelocity.magnitude * (Vector2.Dot(transform.right, moveVelocity) < 0 ? 1 : -1));
+            }
 
+            //invulnerabilty animation
             render.color = Color.white;
             if (invulnerable)
             {
-                invulnerabilityTimer -= Time.deltaTime;
+                invulnerabilityTimer -= Time.deltaTime; //increase timer 
                 if (invulnerabilityTimer <= invulnerabilityTime - 0.2f)
                 {
+                    //damage animation and color change
                     animator.SetBool("damage", false);
                     render.color = Color.gray; //fade Slightly
                 }
-
+                //stop the timer and end invulnerability
                 if (invulnerabilityTimer <= 0)
                 {
                     invulnerable = false;
@@ -250,10 +263,11 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     {
         TakeDamage(2);
     }
+
     protected override void TouchLadder()
     {
         touchingLadder = true;
-        //start climbing if move velocity is up or down (not side to side)
+        //start climbing if move velocity is up or down (not just side to side)
         if (moveVelocity.y != 0)
         {
             climbing = true;
