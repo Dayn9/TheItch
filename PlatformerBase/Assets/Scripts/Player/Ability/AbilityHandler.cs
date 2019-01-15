@@ -104,7 +104,7 @@ public class AbilityHandler : Global {
                 {
                     powerZero.Useable = true;
                     //play the blled particle effect when mouse down or coming out of pause
-                    if (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0) || (part.isPaused && part.GetParticles(particles) > 0))
+                    if (Input.GetMouseButton(0) || (part.isPaused && part.GetParticles(particles) > 0))
                     {
                         part.Play();
                         powerZero.AudioPlayer.PlaySound("ContinueSparkle");
@@ -122,6 +122,23 @@ public class AbilityHandler : Global {
             }
             if (unlockedAbilities[1])
             {
+                if (Input.GetMouseButton(1))
+                {
+                    sprinting = true;
+                    player.Power.RestoreBPM(increaseRate * Time.deltaTime);
+                }
+                //stop the sprinting
+                else if (sprinting && Input.GetMouseButtonUp(1))
+                {
+                    player.Power.RemoveBPM(heartRateRemoved);
+                    sprinting = false;
+                }
+                player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
+                player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
+                player.Animator.speed = sprinting ? sprintMoveSpeed / orignMoveSpeed : 1; //set animation speed to match 
+
+                //BELOW: Trigger sprinting when BPM is above a value ---------------------------------------
+                return;
                 //start sprinting when BPM is above certian range and not already sprinting
                 if (hb.BPM > minSprintBPM && !sprinting && sprintTimer == 0)
                 {
@@ -150,10 +167,14 @@ public class AbilityHandler : Global {
                 player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
                 player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
                 player.Animator.speed = sprinting ? sprintMoveSpeed / orignMoveSpeed : 1; //set animation speed to match 
+
+                //-------------------------------------------------------------------------------------------
             }
         }
+        //game is paused
         else
         {
+            //pause the particle effect and prevent new particles from being made 
             if (unlockedAbilities[0])
             {
                 part.Pause();

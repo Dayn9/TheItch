@@ -99,6 +99,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             }
             //get and then modify cardinal input 
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if(climbing && Input.GetButton("Jump")) { movementInput += Vector2.up; }
             movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) * moveSpeed; //make sure length of input vector is less than 1; 
 
             //can input a jump before you hit the ground
@@ -178,7 +179,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             }
 
             //fall throught one way platforms when input is down
-            if (grounded && Vector2.Dot(gravity, moveVelocity) > 0)
+            if (grounded && Vector2.Dot(gravity, moveVelocity) > 0 && 
+                (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)))
             {
                 CollideOneway(false);
             }
