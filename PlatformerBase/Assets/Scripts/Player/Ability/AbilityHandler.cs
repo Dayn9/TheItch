@@ -23,8 +23,9 @@ public class AbilityHandler : Global {
     [SerializeField] private float sprintJumpSpeed; //jump speed while sprinting
     private float orignMoveSpeed; //origional player move speed
     private float originJumpSpeed; //origional player jump speed
-    [SerializeField] private int increaseRate;
+    [SerializeField] private int increaseRate; //rate heartrate increasess by each second
     [SerializeField] private int heartRateRemoved; //heartrate removed when sprinting stops
+    private float heartRateAdded = 0; //heartrate that was added while sprinting
     private bool sprinting = false; //true when the player is sprinting
     private const int minSprintBPM = 170; //minimum heartrate the player can use the sprint ability at
     private const int sprintTime = 5; //time spent sprinting / exhausted
@@ -126,12 +127,14 @@ public class AbilityHandler : Global {
                 {
                     sprinting = true;
                     player.Power.RestoreBPM(increaseRate * Time.deltaTime);
+                    if(player.Power.Heartbeat.BPM < 200) { heartRateAdded += increaseRate * Time.deltaTime; }
                 }
                 //stop the sprinting
                 else if (sprinting && Input.GetMouseButtonUp(1))
                 {
-                    player.Power.RemoveBPM(heartRateRemoved);
+                    player.Power.RemoveBPM(heartRateAdded + heartRateRemoved);
                     sprinting = false;
+                    heartRateAdded = 0;
                 }
                 player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
                 player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
