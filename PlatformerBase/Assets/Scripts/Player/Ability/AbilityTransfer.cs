@@ -30,7 +30,7 @@ public class AbilityTransfer : BloodParticle {
             //move the particles toward their target
             MoveParticles(); 
 
-            if (Input.GetKey(KeyCode.X) || Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0))
             {
                 partRend.sortingLayerID = playerRend.sortingLayerID;
                 partRend.sortingOrder = playerRend.sortingOrder -1;

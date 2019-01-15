@@ -9,14 +9,15 @@ public class AbilityHandler : Global {
     /// in charge of the different abilities the player has
     /// </summary>
 
+    //fields for general or multipule variable reference 
     private IPlayer player;
     private Heartbeat hb; //ref to the heartbeat component 
 
     [Header("Ability 0: Transfer")]
     [SerializeField] private GameObject abilityZeroPrefab; //prefab of the first bleed ability
+    private AbilityTransfer powerZero; //ref to the abilityTransfer Compnent of the First ability
     private ParticleSystem part; //particle system attached to object
     protected ParticleSystem.Particle[] particles; //array of particles being controlled 
-    private AbilityTransfer powerZero; //ref to the abilityTransfer Compnent of the First ability
 
     [Header("Ability 1: Sprinting")]
     [SerializeField] private float sprintMoveSpeed; //movement speed while sprinting
@@ -135,6 +136,7 @@ public class AbilityHandler : Global {
                     player.Power.RemoveBPM(heartRateAdded + heartRateRemoved);
                     sprinting = false;
                     heartRateAdded = 0;
+                    part.Stop();
                 }
                 player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
                 player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
@@ -147,7 +149,6 @@ public class AbilityHandler : Global {
                 {
                     sprinting = true;
                 }
-
                 if (sprinting)
                 {
                     //increase timers and heartrate while sprinting
