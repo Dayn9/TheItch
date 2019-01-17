@@ -5,6 +5,10 @@ using UnityEngine;
 public class AbilityAbsorb : BloodParticle
 {
     [SerializeField] private int particlesSent;
+    private float particleEmission;
+
+    private SpriteRenderer playerRend; //ref to players sprite renderer
+    private MovingObject playerObj;
 
     //accessor for audioPlayer (used by Ability Handler)
     public AudioPlayer AudioPlayer { get { return audioPlayer; } }
@@ -13,10 +17,10 @@ public class AbilityAbsorb : BloodParticle
     protected override void Awake()
     {
         base.Awake();
+        playerRend = Player.GetComponent<SpriteRenderer>();
+        playerObj = Player.GetComponent<MovingObject>();
         audioPlayer = GetComponent<AudioPlayer>();
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -26,14 +30,24 @@ public class AbilityAbsorb : BloodParticle
             //snap to players position
             transform.position = Player.transform.position;
 
-            //move the particles toward their target
-            MoveParticles();
-
             if (Input.GetMouseButton(1))
             {
-                SendParticlesTo(Player.transform, particlesSent);
+                particleEmission += particlesSent * Time.deltaTime;
+                SendParticlesTo(playerObj, Mathf.FloorToInt(particleEmission));
+                particleEmission -= Mathf.FloorToInt(particleEmission);
+
+                partRend.sortingLayerID = playerRend.sortingLayerID;
+                partRend.sortingOrder = playerRend.sortingOrder - 1;
+
                 part.Play();
+            }else if (Input.GetMouseButtonUp(1))
+            {
+                part.Stop();
             }
+
+            //move the particles toward their target
+            MoveParticles();
+            
         }
         else
         {

@@ -20,6 +20,8 @@ public class AbilityHandler : Global {
     protected ParticleSystem.Particle[] particles; //array of particles being controlled 
 
     [Header("Ability 1: Sprinting")]
+    [SerializeField] private GameObject abilityOnePrefab;
+    private AbilityAbsorb powerOne;
     [SerializeField] private float sprintMoveSpeed; //movement speed while sprinting
     [SerializeField] private float sprintJumpSpeed; //jump speed while sprinting
     private float orignMoveSpeed; //origional player move speed
@@ -44,16 +46,19 @@ public class AbilityHandler : Global {
         player = Player.GetComponent<IPlayer>();
         hb = player.Power.Heartbeat;
 
-        //get the normal speeds as the origional values
-        orignMoveSpeed = player.MoveSpeed;
-        originJumpSpeed = player.JumpSpeed;
-
         //find power zero refs 
         powerZero = Instantiate(abilityZeroPrefab).GetComponent<AbilityTransfer>();
         powerZero.gameObject.SetActive(false);
         part = GetComponent<ParticleSystem>();
         //part.Stop();
         particles = new ParticleSystem.Particle[1]; //array of length one for checks if part has ANY active particles
+
+        //get the normal speeds as the origional values
+        orignMoveSpeed = player.MoveSpeed;
+        originJumpSpeed = player.JumpSpeed;
+
+        powerOne = Instantiate(abilityOnePrefab).GetComponent<AbilityAbsorb>();
+        powerOne.gameObject.SetActive(false);
 
         //all abilities start out false
         if(unlockedAbilities == null)
@@ -66,6 +71,10 @@ public class AbilityHandler : Global {
             if (unlockedAbilities[0])
             {
                 powerZero.gameObject.SetActive(true);
+            }
+            if (unlockedAbilities[1])
+            {
+                powerOne.gameObject.SetActive(true);
             }
         }
     }
@@ -90,9 +99,14 @@ public class AbilityHandler : Global {
         if(ability >= 0 && ability < unlockedAbilities.Length)
         {
             unlockedAbilities[ability] = true;
-            if (unlockedAbilities[0])
+            switch (ability)
             {
-                powerZero.gameObject.SetActive(true);
+                case 0:
+                    powerZero.gameObject.SetActive(true);
+                    break;
+                case 1:
+                    powerOne.gameObject.SetActive(true);
+                    break;
             }
         }
     }
@@ -136,7 +150,6 @@ public class AbilityHandler : Global {
                     player.Power.RemoveBPM(heartRateAdded + heartRateRemoved);
                     sprinting = false;
                     heartRateAdded = 0;
-                    part.Stop();
                 }
                 player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
                 player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;

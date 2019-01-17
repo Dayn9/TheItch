@@ -7,6 +7,8 @@ public abstract class BloodParticle : Global {
     [SerializeField] private float particleSpeed;
     private const int particleMultiplier = 3;
 
+    [SerializeField] private bool inheritVelocity = false; //inherit initial velocity from moving object
+
     /// <summary>
     /// methods and properties for controlling the movement of blood particles
     /// </summary>
@@ -32,6 +34,8 @@ public abstract class BloodParticle : Global {
     private const float slowRadius = 6;
 
     protected AudioPlayer audioPlayer; //references gotten in inheriting classes
+
+    public ParticleSystem Part { get { return part; } }
 
     protected virtual void Awake()
     {
@@ -60,7 +64,7 @@ public abstract class BloodParticle : Global {
             part.Emit(minNum * particleMultiplier);
             sentParticles += minNum * particleMultiplier;
 
-            //start sending p[articles to point
+            //start sending particles to point
             sending = true;
 
             audioPlayer.PlaySound("bloodSparkle");
