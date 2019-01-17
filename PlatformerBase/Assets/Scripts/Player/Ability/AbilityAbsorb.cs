@@ -28,7 +28,7 @@ public class AbilityAbsorb : BloodParticle
         if(!paused)
         {
             //snap to players position
-            transform.position = Player.transform.position;
+            transform.position = (Vector2)Player.transform.position ;
 
             if (Input.GetMouseButton(1))
             {
@@ -47,7 +47,6 @@ public class AbilityAbsorb : BloodParticle
 
             //move the particles toward their target
             MoveParticles();
-            
         }
         else
         {

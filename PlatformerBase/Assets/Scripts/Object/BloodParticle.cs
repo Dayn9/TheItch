@@ -30,7 +30,7 @@ public abstract class BloodParticle : Global {
     private bool useable = true; //true when object can use particle effect (better name needed)
     public bool Useable { set { useable = value; } }
 
-    private const float overshoot = 0.75f;
+    private const float overshoot = 1.0f; //0.75 in working build
     private const float slowRadius = 6;
 
     protected AudioPlayer audioPlayer; //references gotten in inheriting classes
@@ -111,6 +111,12 @@ public abstract class BloodParticle : Global {
                     //particle.remainingLifetime += Time.deltaTime; //keep particle alive
                     Vector3 moveVector = ((Vector3)target - particle.position);
                     moveVector += moveVector.normalized * overshoot;
+
+                    //inherit moving targets velocity during the first moments
+                    if (inheritVelocity && moving && particle.remainingLifetime > part.main.startLifetime.constant - Time.deltaTime)
+                    {
+                        particle.velocity += (Vector3)movingTarget.MoveVelocity;
+                    }
 
                     particle.velocity += ((moveVector.normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
                     particle.velocity *= Mathf.Clamp((moveVector.magnitude + slowRadius) / 10 , slowRadius * 0.1f , 1);

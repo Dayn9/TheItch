@@ -58,6 +58,9 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public Vector2 ReturnPosition { set { returnPosition = value; } }
     public Animator Animator { get { return animator; } }
 
+    public override Vector2 MoveVelocity { get { return moveVelocity * moveSpeed; } }
+
+
     public float MoveSpeed {
         get { return moveSpeed; }
         set { moveSpeed = value; }
