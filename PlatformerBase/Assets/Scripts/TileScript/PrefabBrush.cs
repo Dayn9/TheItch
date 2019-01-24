@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Tilemaps;
 
-/*
 [CreateAssetMenu(fileName = "Prfab Brush", menuName = "Brushes/Prefab Brush")]
 [CustomGridBrush(false, true, false, "Prefab Brush")] // https://docs.unity3d.com/Manual/Tilemap-ScriptableBrushes.html
 public class PrefabBrush : GridBrushBase
@@ -103,4 +102,3 @@ public class PrefabBrush : GridBrushBase
     }
     #endif
 }
-*/
