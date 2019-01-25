@@ -22,7 +22,7 @@ public class LeadCamera : BaseCamera {
 
     void Update()
     {
-        if (!paused)
+        if (!paused && !manual)
         {
             targetOffset = (offsetFromPlayer * (follow.GravityVelocity.y < 0 ? -1 : 1 ))
                 + (follow.MoveVelocity.normalized * dist); //target offset determined direction of MoveVelocity and magnitude of dist
@@ -34,8 +34,7 @@ public class LeadCamera : BaseCamera {
             newOffset.z = transform.position.z; //maintain z position
             transform.position = follow.transform.position + newOffset; //move to new Offset from follow
             currentOffset = newOffset; //update the current offset
-
-            StayInLimits(); //remain within the limits of the level
         }
+        StayInLimits(); //remain within the limits of the level
     }
 }

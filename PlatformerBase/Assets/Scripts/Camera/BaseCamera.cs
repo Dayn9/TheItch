@@ -24,6 +24,8 @@ public class BaseCamera : Global {
     private PixelPerfectCamera ppc;
     private IPlayer player;
 
+    protected bool manual = false; //true when external script is controlling camera
+
     public float CamHeight {
         get {
             if(ppc == null)
@@ -42,6 +44,7 @@ public class BaseCamera : Global {
             return width;
         }
     }
+    public bool Manual { set { manual = value; } }
 
     private void GetCameraProperties()
     {

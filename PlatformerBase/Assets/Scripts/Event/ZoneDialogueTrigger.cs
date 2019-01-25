@@ -35,6 +35,7 @@ public class ZoneDialogueTrigger : ZoneTrigger {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
         {
             playerTouching = false;
+            if (disableAfter) { gameObject.SetActive(false); }
         }
     }
 }

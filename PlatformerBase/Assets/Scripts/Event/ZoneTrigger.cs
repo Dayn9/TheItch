@@ -19,6 +19,7 @@ public class ZoneTrigger : EventTrigger {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
         {
             CallAfter();
+            if (disableAfter) { gameObject.SetActive(false); }
         }
     }
 }

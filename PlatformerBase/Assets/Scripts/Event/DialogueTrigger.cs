@@ -48,6 +48,7 @@ public class DialogueTrigger : IndicatorTrigger {
             playerTouching = false;
 
             //dialogueBox.Reset(); //reset the dialogue when the player leaves
+            if (disableAfter) { gameObject.SetActive(false); }
         }
     }
 }

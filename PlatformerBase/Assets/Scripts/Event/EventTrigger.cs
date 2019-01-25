@@ -5,6 +5,9 @@ public delegate void triggered();
 
 [RequireComponent(typeof(Collider2D))]
 public class EventTrigger : Inventory {
+
+    [SerializeField] protected bool disableAfter;
+
     protected bool playerTouching = false; //true when dialogue is touching Charachter
 
     [SerializeField] protected List<GameObject> itemsRequired; //items required to complete quest
@@ -79,6 +82,7 @@ public class EventTrigger : Inventory {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
         {
             playerTouching = false;
+            if (disableAfter) { gameObject.SetActive(false); }
         }
     }
 

@@ -123,6 +123,7 @@ public class TransferTrigger : IndicatorTrigger
         {
             //indicator.SetActive(false);
             //playerTouching = false;
+            if (disableAfter) { gameObject.SetActive(false); }
         }
     }
 }

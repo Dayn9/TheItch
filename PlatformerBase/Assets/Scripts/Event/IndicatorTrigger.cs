@@ -57,6 +57,7 @@ public class IndicatorTrigger : EventTrigger {
         {
             indicator.SetActive(false);
             playerTouching = false;
+            if (disableAfter) { gameObject.SetActive(false); }
         }
     }
 }
