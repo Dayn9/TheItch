@@ -26,7 +26,6 @@ namespace UnityEditor
 
         public GameObject ChildMap(GameObject brushTarget, BuildingBrushType brushType)
         {
-            GameObject child;
             string searchName;
             //convert brush type to string
             switch (brushType)
@@ -48,12 +47,12 @@ namespace UnityEditor
                     break;
             }
             //try to find the child object
-            child = GameObject.Find(brushTarget.name + searchName);
+            GameObject child = GameObject.Find(brushTarget.name + searchName);
+            
             //make the child object if it doesn't exist
             if(child == null)
             {
-                child = Instantiate(new GameObject());
-
+                child = new GameObject();
                 child.name = brushTarget.name + searchName;
                 child.transform.SetParent(brushTarget.transform);
                 child.transform.localPosition = Vector3.zero;
@@ -111,7 +110,7 @@ namespace UnityEditor
                     break;
             }
         }
-
+        
         public override void Erase(GridLayout grid, GameObject brushTarget, Vector3Int position)
         {
             // Do not allow editing palettes
@@ -176,7 +175,7 @@ namespace UnityEditor
                     break;
             }
         }
-
+        
         public override void FloodFill(GridLayout grid, GameObject brushTarget, Vector3Int position)
         {
             // Do not allow editing palettes
@@ -208,7 +207,8 @@ namespace UnityEditor
                     break;
             }
         }
-        
+
+        /*
         public override void Select(GridLayout grid, GameObject brushTarget, BoundsInt position)
         {
             // Do not allow editing palettes
@@ -303,8 +303,8 @@ namespace UnityEditor
                     base.Move(grid, brushTarget, from, to);
                     break;
             }
-        }
-        
+        }*/
+
 #if UNITY_EDITOR
         //create asset menu for prefab brush
         [MenuItem("Assets/Create/BuildingBrush")]
