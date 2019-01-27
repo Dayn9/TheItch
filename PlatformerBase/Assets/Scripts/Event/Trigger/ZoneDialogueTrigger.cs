@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(FallZone))]
 public class ZoneDialogueTrigger : ZoneTrigger {
 
-    [SerializeField] private DialogueBox dialogueBox;
+    [SerializeField] protected DialogueBox dialogueBox;
 
-    [SerializeField] [TextArea] private string enterDialogue; //text dialogue to give quest
+    [SerializeField] [TextArea] protected string enterDialogue; //text dialogue to give quest
 
     protected override void Update()
     {

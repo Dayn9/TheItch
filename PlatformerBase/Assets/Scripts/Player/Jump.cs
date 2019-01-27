@@ -96,7 +96,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             //don't accept input when frozen
             if (frozen)
             {
-                movementInput = Vector2.zero;
+                movementInput = inputVelocity;
                 jumping = false;
                 return;
             }

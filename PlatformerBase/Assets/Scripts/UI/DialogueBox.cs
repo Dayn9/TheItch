@@ -120,7 +120,8 @@ public class DialogueBox : Pause {
     /// display the next chunk of dialogue and an image in the dialogue box
     /// </summary>
     /// <param name="message">full message to display</param>
-    public virtual void OnTriggerKeyPressed(string message)
+    /// <returns>dialogue exited</returns>
+    public virtual bool OnTriggerKeyPressed(string message)
     {
         SetAllRenderers(true);
         audioPlayer.PlaySound(0);
@@ -137,12 +138,12 @@ public class DialogueBox : Pause {
             //exit dialogue if there are no more chunks
             if (dialogueChunk >= chunks.Count)
             {
-                
                 ExitReset();
-                return; //don't display the dialogue becuase there is none
+                return true; //don't display the dialogue becuase there is none
             }
             DisplayChunk(chunks[dialogueChunk]);
         }
+        return false; //dialogue was displayed
     }
 
     public void ExitReset()

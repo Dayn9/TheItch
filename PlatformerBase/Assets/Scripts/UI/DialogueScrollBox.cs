@@ -17,7 +17,7 @@ public class DialogueScrollBox : DialogueBox
     /// display the next chunk of dialogue and an image in the dialogue box
     /// </summary>
     /// <param name="message">full message to display</param>
-    public override void OnTriggerKeyPressed(string message)
+    public override bool OnTriggerKeyPressed(string message)
     {
         SetAllRenderers(true);
         audioPlayer.PlaySound(0);
@@ -32,7 +32,7 @@ public class DialogueScrollBox : DialogueBox
             if (currentLetterIndex < totallChunkLength)
             {
                 currentLetterIndex = totallChunkLength;
-                return;
+                return false;
             }
 
             //advance dialogue to next or first chunk
@@ -41,10 +41,11 @@ public class DialogueScrollBox : DialogueBox
             if (dialogueChunk >= chunks.Count)
             {
                 ExitReset();
-                return; //don't display the dialogue becuase there is none
+                return true; //don't display the dialogue becuase there is none
             }
             DisplayChunk(chunks[dialogueChunk]);
         }
+        return false;
     }
 
 
