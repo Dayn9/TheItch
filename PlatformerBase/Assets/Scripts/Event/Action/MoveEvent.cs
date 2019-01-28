@@ -79,7 +79,10 @@ public class MoveEvent : Global {
         if (snapCollider) {
             foreach (Collider2D coll in colls)
             {
-                coll.enabled = false;
+                if(coll.GetType() != (new CompositeCollider2D()).GetType())
+                {
+                    coll.enabled = false;
+                }
             }
         }
 
@@ -113,7 +116,7 @@ public class MoveEvent : Global {
 
                     if (fadeTilemap) { rend.color = snapColor; } //set the color to the snapped color
                     if (snapCollider)
-                    {
+                    {       
                         foreach (Collider2D coll in colls)
                         {
                             coll.enabled = true;

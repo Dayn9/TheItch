@@ -30,8 +30,8 @@ public abstract class BloodParticle : Global {
     private bool useable = true; //true when object can use particle effect (better name needed)
     public bool Useable { set { useable = value; } }
 
-    private const float overshoot = 1.0f; //0.75 in working build
-    private const float slowRadius = 6;
+    private const float overshoot = 0.5f; //0.75 in working build
+    private const float slowRadius = 7;
 
     protected AudioPlayer audioPlayer; //references gotten in inheriting classes
 
@@ -104,12 +104,18 @@ public abstract class BloodParticle : Global {
 
                 //loop through all particles
                 int numParticles = part.GetParticles(particles);
-                target = moving ? (movingTarget.transform.position + (Vector3)movingTarget.MoveVelocity) : stillTarget.position;
+                target = moving ? (movingTarget.transform.position/* + (Vector3)movingTarget.MoveVelocity*/) : stillTarget.position;
                 for (int i = 0; i < numParticles; i++)
                 {
                     ParticleSystem.Particle particle = particles[i];
                     //particle.remainingLifetime += Time.deltaTime; //keep particle alive
                     Vector3 moveVector = ((Vector3)target - particle.position);
+                    if (moveVector.magnitude < 1 + overshoot && particle.remainingLifetime < part.main.startLifetime.constant - Time.deltaTime)
+                    {
+                        particle.remainingLifetime = 0;
+                        particle.velocity = Vector3.zero;
+                        sentParticles -= 1;
+                    }
                     moveVector += moveVector.normalized * overshoot;
 
                     //inherit moving targets velocity during the first moments
@@ -121,12 +127,6 @@ public abstract class BloodParticle : Global {
                     particle.velocity += ((moveVector.normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
                     particle.velocity *= Mathf.Clamp((moveVector.magnitude + slowRadius) / 10 , slowRadius * 0.1f , 1);
 
-                    if (moveVector.magnitude - overshoot < 1f)
-                    {
-                        particle.remainingLifetime = 0;
-                        particle.velocity = Vector3.zero;
-                        sentParticles -= 1;
-                    }
                     particles[i] = particle; //set the particle's data back into particles array
                                              //Debug.Log("Seth is dim");
                 }
