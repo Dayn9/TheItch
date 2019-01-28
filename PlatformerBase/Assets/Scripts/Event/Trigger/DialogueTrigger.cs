@@ -19,23 +19,30 @@ public class DialogueTrigger : IndicatorTrigger {
         {
             if(Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]) || Input.GetMouseButtonDown(0))
             {
-                dialogueBox.PauseGame(true);
+                Player.GetComponent<IPlayer>().Frozen = true;
                 CheckQuest();
                 if (questCompleted)
                 {
                     if (dialogueBox.FirstChunk) { CallAfter(); }
-                    dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage);
+                    if(dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage))
+                    {
+                        Player.GetComponent<IPlayer>().Frozen = false;
+                    }
                 }
                 else
                 {
                     if (dialogueBox.FirstChunk) { CallBefore(); } //only trigger event during the first chunk
-                    dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage);
+                    if (dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage))
+                    {
+                        Player.GetComponent<IPlayer>().Frozen = false;
+                    }
                 }
             }
             //exit the dialogue if the player jumps out
             else if (Input.GetButtonDown("Jump"))
             {
                 dialogueBox.ExitReset();
+                Player.GetComponent<IPlayer>().Frozen = false;
             }
         }
     }

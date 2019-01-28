@@ -110,10 +110,11 @@ public class DialogueBox : Pause {
     /// </summary>
     /// <param name="message">full message to display</param>
     /// <param name="face">image to display</param>
-    public void OnTriggerKeyPressed(string message, Sprite face)
+    /// <returns>dialogue exited</returns>
+    public bool OnTriggerKeyPressed(string message, Sprite face)
     {
-        OnTriggerKeyPressed(message);
         charachterImage.sprite = face;
+        return OnTriggerKeyPressed(message);
     }
 
     /// <summary>
@@ -164,7 +165,6 @@ public class DialogueBox : Pause {
     {
         dialogueChunk = -1; //reset dialogue
         SetAllRenderers(false);
-        PauseGame(false);
         charachterImage.enabled = false;
     }
 

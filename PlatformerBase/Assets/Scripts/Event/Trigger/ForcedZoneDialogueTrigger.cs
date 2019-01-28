@@ -27,11 +27,11 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
                 if (dialogueBox.OnTriggerKeyPressed(enterDialogue))
                 {
                     Player.GetComponent<IPlayer>().Frozen = false;
+                    Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
                     after.SetActive(true);
                     talked = true;
                 }
             }
-
             if ((transform.position - Player.transform.position).magnitude > 2)
             {
                 Player.GetComponent<PhysicsObject>().InputVelocity = new Vector2(Player.transform.position.x > transform.position.x ? -inputSpeed : inputSpeed, 0);
