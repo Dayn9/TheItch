@@ -23,6 +23,10 @@ public class DialogueBox : Pause {
     protected List<string> chunks; //chunks of dialogue that are displayed one at a time
 
     [SerializeField] private Color letterColor;
+
+    protected int[] symbolsAscii = new int[] { 46, 44, 33, 63, 58, 59, 45, 95, 91, 93, 40, 41, 126, 39, 39, 34, 34, 47, 92, 61, 43, 35, 60, 62, 94, 42 };
+    protected bool openSingleQuote = false;
+    protected bool openDoubleQuote = false;
    
     public bool FirstChunk { get { return dialogueChunk == -1; } }
     
@@ -93,7 +97,7 @@ public class DialogueBox : Pause {
         charachterFace.transform.position = transform.position + new Vector3(-9.0f, 0.0f, 0.0f);
         charachterImage = charachterFace.GetComponent<SpriteRenderer>();
         charachterImage.sortingLayerID = GetComponent<SpriteRenderer>().sortingLayerID;
-        charachterImage.sprite = letters[12];
+        charachterImage.sprite = letters[letters.Length-1];
 
         SetAllRenderers(false);
 
@@ -219,32 +223,7 @@ public class DialogueBox : Pause {
             message = message.ToLower(); //make all letters lowercase
             for (int i = 0; i < message.Length; i++)
             {
-                char letter = message[i];
-                int spriteNum = 12; //default to blank space in case of unassign char
-                //is letter an number 
-                if (letter >= 48 && letter <= 57) //ASCII: ('0' = 48) ('9' = 57)
-                {
-                    spriteNum = letter - 48; //Sprites: ('0' = 0) ('9' = 9)
-                }
-                //is letter part of the alpabet
-                else if (letter >= 97 && letter <= 122) //ASCII: ('a' = 97) ('z' = 122)
-                {
-                    spriteNum = letter - 84; //Sprites: ('a' = 13) ('z' = 38)
-                }
-                //other charachters
-                else
-                {
-                    switch ((int)letter)
-                    {
-                        case 46: //ASCII: ('.' = 46)
-                            spriteNum = 10; //Sprites: ('.' = 10)
-                            break;
-                        case 44: //ASCII: (',' = 44)
-                            spriteNum = 11; //Sprites: (',' = 11)
-                            break;
-                    }
-                }
-                text[i].sprite = letters[spriteNum];
+                text[i].sprite = letters[getSpriteNum(message[i])]; //convert letters so sprite numbers and set sprite 
             }
         }
         //Something has gone wrong in Display Message, string passed in was too long 
@@ -253,8 +232,59 @@ public class DialogueBox : Pause {
             Debug.Log("message has more than" + (numLines * charsPerLine) + "charachters");
         }
     }
+    
+    /// <summary>
+    /// convert a char to a sprite index in the letters array
+    /// </summary>
+    /// <param name="letter">char to convert</param>
+    /// <returns>sprite index in letters</returns>
+    protected int getSpriteNum(char letter)
+    {
+        //is space
+        if (letter == 32)
+        {
+            return letters.Length - 1;
+        }
+        //is letter an number 
+        else if(letter >= 48 && letter <= 57) //ASCII: ('0' = 48) ('9' = 57)
+        {
+            return letter - 48; //Sprites: ('0' = 0) ('9' = 9)
+        }
+        //is letter part of the alpabet
+        else if (letter >= 97 && letter <= 122) //ASCII: ('a' = 97) ('z' = 122)
+        {
+            return letter - 87; //Sprites: ('a' = 10) ('z' = 35)
+        }
+        //is other charachters or symbol
+        else
+        {
+            for(int i = 0; i < symbolsAscii.Length; i++)
+            {
+                if(letter == symbolsAscii[i])
+                {
+                    //handle open and closed quotes
+                    if(letter == 39)
+                    {
+                        if (openSingleQuote) { i++; }
+                        openSingleQuote = !openSingleQuote;
+                    }
+                    if (letter == 34)
+                    {
+                        if (openDoubleQuote) { i++; }
+                        openDoubleQuote = !openDoubleQuote;
+                    }
+                    return i + 36;
+                }
+            }
+            //unaccounted ascii value, just return a space 
+            return letters.Length - 1;
+        }
+    }
 
-
+    /// <summary>
+    /// enable or disable all the sprite renderers 
+    /// </summary>
+    /// <param name="enable">enable / disable</param>
     protected void SetAllRenderers(bool enable)
     {
         GetComponent<SpriteRenderer>().enabled = enable;

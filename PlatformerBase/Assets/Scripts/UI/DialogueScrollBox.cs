@@ -90,37 +90,19 @@ public class DialogueScrollBox : DialogueBox
 
             for (int i = 0; i < (numLines * charsPerLine); i++)
             {
-                char letter = recievedMessage[i];
-                int spriteNum = 12; //default to blank space in case of unassign char
-
+                //convert letters to sprite and set sprite when inside current index 
+                text[i].sprite = letters[i <= currentLetterIndex ? getSpriteNum(recievedMessage[i]) : letters.Length - 1];
+                /*
+                 * Does the same as above line ^^^
+                 * 
+                 * char letter = recievedMessage[i];
+                int spriteNum = letters.Length - 1; //default to blank space in case of unassign char
                 if (i <= currentLetterIndex)
                 {
-                    //is letter an number 
-                    if (letter >= 48 && letter <= 57) //ASCII: ('0' = 48) ('9' = 57)
-                    {
-                        spriteNum = letter - 48; //Sprites: ('0' = 0) ('9' = 9)
-                    }
-                    //is letter part of the alpabet
-                    else if (letter >= 97 && letter <= 122) //ASCII: ('a' = 97) ('z' = 122)
-                    {
-                        spriteNum = letter - 84; //Sprites: ('a' = 13) ('z' = 38)
-                    }
-                    //other charachters
-                    else
-                    {
-                        switch ((int)letter)
-                        {
-                            case 46: //ASCII: ('.' = 46)
-                                spriteNum = 10; //Sprites: ('.' = 10)
-                                break;
-                            case 44: //ASCII: (',' = 44)
-                                spriteNum = 11; //Sprites: (',' = 11)
-                                break;
-                        }
-                    }
+                    spriteNum = getSpriteNum(letter);
                 }
-
-                text[i].sprite = letters[spriteNum];
+               
+                text[i].sprite = letters[spriteNum];*/
             }
         }
     }
