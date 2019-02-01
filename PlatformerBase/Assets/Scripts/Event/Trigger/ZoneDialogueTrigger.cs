@@ -2,17 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZoneDialogueTrigger : ZoneTrigger {
+public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
 
     [SerializeField] protected DialogueBox dialogueBox;
 
+    [Tooltip("img should be 32x32 pixels")]
+    [SerializeField] protected Sprite faceImage; //image to display in dialogue box
+
     [SerializeField] [TextArea] protected string enterDialogue; //text dialogue to give quest
+
+    private PhysicsObject myPhysObj;
+    private static PhysicsObject playerPhysObj;
+
+    //IDialogue Variables
+    public DialogueBox DialogueBox { set { dialogueBox = value; } }
+    public Sprite FaceImage { get { return faceImage; } }
+    public string QuestDialogue { get { return enterDialogue; } }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        //find the physics object somewhere in the hierarchy of object
+        myPhysObj = GetComponent<PhysicsObject>();
+        if (myPhysObj == null) { myPhysObj = GetComponentInParent<PhysicsObject>(); }
+        if (myPhysObj == null) { myPhysObj = GetComponentInChildren<PhysicsObject>(); }
+    }
+
+    private void Start()
+    {
+        if (playerPhysObj == null)
+        {
+            playerPhysObj = Player.GetComponent<PhysicsObject>();
+        }
+    }
 
     protected override void Update()
     {
         if(!paused && playerTouching && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0)))
         {
-            dialogueBox.OnTriggerKeyPressed(enterDialogue);
+            dialogueBox.OnTriggerKeyPressed(enterDialogue, faceImage);
         }
     }
 
@@ -24,7 +53,7 @@ public class ZoneDialogueTrigger : ZoneTrigger {
             CallBefore();
             playerTouching = true;
             dialogueBox.Reset(); //make sure the dialogue box is wipeed
-            dialogueBox.OnTriggerKeyPressed(enterDialogue);
+            dialogueBox.OnTriggerKeyPressed(enterDialogue, faceImage);
         }
     }
 
@@ -36,5 +65,15 @@ public class ZoneDialogueTrigger : ZoneTrigger {
             playerTouching = false;
             if (disableAfter) { gameObject.SetActive(false); }
         }
+    }
+
+    /// <summary>
+    /// sets both the player and this objects physics object frozen property
+    /// </summary>
+    /// <param name="frozen"></param>
+    public void SetFrozen(bool frozen)
+    {
+        playerPhysObj.Frozen = frozen;
+        myPhysObj.Frozen = frozen;
     }
 }

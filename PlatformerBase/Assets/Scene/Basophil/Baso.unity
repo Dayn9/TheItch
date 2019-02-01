@@ -453,11 +453,11 @@ PrefabInstance:
       objectReference: {fileID: 997205038}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -170.44
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.z
@@ -542,8 +542,10 @@ MonoBehaviour:
   indicatorOffset: {x: 0, y: 1.75, z: 0}
   dialogueBox: {fileID: 1965160224}
   faceImage: {fileID: 21300000, guid: 37645847e1ad57e4db10a5a80eaca0a4, type: 3}
-  QuestDialogue: "quest\t\n"
-  CompletedDialogue: complete
+  questDialogue: quest
+  completedDialogue: 'comp
+
+'
 --- !u!61 &311340814
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1021,7 +1023,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 1
@@ -113424,8 +113426,8 @@ MonoBehaviour:
   indicatorOffset: {x: 0, y: 1.75, z: 0}
   dialogueBox: {fileID: 1965160224}
   faceImage: {fileID: 21300000, guid: 37645847e1ad57e4db10a5a80eaca0a4, type: 3}
-  QuestDialogue: quest
-  CompletedDialogue: complete
+  questDialogue: 
+  completedDialogue: 
 --- !u!61 &1472558042
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -117815,6 +117817,7 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1965160224}
+  faceImage: {fileID: 21300000, guid: 86b930562784c374791e1c0475c72ba9, type: 3}
   enterDialogue: Hello There ask saksamsas skis sjks sks sks sks sks sks sks sks sks
     sks sks sks sks skssadsad sad sad asd as dasd as da sda sd
   inputSpeed: 10

@@ -31,7 +31,7 @@ public class PhysicsObject : MovingObject
     protected bool inFallZone; //true when the player is in a fallZone
     #endregion
 
-    public Vector2 InputVelocity { set { inputVelocity = value; } }
+    public Vector2 InputVelocity { set { inputVelocity = value;}}
     public Vector2 GravityVelocity { get { return gravityVelocity; } }
     public float MaxGravity { get { return maxGravity; } }
     public Vector2 Gravity { get { return gravity; } }

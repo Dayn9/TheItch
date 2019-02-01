@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTrigger : IndicatorTrigger {
+public class DialogueTrigger : IndicatorTrigger, IDialogue {
     [SerializeField] private DialogueBox dialogueBox;
 
     [Tooltip("img should be 32x32 pixels")]
     [SerializeField] private Sprite faceImage; //image to display in dialogue box
 
-    [SerializeField] [TextArea] private string QuestDialogue; //text dialogue to give quest
-    [SerializeField] [TextArea] private string CompletedDialogue; //text dialogue when quest complete2
+    [SerializeField] [TextArea] private string questDialogue; //text dialogue to give quest
+    [SerializeField] [TextArea] private string completedDialogue; //text dialogue when quest complete2
 
     private PhysicsObject myPhysObj;
     private static PhysicsObject playerPhysObj;
+
+    //IDialogue variables
+    public DialogueBox DialogueBox { set { dialogueBox = value; } }
+    public Sprite FaceImage { get { return faceImage; } }
+    public string QuestDialogue { get { return questDialogue; } }
 
     protected override void Awake()
     {
@@ -40,22 +45,23 @@ public class DialogueTrigger : IndicatorTrigger {
         {
             if (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]) || Input.GetMouseButtonDown(0))
             {
-                setFrozen(true);
+                SetFrozen(true);
+                Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
                 CheckQuest();
                 if (questCompleted)
                 {
                     if (dialogueBox.FirstChunk) { CallAfter(); }
-                    if (dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage))
+                    if (dialogueBox.OnTriggerKeyPressed(completedDialogue, faceImage))
                     {
-                        setFrozen(false);
+                        SetFrozen(false);
                     }
                 }
                 else
                 {
                     if (dialogueBox.FirstChunk) { CallBefore(); } //only trigger event during the first chunk
-                    if (dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage))
+                    if (dialogueBox.OnTriggerKeyPressed(questDialogue, faceImage))
                     {
-                        setFrozen(false);
+                        SetFrozen(false);
                     }
                 }
             }
@@ -71,7 +77,7 @@ public class DialogueTrigger : IndicatorTrigger {
     /// sets both the player and this objects physics object frozen property
     /// </summary>
     /// <param name="frozen"></param>
-    private void setFrozen(bool frozen)
+    public void SetFrozen(bool frozen)
     {
         playerPhysObj.Frozen = frozen;
         myPhysObj.Frozen = frozen;

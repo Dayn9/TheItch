@@ -30,10 +30,10 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0))
             {
                 //send the dialogue and check if ended
-                if (dialogueBox.OnTriggerKeyPressed(enterDialogue))
+                if (dialogueBox.OnTriggerKeyPressed(enterDialogue, faceImage))
                 {
                     //unfreeze player and activate after object
-                    Player.GetComponent<MovingObject>().Frozen = false;
+                    SetFrozen(false);
                     Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
                     after.SetActive(true);
                     talked = true;
@@ -60,8 +60,8 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
             CallBefore();
             playerTouching = true;
             dialogueBox.Reset(); //make sure the dialogue box is wipeed
-            dialogueBox.OnTriggerKeyPressed(enterDialogue);
-            Player.GetComponent<MovingObject>().Frozen = true;
+            dialogueBox.OnTriggerKeyPressed(enterDialogue, faceImage);
+            SetFrozen(true);
         }
     }
 
