@@ -11,7 +11,7 @@ public class FreezeZone : Global {
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Player.GetComponent<IPlayer>().Frozen = setFreeze;
+            Player.GetComponent<MovingObject>().Frozen = setFreeze;
         }
     }
 

@@ -15,7 +15,8 @@ public class Transition : EventTrigger{
 
     [SerializeField] private float fadeRate = 1.0f;
 
-    private IPlayer playerFreeze;
+    private MovingObject playerFreeze;
+    private IPlayer playerFall;
 
     private void Start()
     {
@@ -27,8 +28,8 @@ public class Transition : EventTrigger{
         }
 
         render.enabled = true;
-        playerFreeze = Player.GetComponent<IPlayer>();
-
+        playerFreeze = Player.GetComponent<MovingObject>();
+        playerFall = Player.GetComponent<IPlayer>();
         FadeIn();
     }
 
@@ -38,7 +39,7 @@ public class Transition : EventTrigger{
         render.color = new Color(0, 0, 0, 1);
         fadeIn = true;
         playerFreeze.Frozen = true; //stop the player from moving
-        playerFreeze.InFallZone = true; 
+        playerFall.InFallZone = true; 
     }
 
 
@@ -48,7 +49,7 @@ public class Transition : EventTrigger{
         render.color = new Color(0, 0, 0, 0);
         fadeOut = true;
         playerFreeze.Frozen = true; //stop the player from moving
-        playerFreeze.InFallZone = true;
+        playerFall.InFallZone = true;
     }
 
     protected override void Update()
@@ -65,7 +66,7 @@ public class Transition : EventTrigger{
                     render.enabled = false;
                     CallBefore();
                     playerFreeze.Frozen = false; //stop the player from moving
-                    playerFreeze.InFallZone = false;
+                    playerFall.InFallZone = false;
                     return;
                 }
                 render.color = new Color(0, 0, 0, render.color.a - change);
@@ -79,7 +80,7 @@ public class Transition : EventTrigger{
                     fadeOut = false;
                     CallAfter(); 
                     playerFreeze.Frozen = false; //stop the player from moving
-                    playerFreeze.InFallZone = false;
+                    playerFall.InFallZone = false;
                     return;
                 }
                 render.color = new Color(0, 0, 0, render.color.a + change);

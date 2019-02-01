@@ -11,22 +11,43 @@ public class DialogueTrigger : IndicatorTrigger {
     [SerializeField] [TextArea] private string QuestDialogue; //text dialogue to give quest
     [SerializeField] [TextArea] private string CompletedDialogue; //text dialogue when quest complete2
 
+    private PhysicsObject myPhysObj;
+    private static PhysicsObject playerPhysObj;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        //find the physics object somewhere in the hierarchy of object
+        myPhysObj = GetComponent<PhysicsObject>();
+        if(myPhysObj == null) { myPhysObj = GetComponentInParent<PhysicsObject>(); }
+        if (myPhysObj == null) { myPhysObj = GetComponentInChildren<PhysicsObject>(); }
+    }
+
+    private void Start()
+    {
+        if(playerPhysObj == null)
+        {
+            playerPhysObj = Player.GetComponent<PhysicsObject>();
+        }
+    }
+
     // Update is called once per frame
     protected override void Update()
     {
         //check if in contact with the player and player is interacting 
         if (playerTouching)
         {
-            if(Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]) || Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]) || Input.GetMouseButtonDown(0))
             {
-                Player.GetComponent<IPlayer>().Frozen = true;
+                setFrozen(true);
                 CheckQuest();
                 if (questCompleted)
                 {
                     if (dialogueBox.FirstChunk) { CallAfter(); }
-                    if(dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage))
+                    if (dialogueBox.OnTriggerKeyPressed(CompletedDialogue, faceImage))
                     {
-                        Player.GetComponent<IPlayer>().Frozen = false;
+                        setFrozen(false);
                     }
                 }
                 else
@@ -34,7 +55,7 @@ public class DialogueTrigger : IndicatorTrigger {
                     if (dialogueBox.FirstChunk) { CallBefore(); } //only trigger event during the first chunk
                     if (dialogueBox.OnTriggerKeyPressed(QuestDialogue, faceImage))
                     {
-                        Player.GetComponent<IPlayer>().Frozen = false;
+                        setFrozen(false);
                     }
                 }
             }
@@ -42,9 +63,18 @@ public class DialogueTrigger : IndicatorTrigger {
             else if (Input.GetButtonDown("Jump"))
             {
                 dialogueBox.ExitReset();
-                Player.GetComponent<IPlayer>().Frozen = false;
             }
         }
+    }
+
+    /// <summary>
+    /// sets both the player and this objects physics object frozen property
+    /// </summary>
+    /// <param name="frozen"></param>
+    private void setFrozen(bool frozen)
+    {
+        playerPhysObj.Frozen = frozen;
+        myPhysObj.Frozen = frozen;
     }
 
     protected override void OnTriggerExit2D(Collider2D coll)

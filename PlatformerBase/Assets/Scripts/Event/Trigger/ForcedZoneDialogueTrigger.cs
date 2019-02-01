@@ -33,7 +33,7 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
                 if (dialogueBox.OnTriggerKeyPressed(enterDialogue))
                 {
                     //unfreeze player and activate after object
-                    Player.GetComponent<IPlayer>().Frozen = false;
+                    Player.GetComponent<MovingObject>().Frozen = false;
                     Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
                     after.SetActive(true);
                     talked = true;
@@ -61,7 +61,7 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
             playerTouching = true;
             dialogueBox.Reset(); //make sure the dialogue box is wipeed
             dialogueBox.OnTriggerKeyPressed(enterDialogue);
-            Player.GetComponent<IPlayer>().Frozen = true;
+            Player.GetComponent<MovingObject>().Frozen = true;
         }
     }
 

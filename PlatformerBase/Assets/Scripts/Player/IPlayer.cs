@@ -12,7 +12,7 @@ public interface IPlayer{
 
     //player states
     bool InFallZone { set; }
-    bool Frozen { set; }
+    //bool Frozen { get; set; }
 
     //movement speeds
     float MoveSpeed { get; set; }

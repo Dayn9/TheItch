@@ -53,6 +53,22 @@ public class PhysicsObject : MovingObject
         filter.useLayerMask = true;
     }
 
+    protected virtual void Update() {
+        if (!paused)
+        {
+            if (!frozen)
+            {
+                moveVelocity = inputVelocity;
+            }
+            //object is frozen
+            else
+            {
+                moveVelocity = Vector2.zero;
+            }
+           
+        }
+    }
+
     //called every Physics Update
     protected virtual void FixedUpdate()
     {

@@ -43,7 +43,6 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     private Vector2 returnVelocity;
     [SerializeField] private int returnVelocityDivider;
 
-    private bool frozen = false;
     private AudioPlayer audioPlayer; //ref to the attached audio player 
 
     #endregion
@@ -54,7 +53,6 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
     public HeartbeatPower Power { get { return heartBeatPower; } }
     public bool InFallZone { set { inFallZone = value; } }
-    public bool Frozen { set { frozen = value; } }
     public Vector2 ReturnPosition { set { returnPosition = value; } }
     public Animator Animator { get { return animator; } }
 
@@ -89,7 +87,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         audioPlayer = GetComponent<AudioPlayer>();
     }
 
-    private void Update()
+    protected override void Update()
     {
         if (!paused)
         {
