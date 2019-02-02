@@ -59049,8 +59049,8 @@ MonoBehaviour:
   indicatorOffset: {x: 0, y: 1.5, z: 0}
   dialogueBox: {fileID: 1132569687}
   faceImage: {fileID: 0}
-  QuestDialogue: Nothing
-  CompletedDialogue: 'The free time of Dane Sherman R.I.P. '
+  questDialogue: 
+  completedDialogue: 
 --- !u!61 &758263154
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63542,9 +63542,8 @@ MonoBehaviour:
   indicatorOffset: {x: 0, y: 1.875, z: 0}
   dialogueBox: {fileID: 1132569687}
   faceImage: {fileID: 0}
-  QuestDialogue: Nothing
-  CompletedDialogue: 'Here lies John Smith. Father of Jacob and Mary Smith. Death
-    by Overuse. '
+  questDialogue: 
+  completedDialogue: 
 --- !u!61 &911306703
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64146,6 +64145,21 @@ PrefabInstance:
       propertyPath: CompletedDialogue
       value: 'Well Done, that lock over there should raise the bridge into town. I
         hope you find the doctor but be careful, basophil can be a dangerous place. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 114930025202489026, guid: 6e550d450efdc8c4f869c1931a6883c1,
+        type: 3}
+      propertyPath: questDialogue
+      value: My Goodness, where did you come from? You must be one of those explorers
+        looking for some doctor. I've heard rumors that they might be living in town
+        somewhere, but the bridge to town is down. I think theres a key in the vines
+        growing at the top of this cavern. Most of the vines are dead so yu might
+        have to click on them to transfer some life back into them. Good Luck!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114930025202489026, guid: 6e550d450efdc8c4f869c1931a6883c1,
+        type: 3}
+      propertyPath: completedDialogue
+      value: Well done, that lock over there should raise the bridge into town. I
+        hope you find the doctor but be careful, basophil can be a dangerous place.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 3}
