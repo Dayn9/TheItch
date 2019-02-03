@@ -29,8 +29,9 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0))
             {
+                CheckQuest();
                 //send the dialogue and check if ended
-                if (dialogueBox.OnTriggerKeyPressed(enterDialogue, faceImage))
+                if (dialogueBox.OnTriggerKeyPressed(questCompleted ? completedDialogue : enterDialogue, faceImage))
                 {
                     //unfreeze player and activate after object
                     SetFrozen(false);
@@ -60,7 +61,11 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
             CallBefore();
             playerTouching = true;
             dialogueBox.Reset(); //make sure the dialogue box is wipeed
-            dialogueBox.OnTriggerKeyPressed(enterDialogue, faceImage);
+
+            //check for quest completion and display appropriate dialogue
+            CheckQuest();
+            dialogueBox.OnTriggerKeyPressed(questCompleted ? completedDialogue : enterDialogue, faceImage);
+
             SetFrozen(true);
         }
     }

@@ -9,7 +9,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
     [SerializeField] private Sprite faceImage; //image to display in dialogue box
 
     [SerializeField] [TextArea] private string questDialogue; //text dialogue to give quest
-    [SerializeField] [TextArea] private string completedDialogue; //text dialogue when quest complete2
+    [SerializeField] [TextArea] private string completedDialogue; //text dialogue when quest complete
 
     private PhysicsObject myPhysObj;
     private static PhysicsObject playerPhysObj;
@@ -18,6 +18,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
     public DialogueBox DialogueBox { set { dialogueBox = value; } }
     public Sprite FaceImage { get { return faceImage; } }
     public string QuestDialogue { get { return questDialogue; } }
+    public string CompletedDialogue { get { return completedDialogue;  } }
 
     protected override void Awake()
     {

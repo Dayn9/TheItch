@@ -10,7 +10,9 @@ public interface IDialogue
 
     DialogueBox DialogueBox { set; }
     Sprite FaceImage { get; }
+
     string QuestDialogue { get; }
+    string CompletedDialogue { get; }
 
     void SetFrozen(bool frozen);
 }

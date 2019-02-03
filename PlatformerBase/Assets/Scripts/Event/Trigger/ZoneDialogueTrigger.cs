@@ -10,6 +10,7 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
     [SerializeField] protected Sprite faceImage; //image to display in dialogue box
 
     [SerializeField] [TextArea] protected string enterDialogue; //text dialogue to give quest
+    [SerializeField] [TextArea] protected string completedDialogue; 
 
     private PhysicsObject myPhysObj;
     private static PhysicsObject playerPhysObj;
@@ -18,6 +19,7 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
     public DialogueBox DialogueBox { set { dialogueBox = value; } }
     public Sprite FaceImage { get { return faceImage; } }
     public string QuestDialogue { get { return enterDialogue; } }
+    public string CompletedDialogue { get { return completedDialogue; } }
 
     protected override void Awake()
     {
@@ -41,7 +43,9 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
     {
         if(!paused && playerTouching && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0)))
         {
-            dialogueBox.OnTriggerKeyPressed(enterDialogue, faceImage);
+            //check for quest completion and display appropriate dialogue
+            CheckQuest();
+            dialogueBox.OnTriggerKeyPressed(questCompleted ? completedDialogue : enterDialogue, faceImage);
         }
     }
 
@@ -53,7 +57,10 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
             CallBefore();
             playerTouching = true;
             dialogueBox.Reset(); //make sure the dialogue box is wipeed
-            dialogueBox.OnTriggerKeyPressed(enterDialogue, faceImage);
+
+            //check for quest completion and display appropriate dialogue
+            CheckQuest();
+            dialogueBox.OnTriggerKeyPressed(questCompleted ? completedDialogue : enterDialogue, faceImage);
         }
     }
 

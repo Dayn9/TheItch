@@ -58,7 +58,7 @@ public class CameraPanEvent : Pause
         {
             moveVector = (movingOut ? final : origin) - (Vector2)camController.transform.localPosition; //get Vector towards final destination
             //snap into position when close enough
-            if (moveVector.magnitude < speed * Time.deltaTime || Mathf.Abs(moveVector.x) < speed * Time.deltaTime || Mathf.Abs(moveVector.y) < speed * Time.deltaTime)
+            if (moveVector.magnitude < speed * Time.deltaTime /*|| Mathf.Abs(moveVector.x) < speed * Time.deltaTime || 2 * Mathf.Abs(moveVector.y) < speed * Time.deltaTime*/)
             {
                 Vector3 snapPos = (movingOut ? final : origin);
                 snapPos.z = camController.transform.position.z;
