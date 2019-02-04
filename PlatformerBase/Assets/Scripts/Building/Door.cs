@@ -55,7 +55,7 @@ public class Door : Highlight {
 
     protected override void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (coll.CompareTag("Player"))
         {
             render.sprite = active;
             indicator.SetActive(true);
@@ -66,7 +66,7 @@ public class Door : Highlight {
 
     protected override void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (coll.CompareTag("Player"))
         {
             render.sprite = inactive;
             indicator.SetActive(false);
