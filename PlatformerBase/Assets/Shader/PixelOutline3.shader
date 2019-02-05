@@ -87,16 +87,13 @@
 					//outlineC.a *= ceil(c.a);
 					outlineC.rgb *= outlineC.a;
 					
-					fixed myAlpha = tex2D(_MainTex, IN.texcoord).a;
+					fixed myAlpha = c.a;
 					fixed upAlpha = tex2D(_MainTex, IN.texcoord + fixed2(0, _MainTex_TexelSize.y)).a;
 					fixed downAlpha = tex2D(_MainTex, IN.texcoord - fixed2(0, _MainTex_TexelSize.y)).a;
 					fixed rightAlpha = tex2D(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x, 0)).a;
 					fixed leftAlpha = tex2D(_MainTex, IN.texcoord - fixed2(_MainTex_TexelSize.x, 0)).a;
 
 					return lerp(c, outlineC, ceil( clamp(downAlpha + upAlpha + leftAlpha + rightAlpha, 0, 1) ) - ceil(myAlpha));
-
-					return c;
-
 				}
 			ENDCG
 			}
