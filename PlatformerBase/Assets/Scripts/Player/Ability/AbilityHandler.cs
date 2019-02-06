@@ -32,7 +32,7 @@ public class AbilityHandler : Global {
     private bool sprinting = false; //true when the player is sprinting
     private const int minSprintBPM = 170; //minimum heartrate the player can use the sprint ability at
     private const int sprintTime = 5; //time spent sprinting / exhausted
-    private float sprintTimer = 0; //timer used to keep track of sprinting
+   /// private float sprintTimer = 0; //timer used to keep track of sprinting
 
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
 
@@ -75,7 +75,6 @@ public class AbilityHandler : Global {
             if (unlockedAbilities[1])
             {
                 powerOne.gameObject.SetActive(true);
-                Debug.Log("programming witha touchscreen");
             }
         }
     }
@@ -87,7 +86,6 @@ public class AbilityHandler : Global {
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
         Unlock(0); //unlock the ability transfer powers
-        Unlock(1); //unlock the sprint ability
     }
 
 

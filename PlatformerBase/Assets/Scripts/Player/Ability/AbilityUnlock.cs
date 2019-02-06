@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -19,6 +20,8 @@ public class AbilityUnlock : BloodParticle {
         render = GetComponent<SpriteRenderer>();
         audioPlayer = GetComponentInParent<AudioPlayer>();
         coll = GetComponent<Collider2D>();
+
+        Assert.IsNotNull(text);
     }
 
     private void Update()
@@ -34,7 +37,10 @@ public class AbilityUnlock : BloodParticle {
             Player.GetComponent<AbilityHandler>().Unlock(abilityUnlocked);
             render.enabled = false;
             SendParticlesTo(Player.GetComponent<MovingObject>(), numParticles);
-            text.ShowText();
+            if(text != null)
+            {
+                text.ShowText();
+            }
             coll.enabled = false;
             part.Play();
         }

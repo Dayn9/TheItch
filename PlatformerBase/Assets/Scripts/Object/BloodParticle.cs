@@ -110,7 +110,7 @@ public abstract class BloodParticle : Global {
                     ParticleSystem.Particle particle = particles[i];
                     //particle.remainingLifetime += Time.deltaTime; //keep particle alive
                     Vector3 moveVector = ((Vector3)target - particle.position);
-                    if (moveVector.magnitude < 1 + overshoot && particle.remainingLifetime < part.main.startLifetime.constant - Time.deltaTime)
+                    if (moveVector.magnitude < 1 + overshoot && particle.remainingLifetime < part.main.startLifetime.constant - Time.deltaTime - 0.5)
                     {
                         particle.remainingLifetime = 0;
                         particle.velocity = Vector3.zero;
