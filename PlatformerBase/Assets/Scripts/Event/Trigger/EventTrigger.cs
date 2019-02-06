@@ -95,7 +95,7 @@ public class EventTrigger : Inventory {
         {
             questCompleted = CheckItems();
         }
-        if (audioPlayer != null) { audioPlayer.PlaySound(questCompleted ? 1 : 0); } //play audio bsed on quest completion
+        //if (audioPlayer != null) { audioPlayer.PlaySound(questCompleted ? 1 : 0); } //play audio bsed on quest completion
     }
 
     /// <summary>

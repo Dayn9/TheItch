@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -6,7 +7,7 @@ using UnityEditor;
 
 namespace UnityEditor
 {
-
+    
     //dictates which layer(s) are currently being painted to with brush
     public enum BuildingBrushType
     {
@@ -303,11 +304,11 @@ namespace UnityEditor
                     base.Move(grid, brushTarget, from, to);
                     break;
             }
-        }*/
+        }
 
 #if UNITY_EDITOR
-        //create asset menu for prefab brush
-        [MenuItem("Assets/Create/BuildingBrush")]
+//create asset menu for prefab brush
+[MenuItem("Assets/Create/BuildingBrush")]
         public static void CreateBuildingBrush()
         {
             string path = EditorUtility.SaveFilePanelInProject("Save BuildingBrush", "New BuildingBrush", "asset", "Save BuildingBrush", "Assets");
@@ -331,4 +332,4 @@ namespace UnityEditor
     }
 #endif
 
-}
+}*/

@@ -15,10 +15,11 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
 
     private bool talked = false; //true once player has already interacted with dialogue object
 
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
 
+        //get reference to gameobject to activate after mandatory dialogue
         after = transform.GetChild(0).gameObject;
         after.SetActive(false);
     }

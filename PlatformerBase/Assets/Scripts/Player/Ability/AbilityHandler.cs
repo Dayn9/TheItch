@@ -75,6 +75,7 @@ public class AbilityHandler : Global {
             if (unlockedAbilities[1])
             {
                 powerOne.gameObject.SetActive(true);
+                Debug.Log("programming witha touchscreen");
             }
         }
     }
@@ -155,8 +156,10 @@ public class AbilityHandler : Global {
                 player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
                 player.Animator.speed = sprinting ? sprintMoveSpeed / orignMoveSpeed : 1; //set animation speed to match 
 
-                //BELOW: Trigger sprinting when BPM is above a value ---------------------------------------
                 return;
+
+                //BELOW: Trigger sprinting when BPM is above a value ---------------------------------------
+                /*
                 //start sprinting when BPM is above certian range and not already sprinting
                 if (hb.BPM > minSprintBPM && !sprinting && sprintTimer == 0)
                 {
@@ -184,7 +187,7 @@ public class AbilityHandler : Global {
                 player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
                 player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
                 player.Animator.speed = sprinting ? sprintMoveSpeed / orignMoveSpeed : 1; //set animation speed to match 
-
+                */
                 //-------------------------------------------------------------------------------------------
             }
         }
