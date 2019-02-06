@@ -87,7 +87,8 @@ public class DialogueBox : Pause {
 
                 textRender.color = letterColor;
                 textRender.sortingLayerID = GetComponent<SpriteRenderer>().sortingLayerID;
-                
+                textRender.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
+
                 text.Add(newLetter.GetComponent<SpriteRenderer>());
             }
         }

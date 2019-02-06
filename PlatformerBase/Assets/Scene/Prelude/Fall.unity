@@ -4411,9 +4411,13 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1762118547}
+  faceImage: {fileID: 0}
   enterDialogue: Two years ago a small farming village was struck by a virus. The
     entire population became covered in rashes and stopped working because of the
     pain.
+  completedDialogue: Two years ago a small farming village was struck by a virus.
+    The entire population became covered in rashes and stopped working because of
+    the pain.
 --- !u!61 &855868535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -93857,7 +93861,11 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1762118547}
+  faceImage: {fileID: 0}
   enterDialogue: 'The phenomenon recieved a lot of attention and soon the village
+    flooded with doctors looking for answers. Meanwhile, the virus started to spread
+    in a nearby town. '
+  completedDialogue: 'The phenomenon recieved a lot of attention and soon the village
     flooded with doctors looking for answers. Meanwhile, the virus started to spread
     in a nearby town. '
 --- !u!1001 &1542993299
@@ -93867,6 +93875,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1964721290}
     m_Modifications:
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 1447275410}
     - target: {fileID: 4016547624261662, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.5
@@ -93899,11 +93912,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
-        type: 3}
-      propertyPath: itemsRequired.Array.data[0]
-      value: 
-      objectReference: {fileID: 1447275410}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
 --- !u!114 &1636313770 stripped
@@ -103662,7 +103670,11 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1762118547}
+  faceImage: {fileID: 0}
   enterDialogue: Many explorers traveled into the caverns in search of the doctor
+    but none succeeded. With no cure, the virus continued to spread around the world.
+    They call it... THE ITCH
+  completedDialogue: Many explorers traveled into the caverns in search of the doctor
     but none succeeded. With no cure, the virus continued to spread around the world.
     They call it... THE ITCH
 --- !u!61 &1772847490
@@ -109305,9 +109317,15 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   dialogueBox: {fileID: 1762118547}
+  faceImage: {fileID: 0}
   enterDialogue: 'We learned that the virus lives in the bloodstream and that an increased
     heartrate would prevent it from causing rashes. One Doctor claimed to have developed
     a cure, but disappeared underground without ever revealing it.
+
+'
+  completedDialogue: 'We learned that the virus lives in the bloodstream and that
+    an increased heartrate would prevent it from causing rashes. One Doctor claimed
+    to have developed a cure, but disappeared underground without ever revealing it.
 
 '
 --- !u!1001 &1948307149
