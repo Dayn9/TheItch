@@ -21,7 +21,7 @@ public class AbilityUnlock : BloodParticle {
         audioPlayer = GetComponentInParent<AudioPlayer>();
         coll = GetComponent<Collider2D>();
 
-        Assert.IsNotNull(text, "Need to add Unlock text for " + gameObject.name);
+        //Assert.IsNotNull(text, "Need to add Unlock text for " + gameObject.name);
     }
 
     private void Update()

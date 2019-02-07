@@ -81,7 +81,10 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
     public void SetFrozen(bool frozen)
     {
         playerPhysObj.Frozen = frozen;
-        myPhysObj.Frozen = frozen;
+        if(myPhysObj != null)
+        {
+            myPhysObj.Frozen = frozen;
+        }
     }
 
     protected override void OnTriggerExit2D(Collider2D coll)
