@@ -102,7 +102,8 @@ public class DialogueScrollBox : DialogueBox
                     spriteNum = getSpriteNum(letter);
                 }
                
-                text[i].sprite = letters[spriteNum];*/
+                text[i].sprite = letters[spriteNum];
+                */
             }
         }
     }

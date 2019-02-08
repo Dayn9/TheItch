@@ -24,7 +24,7 @@ public class DialogueBox : Pause {
 
     [SerializeField] private Color letterColor;
 
-    protected int[] symbolsAscii = new int[] { 46, 44, 33, 63, 58, 59, 45, 95, 91, 93, 40, 41, 126, 39, 39, 34, 34, 47, 92, 61, 43, 35, 60, 62, 94, 42 };
+    protected int[] symbolsAscii = new int[] { 46, 44, 33, 63, 58, 59, 45, 95, 91, 93, 40, 41, 126, 39, 39, 34, 34, 47, 92, 61, 43, 35, 60, 62, 94, 42, 64};
     protected bool openSingleQuote = false;
     protected bool openDoubleQuote = false;
    
@@ -274,7 +274,7 @@ public class DialogueBox : Pause {
                         if (openDoubleQuote) { i++; }
                         openDoubleQuote = !openDoubleQuote;
                     }
-                    return i + 36;
+                    return i + 36; //(first symbol = 36)
                 }
             }
             //unaccounted ascii value, just return a space 
