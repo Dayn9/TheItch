@@ -17,7 +17,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     private Vector2 movementInput; //user input that will move the player
     private bool jumping = false; //is the player jumping
 
-    private Animator animator; //reference to attached animator component
+    private Animator anim; //reference to attached animator component
     private SpriteRenderer render; //attached sprite renderer
 
     [Header("Health")]
@@ -54,7 +54,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public HeartbeatPower Power { get { return heartBeatPower; } }
     public bool InFallZone { set { inFallZone = value; } }
     public Vector2 ReturnPosition { set { returnPosition = value; } }
-    public Animator Animator { get { return animator; } }
+    public Animator Animator { get { return anim; } }
 
     public override Vector2 MoveVelocity { get { return moveVelocity * moveSpeed; } }
 
@@ -72,7 +72,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     //Start is already being called in Base PhysicsObject Class
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
 
         if (maxHealth < 1) { maxHealth = 1; } //must have at leath one health point
@@ -132,8 +132,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                     returning = false;
                 }
                 //manual mapipulation of animator to falling animation
-                animator.SetBool("grounded", false);
-                animator.SetFloat("verticalVel", -1);
+                anim.SetBool("grounded", false);
+                anim.SetFloat("verticalVel", -1);
                 return; //don't more the player conventually 
             }
 
@@ -143,8 +143,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             if (inFallZone)
             {
                 //manual mapipulation of animator to falling animation
-                animator.SetBool("grounded", false);
-                animator.SetFloat("verticalVel", -1);
+                anim.SetBool("grounded", false);
+                anim.SetFloat("verticalVel", -1);
 
                 gravityVelocity = Vector2.zero;
 
@@ -217,18 +217,18 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
             #region Animation
             //send values to animator
-            animator.SetBool("grounded", grounded || climbing);
+            anim.SetBool("grounded", grounded || climbing);
             if (climbing)
             {
-                animator.SetFloat("verticalVel", 0); //cancel fall animation
+                anim.SetFloat("verticalVel", 0); //cancel fall animation
                 //use greatest movement direction for movement animation
-                animator.SetFloat("horizontalMove", gravityVelocity.magnitude > moveVelocity.magnitude 
+                anim.SetFloat("horizontalMove", gravityVelocity.magnitude > moveVelocity.magnitude 
                     ? gravityVelocity.magnitude : moveVelocity.magnitude);
             }
             else
             {
-                animator.SetFloat("verticalVel", gravityVelocity.magnitude * (Vector2.Angle(gravity, gravityVelocity) > 90 ? 1 : -1));
-                animator.SetFloat("horizontalMove", moveVelocity.magnitude * (Vector2.Dot(transform.right, moveVelocity) < 0 ? 1 : -1));
+                anim.SetFloat("verticalVel", gravityVelocity.magnitude * (Vector2.Angle(gravity, gravityVelocity) > 90 ? 1 : -1));
+                anim.SetFloat("horizontalMove", moveVelocity.magnitude * (Vector2.Dot(transform.right, moveVelocity) < 0 ? 1 : -1));
             }
 
             //invulnerabilty animation
@@ -239,7 +239,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 if (invulnerabilityTimer <= invulnerabilityTime - 0.2f)
                 {
                     //damage animation and color change
-                    animator.SetBool("damage", false);
+                    anim.SetBool("damage", false);
                     render.color = Color.gray; //fade Slightly
                 }
                 //stop the timer and end invulnerability
@@ -285,13 +285,13 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             health -= amount;
             invulnerable = true;
             invulnerabilityTimer = invulnerabilityTime; //start the timer
-            animator.SetBool("damage", true);
+            anim.SetBool("damage", true);
             //death code
             if (health <= 0)
             {
                 health = 0;
                 frozen = true;
-                animator.SetTrigger("death");
+                anim.SetTrigger("death");
                 jumping = false;
                 //reset game is called by the death animation
             }
