@@ -86,6 +86,7 @@ public class AbilityHandler : Global {
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
         Unlock(0); //unlock the ability transfer powers
+        Unlock(1);
     }
 
 

@@ -28,6 +28,8 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
         myPhysObj = GetComponent<PhysicsObject>();
         if(myPhysObj == null) { myPhysObj = GetComponentInParent<PhysicsObject>(); }
         if (myPhysObj == null) { myPhysObj = GetComponentInChildren<PhysicsObject>(); }
+
+        dialogueBox.GetComponent<TextboxEvent>().addEvTrig(this);
     }
 
     private void Start()

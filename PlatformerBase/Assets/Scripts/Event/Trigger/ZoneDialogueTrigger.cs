@@ -29,6 +29,8 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
         myPhysObj = GetComponent<PhysicsObject>();
         if (myPhysObj == null) { myPhysObj = GetComponentInParent<PhysicsObject>(); }
         if (myPhysObj == null) { myPhysObj = GetComponentInChildren<PhysicsObject>(); }
+
+        dialogueBox.GetComponent<TextboxEvent>().addEvTrig(this);
     }
 
     protected virtual void Start()

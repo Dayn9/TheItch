@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class TextboxEvent : EventTrigger
 {
-    [SerializeField] private EventTrigger[] evTrigs; //eventTrigger 
+    [SerializeField] private List<EventTrigger> evTrigs; //eventTrigger 
 
     [SerializeField] private Vector3 animatedOffset;
     [SerializeField] private float speed;
@@ -39,6 +39,16 @@ public class TextboxEvent : EventTrigger
         visiblePosition = transform.localPosition;
         transform.localPosition = visiblePosition + animatedOffset;
         timer = maxTime + 1;
+    }
+
+    /// <summary>
+    /// adds a new evnt trigger to the currentlist
+    /// </summary>
+    /// <param name="evTrig">new Dialogue box event trigger</param>
+    public void addEvTrig(EventTrigger evTrig)
+    {
+        if(evTrigs == null) { evTrigs = new List<EventTrigger>(); }
+        evTrigs.Add(evTrig);
     }
 
     protected override void Update()

@@ -15,8 +15,10 @@ GameObject:
   - component: {fileID: 3254771367814480712}
   - component: {fileID: 3254771367814480715}
   - component: {fileID: 3254771367814480714}
+  - component: {fileID: 815198174}
+  - component: {fileID: 815198173}
   m_Layer: 8
-  m_Name: Explorer
+  m_Name: XFollow
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -53,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8c8c89b64924a142b5fb9dfe7c1c8fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1657582667
   m_SortingLayer: -3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 115b13b1b4b8d6e449b239481e789bc4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e01ce4ec4f6fc2345895d4f9faaf2c46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,7 +137,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 2.25, y: 2.25}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -163,8 +165,8 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 1.75, z: 0}
   dialogueBox: {fileID: 0}
-  faceImage: {fileID: 21300002, guid: 115b13b1b4b8d6e449b239481e789bc4, type: 3}
-  questDialogue: "Hello There\t"
+  faceImage: {fileID: 21300000, guid: e01ce4ec4f6fc2345895d4f9faaf2c46, type: 3}
+  questDialogue: Whatup
   completedDialogue: 'Hello Sir, '
 --- !u!114 &3254771367814480714
 MonoBehaviour:
@@ -179,8 +181,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path:
-  - xCoord: -82
-    pauseTime: 2
-  - xCoord: -102
-    pauseTime: 3
-  moveSpeed: 5
+  - xCoord: -60
+    pauseTime: 5
+  - xCoord: -44
+    pauseTime: 5
+  moveSpeed: 6
+--- !u!95 &815198174
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254771367814480709}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: b6167079dfab1d941a3c5abe5465d6cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &815198173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254771367814480709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5adb527041abf4bba2a64a3ee7e708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
