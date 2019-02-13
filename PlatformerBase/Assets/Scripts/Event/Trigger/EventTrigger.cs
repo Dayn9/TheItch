@@ -10,8 +10,15 @@ public class EventTrigger : Inventory {
 
     protected bool playerTouching = false; //true when dialogue is touching Charachter
 
+    [Header("--- Items Required ---")]
     [SerializeField] protected List<GameObject> itemsRequired; //items required to complete quest
     [SerializeField] protected bool itemsEaten; //true when required items are taken when triggered
+
+    [Header("--- Item Given ---")]
+    [SerializeField] private GameObject itemGiven; //item given to the player
+    [SerializeField] private bool givenOnComplete; //true = given on quest complete, false = given on initial interaction
+    [SerializeField] private Vector2 givenAtOffset; //offset to spawn the item at
+
     protected bool questCompleted = false; //true when quest has been completed
 
     public event triggered Before; //Event Triggered on player iteraction when quest incomplete
@@ -27,6 +34,13 @@ public class EventTrigger : Inventory {
         After = new triggered(NullEvent);
 
         audioPlayer = GetComponentInParent<AudioPlayer>();
+
+        if (itemGiven != null)
+        {
+            itemGiven = Instantiate(itemGiven, transform.parent);
+            itemGiven.transform.position = transform.position + (Vector3)givenAtOffset;
+            itemGiven.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -95,6 +109,12 @@ public class EventTrigger : Inventory {
         {
             questCompleted = CheckItems();
         }
+
+        if((givenOnComplete && questCompleted || !givenOnComplete) && itemGiven != null && itemGiven.activeSelf == false)
+        {
+            itemGiven.SetActive(true);
+        }
+
         //if (audioPlayer != null) { audioPlayer.PlaySound(questCompleted ? 1 : 0); } //play audio bsed on quest completion
     }
 

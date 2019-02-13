@@ -32,6 +32,11 @@ public class CollectableItem : Inventory
         //check if collision with player
         if (!collected && coll.tag == "Player")
         {
+            collectEffect.transform.position = transform.position;
+            collectEffect.SetActive(true);
+            collectEffect.GetComponent<Animator>().SetTrigger("Collect");
+
+
             AddItem(gameObject.name, gameObject); //add item to inventory and move to final location in UI
 
             SpriteRenderer rend = GetComponent<SpriteRenderer>(); //make sure sorting layer and order is just above inventoryUI
@@ -43,10 +48,6 @@ public class CollectableItem : Inventory
             transform.position = pickupPosition; //return to origional position for animation
             collected = true; //start the animation
             moving = true;
-
-            collectEffect.transform.position = transform.position;
-            collectEffect.SetActive(true);
-            collectEffect.GetComponent<Animator>().SetTrigger("Collect");
 
             audioPlayer.PlaySound("itemCollect");
         }

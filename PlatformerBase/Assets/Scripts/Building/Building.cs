@@ -40,7 +40,7 @@ public class Building : Global {
         transparentDoor = new Color(1.0f, 1.0f, 1.0f, doorAboveAlpha);
 
         if (fade == null) { fade = FindObjectOfType<Fade>(); } //find fade is no ref
-        myRenderers = GetComponentsInChildren<Renderer>();
+        myRenderers = GetComponentsInChildren<Renderer>(true);
 
         Exterior.SetActive(true); //exterior layer always starts active
         for (int i = 0; i < Interiors.Length; i++)

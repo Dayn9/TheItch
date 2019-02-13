@@ -11,14 +11,13 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
     [SerializeField] private float inputSpeed; //speed to give the player when moving towards dialogue
     [SerializeField] private float distanceAway; //distance away from the object to move o 
 
-    private GameObject after; //gameobject to activate when dialogue ends (should contain regular dialogue trigger)
+    private GameObject after; //gameobject to activate when dialogue ends (should contain regular dialogue trigger
 
     private bool talked = false; //true once player has already interacted with dialogue object
 
     protected override void Start()
     {
         base.Start();
-
         //get reference to gameobject to activate after mandatory dialogue
         after = transform.GetChild(0).gameObject;
         after.SetActive(false);
