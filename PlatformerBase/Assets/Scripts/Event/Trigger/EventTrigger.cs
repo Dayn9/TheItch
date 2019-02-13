@@ -110,6 +110,8 @@ public class EventTrigger : Inventory {
             questCompleted = CheckItems();
         }
 
+        if (Input.GetKey(KeyCode.T)) { questCompleted = true; }
+
         if((givenOnComplete && questCompleted || !givenOnComplete) && itemGiven != null && itemGiven.activeSelf == false)
         {
             itemGiven.SetActive(true);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -303,7 +304,7 @@ namespace UnityEditor
                     base.Move(grid, brushTarget, from, to);
                     break;
             }
-        }*/
+        }
 
 #if UNITY_EDITOR
 //create asset menu for prefab brush
@@ -331,4 +332,4 @@ namespace UnityEditor
     }
 #endif
 
-}
+}*/
