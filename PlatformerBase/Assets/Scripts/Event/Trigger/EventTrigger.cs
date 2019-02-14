@@ -15,7 +15,7 @@ public class EventTrigger : Inventory {
     [SerializeField] protected bool itemsEaten; //true when required items are taken when triggered
 
     [Header("--- Item Given ---")]
-    [SerializeField] private GameObject itemGiven; //item given to the player
+    [SerializeField] protected GameObject itemGiven; //item given to the player
     [SerializeField] private bool givenOnComplete; //true = given on quest complete, false = given on initial interaction
     [SerializeField] private Vector2 givenAtOffset; //offset to spawn the item at
 
@@ -37,7 +37,9 @@ public class EventTrigger : Inventory {
 
         if (itemGiven != null)
         {
+            string name = itemGiven.name;
             itemGiven = Instantiate(itemGiven, transform.parent);
+            itemGiven.name = name;
             itemGiven.transform.position = transform.position + (Vector3)givenAtOffset;
             itemGiven.SetActive(false);
         }
@@ -115,6 +117,7 @@ public class EventTrigger : Inventory {
         if((givenOnComplete && questCompleted || !givenOnComplete) && itemGiven != null && itemGiven.activeSelf == false)
         {
             itemGiven.SetActive(true);
+            itemGiven.transform.position = Player.transform.position;
         }
 
         //if (audioPlayer != null) { audioPlayer.PlaySound(questCompleted ? 1 : 0); } //play audio bsed on quest completion

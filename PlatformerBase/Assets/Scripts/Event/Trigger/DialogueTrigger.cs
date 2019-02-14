@@ -44,7 +44,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
     protected override void Update()
     {
         //check if in contact with the player and player is interacting 
-        if (playerTouching)
+        if (playerTouching && !Pause.menuPaused)
         {
             if (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]) || Input.GetMouseButtonDown(0))
             {

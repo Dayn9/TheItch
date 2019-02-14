@@ -42,7 +42,7 @@ public class InventoryDisplay : Inventory {
 
     void Update()
     {
-        if (!paused)
+        if (!Pause.menuPaused)
         {
             //display is hidden but there are items
             if (hidden && Items.Count > 0)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraPanEvent : Pause
-{ 
+{
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
 
     [Header("Before/True  -  After/False")]
@@ -54,38 +54,41 @@ public class CameraPanEvent : Pause
 
     public void Update()
     {
-        if (move && holdTimer == 0)
+        if (!menuPaused)
         {
-            moveVector = (movingOut ? final : origin) - (Vector2)camController.transform.localPosition; //get Vector towards final destination
-            //snap into position when close enough
-            if (moveVector.magnitude < speed * Time.deltaTime /*|| Mathf.Abs(moveVector.x) < speed * Time.deltaTime || 2 * Mathf.Abs(moveVector.y) < speed * Time.deltaTime*/)
+            if (move && holdTimer == 0)
             {
-                Vector3 snapPos = (movingOut ? final : origin);
-                snapPos.z = camController.transform.position.z;
-                camController.transform.localPosition = snapPos;
-                if (!movingOut)
+                moveVector = (movingOut ? final : origin) - (Vector2)camController.transform.localPosition; //get Vector towards final destination
+                                                                                                            //snap into position when close enough
+                if (moveVector.magnitude < speed * Time.deltaTime /*|| Mathf.Abs(moveVector.x) < speed * Time.deltaTime || 2 * Mathf.Abs(moveVector.y) < speed * Time.deltaTime*/)
                 {
-                    move = false;
-                    camController.Manual = false;
-                    PauseGame(false);
+                    Vector3 snapPos = (movingOut ? final : origin);
+                    snapPos.z = camController.transform.position.z;
+                    camController.transform.localPosition = snapPos;
+                    if (!movingOut)
+                    {
+                        move = false;
+                        camController.Manual = false;
+                        PauseGame(false);
+                    }
+                    else
+                    {
+                        movingOut = false;
+                        holdTimer += Time.deltaTime; //starts the hold period 
+                    }
                 }
                 else
                 {
-                    movingOut = false;
-                    holdTimer += Time.deltaTime; //starts the hold period 
+                    camController.transform.localPosition += (moveVector.normalized * speed * Time.deltaTime);//move at speed along moveVector
                 }
             }
-            else
+            else if (move && holdTimer < holdTime)
             {
-                camController.transform.localPosition += (moveVector.normalized * speed * Time.deltaTime);//move at speed along moveVector
-            }
-        }
-        else if(move && holdTimer < holdTime)
-        {
-            holdTimer += Time.deltaTime;
-            if (holdTimer >= holdTime)
-            {
-                holdTimer = 0; //reset the timer and start moving back out
+                holdTimer += Time.deltaTime;
+                if (holdTimer >= holdTime)
+                {
+                    holdTimer = 0; //reset the timer and start moving back out
+                }
             }
         }
     }

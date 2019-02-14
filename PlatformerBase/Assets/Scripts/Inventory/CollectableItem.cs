@@ -55,7 +55,7 @@ public class CollectableItem : Inventory
 
     void Update()
     {
-        if (!paused)
+        if (!Pause.menuPaused)
         {
             //Lerp into position
             if ((collected || used) && moving)

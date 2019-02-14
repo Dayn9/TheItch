@@ -13,8 +13,8 @@ public class Pause : Global {
     protected static AudioSource[] audios; //ref t all audioSources in the scene
 
     protected Fade fade; //ref to the fade object in the scene 
-    protected static bool menuPaused = false; //true when menu is paused
-    protected static bool otherPause = false; //true when something else is paused
+    public static bool menuPaused = false; //true when menu is paused
+    public static bool otherPause = false; //true when something else is paused
 
     protected AudioPlayer audioPlayer;
 

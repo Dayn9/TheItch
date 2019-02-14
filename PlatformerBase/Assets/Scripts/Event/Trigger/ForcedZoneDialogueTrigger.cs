@@ -25,7 +25,7 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
 
     protected override void Update()
     {
-        if (playerTouching && !talked)
+        if (playerTouching && !talked && !Pause.menuPaused)
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0))
             {
