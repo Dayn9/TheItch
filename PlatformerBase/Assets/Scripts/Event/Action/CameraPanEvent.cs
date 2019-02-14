@@ -13,12 +13,13 @@ public class CameraPanEvent : Pause
     [SerializeField] private Vector2 final; //position moving to
     [SerializeField] private bool useTarget;
     [SerializeField] private Transform target;
-    [SerializeField] private float speed; //how fast the object moves to final
+    [SerializeField] private float moveTime = 1;
 
     [SerializeField] private float holdTime;
     private float holdTimer = 0;
 
     Vector3 moveVector = Vector3.zero; //moveVector to final
+    private Vector2 velocity = Vector2.zero;
     private bool move = false;
     private bool movingOut = true;
     private BaseCamera camController; //ref to camera controller 
@@ -44,7 +45,7 @@ public class CameraPanEvent : Pause
         move = true;
         movingOut = true;
 
-        origin = camController.transform.position;
+        origin = camController.transform.localPosition;
 
         if (useTarget) { final = target.transform.position; }
 
@@ -58,9 +59,51 @@ public class CameraPanEvent : Pause
         {
             if (move && holdTimer == 0)
             {
+                //smooth damp the camera
+                Vector2.SmoothDamp(camController.transform.localPosition, (movingOut ? final : origin), ref velocity, moveTime);
+
+                if (((movingOut ? final : origin) - (Vector2)camController.transform.localPosition).magnitude < 0.1f)
+                {
+                    Vector3 snapPos = (movingOut ? final : origin);
+                    snapPos.z = camController.transform.position.z;
+                    camController.transform.localPosition = snapPos;
+
+                    if (!movingOut)
+                    {
+                        move = false;
+                        camController.Manual = false;
+                        PauseGame(false);
+                    }
+                    else
+                    {
+                        movingOut = false;
+                        holdTimer += Time.deltaTime; //starts the hold period 
+                    }
+
+                }
+                else
+                {
+                    camController.transform.localPosition += (Vector3)velocity * Time.deltaTime * 2f;//move at speed along moveVector
+                }
+            }
+            else if (move && holdTimer < holdTime)
+            {
+                holdTimer += Time.deltaTime;
+                if (holdTimer >= holdTime)
+                {
+                    holdTimer = 0; //reset the timer and start moving back out
+                }
+            }
+
+            /*
+
+            //Static In and Out
+            if (move && holdTimer == 0)
+            {
                 moveVector = (movingOut ? final : origin) - (Vector2)camController.transform.localPosition; //get Vector towards final destination
                                                                                                             //snap into position when close enough
-                if (moveVector.magnitude < speed * Time.deltaTime /*|| Mathf.Abs(moveVector.x) < speed * Time.deltaTime || 2 * Mathf.Abs(moveVector.y) < speed * Time.deltaTime*/)
+                if (moveVector.magnitude < speed * Time.deltaTime )
+                //|| Mathf.Abs(moveVector.x) < speed * Time.deltaTime || 2 * Mathf.Abs(moveVector.y) < speed * Time.deltaTime
                 {
                     Vector3 snapPos = (movingOut ? final : origin);
                     snapPos.z = camController.transform.position.z;
@@ -90,6 +133,10 @@ public class CameraPanEvent : Pause
                     holdTimer = 0; //reset the timer and start moving back out
                 }
             }
+            
+            */
+
+
         }
     }
 }
