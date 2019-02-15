@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class HeartbeatIndicator : MonoBehaviour {
 
     private float totalHealth; //how much health is required for the object to be fully healed
@@ -9,6 +10,8 @@ public class HeartbeatIndicator : MonoBehaviour {
 
     private SpriteRenderer healthbarFull; //ref to the child object that displays full health
     private SpriteRenderer healthbarEmpty; //ref to the child object the displays empty health
+
+    private SpriteRenderer rend;
 
     public float Total {
         get { return totalHealth; }
@@ -32,8 +35,14 @@ public class HeartbeatIndicator : MonoBehaviour {
     {
         healthbarEmpty = transform.GetChild(0).GetComponent<SpriteRenderer>();
         healthbarFull = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        rend = GetComponent<SpriteRenderer>();
 
         totalHealth = 0;
         CurrentHealth = 0;
+    }
+
+    public void SetSprite(Sprite newSprite)
+    {
+        rend.sprite = newSprite;
     }
 }

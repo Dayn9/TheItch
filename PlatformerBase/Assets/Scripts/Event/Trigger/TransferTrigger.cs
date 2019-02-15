@@ -14,17 +14,20 @@ public class TransferTrigger : IndicatorTrigger
     private HeartbeatIndicator hbIndicator;
     public HeartbeatIndicator HbIndicator { get { return hbIndicator; } }
 
+    private Animator anim;
+
     //clicking related variables
     private BoxCollider2D zone;
     private bool active = false;
 
-    [SerializeField] private Sprite mouseOffSprite;
-    [SerializeField] private Sprite mouseOnSprite;
+    [SerializeField] private Sprite inHighlight;
+    [SerializeField] private Sprite outHighlight;
 
     [SerializeField] private Texture2D cursor;
     [SerializeField] private Texture2D cursorH;
 
     private bool containsMouse = false;
+
 
     private void Start()
     {
@@ -39,6 +42,7 @@ public class TransferTrigger : IndicatorTrigger
         hbIndicator.CurrentHealth = 0;
 
         zone = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -70,6 +74,13 @@ public class TransferTrigger : IndicatorTrigger
                 //update the heartbeatIndicator
                 hbIndicator.CurrentHealth = healthObj.Health;
             }
+
+            //set animation
+            anim.SetBool("full", FullyHealed);
+            if (containsMouse)
+            {
+                hbIndicator.SetSprite(FullyHealed ? outHighlight : inHighlight);
+            }
         }
     }
 
@@ -77,7 +88,7 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
         {
-            GetComponent<SpriteRenderer>().sprite = mouseOnSprite;
+            //GetComponent<SpriteRenderer>().sprite = outHighlight;
             indicator.SetActive(true);
 
             if (!containsMouse) {
@@ -98,7 +109,7 @@ public class TransferTrigger : IndicatorTrigger
             containsMouse = true;
         }
         else {
-            GetComponent<SpriteRenderer>().sprite = mouseOffSprite;
+            //GetComponent<SpriteRenderer>().sprite = fullHighlight;
             indicator.SetActive(false);
             if (containsMouse)
             {
