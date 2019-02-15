@@ -10,9 +10,7 @@ public class TransferTrigger : IndicatorTrigger
     private const float transferRate = 15.0f;
     private float heartbeatToTransfer;
     private bool transfering = false;
-
-    private HeartbeatIndicator hbIndicator;
-    public HeartbeatIndicator HbIndicator { get { return hbIndicator; } }
+    public HeartbeatIndicator HbIndicator { get; private set; }
 
     private Animator anim;
 
@@ -33,13 +31,13 @@ public class TransferTrigger : IndicatorTrigger
     {
         healthObj = GetComponent<IHealthObject>();
         //make sure the indicator has a heartbeat indicator
-        if ((hbIndicator = indicator.GetComponent<HeartbeatIndicator>()) == null)
+        if ((HbIndicator = indicator.GetComponent<HeartbeatIndicator>()) == null)
         {
-            hbIndicator = indicator.AddComponent<HeartbeatIndicator>();
+            HbIndicator = indicator.AddComponent<HeartbeatIndicator>();
         }
 
-        hbIndicator.Total = healthObj.MaxHealth;
-        hbIndicator.CurrentHealth = 0;
+        HbIndicator.Total = healthObj.MaxHealth;
+        HbIndicator.CurrentHealth = 0;
 
         zone = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -54,9 +52,10 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (!paused)
         {
-            active = transfering || ((Input.GetKey(KeyCode.X) || Input.GetMouseButton(0)) && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth);
+            active = transfering || (Input.GetMouseButton(0) && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth);
 
             GetMouseClick();
+
 
             if (transfering)
             {
@@ -72,14 +71,16 @@ public class TransferTrigger : IndicatorTrigger
                     healthObj.Heal(heartbeatToTransfer);                    
                 }
                 //update the heartbeatIndicator
-                hbIndicator.CurrentHealth = healthObj.Health;
+                HbIndicator.CurrentHealth = healthObj.Health;
             }
+
+
 
             //set animation
             anim.SetBool("full", FullyHealed);
             if (containsMouse)
             {
-                hbIndicator.SetSprite(FullyHealed ? outHighlight : inHighlight);
+                HbIndicator.SetSprite(FullyHealed ? outHighlight : inHighlight);
             }
         }
     }
@@ -88,7 +89,6 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
         {
-            //GetComponent<SpriteRenderer>().sprite = outHighlight;
             indicator.SetActive(true);
 
             if (!containsMouse) {
