@@ -264,7 +264,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     protected override void HitSpikes()
     {
-        TakeDamage(2);
+        Damage(2);
     }
 
     protected override void TouchLadder()
@@ -278,7 +278,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     }
 
     #region Health
-    public void TakeDamage(int amount)
+    public void Damage(int amount)
     {
         if (!invulnerable)
         {
@@ -296,6 +296,11 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 //reset game is called by the death animation
             }
         }
+    }
+
+    public void Damage(float amount)
+    {
+        Damage(Mathf.FloorToInt(amount));
     }
 
     public void Heal(int amount)

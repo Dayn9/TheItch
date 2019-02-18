@@ -8,15 +8,15 @@ public class TransferTrigger : IndicatorTrigger
     private IHealthObject healthObj;
 
     private const float transferRate = 15.0f;
-    private float heartbeatToTransfer;
     private bool transfering = false;
+    private bool absorbing = false;
     public HeartbeatIndicator HbIndicator { get; private set; }
 
     private Animator anim;
 
     //clicking related variables
     private BoxCollider2D zone;
-    private bool active = false;
+    private bool validInput = false;
 
     [SerializeField] private Sprite inHighlight;
     [SerializeField] private Sprite outHighlight;
@@ -26,9 +26,9 @@ public class TransferTrigger : IndicatorTrigger
 
     private bool containsMouse = false;
 
-
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         healthObj = GetComponent<IHealthObject>();
         //make sure the indicator has a heartbeat indicator
         if ((HbIndicator = indicator.GetComponent<HeartbeatIndicator>()) == null)
@@ -37,43 +37,62 @@ public class TransferTrigger : IndicatorTrigger
         }
 
         HbIndicator.Total = healthObj.MaxHealth;
-        HbIndicator.CurrentHealth = 0;
+        HbIndicator.CurrentHealth = healthObj.Health;
 
         zone = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        
     }
 
     /// <summary>
     /// returns true when the attached heart Object is fully healed
     /// </summary>
     public bool FullyHealed { get { return healthObj.Health == healthObj.MaxHealth; } }
+    public bool Empty { get { return healthObj.Health == 0; } }
 
     protected override void Update()
     {
         if (!paused)
         {
-            active = transfering || (Input.GetMouseButton(0) && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth);
+            validInput = ((Empty && Input.GetMouseButton(0) && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth)
+                || (FullyHealed && Input.GetMouseButton(1)));
 
             GetMouseClick();
-
 
             if (transfering)
             {
                 indicator.SetActive(true);
                 if (FullyHealed)
                 {
-                    CallAfter();
+                    //CallAfter();
                     transfering = false;
                 }
                 else
                 {
-                    heartbeatToTransfer = transferRate * Time.deltaTime;
-                    healthObj.Heal(heartbeatToTransfer);                    
+                    healthObj.Heal(transferRate * Time.deltaTime);                    
                 }
                 //update the heartbeatIndicator
                 HbIndicator.CurrentHealth = healthObj.Health;
             }
 
+            if (absorbing)
+            {
+                indicator.SetActive(true);
+                if (Empty)
+                {
+                    absorbing = false;
+                }
+                else
+                {
+                    healthObj.Damage(transferRate * Time.deltaTime);
+                }
+                //update the heartbeatIndicator
+                HbIndicator.CurrentHealth = healthObj.Health;
+            }
 
 
             //set animation
@@ -96,15 +115,22 @@ public class TransferTrigger : IndicatorTrigger
                 audioPlayer.PlaySound(0); //play the hover sound
             } 
 
-            if (active && !transfering && !FullyHealed)
+            if (validInput && !transfering && !FullyHealed)
             {
                 transfering = true;
                 Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
 
-                Player.GetComponent<IHealthObject>().TakeDamage(0); //triggers the damage animation
+                Player.GetComponent<IHealthObject>().Damage(0); //triggers the damage animation
                 CallBefore();
 
                 Player.GetComponentInChildren<AbilityHandler>().PowerZero.SendParticlesTo(transform, healthObj.MaxHealth);
+            }
+            else if(validInput && !absorbing && !Empty)
+            {
+                absorbing = true;
+                Player.GetComponent<IPlayer>().Power.RestoreBPM(healthObj.MaxHealth);
+
+                CallAfter();
             }
             containsMouse = true;
         }

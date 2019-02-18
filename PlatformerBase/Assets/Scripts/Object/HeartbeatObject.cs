@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartbeatObject : MonoBehaviour, IHealthObject {
+public class HeartbeatObject : MonoBehaviour, IHealthObject
+{
 
     [SerializeField] private int maxHealth; //maximum health of the object
-    private int health; //health of the object
+    [SerializeField] private int health; //health of the object
     private bool invulnerable = true; //true when player is immune to damage
     private float floatHealth;
 
@@ -29,8 +30,21 @@ public class HeartbeatObject : MonoBehaviour, IHealthObject {
         health = (int)floatHealth;
     }
 
-    public void TakeDamage(int amount)
+    public void Damage(int amount)
     {
-        health -= amount;
+        health = Mathf.Clamp(health - amount, 0, maxHealth);
+    }
+
+    public void Damage(float amount)
+    {
+        floatHealth = Mathf.Clamp(floatHealth - amount, 0, maxHealth);
+        health = (int)floatHealth;
+    }
+
+    private void Awake()
+    {
+        //if health is not max, consider it 0
+        //health = health == maxHealth ? maxHealth : 0; 
+        floatHealth = health;
     }
 }

@@ -7,7 +7,13 @@
     /// Occurs when object takes damage
     /// </summary>
     /// <param name="amount">amount of damage taken</param>
-    void TakeDamage(int amount);
+    void Damage(int amount);
+
+    /// <summary>
+    /// Occurs when object takes damage
+    /// </summary>
+    /// <param name="amount"></param>
+    void Damage(float amount);
 
     /// <summary>
     /// Occurs when object gains health

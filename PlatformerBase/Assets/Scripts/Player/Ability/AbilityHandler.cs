@@ -147,7 +147,7 @@ public class AbilityHandler : Global {
                 //stop the sprinting
                 else if (sprinting && Input.GetMouseButtonUp(1))
                 {
-                    player.Power.RemoveBPM(heartRateAdded + heartRateRemoved);
+                    //player.Power.RemoveBPM(heartRateAdded + heartRateRemoved);
                     sprinting = false;
                     heartRateAdded = 0;
                 }

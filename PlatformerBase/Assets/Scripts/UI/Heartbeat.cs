@@ -73,7 +73,7 @@ public class Heartbeat : Global {
             //player takes damage when heartrate stops
             if(bpm < 1)
             {
-                Player.GetComponent<IHealthObject>().TakeDamage(1);
+                Player.GetComponent<IHealthObject>().Damage(1);
             }
 
             SetDigitNum();

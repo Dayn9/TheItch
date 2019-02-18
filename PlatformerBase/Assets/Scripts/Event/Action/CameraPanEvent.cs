@@ -18,7 +18,6 @@ public class CameraPanEvent : Pause
     [SerializeField] private float holdTime;
     private float holdTimer = 0;
 
-    Vector3 moveVector = Vector3.zero; //moveVector to final
     private Vector2 velocity = Vector2.zero;
     private bool move = false;
     private bool movingOut = true;
@@ -79,7 +78,6 @@ public class CameraPanEvent : Pause
                         movingOut = false;
                         holdTimer += Time.deltaTime; //starts the hold period 
                     }
-
                 }
                 else
                 {

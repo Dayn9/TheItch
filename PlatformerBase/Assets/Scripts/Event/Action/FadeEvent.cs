@@ -19,6 +19,8 @@ public class FadeEvent : Global {
     private Collider2D coll; //ref to collider of the object
 
     private bool fade = false;
+    [Header("Fade In/True - FadeOut/False")]
+    [SerializeField] private bool fadeInOut; 
 
     private HeartbeatIndicator hbIndicator;
 
@@ -33,6 +35,8 @@ public class FadeEvent : Global {
 
     void Start()
     {
+        hbIndicator = evTrig.HbIndicator;
+
         //subscribe to proper event
         if (beforeAfter)
         {
@@ -49,6 +53,11 @@ public class FadeEvent : Global {
         {
             coll.enabled = false;
         }
+
+        if (fadeInOut && evTrig.FullyHealed)
+        {
+            Fade();
+        }
     }
 
     /// <summary>
@@ -57,7 +66,6 @@ public class FadeEvent : Global {
     void Fade()
     {
         fade = true;
-        hbIndicator = evTrig.HbIndicator;
     }
 
     // Update is called once per frame
@@ -65,12 +73,13 @@ public class FadeEvent : Global {
 		if(!paused && fade)
         {
             float percent = hbIndicator.CurrentHealth / hbIndicator.Total;
-            if(percent >= 1.0f)
+
+            if((fadeInOut && percent >= 1.0f) || (!fadeInOut && percent <= 0.0f))
             {
                 render.color = snapColor;
                 if (snapCollider)
                 {
-                    coll.enabled = true;
+                    coll.enabled = fadeInOut;
                 }
                 fade = false; //stop fading the object in
             }
