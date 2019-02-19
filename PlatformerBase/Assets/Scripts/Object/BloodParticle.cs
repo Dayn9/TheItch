@@ -90,7 +90,7 @@ public abstract class BloodParticle : Global {
             //start sending p[articles to point
             sending = true;
 
-            audioPlayer.PlaySound("bloodSparkle");
+            //audioPlayer.PlaySound("bloodSparkle");
         }
     }
 

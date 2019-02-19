@@ -33,7 +33,7 @@ public class AbilityUnlock : BloodParticle {
     {
         if(collision.tag == "Player")
         {
-            audioPlayer.PlaySound(0);
+            //audioPlayer.PlaySound(0);
             Player.GetComponent<AbilityHandler>().Unlock(abilityUnlocked);
             render.enabled = false;
             SendParticlesTo(Player.GetComponent<MovingObject>(), numParticles);

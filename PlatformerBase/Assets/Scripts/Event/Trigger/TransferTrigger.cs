@@ -41,6 +41,7 @@ public class TransferTrigger : IndicatorTrigger
 
         zone = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        anim.SetBool("full", FullyHealed);
     }
 
     private void Start()
@@ -59,7 +60,7 @@ public class TransferTrigger : IndicatorTrigger
         if (!paused)
         {
             validInput = ((Empty && Input.GetMouseButton(0) && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth)
-                || (FullyHealed && Input.GetMouseButton(1)));
+                || (FullyHealed && Input.GetMouseButton(1) && AbilityHandler.IsUnlocked(1)));
 
             GetMouseClick();
 
@@ -69,7 +70,7 @@ public class TransferTrigger : IndicatorTrigger
                 if (FullyHealed)
                 {
                     //CallAfter();
-                    transfering = false;
+                    transfering = false;                    
                 }
                 else
                 {
@@ -78,8 +79,7 @@ public class TransferTrigger : IndicatorTrigger
                 //update the heartbeatIndicator
                 HbIndicator.CurrentHealth = healthObj.Health;
             }
-
-            if (absorbing)
+            else if (absorbing)
             {
                 indicator.SetActive(true);
                 if (Empty)
@@ -99,7 +99,7 @@ public class TransferTrigger : IndicatorTrigger
             anim.SetBool("full", FullyHealed);
             if (containsMouse)
             {
-                HbIndicator.SetSprite(FullyHealed ? outHighlight : inHighlight);
+                HbIndicator.SetSprite(anim.GetBool("full") ? outHighlight : inHighlight);
             }
         }
     }

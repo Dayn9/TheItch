@@ -48,7 +48,6 @@ public class FadeEvent : Global {
         }
 
         //set the initial values for collider state and color 
-        render.color = initialColor;
         if (snapCollider)
         {
             coll.enabled = false;
@@ -57,6 +56,14 @@ public class FadeEvent : Global {
         if (fadeInOut && evTrig.FullyHealed)
         {
             Fade();
+        }
+        else if(!fadeInOut)
+        {
+            render.color = snapColor;
+        }
+        else
+        {
+            render.color = initialColor;
         }
     }
 

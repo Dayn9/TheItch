@@ -19,9 +19,11 @@ public class AbilityHandler : Global {
     private ParticleSystem part; //particle system attached to object
     protected ParticleSystem.Particle[] particles; //array of particles being controlled 
 
-    [Header("Ability 1: Sprinting")]
+    [Header("Ability 1: Absorb")]
     [SerializeField] private GameObject abilityOnePrefab;
     private AbilityAbsorb powerOne;
+
+    [Header("Ability 2: Sprinting")]
     [SerializeField] private float sprintMoveSpeed; //movement speed while sprinting
     [SerializeField] private float sprintJumpSpeed; //jump speed while sprinting
     private float orignMoveSpeed; //origional player move speed
@@ -32,11 +34,22 @@ public class AbilityHandler : Global {
     private bool sprinting = false; //true when the player is sprinting
     private const int minSprintBPM = 170; //minimum heartrate the player can use the sprint ability at
     private const int sprintTime = 5; //time spent sprinting / exhausted
-   /// private float sprintTimer = 0; //timer used to keep track of sprinting
+    /// private float sprintTimer = 0; //timer used to keep track of sprinting
 
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
-
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
+
+    /// <summary>
+    /// checks if an ability has been unlocked
+    /// </summary>
+    /// <param name="ability">ability number to check</param>
+    /// <returns>true if ability is unlocked</returns>
+    public static bool IsUnlocked(int ability)
+    {
+        //check if valid
+        if(unlockedAbilities == null || ability < 0 || ability >= unlockedAbilities.Length) { return false; }
+        return unlockedAbilities[ability];
+    }
 
     public AbilityTransfer PowerZero { get { return powerZero; } }
 
@@ -63,7 +76,7 @@ public class AbilityHandler : Global {
         //all abilities start out false
         if(unlockedAbilities == null)
         {
-            unlockedAbilities = new bool[2]; //SET number of abilities here
+            unlockedAbilities = new bool[3]; //SET number of abilities here
             LockAll();
         }
         else
@@ -86,7 +99,6 @@ public class AbilityHandler : Global {
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
         Unlock(0); //unlock the ability transfer powers
-        Unlock(1);
     }
 
 
@@ -105,6 +117,7 @@ public class AbilityHandler : Global {
                     powerZero.gameObject.SetActive(true);
                     break;
                 case 1:
+                case 2:
                     powerOne.gameObject.SetActive(true);
                     break;
             }
@@ -140,9 +153,15 @@ public class AbilityHandler : Global {
             {
                 if (Input.GetMouseButton(1))
                 {
-                    sprinting = true;
                     player.Power.RestoreBPM(increaseRate * Time.deltaTime);
                     if(player.Power.Heartbeat.BPM < 200) { heartRateAdded += increaseRate * Time.deltaTime; }
+                }
+            }
+            if (unlockedAbilities[2])
+            {
+                if (Input.GetMouseButton(1))
+                {
+                    sprinting = true;
                 }
                 //stop the sprinting
                 else if (sprinting && Input.GetMouseButtonUp(1))
@@ -154,40 +173,6 @@ public class AbilityHandler : Global {
                 player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
                 player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
                 player.Animator.speed = sprinting ? sprintMoveSpeed / orignMoveSpeed : 1; //set animation speed to match 
-
-                return;
-
-                //BELOW: Trigger sprinting when BPM is above a value ---------------------------------------
-                /*
-                //start sprinting when BPM is above certian range and not already sprinting
-                if (hb.BPM > minSprintBPM && !sprinting && sprintTimer == 0)
-                {
-                    sprinting = true;
-                }
-                if (sprinting)
-                {
-                    //increase timers and heartrate while sprinting
-                    sprintTimer += Time.deltaTime;
-                    player.Power.RestoreBPM(increaseRate * Time.deltaTime);
-                    //start reset process after timer reaches limit
-                    if (sprintTimer >= sprintTime)
-                    {
-                        sprinting = false;
-                        player.Power.RemoveBPM(heartRateRemoved);
-                        sprintTimer = sprintTime;
-                    }
-                }
-                else
-                {
-                    //decrease the timer back to zero (cooldown)
-                    sprintTimer = Mathf.Clamp(sprintTimer - Time.deltaTime, 0, sprintTime);
-                }
-                //set the move speeds to match 
-                player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
-                player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
-                player.Animator.speed = sprinting ? sprintMoveSpeed / orignMoveSpeed : 1; //set animation speed to match 
-                */
-                //-------------------------------------------------------------------------------------------
             }
         }
         //game is paused
