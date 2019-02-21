@@ -24,7 +24,7 @@ public class DialogueBox : Pause {
 
     [SerializeField] private Color letterColor;
 
-    protected int[] symbolsAscii = new int[] { 46, 44, 33, 63, 58, 59, 45, 95, 91, 93, 40, 41, 126, 39, 39, 34, 34, 47, 92, 61, 43, 35, 60, 62, 94, 42, 64};
+    private int[] symbolsAscii = new int[] { 46, 44, 33, 63, 58, 59, 45, 95, 91, 93, 40, 41, 126, 39, 39, 34, 34, 47, 92, 61, 43, 35, 60, 62, 94, 42, 64};
     protected bool openSingleQuote = false;
     protected bool openDoubleQuote = false;
    
@@ -226,6 +226,9 @@ public class DialogueBox : Pause {
             {
                 text[i].sprite = letters[getSpriteNum(message[i])]; //convert letters so sprite numbers and set sprite 
             }
+            //reset the quote marks
+            openSingleQuote = false;
+            openDoubleQuote = false;
         }
         //Something has gone wrong in Display Message, string passed in was too long 
         else
@@ -268,6 +271,7 @@ public class DialogueBox : Pause {
                     {
                         if (openSingleQuote) { i++; }
                         openSingleQuote = !openSingleQuote;
+                        
                     }
                     if (letter == 34)
                     {

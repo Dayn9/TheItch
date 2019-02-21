@@ -92,19 +92,10 @@ public class DialogueScrollBox : DialogueBox
             {
                 //convert letters to sprite and set sprite when inside current index 
                 text[i].sprite = letters[i <= currentLetterIndex ? getSpriteNum(recievedMessage[i]) : letters.Length - 1];
-                /*
-                 * Does the same as above line ^^^
-                 * 
-                 * char letter = recievedMessage[i];
-                int spriteNum = letters.Length - 1; //default to blank space in case of unassign char
-                if (i <= currentLetterIndex)
-                {
-                    spriteNum = getSpriteNum(letter);
-                }
-               
-                text[i].sprite = letters[spriteNum];
-                */
             }
+            //reset the quote marks
+            openSingleQuote = false;
+            openDoubleQuote = false;
         }
     }
 }
