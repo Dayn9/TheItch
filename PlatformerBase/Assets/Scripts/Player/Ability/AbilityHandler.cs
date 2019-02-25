@@ -79,6 +79,7 @@ public class AbilityHandler : Global {
             unlockedAbilities = new bool[3]; //SET number of abilities here
             LockAll();
         }
+        //setup has already occured in first scene
         else
         {
             if (unlockedAbilities[0])
@@ -99,6 +100,8 @@ public class AbilityHandler : Global {
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
         Unlock(0); //unlock the ability transfer powers
+        Unlock(1);
+        Unlock(2);
     }
 
 
