@@ -15,7 +15,7 @@
 				"IgnoreProjector" = "True"
 				"RenderType" = "Transparent"
 				"PreviewType" = "Plane"
-				"CanUseSpriteAtlas" = "True"
+				"CanUseSpriteAtlas" = "False"
 			}
 
 			Cull Off
