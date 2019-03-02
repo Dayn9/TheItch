@@ -44885,12 +44885,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1199002321168980, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 3}
       propertyPath: m_Name
-      value: Basophil
+      value: Wilds
       objectReference: {fileID: 0}
     - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
         type: 3}
       propertyPath: levelName
-      value: Baso
+      value: Wilds
       objectReference: {fileID: 0}
     - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
         type: 3}
@@ -52138,16 +52138,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: initialBPM
-      value: 81
-      objectReference: {fileID: 0}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: deltaHeartRate
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 3}
       propertyPath: evTrigs.Array.size
@@ -52158,6 +52148,16 @@ PrefabInstance:
       propertyPath: evTrigs.Array.data[0]
       value: 
       objectReference: {fileID: 2124082735}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 3}
+      propertyPath: initialBPM
+      value: 81
+      objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 3}
+      propertyPath: deltaHeartRate
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
