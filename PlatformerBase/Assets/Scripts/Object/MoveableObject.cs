@@ -13,11 +13,12 @@ public class MoveableObject : PhysicsObject
         {
             base.FixedUpdate(); //Do Physics stuff
 
+            
 
-            moveVelocity.x = Mathf.Lerp(moveVelocity.x, 0, drag);
-            moveVelocity.x = Mathf.Abs(moveVelocity.x) < 0.01 ? 0.0f : moveVelocity.x;
-            moveVelocity.y = Mathf.Lerp(moveVelocity.y, 0, drag);
-            moveVelocity.y = Mathf.Abs(moveVelocity.y) < 0.01 ? 0.0f : moveVelocity.y;
+            inputVelocity.x = Mathf.Lerp(inputVelocity.x, 0, drag);
+            inputVelocity.x = Mathf.Abs(inputVelocity.x) < 0.01 ? 0.0f : inputVelocity.x;
+            inputVelocity.y = Mathf.Lerp(inputVelocity.y, 0, drag);
+            inputVelocity.y = Mathf.Abs(inputVelocity.y) < 0.01 ? 0.0f : inputVelocity.y;
         }
     }
 
