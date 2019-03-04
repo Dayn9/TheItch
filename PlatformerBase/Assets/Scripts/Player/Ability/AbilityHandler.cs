@@ -20,6 +20,7 @@ public class AbilityHandler : Global {
     protected ParticleSystem.Particle[] particles; //array of particles being controlled 
 
     [Header("Ability 1: Absorb")]
+    private ParticleSystem partAbsorb; //base absorb particle system
     [SerializeField] private GameObject abilityOnePrefab;
     private AbilityAbsorb powerOne;
 
@@ -52,6 +53,7 @@ public class AbilityHandler : Global {
     }
 
     public AbilityTransfer PowerZero { get { return powerZero; } }
+    public AbilityAbsorb PowerOne { get { return powerOne; } }
 
     // Use this for initialization
     void Awake () {
@@ -69,6 +71,8 @@ public class AbilityHandler : Global {
         //get the normal speeds as the origional values
         orignMoveSpeed = player.MoveSpeed;
         originJumpSpeed = player.JumpSpeed;
+
+        partAbsorb = transform.GetChild(0).GetComponent<ParticleSystem>();
 
         powerOne = Instantiate(abilityOnePrefab).GetComponent<AbilityAbsorb>();
         powerOne.gameObject.SetActive(false);
@@ -152,14 +156,21 @@ public class AbilityHandler : Global {
                     powerZero.Useable = false;
                 }
             }
+
             if (unlockedAbilities[1])
             {
                 if (Input.GetMouseButton(1))
                 {
+                    partAbsorb.Play();
                     player.Power.RestoreBPM(increaseRate * Time.deltaTime);
                     if(player.Power.Heartbeat.BPM < 200) { heartRateAdded += increaseRate * Time.deltaTime; }
                 }
+                else
+                {
+                    partAbsorb.Stop();
+                }
             }
+
             if (unlockedAbilities[2])
             {
                 if (Input.GetMouseButton(1))

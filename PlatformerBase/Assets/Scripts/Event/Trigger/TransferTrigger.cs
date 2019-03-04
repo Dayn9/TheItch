@@ -26,6 +26,8 @@ public class TransferTrigger : IndicatorTrigger
 
     private bool containsMouse = false;
 
+    private static AbilityHandler abilityHandler;
+
     protected override void Awake()
     {
         base.Awake();
@@ -46,7 +48,7 @@ public class TransferTrigger : IndicatorTrigger
 
     private void Start()
     {
-        
+        abilityHandler = Player.GetComponentInChildren<AbilityHandler>();
     }
 
     /// <summary>
@@ -123,14 +125,16 @@ public class TransferTrigger : IndicatorTrigger
                 Player.GetComponent<IHealthObject>().Damage(0); //triggers the damage animation
                 CallBefore();
 
-                Player.GetComponentInChildren<AbilityHandler>().PowerZero.SendParticlesTo(transform, healthObj.MaxHealth);
+                abilityHandler.PowerZero.SendParticlesTo(transform, healthObj.MaxHealth);
             }
             else if(validInput && !absorbing && !Empty)
             {
                 absorbing = true;
                 Player.GetComponent<IPlayer>().Power.RestoreBPM(healthObj.MaxHealth);
-
                 CallAfter();
+
+                abilityHandler.PowerOne.transform.position = transform.position;
+                abilityHandler.PowerOne.SendParticlesTo(Player.GetComponent<MovingObject>(), healthObj.MaxHealth);
             }
             containsMouse = true;
         }
