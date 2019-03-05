@@ -64,8 +64,8 @@
 					return OUT;
 				}
 
-				fixed4 _SampleColor;
-				fixed4 _ReplaceColor;
+				float4 _SampleColor;
+				float4 _ReplaceColor;
 				sampler2D _MainTex;
 				sampler2D _AlphaTex;
 				float _AlphaSplitEnabled;
@@ -90,16 +90,10 @@
 					fixed4 r = _ReplaceColor;
 					r.rgb *= r.a;
 					
-					if (c.r == _SampleColor.r) {
-						return r;
-					}
-					return c;
-					/*return lerp(r, c, 
-						ceil(
-							abs(c.r - _SampleColor.r) +
-							abs(c.g - _SampleColor.g) +
-							abs(c.b - _SampleColor.b)
-					));*/
+					fixed4 s = _SampleColor;
+					s.rgb *= s.a;
+
+					return abs(length(c.rgb) - length(s.rgb)) < 0.01 ? r : c;
 				}
 			ENDCG
 			}
