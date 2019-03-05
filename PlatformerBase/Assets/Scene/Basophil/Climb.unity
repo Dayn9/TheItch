@@ -51948,11 +51948,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 632755054}
     m_Modifications:
-    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
-        type: 3}
-      propertyPath: itemsRequired.Array.data[0]
-      value: 
-      objectReference: {fileID: 2113302879}
     - target: {fileID: 4016547624261662, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.5
@@ -51985,6 +51980,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 2113302879}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
 --- !u!4 &1687469336 stripped
@@ -52138,16 +52138,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 2124082735}
     - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 3}
       propertyPath: initialBPM
@@ -52214,6 +52204,21 @@ PrefabInstance:
         type: 3}
       propertyPath: bottomLimit
       value: -49
+      objectReference: {fileID: 0}
+    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 3}
+      propertyPath: evTrigs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2124082735}
+    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 3}
+      propertyPath: areaName
+      value: Halfway House
       objectReference: {fileID: 0}
     - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 3}

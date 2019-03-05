@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TextSize { Small, Large, SmallFull }
+public enum TextSize { Small, Large, SmallFull, AreaName }
 
 [RequireComponent(typeof(UIAnchor))]
 [RequireComponent(typeof(AudioPlayer))]
@@ -38,6 +38,12 @@ public class DialogueBox : Pause {
             //set the values based on text size
             switch (value)
             {
+                case TextSize.AreaName: //used for the area name text
+                    numLines = 1;
+                    charsPerLine = 15; //TODO find max number of chars (optimize slightly)
+                    initialOffset = Vector2.zero;
+                    offset = new Vector2(0.75f, -1.125f);
+                    break;
                 case TextSize.Small: //used for charachter dialogue
                     numLines = 4;
                     charsPerLine = 24;

@@ -18,28 +18,45 @@ public class Transition : EventTrigger{
     private MovingObject playerFreeze;
     private IPlayer playerFall;
 
+    [SerializeField] protected DialogueBox dialogueBox;
+    [SerializeField] protected string areaName; //holds the name of area to display
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        render = GetComponent<SpriteRenderer>();
+        render.enabled = true;
+
+        //add self to dialogue box
+        dialogueBox.GetComponent<TextboxEvent>().addEvTrig(this);
+    }
+
     private void Start()
     {
-        render = GetComponent<SpriteRenderer>();
-
         foreach (EventTrigger evTrig in evTrigs)
         {
             evTrig.Before += new triggered(FadeOut);
         }
-
-        render.enabled = true;
+        
+        //get references to various player components 
         playerFreeze = Player.GetComponent<MovingObject>();
         playerFall = Player.GetComponent<IPlayer>();
-        FadeIn();
+
+        FadeIn(); //begin the fade in when the scene first loads 
     }
 
     private void FadeIn()
     {
         render.enabled = true;
         render.color = new Color(0, 0, 0, 1);
+
         fadeIn = true;
+
         playerFreeze.Frozen = true; //stop the player from moving
-        playerFall.InFallZone = true; 
+        playerFall.InFallZone = true;
+
+        dialogueBox.OnTriggerKeyPressed(areaName);
     }
 
 
@@ -47,7 +64,9 @@ public class Transition : EventTrigger{
     {
         render.enabled = true;
         render.color = new Color(0, 0, 0, 0);
+
         fadeOut = true;
+
         playerFreeze.Frozen = true; //stop the player from moving
         playerFall.InFallZone = true;
     }
@@ -65,6 +84,7 @@ public class Transition : EventTrigger{
                     fadeIn = false;
                     render.enabled = false;
                     CallBefore();
+                    
                     playerFreeze.Frozen = false; //stop the player from moving
                     playerFall.InFallZone = false;
                     return;

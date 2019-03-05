@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueScrollBox : DialogueBox
-{
-
+{ 
     [SerializeField] private float scrollSpeed;
 
     private string recievedMessage;

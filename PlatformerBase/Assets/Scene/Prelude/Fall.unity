@@ -4410,6 +4410,9 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  itemGiven: {fileID: 0}
+  givenOnComplete: 0
+  givenAtOffset: {x: 0, y: 0}
   dialogueBox: {fileID: 1762118547}
   faceImage: {fileID: 0}
   enterDialogue: Two years ago a small farming village was struck by a virus. The
@@ -93860,6 +93863,9 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  itemGiven: {fileID: 0}
+  givenOnComplete: 0
+  givenAtOffset: {x: 0, y: 0}
   dialogueBox: {fileID: 1762118547}
   faceImage: {fileID: 0}
   enterDialogue: 'The phenomenon recieved a lot of attention and soon the village
@@ -93875,11 +93881,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1964721290}
     m_Modifications:
-    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
-        type: 3}
-      propertyPath: itemsRequired.Array.data[0]
-      value: 
-      objectReference: {fileID: 1447275410}
     - target: {fileID: 4016547624261662, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.5
@@ -93912,6 +93913,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 1447275410}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
 --- !u!114 &1636313770 stripped
@@ -102345,11 +102351,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1785448006}
     - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -102406,6 +102407,16 @@ PrefabInstance:
         type: 3}
       propertyPath: topLimit
       value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1785448006}
+    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 3}
+      propertyPath: areaName
+      value: Intro
       objectReference: {fileID: 0}
     - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 3}
@@ -103669,6 +103680,9 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  itemGiven: {fileID: 0}
+  givenOnComplete: 0
+  givenAtOffset: {x: 0, y: 0}
   dialogueBox: {fileID: 1762118547}
   faceImage: {fileID: 0}
   enterDialogue: Many explorers traveled into the caverns in search of the doctor
@@ -109316,6 +109330,9 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  itemGiven: {fileID: 0}
+  givenOnComplete: 0
+  givenAtOffset: {x: 0, y: 0}
   dialogueBox: {fileID: 1762118547}
   faceImage: {fileID: 0}
   enterDialogue: 'We learned that the virus lives in the bloodstream and that an increased
