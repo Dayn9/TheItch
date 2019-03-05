@@ -61,9 +61,6 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (!paused)
         {
-            validInput = ((Empty && Input.GetMouseButton(0) && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth)
-                || (FullyHealed && Input.GetMouseButton(1) && AbilityHandler.IsUnlocked(1)));
-
             GetMouseClick();
 
             if (transfering)
@@ -108,16 +105,20 @@ public class TransferTrigger : IndicatorTrigger
 
     private void GetMouseClick()
     {
-        if (zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+        validInput = ((Empty && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth)
+                || (FullyHealed && AbilityHandler.IsUnlocked(1))); //check if indicator should be available
+
+        //check for mouse in zone and able to interact
+        if (zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)) && validInput)
         {
             indicator.SetActive(true);
 
             if (!containsMouse) {
                 Cursor.SetCursor(cursorH, Vector2.zero, CursorMode.Auto);
                 audioPlayer.PlaySound(0); //play the hover sound
-            } 
+            }
 
-            if (validInput && !transfering && !FullyHealed)
+            if (Input.GetMouseButton(0) && !transfering && !FullyHealed)
             {
                 transfering = true;
                 Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
@@ -127,7 +128,7 @@ public class TransferTrigger : IndicatorTrigger
 
                 abilityHandler.PowerZero.SendParticlesTo(transform, healthObj.MaxHealth);
             }
-            else if(validInput && !absorbing && !Empty)
+            else if(Input.GetMouseButton(1) && !absorbing && !Empty)
             {
                 absorbing = true;
                 Player.GetComponent<IPlayer>().Power.RestoreBPM(healthObj.MaxHealth);
@@ -138,6 +139,7 @@ public class TransferTrigger : IndicatorTrigger
             }
             containsMouse = true;
         }
+        //unable to interact
         else {
             //GetComponent<SpriteRenderer>().sprite = fullHighlight;
             indicator.SetActive(false);

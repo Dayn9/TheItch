@@ -73,6 +73,7 @@ public class AbilityHandler : Global {
         originJumpSpeed = player.JumpSpeed;
 
         partAbsorb = transform.GetChild(0).GetComponent<ParticleSystem>();
+        partAbsorb.gameObject.SetActive(false);
 
         powerOne = Instantiate(abilityOnePrefab).GetComponent<AbilityAbsorb>();
         powerOne.gameObject.SetActive(false);
@@ -92,6 +93,7 @@ public class AbilityHandler : Global {
             }
             if (unlockedAbilities[1])
             {
+                partAbsorb.gameObject.SetActive(true);
                 powerOne.gameObject.SetActive(true);
             }
         }
@@ -104,8 +106,8 @@ public class AbilityHandler : Global {
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
         Unlock(0); //unlock the ability transfer powers
-        Unlock(1);
-        Unlock(2);
+        //Unlock(1);
+        //Unlock(2);
     }
 
 
@@ -126,6 +128,7 @@ public class AbilityHandler : Global {
                 case 1:
                 case 2:
                     powerOne.gameObject.SetActive(true);
+                    partAbsorb.gameObject.SetActive(true);
                     break;
             }
         }

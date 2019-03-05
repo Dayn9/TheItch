@@ -125,7 +125,7 @@ public abstract class BloodParticle : Global {
                     }
 
                     particle.velocity += ((moveVector.normalized * particleSpeed) - particle.velocity) * Time.deltaTime;
-                    particle.velocity *= Mathf.Clamp((moveVector.magnitude + slowRadius) / 10 , slowRadius * 0.1f , 1);
+                    //particle.velocity *= Mathf.Clamp((moveVector.magnitude + slowRadius) / 10 , slowRadius * 0.1f , 1);
 
                     particles[i] = particle; //set the particle's data back into particles array
                                              //Debug.Log("Seth is dim");
