@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 26, y: 8}
+  m_Size: {x: 16, y: 16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -145,12 +145,12 @@ MonoBehaviour:
   givenOnComplete: 0
   givenAtOffset: {x: 0, y: 0}
   evTrigs: []
-  animatedOffset: {x: 0, y: 0, z: 0}
-  speed: 50
+  animatedOffset: {x: 0, y: 3, z: 0}
+  speed: 40
   initialColor: {r: 1, g: 1, b: 1, a: 1}
   finalColor: {r: 1, g: 1, b: 1, a: 1}
   useTimer: 1
-  maxTime: 2
+  maxTime: 3
 --- !u!82 &2071446610
 AudioSource:
   m_ObjectHideFlags: 0

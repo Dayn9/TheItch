@@ -56,6 +56,7 @@ public class Transition : EventTrigger{
         playerFreeze.Frozen = true; //stop the player from moving
         playerFall.InFallZone = true;
 
+        CallBefore();
         dialogueBox.OnTriggerKeyPressed(areaName);
     }
 
@@ -83,7 +84,6 @@ public class Transition : EventTrigger{
                     render.color = new Color(0, 0, 0, fadeAlpha);
                     fadeIn = false;
                     render.enabled = false;
-                    CallBefore();
                     
                     playerFreeze.Frozen = false; //stop the player from moving
                     playerFall.InFallZone = false;
