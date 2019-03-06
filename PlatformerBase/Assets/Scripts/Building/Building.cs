@@ -7,8 +7,8 @@ public class Building : Global {
     [SerializeField] private BuildingLayer[] Interiors; //Interior layer tilemaps and joining doors
 
     private const float doorAboveAlpha = 0.4f; //alpha when door leads back a layer
-    private const int doorAboveLayer = 6; //order in sorting layer of door that leads back a layer
-    private const int doorBelowLayer = 4; //order in sorting layer of door that leads forward a layer
+    private const int doorAboveLayer = 8; //order in sorting layer of door that leads back a layer
+    private const int doorBelowLayer = 3; //order in sorting layer of door that leads forward a layer
 
     private PhysicsObject physPlayer; //ref to physicsObject type script attached to player
 
@@ -68,13 +68,13 @@ public class Building : Global {
         {
             Fade.EnableFade(myRenderers);
             fade.EnableFade(Player.GetComponent<Renderer>());
-            fade.EnableFade(MainCamera.GetComponentsInChildren<Renderer>());
+            //fade.EnableFade(MainCamera.GetComponentsInChildren<Renderer>());
         }
         else if (layer == 0)
         {
             Fade.DisableFade(myRenderers);
             fade.DisableFade(Player.GetComponent<Renderer>());
-            fade.DisableFade(MainCamera.GetComponentsInChildren<Renderer>());
+            //fade.DisableFade(MainCamera.GetComponentsInChildren<Renderer>());
         }
 
         //go back a layer
