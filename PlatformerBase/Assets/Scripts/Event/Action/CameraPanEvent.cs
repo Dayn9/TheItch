@@ -23,6 +23,11 @@ public class CameraPanEvent : Pause
     private bool movingOut = true;
     private BaseCamera camController; //ref to camera controller 
 
+    private void Awake()
+    {
+        
+    }
+
     void Start()
     {
         camController = MainCamera.GetComponent<BaseCamera>();

@@ -9,29 +9,29 @@ using UnityEngine.Tilemaps;
 public class MoveEvent : Global {
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
     [Header("Before/True  -  After/False")]
-    [SerializeField] private bool beforeAfter; //when (before/after questCompleted) the event is triggered
+    [SerializeField] protected bool beforeAfter; //when (before/after questCompleted) the event is triggered
 
-    [SerializeField] private Vector2 origin; //position moving from
-    [SerializeField] private Vector2 final; //position moving to
-    [SerializeField] private float speed; //how fast the object moves to final
-    Vector3 moveVector = Vector3.zero; //moveVector to final
+    [SerializeField] protected Vector2 origin; //position moving from
+    [SerializeField] protected Vector2 final; //position moving to
+    [SerializeField] protected float speed; //how fast the object moves to final
+    protected Vector3 moveVector = Vector3.zero; //moveVector to final
 
     [Header("Options")]
-    [SerializeField] private bool snapCollider;
-    [SerializeField] private bool fadeTilemap;
-    [SerializeField] private Color initialColor = Color.white;
-    [SerializeField] private Color finalColor = Color.white;
-    [SerializeField] private Color snapColor = Color.white;
+    [SerializeField] protected bool snapCollider;
+    [SerializeField] protected bool fadeTilemap;
+    [SerializeField] protected Color initialColor = Color.white;
+    [SerializeField] protected Color finalColor = Color.white;
+    [SerializeField] protected Color snapColor = Color.white;
 
-    private bool move = false;
+    protected bool move = false;
 
-    private MovingObject moveObj; //ref to the objects moveVelocity of parent
-    private Tilemap rend; //ref to renderer in the object
-    private Collider2D[] colls;
+    protected MovingObject moveObj; //ref to the objects moveVelocity of parent
+    protected Tilemap rend; //ref to renderer in the object
+    protected Collider2D[] colls;
 
-    private AudioPlayer audioPlayer;
+    protected AudioPlayer audioPlayer;
 
-    private void Awake()
+    protected void Awake()
     {
         //get the MoveObject from somewhere in the object
         moveObj = GetComponent<MoveableObject>();
@@ -62,8 +62,7 @@ public class MoveEvent : Global {
         audioPlayer = GetComponent<AudioPlayer>();
     }
 
-
-    void Start () {
+     protected virtual void Start () {
         //subscribe to proper event
         if (beforeAfter)
         {
@@ -73,23 +72,31 @@ public class MoveEvent : Global {
         {
             evTrig.After += new triggered(Move);
         }
-        
+
+        Setup();
+     }
+
+    /// <summary>
+    /// set up the starting properties for the object
+    /// </summary>
+    protected void Setup()
+    {
         transform.localPosition = origin; //start at the origin
         if (fadeTilemap) { rend.color = initialColor; }
-        if (snapCollider) {
+        if (snapCollider)
+        {
             foreach (Collider2D coll in colls)
             {
-                if(coll.GetType() != (new CompositeCollider2D()).GetType())
+                if (coll.GetType() != (new CompositeCollider2D()).GetType())
                 {
                     coll.enabled = false;
                 }
             }
         }
-
     }
 	
     //called by event, starts the movement
-    private void Move()
+    protected virtual void Move()
     {
         move = true;
 
@@ -98,7 +105,7 @@ public class MoveEvent : Global {
         audioPlayer.Loop = true;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!paused)
         {
