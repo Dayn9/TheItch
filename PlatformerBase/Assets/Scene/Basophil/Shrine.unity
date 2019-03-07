@@ -130,11 +130,11 @@ PrefabInstance:
       objectReference: {fileID: 997205038}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.19
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.61
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.z
@@ -120042,6 +120042,16 @@ PrefabInstance:
       propertyPath: areaName
       value: Shrine
       objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 3}
+      propertyPath: initialBPM
+      value: 81
+      objectReference: {fileID: 0}
+    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
+        type: 3}
+      propertyPath: deltaHeartRate
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 114634746301202866, guid: efe8d3421c638854e9020fd5d02a8bf8,
         type: 3}
       propertyPath: letters.Array.size
@@ -120068,16 +120078,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: initialBPM
-      value: 81
-      objectReference: {fileID: 0}
-    - target: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: deltaHeartRate
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
       propertyPath: m_LocalPosition.x
