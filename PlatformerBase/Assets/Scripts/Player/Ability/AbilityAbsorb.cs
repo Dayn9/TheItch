@@ -8,7 +8,7 @@ public class AbilityAbsorb : BloodParticle
     private float particleEmission;
 
     private SpriteRenderer playerRend; //ref to players sprite renderer
-    private MovingObject playerObj;
+    //private MovingObject playerObj;
 
     //accessor for audioPlayer (used by Ability Handler)
     public AudioPlayer AudioPlayer { get { return audioPlayer; } }
@@ -18,7 +18,7 @@ public class AbilityAbsorb : BloodParticle
     {
         base.Awake();
         playerRend = Player.GetComponent<SpriteRenderer>();
-        playerObj = Player.GetComponent<MovingObject>();
+        //playerObj = Player.GetComponent<MovingObject>();
         audioPlayer = GetComponent<AudioPlayer>();
     }
 
