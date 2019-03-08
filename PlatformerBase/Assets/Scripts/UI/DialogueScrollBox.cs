@@ -78,7 +78,7 @@ public class DialogueScrollBox : DialogueBox
 
     private void Update()
     {
-        if (scroll)
+        if (scroll && !paused)
         {
             currentLetterIndex += scrollSpeed * Time.deltaTime;
             if(currentLetterIndex > totallChunkLength)
