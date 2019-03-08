@@ -33,10 +33,12 @@ public class IndicatorTrigger : EventTrigger {
                 if (questCompleted)
                 {
                     CallAfter();
+                    audioPlayer.PlaySound(1);
                 }
                 else
                 {
                     CallBefore();
+                    audioPlayer.PlaySound(0);
                 }
             }
         }

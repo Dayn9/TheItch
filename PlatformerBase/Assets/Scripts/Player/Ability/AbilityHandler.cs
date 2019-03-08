@@ -166,7 +166,10 @@ public class AbilityHandler : Global {
                 {
                     partAbsorb.Play();
                     player.Power.RestoreBPM(increaseRate * Time.deltaTime);
-                    if(player.Power.Heartbeat.BPM < 200) { heartRateAdded += increaseRate * Time.deltaTime; }
+                    if(player.Power.Heartbeat.BPM < 200) {
+                        heartRateAdded += increaseRate * Time.deltaTime;
+                    }
+                    powerZero.AudioPlayer.PlaySound("ContinueSparkle");
                 }
                 else
                 {

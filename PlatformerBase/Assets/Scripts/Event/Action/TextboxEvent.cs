@@ -29,11 +29,11 @@ public class TextboxEvent : EventTrigger
 
     void Start()
     {
-        foreach(EventTrigger evTrig in evTrigs)
+        foreach (EventTrigger evTrig in evTrigs)
         {
             evTrig.Before += new triggered(MoveIn);
             evTrig.After += new triggered(MoveIn);
-        }        
+        }
         render = GetComponent<SpriteRenderer>();
 
         visiblePosition = transform.localPosition;
@@ -47,13 +47,13 @@ public class TextboxEvent : EventTrigger
     /// <param name="evTrig">new Dialogue box event trigger</param>
     public void addEvTrig(EventTrigger evTrig)
     {
-        if(evTrigs == null) { evTrigs = new List<EventTrigger>(); }
+        if (evTrigs == null) { evTrigs = new List<EventTrigger>(); }
         evTrigs.Add(evTrig);
     }
 
     protected override void Update()
     {
-        if (!paused)
+        if (!paused || true)
         {
             if (moveIn || moveOut)
             {

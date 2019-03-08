@@ -136,6 +136,7 @@ public class TransferTrigger : IndicatorTrigger
 
                 abilityHandler.PowerOne.transform.position = transform.position;
                 abilityHandler.PowerOne.SendParticlesTo(Player.GetComponent<MovingObject>(), healthObj.MaxHealth);
+                audioPlayer.PlaySound(1);
             }
             containsMouse = true;
         }
@@ -156,7 +157,7 @@ public class TransferTrigger : IndicatorTrigger
     {
         if (coll.tag == "Player") //trigger sound when player enters 
         {
-            if (!containsMouse) { audioPlayer.PlaySound(0); }
+            if (!containsMouse && validInput) { audioPlayer.PlaySound(0); }
         }
     }
 
