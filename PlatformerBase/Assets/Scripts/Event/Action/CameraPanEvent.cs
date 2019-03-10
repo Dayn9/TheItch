@@ -66,7 +66,8 @@ public class CameraPanEvent : Pause
                 //smooth damp the camera
                 Vector2.SmoothDamp(camController.transform.localPosition, (movingOut ? final : origin), ref velocity, moveTime);
 
-                if (((movingOut ? final : origin) - (Vector2)camController.transform.localPosition).magnitude < 0.1f)
+                if (((movingOut ? final : origin) - (Vector2)camController.transform.localPosition).magnitude < 0.1f ||
+                    (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0)))
                 {
                     Vector3 snapPos = (movingOut ? final : origin);
                     snapPos.z = camController.transform.position.z;
