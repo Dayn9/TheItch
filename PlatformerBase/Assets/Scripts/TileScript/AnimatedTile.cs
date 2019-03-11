@@ -16,7 +16,7 @@ public class AnimatedTile : TileBase
 {
     public Sprite[] frames;
     public float speed;
-
+    public bool randomStart;
 
     public override void GetTileData(Vector3Int location, ITilemap tileMap, ref TileData tileData)
     {
@@ -34,7 +34,7 @@ public class AnimatedTile : TileBase
         {
             tileAnimationData.animatedSprites = frames;
             tileAnimationData.animationSpeed = speed;
-            tileAnimationData.animationStartTime = UnityEngine.Random.Range(0, frames.Length);
+            tileAnimationData.animationStartTime = randomStart ? UnityEngine.Random.Range(0, frames.Length) : 0;
             return true;
         }
         return false;
@@ -78,6 +78,8 @@ public class AnimatedTileEditor : Editor
         }
         tile.speed = EditorGUILayout.FloatField("Speed", tile.speed);
         if (tile.speed < 0) { tile.speed = 0; }
+
+        tile.randomStart = EditorGUILayout.Toggle("Random Start", tile.randomStart);
 
         if (EditorGUI.EndChangeCheck()) { EditorUtility.SetDirty(tile); }
     }
