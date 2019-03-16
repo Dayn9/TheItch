@@ -1,6 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
+
+public enum ProjectileDirection
+{
+    left, right, up, down
+}
 
 public class ProjectileFireEvent : MonoBehaviour
 {
@@ -11,14 +17,17 @@ public class ProjectileFireEvent : MonoBehaviour
     [Space(10)]
     [SerializeField] private GameObject projectilePrefab; //projecctile object to fire
     private GameObject myProjectile;
-    [SerializeField] private Vector2 projectileVelocity;
+    [SerializeField] private ProjectileDirection direction;
 
     private void Awake()
     {
         //create and set propeties of the projectile
         myProjectile = Instantiate(projectilePrefab);
-        myProjectile.GetComponent<MovingObject>().MoveVelocity = projectileVelocity;
+        myProjectile.GetComponent<ProjectileObject>().Direction = direction;
         myProjectile.SetActive(false);
+
+        Assert.IsTrue(transform.position.y % 1 == 0, "Projectiles should be fired at an whole number position");
+        Assert.IsTrue(transform.position.x % 1 == 0, "Projectiles should be fired at an whole number position");
     }
 
     void Start()

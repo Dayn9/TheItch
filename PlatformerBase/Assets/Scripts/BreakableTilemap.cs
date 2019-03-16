@@ -14,12 +14,26 @@ public class BreakableTilemap : MonoBehaviour
 
     public void BreakTile(Vector2 pos)
     {
-        Vector3Int tilePosition = new Vector3Int(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), 0);
+        Vector3Int roundedPos = new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), 0);
 
-        Debug.Log(tilePosition);
-        Debug.Log(tilemap.GetTile(tilePosition).name);
+        Vector3Int[] tiles = new Vector3Int[] {
+            roundedPos,
+            roundedPos - Vector3Int.right,
+            roundedPos - Vector3Int.up,
+            roundedPos - Vector3Int.one
+        };
 
-        tilemap.SetTile(tilePosition, null);
+        float rand = Random.value;
+
+        for(int i = 0; i< tiles.Length; i++)
+        {
+            if (tilemap.GetTile(tiles[i]))
+            {
+                Debug.Log("tile at " + i + " " + rand);
+                tilemap.SetTile(tiles[i], null);
+            }
+        }
+        
 
     }
 }

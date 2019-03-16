@@ -1285,7 +1285,7 @@ MonoBehaviour:
   beforeAfter: 1
   projectilePrefab: {fileID: 3947665900549092173, guid: 8b1b8f3275d857a4b9468662add0f38c,
     type: 3}
-  projectileVelocity: {x: -10, y: 0}
+  direction: 3
 --- !u!4 &628856174
 Transform:
   m_ObjectHideFlags: 0
@@ -1294,7 +1294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628856172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 46.71, y: 18, z: 0}
+  m_LocalPosition: {x: 37, y: 29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
