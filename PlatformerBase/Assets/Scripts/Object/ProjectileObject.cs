@@ -18,6 +18,7 @@ public class ProjectileObject : MovingObject
     {
         if (!paused)
         {
+            //move the pojectile
             transform.position += (Vector3)moveVelocity * maxSpeed * Time.deltaTime;
         }
     }
@@ -27,18 +28,7 @@ public class ProjectileObject : MovingObject
         switch (collision.gameObject.layer)
         {
             case 17: //collision with breakable object
-                //switch statement used in case diagonals are created later
-                switch (direction)
-                {
-                    case ProjectileDirection.left:
-                    case ProjectileDirection.down:
-                        collision.GetComponent<BreakableTilemap>().BreakTile((Vector2)transform.position + moveVelocity);
-                        break;
-                    case ProjectileDirection.right:
-                    case ProjectileDirection.up:
-                        collision.GetComponent<BreakableTilemap>().BreakTile(transform.position);
-                        break;
-                }
+                collision.GetComponent<BreakableTilemap>().BreakTile(transform.position);
                 break;
             case 9: //collision with solid
                 gameObject.SetActive(false);
