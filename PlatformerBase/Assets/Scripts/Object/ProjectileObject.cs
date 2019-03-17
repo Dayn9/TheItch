@@ -1,25 +1,43 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(ParticleSystem))]
 public class ProjectileObject : MovingObject 
 {
-    private ProjectileDirection direction;
-    [SerializeField] private float maxSpeed;
+    private ProjectileDirection direction; //direcction of the projectile
+    [SerializeField] private float acceleration; //rate at which the speed increases 
+    [SerializeField] private float maxSpeed; //maximum speed the object should move at 
+    private float speed; //how fast the projectile is moving
+
+    private ParticleSystem.ForceOverLifetimeModule forceOverLifetime; //force over lifetime module of particle system
 
     public ProjectileDirection Direction {
         set {
             direction = value;
             moveVelocity = GetDirectionVector();
+            speed = maxSpeed/2;
+
+            forceOverLifetime.x = -moveVelocity.x * maxSpeed;
+            forceOverLifetime.y = -moveVelocity.y * maxSpeed;
         }
+    }
+
+    private void Awake()
+    {
+        forceOverLifetime = GetComponent<ParticleSystem>().forceOverLifetime;
     }
 
     void Update()
     {
         if (!paused)
         {
+            //accelerate to max speed
+            speed = Mathf.Clamp(speed + (acceleration * Time.deltaTime), 0, maxSpeed);
+
             //move the pojectile
-            transform.position += (Vector3)moveVelocity * maxSpeed * Time.deltaTime;
+            transform.position += (Vector3)moveVelocity * speed * Time.deltaTime;
         }
     }
 

@@ -106,8 +106,6 @@ public class AbilityHandler : Global {
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
         Unlock(0); //unlock the ability transfer powers
-        //Unlock(1);
-        //Unlock(2);
     }
 
 
@@ -135,6 +133,13 @@ public class AbilityHandler : Global {
     }
 
     void Update () {
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            for (int i = 0; i < unlockedAbilities.Length; i++) { Unlock(i); }
+        }
+
+
         if (!paused)
         {
             if (unlockedAbilities[0])
