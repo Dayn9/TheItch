@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Assertions;
 
 public class BreakableTilemap : MonoBehaviour
 {
     private Tilemap tilemap;
 
+    private static GridInformation gridInfo;
+
     private void Awake()
     {
         tilemap = GetComponent<Tilemap>();
+
+        if (gridInfo == null)
+        {
+            gridInfo = FindObjectOfType<GridInformation>();
+            Assert.IsNotNull(gridInfo, "Projectile couldn't find gridInfo");
+        }
     }
 
     public void BreakTile(Vector2 pos)
@@ -29,7 +38,10 @@ public class BreakableTilemap : MonoBehaviour
         {
             if (tilemap.GetTile(tiles[i]))
             {
-                tilemap.SetTile(tiles[i], null);
+                gridInfo.ErasePositionProperty(tiles[i], "Destroyed");
+                gridInfo.SetPositionProperty(tiles[i], "Destroyed", 1);
+
+                //tilemap.SetTile(tiles[i], null);
             }
         }
     }
