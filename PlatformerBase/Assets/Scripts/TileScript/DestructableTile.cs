@@ -17,7 +17,6 @@ public class DestructableTile : TileBase
     public Sprite[] frames;
     public float speed;
 
-    private bool destroyed;
 
     public override void GetTileData(Vector3Int location, ITilemap tileMap, ref TileData tileData)
     {
@@ -27,14 +26,8 @@ public class DestructableTile : TileBase
         {
             tileData.sprite = frames[0];
         }
-        
-        GridInformation info = tileMap.GetComponent<Transform>().gameObject.GetComponentInParent<GridInformation>();
-        if(info != null)
-        {
-            destroyed = IsDestroyed(info, location);
-        }
 
-        tileData.colliderType = destroyed ? Tile.ColliderType.None : Tile.ColliderType.Sprite;
+        tileData.colliderType = Tile.ColliderType.None;
     }
 
     public override bool GetTileAnimationData(Vector3Int location, ITilemap tilemap, ref TileAnimationData tileAnimationData)
@@ -42,18 +35,13 @@ public class DestructableTile : TileBase
         if (frames != null && frames.Length > 0)
         {
             tileAnimationData.animatedSprites = frames;
-            tileAnimationData.animationSpeed = destroyed ? speed : 0;
-            tileAnimationData.animationStartTime = 0;
+            tileAnimationData.animationSpeed = speed;
+            tileAnimationData.animationStartTime = Time.fixedUnscaledTime;
             return true;
         }
         return false;
     }
 
-    private bool IsDestroyed(GridInformation info, Vector3Int position)
-    {
-        Debug.Log("check");
-        return info.GetPositionProperty(position, "Destroyed", 0) > 0;
-    }
 
 #if UNITY_EDITOR
     //create a scriptable AnimatedTile object

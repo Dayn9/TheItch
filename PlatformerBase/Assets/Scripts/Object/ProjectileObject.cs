@@ -9,6 +9,7 @@ public class ProjectileObject : MovingObject
     [SerializeField] private float maxSpeed; //maximum speed the object should move at 
     private float speed; //how fast the projectile is moving
 
+
     private ParticleSystem.ForceOverLifetimeModule forceOverLifetime; //force over lifetime module of particle system
 
     public ProjectileDirection Direction {

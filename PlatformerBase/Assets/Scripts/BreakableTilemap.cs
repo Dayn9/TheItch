@@ -7,17 +7,33 @@ using UnityEngine.Assertions;
 public class BreakableTilemap : MonoBehaviour
 {
     private Tilemap tilemap;
+    private Tilemap backing;
 
-    private static GridInformation gridInfo;
+    [SerializeField] private DestructableTile destructable;
+
+    private const float sps = 1.5f; //samples per second
+    private float animationTime;
+
+    private Dictionary<Vector3Int, float> destructTimers;
+
+    private static bool origional = true;
 
     private void Awake()
     {
-        tilemap = GetComponent<Tilemap>();
-
-        if (gridInfo == null)
+        if (origional)
         {
-            gridInfo = FindObjectOfType<GridInformation>();
-            Assert.IsNotNull(gridInfo, "Projectile couldn't find gridInfo");
+            origional = false;
+
+            GameObject back = Instantiate(gameObject, transform);
+            Destroy(back.GetComponent<BreakableTilemap>());
+            Destroy(back.GetComponent<CompositeCollider2D>());
+            Destroy(back.GetComponent<Rigidbody>());
+            Destroy(back.GetComponent<TilemapCollider2D>());
+            backing = back.GetComponent<Tilemap>();
+
+            destructTimers = new Dictionary<Vector3Int, float>();
+            animationTime = destructable.frames.Length / (sps * destructable.speed);
+            tilemap = GetComponent<Tilemap>();
         }
     }
 
@@ -34,15 +50,40 @@ public class BreakableTilemap : MonoBehaviour
         };
 
         //destroy any tiles that are active
-        for(int i = 0; i < tiles.Length; i++)
+        for (int i = 0; i < tiles.Length; i++)
         {
-            if (tilemap.GetTile(tiles[i]))
+            if (tilemap.GetTile(tiles[i]) && !destructTimers.ContainsKey(tiles[i]))
             {
-                gridInfo.ErasePositionProperty(tiles[i], "Destroyed");
-                gridInfo.SetPositionProperty(tiles[i], "Destroyed", 1);
-
-                //tilemap.SetTile(tiles[i], null);
+                tilemap.SetTile(tiles[i], destructable);
+                destructTimers.Add(tiles[i], 0);
             }
         }
+    }
+
+    private void Update()
+    {
+        if(destructTimers.Count > 0)
+        {
+            Dictionary<Vector3Int, float> newdestructTimers = new Dictionary<Vector3Int, float>();
+            foreach (Vector3Int pos in destructTimers.Keys)
+            {
+                if (destructTimers[pos] < animationTime)
+                {
+                    if(destructTimers[pos] > 0)
+                    {
+                        backing.SetTile(pos, null);
+                    }
+
+                    newdestructTimers.Add(pos, destructTimers[pos] + Time.deltaTime);
+                }
+                else
+                {
+                    tilemap.SetTile(pos, null);
+                    backing.SetTile(pos, null);
+                }
+            }
+            destructTimers = newdestructTimers;
+        }
+        
     }
 }
