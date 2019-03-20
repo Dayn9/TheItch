@@ -32,7 +32,7 @@ public class BreakableTilemap : MonoBehaviour
             backing = back.GetComponent<Tilemap>();
 
             destructTimers = new Dictionary<Vector3Int, float>();
-            animationTime = destructable.frames.Length / (sps * destructable.speed);
+            animationTime = (destructable.frames.Length - 1) / (sps * destructable.speed);
             tilemap = GetComponent<Tilemap>();
         }
     }
