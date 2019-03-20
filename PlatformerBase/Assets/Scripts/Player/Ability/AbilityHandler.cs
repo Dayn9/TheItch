@@ -11,7 +11,7 @@ public class AbilityHandler : Global {
 
     //fields for general or multipule variable reference 
     private IPlayer player;
-    private Heartbeat hb; //ref to the heartbeat component 
+    private HeartbeatTest hb; //ref to the heartbeat component 
 
     [Header("Ability 0: Transfer")]
     [SerializeField] private GameObject abilityZeroPrefab; //prefab of the first bleed ability

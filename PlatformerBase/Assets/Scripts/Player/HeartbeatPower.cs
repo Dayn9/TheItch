@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-[RequireComponent(typeof(Heartbeat))]
+[RequireComponent(typeof(HeartbeatTest))]
 public class HeartbeatPower : Global {
 
     [SerializeField] private float initialBPM; //initial value for the BPM
@@ -12,22 +12,21 @@ public class HeartbeatPower : Global {
 
     private float targetBPM; //value bpm is animating towards
 
-    private Heartbeat heartbeat; //ref to the attched Heartbeat controller
+    private HeartbeatTest heartbeat; //ref to the attched Heartbeat controller
 
     [SerializeField] private Color bpmReadoutNormal; //base color of BPM readout
     [SerializeField] private Color bpmReadoutDamage; //color of BPM readoutr when damaged
     [SerializeField] private Color bpmReadoutHeal; //color of BPM raeadout when healing
 
-    public Heartbeat Heartbeat { get {
-            if(heartbeat == null) { heartbeat = GetComponent<Heartbeat>(); }
+    public HeartbeatTest Heartbeat { get {
+            if(heartbeat == null) { heartbeat = GetComponent<HeartbeatTest>(); }
             return heartbeat;
         }
     }
 
     void Awake()
     {
-        heartbeat = GetComponent<Heartbeat>();
-        if(heartbeat.BPM == -1)
+        if(Heartbeat.BPM == -1)
         {
             heartbeat.BPM = initialBPM;
         }

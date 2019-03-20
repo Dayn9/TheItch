@@ -7,6 +7,9 @@
 [RequireComponent(typeof(AbilityHandler))]
 public class Jump : PhysicsObject, IHealthObject, IPlayer
 {
+    //TODO : Remove health system?
+
+
     #region private fields
     [Header("Movement")]
     [SerializeField] private float moveSpeed; //how fast the object can move
