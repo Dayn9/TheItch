@@ -10,7 +10,7 @@ public class HeartbeatTest : Global
 {
 
     private Transform marker; //ref to renderer of healthbar
-    private Vector2 markerOffset = new Vector2(3.75f, -1.75f);
+    private Vector2 markerOffset = new Vector2(3.75f, -1.875f);
     private Animator heartAnimation; //ref to the animator of the heartbeat
 
     private Digit[] digits; //ref to the digit readouts
