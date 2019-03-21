@@ -78,7 +78,6 @@ public class HeartbeatTest : Global
             SetDigitNum();
 
             int position = Mathf.CeilToInt((bpm - 4.0f) / 8);
-            Debug.Log(position);
             //position = 0;
             marker.localPosition = markerOffset + Vector2.right * (position * (1.0f / pixelsPerUnit));
         }
