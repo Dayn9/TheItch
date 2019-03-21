@@ -20,7 +20,7 @@ public class IndicatorTrigger : EventTrigger {
         indicator.name = "Event Indicator";
 
         base.Awake();
-    }
+    } 
 
     protected override void Update()
     {
