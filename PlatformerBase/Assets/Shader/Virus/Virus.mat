@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Virus
-  m_Shader: {fileID: 4800000, guid: b78309cd3997cd74a952d92cdc3c5b80, type: 3}
+  m_Shader: {fileID: 4800000, guid: 8a84de1a2b11b994c9f84fa697f9002c, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b1c213b701997e6408844375d03ae715, type: 3}
+        m_Texture: {fileID: 2800000, guid: 188e4b9d5e879034ab3829ebd5a401e8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransitionTex:
@@ -28,6 +28,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Cutoff: 1
+    - _Cutoff: 0.142
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 1}
