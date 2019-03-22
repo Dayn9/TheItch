@@ -1,8 +1,9 @@
 ﻿Shader "Unlit/Virus"
 {
     Properties
-    {
-        _MainTex ("Texture", 2D) = "white" {}
+	{
+		_MainTex("Texture", 2D) = "white" {}
+		_GradientTex("Gradient", 2D) = "white" {} 
 		_Color("Screen Color", Color) = (1,1,1,1)
 		_Cutoff("Cutoff ", Range(0, 1)) = 0
     }
@@ -41,6 +42,7 @@
 				};
 
 				sampler2D _MainTex;
+				sampler2D _GradientTex;
 				float _Cutoff;
 				fixed4 _Color;
 
@@ -55,8 +57,9 @@
 				fixed4 frag(v2f IN) : SV_Target
 				{
 					fixed4 transit = tex2D(_MainTex, IN.texcoord);
+				float average = (transit.b + (tex2D(_GradientTex, IN.texcoord).b / 2)) / 1.5 ;
 
-					if (transit.r < _Cutoff + 0.01) {
+					if (average < _Cutoff + 0.05) {
 						return _Color * transit.a;
 					}
 
