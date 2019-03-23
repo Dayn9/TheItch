@@ -9,8 +9,11 @@ public class ProjectileObject : MovingObject
     [SerializeField] private float maxSpeed; //maximum speed the object should move at 
     private float speed; //how fast the projectile is moving
 
+    private ParticleSystem.ForceOverLifetimeModule myForceOverLifetime; //force over lifetime module of particle system
+    private ParticleSystem.EmissionModule myEmission;
 
-    private ParticleSystem.ForceOverLifetimeModule forceOverLifetime; //force over lifetime module of particle system
+    private ParticleSystem burstSystem;
+    private SpriteRenderer render;
 
     public ProjectileDirection Direction {
         set {
@@ -18,14 +21,22 @@ public class ProjectileObject : MovingObject
             moveVelocity = GetDirectionVector();
             speed = maxSpeed/2;
 
-            forceOverLifetime.x = -moveVelocity.x * maxSpeed;
-            forceOverLifetime.y = -moveVelocity.y * maxSpeed;
+            myForceOverLifetime.x = -moveVelocity.x * maxSpeed;
+            myForceOverLifetime.y = -moveVelocity.y * maxSpeed;
+
+            render.enabled = true;
+            myEmission.enabled = true;
+            burstSystem.Play();
         }
     }
 
     private void Awake()
     {
-        forceOverLifetime = GetComponent<ParticleSystem>().forceOverLifetime;
+        myForceOverLifetime = GetComponent<ParticleSystem>().forceOverLifetime;
+        myEmission = GetComponent<ParticleSystem>().emission;
+
+        burstSystem = GetComponentInChildren<ParticleSystem>();
+        render = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -48,7 +59,13 @@ public class ProjectileObject : MovingObject
                 collision.GetComponent<BreakableTilemap>().BreakTile(transform.position);
                 break;
             case 9: //collision with solid
-                gameObject.SetActive(false);
+                burstSystem.Play();
+
+                myEmission.enabled = false;
+                render.enabled = false;
+                moveVelocity = Vector2.zero;
+
+                //gameObject.SetActive(false);
                 break;
 
         }

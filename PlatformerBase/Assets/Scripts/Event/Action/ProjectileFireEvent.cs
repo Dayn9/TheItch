@@ -50,6 +50,7 @@ public class ProjectileFireEvent : MonoBehaviour
     {
         myProjectile.transform.position = transform.position;
         myProjectile.SetActive(true);
+        myProjectile.GetComponent<ProjectileObject>().Direction = direction;
     }
 }
 
