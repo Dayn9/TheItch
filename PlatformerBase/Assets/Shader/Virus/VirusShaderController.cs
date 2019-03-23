@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class VirusShaderController : MonoBehaviour
 {
-    public Material VirusMat;
+   public Material virusMat;
 
     private void OnRenderImage(RenderTexture src, RenderTexture dst)
     {
-        Graphics.Blit(src, dst, VirusMat);
+        Graphics.Blit(src, dst, virusMat);
     }
 }

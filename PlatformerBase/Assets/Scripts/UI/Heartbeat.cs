@@ -7,12 +7,13 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(HeartbeatAudioPlayer))]
 public class Heartbeat : Global {
 
-    private SpriteRenderer healthbar; //ref to renderer of healthbar
+    private Transform marker; //ref to renderer of healthbar
+    private Vector2 markerOffset = new Vector2(3.75f, -1.875f);
     private Animator heartAnimation; //ref to the animator of the heartbeat
 
     private Digit[] digits; //ref to the digit readouts
+    private VirusShaderController virus;
 
-    private float numHealthbarTicks; //pixel width of the healthbar
     private static float bpm = -1; //beats per minute (60 = 1 per second)
 
     private HeartbeatAudioPlayer audioPlayer; //ref to the attached AudioPlayer
@@ -32,21 +33,23 @@ public class Heartbeat : Global {
 
 
     // Use this for initialization
-    void Awake () {
+    void Awake()
+    {
         //find the nessicary components in child gameObjects
-        healthbar = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        marker = transform.GetChild(0);
         heartAnimation = transform.GetChild(1).GetComponent<Animator>();
         audioPlayer = GetComponent<HeartbeatAudioPlayer>();
 
         digits = transform.GetComponentsInChildren<Digit>();
+        virus = GetComponentInChildren<VirusShaderController>();
+
 
         //make sure all the components of child objects are available
-        Assert.IsNotNull(healthbar, "healthbar SpriteRenderer not found");
+        Assert.IsNotNull(marker, "indicator SpriteRenderer not found");
         Assert.IsNotNull(heartAnimation, "heartbeat Animator not found");
         Assert.IsTrue(digits.Length == 3, "cannot find the 3 digits");
+        Assert.IsNotNull(virus, "Virus controller not found");
 
-        //find the number of pixels in the healthbar
-        numHealthbarTicks = (int)(healthbar.size.x * pixelsPerUnit);
     }
 
     //assign values to the individual components of the healthbeat 
@@ -54,8 +57,6 @@ public class Heartbeat : Global {
     {
         if (!paused)
         {
-            SetHealth(Player.GetComponent<IHealthObject>().Health, Player.GetComponent<IHealthObject>().MaxHealth); //update health
-
             heartAnimation.speed = bpm / 60.0f; //match animation speed to bpm
 
             audioPlayer.Speed = bpm / 60.0f; //match the audio speed to bpm
@@ -66,19 +67,26 @@ public class Heartbeat : Global {
             else
             {
                 timer = Mathf.Clamp(timer + Time.deltaTime, 0, fadeTime);
-                audioPlayer.Volume -= (timer/fadeTime) * audioPlayer.Volume;
+                audioPlayer.Volume -= (timer / fadeTime) * audioPlayer.Volume;
             }
-            
+
 
             //player takes damage when heartrate stops
-            if(bpm < 1)
+            if (bpm < 1)
             {
                 Player.GetComponent<IHealthObject>().Damage(1);
             }
 
             SetDigitNum();
+
+            int position = Mathf.CeilToInt((bpm - 4.0f) / 8);
+            //position = 0;
+            marker.localPosition = markerOffset + Vector2.right * (position * (1.0f / pixelsPerUnit));
+
+            SetHealth();
+
         }
-	}
+    }
 
     /// <summary>
     /// update the digit readouts to match bpm
@@ -121,15 +129,13 @@ public class Heartbeat : Global {
     }
 
     /// <summary>
-    /// determines how many pixels to display in the healthbar
+    /// Updates the virus shader to match the current health of the player
     /// </summary>
-    /// <param name="currentHealth">current number of health points</param>
-    /// <param name="maxHealth">maximum number of heath points</param>
-    private void SetHealth(int currentHealth, int maxHealth)
+    private void SetHealth()
     {
-        float width = (currentHealth / (float)maxHealth) * (numHealthbarTicks / (float)pixelsPerUnit); //perfectly scaled width
-        healthbar.size = new Vector2(width - width % (1.0f / pixelsPerUnit), healthbar.size.y); //set healthbar size and make sure pixel size 
+
+        IHealthObject player = Player.GetComponent<IHealthObject>();
+        virus.virusMat.SetFloat("_Cutoff", Mathf.Lerp(virus.virusMat.GetFloat("_Cutoff"), 1 - (player.Health / (float)player.MaxHealth), Time.deltaTime));
     }
 
-    
 }
