@@ -17,7 +17,6 @@ public class DestructableTile : TileBase
     public Sprite[] frames;
     public float speed;
 
-
     public override void GetTileData(Vector3Int location, ITilemap tileMap, ref TileData tileData)
     {
         tileData.transform = Matrix4x4.identity;
@@ -36,7 +35,7 @@ public class DestructableTile : TileBase
         {
             tileAnimationData.animatedSprites = frames;
             tileAnimationData.animationSpeed = speed;
-            tileAnimationData.animationStartTime = Time.fixedUnscaledTime;
+            tileAnimationData.animationStartTime = Time.frameCount + 1;
             return true;
         }
         return false;

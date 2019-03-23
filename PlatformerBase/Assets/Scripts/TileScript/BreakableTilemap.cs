@@ -54,7 +54,8 @@ public class BreakableTilemap : MonoBehaviour
         {
             if (tilemap.GetTile(tiles[i]) && !destructTimers.ContainsKey(tiles[i]))
             {
-                tilemap.SetTile(tiles[i], destructable);
+                tilemap.SetTile(tiles[i], null);
+                backing.SetTile(tiles[i], destructable);
                 destructTimers.Add(tiles[i], 0);
             }
         }
@@ -67,18 +68,13 @@ public class BreakableTilemap : MonoBehaviour
             Dictionary<Vector3Int, float> newdestructTimers = new Dictionary<Vector3Int, float>();
             foreach (Vector3Int pos in destructTimers.Keys)
             {
-                if (destructTimers[pos] < animationTime)
+                if (destructTimers[pos] + Time.deltaTime < animationTime)
                 {
-                    if(destructTimers[pos] > 0)
-                    {
-                        backing.SetTile(pos, null);
-                    }
-
                     newdestructTimers.Add(pos, destructTimers[pos] + Time.deltaTime);
                 }
                 else
                 {
-                    tilemap.SetTile(pos, null);
+                    
                     backing.SetTile(pos, null);
                 }
             }
