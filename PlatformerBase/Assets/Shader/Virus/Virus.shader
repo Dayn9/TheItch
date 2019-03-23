@@ -56,7 +56,7 @@
 				{
 					fixed4 transit = tex2D(_MainTex, IN.texcoord);
 
-					if (transit.b < _Cutoff + 0.05) {
+					if (transit.b - 0.05 < _Cutoff) {
 						return _Color * transit.a;
 					}
 

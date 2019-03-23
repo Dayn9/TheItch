@@ -25,6 +25,10 @@ public class Heartbeat : Global {
 
     public float ChangeRate { set { changeRate = value; } }
 
+    private const int minHeartrate = 32;
+    private const int maxHeartrate = 168;
+
+
     public float BPM
     {
         get { return bpm; }
@@ -71,8 +75,8 @@ public class Heartbeat : Global {
             }
 
 
-            //player takes damage when heartrate stops
-            if (bpm < 1)
+            //player takes damage when heartrate is too high or low
+            if (bpm < minHeartrate || bpm > maxHeartrate)
             {
                 Player.GetComponent<IHealthObject>().Damage(1);
             }
