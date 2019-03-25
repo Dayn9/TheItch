@@ -1,45 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
 public class BreakParticles : MonoBehaviour
 {
-    private ParticleSystem part;
-    private ParticleSystem.ShapeModule partShape;
+    /// <summary>
+    /// Controls the broken particles
+    /// </summary>
 
-    private ParticleSystem.Particle[] particles;
+    private ParticleSystem part; //ref to the particle system component 
+
+    private ParticleSystem.Particle[] particles; //array of particles to control
 
     void Awake()
     {
         part = GetComponent<ParticleSystem>();
-        partShape = part.shape;
 
+        //create the particle array
         particles = new ParticleSystem.Particle[16];
     }
 
+    /// <summary>
+    /// Create the broken particles and place them
+    /// </summary>
+    /// <param name="tilePosition"></param>
     public void BreakAt(Vector3Int tilePosition)
     {
-        partShape.position = tilePosition + (Vector3)Vector2.one / 2;
+        //partShape.position = tilePosition + (Vector3)Vector2.one / 2;
         part.Emit(16);
 
-
-        Vector2 pos = Vector2.zero;
-
+        //get the last 16 particles emitted
         part.GetParticles(particles, 16, part.particleCount - 16);
 
         for(int i = 0; i < particles.Length; i++)
         {
             ParticleSystem.Particle particle = particles[i];
 
-            pos.x = 0.125f + ((i % 4) / 4.0f);
-            pos.y = 0.125f + (Mathf.Floor(i / 4)) / 4;
+            //set the new particle position
+            particle.position = tilePosition + 
+                new Vector3(0.125f + ((i % 4) / 4.0f), 
+                            0.125f + (Mathf.Floor(i / 4)) / 4, 
+                            0);
 
-            particle.position = tilePosition + (Vector3)pos;
-
+            //replace the particle
             particles[i] = particle;
         }
-
+        //set the particles back into the system
         part.SetParticles(particles, 16, part.particleCount - 16);
     }
 

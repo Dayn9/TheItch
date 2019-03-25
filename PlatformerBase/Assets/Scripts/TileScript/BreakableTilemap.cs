@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.Assertions;
 
+[RequireComponent(typeof(Tilemap))]
+[RequireComponent(typeof(BreakParticles))]
 public class BreakableTilemap : MonoBehaviour
 {
     private Tilemap tilemap;
@@ -21,10 +20,11 @@ public class BreakableTilemap : MonoBehaviour
 
         //determine all the tile positions
         Vector3Int[] tiles = new Vector3Int[] {
-            roundedPos,
+            roundedPos, 
             roundedPos - Vector3Int.right,
             roundedPos - Vector3Int.up,
             roundedPos - Vector3Int.right - Vector3Int.up
+            
         };
 
         //destroy any tiles that are active
@@ -33,7 +33,7 @@ public class BreakableTilemap : MonoBehaviour
             if (tilemap.GetTile(tiles[i]))
             {
                 tilemap.SetTile(tiles[i], null);
-                breakPart.BreakAt(tiles[i]);
+                breakPart.BreakAt(tiles[i]); //spawn particles
             }
         }
     }

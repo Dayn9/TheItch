@@ -14,6 +14,10 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "New Destructable Tile", menuName = "Tiles/Destructable Tile")]
 public class DestructableTile : TileBase
 {
+    /// <summary>
+    /// DEPRECATED
+    /// </summary>
+
     public Sprite[] frames;
     public float speed;
 
