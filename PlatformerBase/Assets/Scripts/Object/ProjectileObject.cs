@@ -51,7 +51,17 @@ public class ProjectileObject : MovingObject
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        CollisionChecks(collision);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        CollisionChecks(collision);
+    }
+
+    private void CollisionChecks(Collider2D collision)
     {
         switch (collision.gameObject.layer)
         {

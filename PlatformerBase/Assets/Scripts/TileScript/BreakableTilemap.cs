@@ -54,9 +54,11 @@ public class BreakableTilemap : MonoBehaviour
         {
             if (tilemap.GetTile(tiles[i]) && !destructTimers.ContainsKey(tiles[i]))
             {
-                tilemap.SetTile(tiles[i], null);
                 backing.SetTile(tiles[i], destructable);
                 destructTimers.Add(tiles[i], 0);
+                tilemap.SetTile(tiles[i], null);
+
+
             }
         }
     }
@@ -74,7 +76,6 @@ public class BreakableTilemap : MonoBehaviour
                 }
                 else
                 {
-                    
                     backing.SetTile(pos, null);
                 }
             }
