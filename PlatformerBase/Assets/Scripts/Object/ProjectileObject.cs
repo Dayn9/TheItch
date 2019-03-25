@@ -63,14 +63,15 @@ public class ProjectileObject : MovingObject
 
     private void CollisionChecks(Collider2D collision)
     {
+        burstSystem.Play();
+
+
         switch (collision.gameObject.layer)
         {
             case 17: //collision with breakable object
                 collision.GetComponent<BreakableTilemap>().BreakTile(transform.position);
                 break;
             case 9: //collision with solid
-                burstSystem.Play();
-
                 myEmission.enabled = false;
                 render.enabled = false;
                 moveVelocity = Vector2.zero;

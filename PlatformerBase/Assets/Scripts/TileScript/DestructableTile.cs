@@ -17,6 +17,9 @@ public class DestructableTile : TileBase
     public Sprite[] frames;
     public float speed;
 
+    private TileAnimationData animData;
+    private TileData data;
+
     public override void GetTileData(Vector3Int location, ITilemap tileMap, ref TileData tileData)
     {
         tileData.transform = Matrix4x4.identity;
@@ -25,8 +28,8 @@ public class DestructableTile : TileBase
         {
             tileData.sprite = frames[0];
         }
-
-        tileData.colliderType = Tile.ColliderType.None;
+        
+        tileData.colliderType = Tile.ColliderType.Sprite;
     }
 
     public override bool GetTileAnimationData(Vector3Int location, ITilemap tilemap, ref TileAnimationData tileAnimationData)
@@ -34,11 +37,22 @@ public class DestructableTile : TileBase
         if (frames != null && frames.Length > 0)
         {
             tileAnimationData.animatedSprites = frames;
-            tileAnimationData.animationSpeed = speed;
-            tileAnimationData.animationStartTime = Time.frameCount + 1;
+            tileAnimationData.animationSpeed = 0;
+            tileAnimationData.animationStartTime = 0;
             return true;
         }
         return false;
+    }
+
+    public void Play()
+    {
+        animData.animationSpeed = speed;
+        data.colliderType = Tile.ColliderType.None;
+    }
+
+    public Sprite GetSprite()
+    {
+        return data.sprite;
     }
 
 
