@@ -16,24 +16,32 @@ public class BreakableTilemap : MonoBehaviour
 
     public void BreakTile(Vector2 pos)
     {
-        Vector3Int roundedPos = new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), 0);
+        Vector3Int projectilePosition = new Vector3Int(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), 0);
 
         //determine all the tile positions
-        Vector3Int[] tiles = new Vector3Int[] {
-            roundedPos, 
-            roundedPos - Vector3Int.right,
-            roundedPos - Vector3Int.up,
-            roundedPos - Vector3Int.right - Vector3Int.up
-            
+        Vector3Int[] tilePositions = new Vector3Int[] {
+            //TOP 
+            projectilePosition - Vector3Int.right + Vector3Int.up, 
+            projectilePosition + Vector3Int.up,
+            projectilePosition + Vector3Int.right + Vector3Int.up,
+            //MIDDLE
+            projectilePosition - Vector3Int.right,
+            projectilePosition,
+            projectilePosition + Vector3Int.right,
+            //BOTTOM
+            projectilePosition - Vector3Int.right - Vector3Int.up,
+            projectilePosition - Vector3Int.up,
+            projectilePosition + Vector3Int.right - Vector3Int.up,
+
         };
 
         //destroy any tiles that are active
-        for (int i = 0; i < tiles.Length; i++)
+        for (int i = 0; i < tilePositions.Length; i++)
         {
-            if (tilemap.GetTile(tiles[i]))
+            if (tilemap.GetTile(tilePositions[i]))
             {
-                tilemap.SetTile(tiles[i], null);
-                breakPart.BreakAt(tiles[i]); //spawn particles
+                tilemap.SetTile(tilePositions[i], null);
+                breakPart.BreakAt(tilePositions[i]); //spawn particles
             }
         }
     }
