@@ -11,7 +11,6 @@ using UnityEditor;
 [Serializable] //Serializable so that it can be created in custom inspector
 public class FullTile : Tile
 {
-
     [SerializeField] private Sprite[] sprites;
 
     /// <summary>
@@ -49,6 +48,7 @@ public class FullTile : Tile
         mask += CheckTile(position + new Vector3Int(0, -1, 0), tilemap) ? 8 : 0;    //bottom
 
         tileData.sprite = sprites[mask];
+        tileData.colliderType = colliderType;
     }
 
 
@@ -97,23 +97,7 @@ public class FullTile : Tile
             EditorGUILayout.Space();
 
             EditorGUI.BeginChangeCheck();
-
-            /*
-            tile.sprites[0] = (Sprite)EditorGUILayout.ObjectField("TopLeft", tile.sprites[0], typeof(Sprite), false, null);
-            tile.sprites[1] = (Sprite)EditorGUILayout.ObjectField("TopCenter", tile.sprites[1], typeof(Sprite), false, null);
-            tile.sprites[2] = (Sprite)EditorGUILayout.ObjectField("TopRight", tile.sprites[2], typeof(Sprite), false, null);
-            tile.sprites[3] = (Sprite)EditorGUILayout.ObjectField("MiddleLeft", tile.sprites[3], typeof(Sprite), false, null);
-            tile.sprites[4] = (Sprite)EditorGUILayout.ObjectField("MiddleCenter", tile.sprites[4], typeof(Sprite), false, null);
-            tile.sprites[5] = (Sprite)EditorGUILayout.ObjectField("MiddleRight", tile.sprites[5], typeof(Sprite), false, null);
-            tile.sprites[6] = (Sprite)EditorGUILayout.ObjectField("BottomLeft", tile.sprites[6], typeof(Sprite), false, null);
-            tile.sprites[7] = (Sprite)EditorGUILayout.ObjectField("BottomCenter", tile.sprites[7], typeof(Sprite), false, null);
-            tile.sprites[8] = (Sprite)EditorGUILayout.ObjectField("BottomRight", tile.sprites[8], typeof(Sprite), false, null);
-
-            tile.sprites[9] = (Sprite)EditorGUILayout.ObjectField("InsideTopLeft", tile.sprites[9], typeof(Sprite), false, null);
-            tile.sprites[10] = (Sprite)EditorGUILayout.ObjectField("InsideTopRight", tile.sprites[10], typeof(Sprite), false, null);
-            tile.sprites[11] = (Sprite)EditorGUILayout.ObjectField("InsideBottomLeft", tile.sprites[11], typeof(Sprite), false, null);
-            tile.sprites[12] = (Sprite)EditorGUILayout.ObjectField("InsideBottomRight", tile.sprites[12], typeof(Sprite), false, null);
-            */
+           
             if (EditorGUI.EndChangeCheck()) { EditorUtility.SetDirty(tile); }
 
             base.OnInspectorGUI();
