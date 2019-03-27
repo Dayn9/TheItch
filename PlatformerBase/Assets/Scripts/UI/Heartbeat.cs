@@ -140,7 +140,7 @@ public class Heartbeat : Global {
         if (virus)
         {
             IHealthObject player = Player.GetComponent<IHealthObject>();
-            virus.virusMat.SetFloat("_Cutoff", Mathf.Lerp(virus.virusMat.GetFloat("_Cutoff"), 1 - (player.Health / (float)player.MaxHealth), Time.deltaTime));
+            virus.virusMat.SetFloat("_Cutoff", Mathf.Lerp(virus.virusMat.GetFloat("_Cutoff"), 1 - (player.Health / (float)player.MaxHealth), 0.2f));
         }
        
     }

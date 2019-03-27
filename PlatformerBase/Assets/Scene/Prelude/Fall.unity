@@ -922,7 +922,7 @@ Transform:
   m_Children:
   - {fileID: 528951170}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &356277161
 MonoBehaviour:
@@ -1037,6 +1037,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &396644633 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7449802895720474553, guid: 27ba412619d65774e87bbd4ca6163c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1859526791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307a823733610a84ba973b25248debcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &528951169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2822,6 +2834,30 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &647655302 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7449419524025439535, guid: 27ba412619d65774e87bbd4ca6163c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1859526791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7713678c7d81d5347ba673a4d45c73f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &647655306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1859526791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6304bfc70621f7b4293d00670f2c1861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &671474936
 GameObject:
   m_ObjectHideFlags: 0
@@ -4367,7 +4403,7 @@ MonoBehaviour:
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   givenAtOffset: {x: 0, y: 0}
-  dialogueBox: {fileID: 1762118547}
+  dialogueBox: {fileID: 647655302}
   faceImage: {fileID: 0}
   enterDialogue: Two years ago a small farming village was struck by a virus. The
     entire population became covered in rashes and stopped working because of the
@@ -4413,7 +4449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0fe2e4b152fae4193b5d7f92093578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evTrig: {fileID: 1059279781}
+  evTrig: {fileID: 647655306}
   zone:
     serializedVersion: 2
     x: -4
@@ -92932,18 +92968,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1059279781 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1663279356}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6304bfc70621f7b4293d00670f2c1861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1125754427
 GameObject:
   m_ObjectHideFlags: 0
@@ -93697,18 +93721,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1149899384 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114589596009904590, guid: efe8d3421c638854e9020fd5d02a8bf8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1663279356}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307a823733610a84ba973b25248debcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1200220567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4016547624261662, guid: dd9586f87d9b4cb49b874270f71ec290,
@@ -93752,7 +93764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0fe2e4b152fae4193b5d7f92093578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evTrig: {fileID: 1059279781}
+  evTrig: {fileID: 647655306}
   zone:
     serializedVersion: 2
     x: -4
@@ -93820,7 +93832,7 @@ MonoBehaviour:
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   givenAtOffset: {x: 0, y: 0}
-  dialogueBox: {fileID: 1762118547}
+  dialogueBox: {fileID: 647655302}
   faceImage: {fileID: 0}
   enterDialogue: 'The phenomenon recieved a lot of attention and soon the village
     flooded with doctors looking for answers. Meanwhile, the virus started to spread
@@ -93879,18 +93891,6 @@ PrefabInstance:
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
---- !u!114 &1636313770 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1663279356}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3583b46ac2ce73d469c378c709e27fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1647317361
 GameObject:
   m_ObjectHideFlags: 0
@@ -101440,7 +101440,7 @@ PrefabInstance:
         type: 3}
       propertyPath: heartBeatPower
       value: 
-      objectReference: {fileID: 1149899384}
+      objectReference: {fileID: 396644633}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.25
@@ -101471,7 +101471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
@@ -102257,176 +102257,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &1663279356
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1785448006}
-    - target: {fileID: 114022785702410484, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: areaName
-      value: Intro
-      objectReference: {fileID: 0}
-    - target: {fileID: 114201275773291352, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: letters.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 441eec6bad0bb5841befab193da6eebf,
-        type: 3}
-    - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4342388965853568, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: follow
-      value: 
-      objectReference: {fileID: 1652298317}
-    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: rightLimit
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: leftLimit
-      value: -27
-      objectReference: {fileID: 0}
-    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: bottomLimit
-      value: -188
-      objectReference: {fileID: 0}
-    - target: {fileID: 114887358095955332, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: topLimit
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 855868534}
-    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1464934332}
-    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1909219682}
-    - target: {fileID: 114709180211702438, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1772847489}
-    - target: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 855868534}
-    - target: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1464934332}
-    - target: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1909219682}
-    - target: {fileID: 114759227504273500, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: evTrigs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1772847489}
-    - target: {fileID: 1651297200517884, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1880135008475186, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114068593564544216, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212109062459870196, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212328968993997166, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212538659083857636, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212497565103882870, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212248167676028936, guid: efe8d3421c638854e9020fd5d02a8bf8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: efe8d3421c638854e9020fd5d02a8bf8, type: 3}
 --- !u!1 &1702873673
 GameObject:
   m_ObjectHideFlags: 0
@@ -103543,18 +103373,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1762118547 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114201275773291352, guid: efe8d3421c638854e9020fd5d02a8bf8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1663279356}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7713678c7d81d5347ba673a4d45c73f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1772847487
 GameObject:
   m_ObjectHideFlags: 0
@@ -103609,7 +103427,7 @@ MonoBehaviour:
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   givenAtOffset: {x: 0, y: 0}
-  dialogueBox: {fileID: 1762118547}
+  dialogueBox: {fileID: 647655302}
   faceImage: {fileID: 0}
   enterDialogue: Many explorers traveled into the caverns in search of the doctor
     but none succeeded. With no cure, the virus continued to spread around the world.
@@ -103655,7 +103473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0fe2e4b152fae4193b5d7f92093578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evTrig: {fileID: 1059279781}
+  evTrig: {fileID: 647655306}
   zone:
     serializedVersion: 2
     x: -4
@@ -108390,6 +108208,155 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1859526791
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7419579213018741737, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Name
+      value: Camera (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: rightLimit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: leftLimit
+      value: -27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: bottomLimit
+      value: -188
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: topLimit
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: follow
+      value: 
+      objectReference: {fileID: 1652298317}
+    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: areaName
+      value: Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1785448006}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 855868534}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1464934332}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1909219682}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1772847489}
+    - target: {fileID: 7418588443544885796, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418588443544885796, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2037641915}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!1 &1896862862
 GameObject:
   m_ObjectHideFlags: 0
@@ -109234,7 +109201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0fe2e4b152fae4193b5d7f92093578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evTrig: {fileID: 1059279781}
+  evTrig: {fileID: 647655306}
   zone:
     serializedVersion: 2
     x: -4
@@ -109259,7 +109226,7 @@ MonoBehaviour:
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   givenAtOffset: {x: 0, y: 0}
-  dialogueBox: {fileID: 1762118547}
+  dialogueBox: {fileID: 647655302}
   faceImage: {fileID: 0}
   enterDialogue: 'We learned that the virus lives in the bloodstream and that an increased
     heartrate would prevent it from causing rashes. One Doctor claimed to have developed
@@ -109296,7 +109263,7 @@ PrefabInstance:
         type: 3}
       propertyPath: evTrig
       value: 
-      objectReference: {fileID: 1636313770}
+      objectReference: {fileID: 2037641915}
     - target: {fileID: 4747846318752318, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -109327,7 +109294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747846318752318, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4747846318752318, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 3}
       propertyPath: m_LocalScale.y
@@ -109508,6 +109475,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2037641915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1859526791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3583b46ac2ce73d469c378c709e27fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2051186095
 GameObject:
   m_ObjectHideFlags: 0
@@ -109555,7 +109534,7 @@ Transform:
   - {fileID: 1772847488}
   - {fileID: 601922028}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2118157346
 GameObject:
