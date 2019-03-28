@@ -6,7 +6,9 @@ using UnityEngine.Tilemaps;
 public class BreakableTilemap : MonoBehaviour
 {
     private Tilemap tilemap;
-    private BreakParticles breakPart; 
+    private BreakParticles breakPart;
+
+    [SerializeField] private TileBase brokenTile;
 
     private void Awake()
     {
@@ -40,7 +42,7 @@ public class BreakableTilemap : MonoBehaviour
         {
             if (tilemap.GetTile(tilePositions[i]))
             {
-                tilemap.SetTile(tilePositions[i], null);
+                tilemap.SetTile(tilePositions[i], brokenTile);
                 breakPart.BreakAt(tilePositions[i]); //spawn particles
             }
         }

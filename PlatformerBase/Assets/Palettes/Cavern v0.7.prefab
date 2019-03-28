@@ -1175,6 +1175,15 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: 14, y: -12, z: 0}
+    second:
+      m_TileIndex: 355
+      m_TileSpriteIndex: 355
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 0
+      m_ColliderType: 1
   - first: {x: -3, y: -11, z: 0}
     second:
       m_TileIndex: 207
@@ -1322,12 +1331,12 @@ Tilemap:
   - first: {x: 14, y: -11, z: 0}
     second:
       m_TileIndex: 354
-      m_TileSpriteIndex: 4294967295
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 0
-      m_ColliderType: 0
+      m_ColliderType: 1
   - first: {x: -3, y: -10, z: 0}
     second:
       m_TileIndex: 191
@@ -3948,9 +3957,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 24fda4b204f04184c9ec51ac75661c78, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: b038d54c5ff539a47acfcfd55f322854, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 371308e51f679724eb2b8d90a5e36d8b, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 3b2b74aca5b459b42a6d37358d1c87ca, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300002, guid: f0e3434ccb44b884798fe46138f8a1c8, type: 3}
   - m_RefCount: 1
@@ -4659,8 +4670,10 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 91f85e686f4ada041b35285a19c12b99, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300666, guid: f0e3434ccb44b884798fe46138f8a1c8, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300032, guid: 3b2b74aca5b459b42a6d37358d1c87ca, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 355
+  - m_RefCount: 356
     m_Data:
       e00: 1
       e01: 0
@@ -4679,7 +4692,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 355
+  - m_RefCount: 356
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 2e-44, g: 2e-44, b: 2e-44, a: 2e-44}
