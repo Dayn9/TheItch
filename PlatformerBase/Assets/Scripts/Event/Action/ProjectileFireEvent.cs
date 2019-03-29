@@ -25,9 +25,6 @@ public class ProjectileFireEvent : MonoBehaviour
         myProjectile = Instantiate(projectilePrefab);
         myProjectile.GetComponent<ProjectileObject>().Direction = direction;
         myProjectile.SetActive(false);
-
-        Assert.IsTrue(transform.position.y % 1 == 0.5f, "Projectiles should be fired at an .5 number position");
-        Assert.IsTrue(transform.position.x % 1 == 0.5f, "Projectiles should be fired at an .5 number position");
     }
 
     void Start()

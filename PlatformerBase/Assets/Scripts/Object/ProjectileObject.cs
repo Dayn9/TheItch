@@ -15,6 +15,8 @@ public class ProjectileObject : MovingObject
     private ParticleSystem burstSystem;
     private SpriteRenderer render;
 
+    private PhysicsObject pushing;
+
     public ProjectileDirection Direction {
         set {
             direction = value;
@@ -48,6 +50,12 @@ public class ProjectileObject : MovingObject
 
             //move the pojectile
             transform.position += (Vector3)moveVelocity * speed * Time.deltaTime;
+
+            if(pushing != null)
+            {
+                pushing.Frozen = false;
+                pushing = null;
+            }
         }
     }
 
@@ -63,9 +71,8 @@ public class ProjectileObject : MovingObject
 
     private void CollisionChecks(Collider2D collision)
     {
+        if (moveVelocity.sqrMagnitude == 0) { return; }
         burstSystem.Play();
-
-
         switch (collision.gameObject.layer)
         {
             case 17: //collision with breakable object
@@ -74,11 +81,20 @@ public class ProjectileObject : MovingObject
             case 9: //collision with solid
                 myEmission.enabled = false;
                 render.enabled = false;
-                moveVelocity = Vector2.zero;
-
+                //moveVelocity = Vector2.zero;
                 //gameObject.SetActive(false);
                 break;
-
+            //collision with player
+            case 8:
+                pushing = collision.GetComponent<Jump>();
+                //phys.Frozen = true;
+                collision.GetComponent<IHealthObject>().Damage(1);
+                pushing.InputVelocity = moveVelocity;
+                pushing.Frozen = true;
+                myEmission.enabled = false;
+                render.enabled = false;
+                //moveVelocity = Vector2.zero;
+                break;
         }
     }
 
