@@ -15,20 +15,14 @@ public class ProjectileFireEvent : MonoBehaviour
     [SerializeField] private bool beforeAfter; //when (before/after questCompleted) the event is triggered
 
     [Space(10)]
-    [SerializeField] private GameObject projectilePrefab; //projecctile object to fire
-    private GameObject myProjectile;
     [SerializeField] private ProjectileDirection direction;
+    private ProjectilePool projectilePool;
 
-    private void Awake()
+    private void Start()
     {
-        //create and set propeties of the projectile
-        myProjectile = Instantiate(projectilePrefab);
-        myProjectile.GetComponent<ProjectileObject>().Direction = direction;
-        myProjectile.SetActive(false);
-    }
+        projectilePool = transform.parent.GetComponent<ProjectilePool>();
+        Assert.IsNotNull(projectilePool, "Projectile Pool not found");
 
-    void Start()
-    {
         //subscribe to proper event
         if (beforeAfter)
         {
@@ -45,9 +39,7 @@ public class ProjectileFireEvent : MonoBehaviour
     /// </summary>
     private void FireProjectile()
     {
-        myProjectile.transform.position = transform.position;
-        myProjectile.SetActive(true);
-        myProjectile.GetComponent<ProjectileObject>().Direction = direction;
+        projectilePool.FireProjectile(transform.position, direction);
     }
 }
 
