@@ -71,7 +71,7 @@ public class ProjectileObject : MovingObject
 
     private void CollisionChecks(Collider2D collision)
     {
-        if (moveVelocity.sqrMagnitude == 0) { return; }
+        if(!render.enabled) { return; }
         burstSystem.Play();
         switch (collision.gameObject.layer)
         {
@@ -86,10 +86,11 @@ public class ProjectileObject : MovingObject
                 break;
             //collision with player
             case 8:
-                pushing = collision.GetComponent<Jump>();
+                pushing = collision.GetComponent<PhysicsObject>();
                 //phys.Frozen = true;
                 collision.GetComponent<IHealthObject>().Damage(1);
-                pushing.InputVelocity = moveVelocity;
+                pushing.InputVelocity = moveVelocity * 5;
+                pushing.MoveVelocity = Vector2.zero;
                 pushing.Frozen = true;
                 myEmission.enabled = false;
                 render.enabled = false;

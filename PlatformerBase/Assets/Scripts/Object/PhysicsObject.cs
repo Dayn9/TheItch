@@ -151,7 +151,7 @@ public class PhysicsObject : MovingObject
             }
 
             if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
-            if (moveVector.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
+            if (moveVelocity.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVelocity) < 0; } //face the correct direction
             #endregion
         }
 
