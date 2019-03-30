@@ -31,7 +31,6 @@ public class BreakParticles : Global
     {
         //partShape.position = tilePosition + (Vector3)Vector2.one / 2;
         part.Emit(16);
-        Debug.Log(part.particleCount);
         //get the last 16 particles emitted
         part.GetParticles(particles, 16, part.particleCount - 16);
 
