@@ -16,7 +16,7 @@ public class ProjectileObject : MovingObject
 
     private ProjectilePool projectilePool;
 
-    private const int pushForce = 5;
+    private const int pushForce = 7;
     private PhysicsObject pushing;
 
     private bool active = false;
@@ -94,8 +94,8 @@ public class ProjectileObject : MovingObject
                 pushing.MoveVelocity = Vector2.zero;
                 pushing.Frozen = true;
                 //deactivate projectile
-                SetState(false);
-                projectilePool.BurstParticles(transform.position);
+                //SetState(false);
+                //projectilePool.BurstParticles(transform.position);
                 break;
         }
     }
