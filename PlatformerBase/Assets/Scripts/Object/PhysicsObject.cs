@@ -167,7 +167,7 @@ public class PhysicsObject : MovingObject
         distance = inputVelocity.magnitude; //temporary distance to surface
         groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
         moveVector = Proj(inputVelocity, groundTangent); //Project the moveVelocity onto the ground
-
+        
         numCollisions = rb2D.Cast(moveVector, filter, hits, distance); //cast the rigidbody into the scene and get collisions in hits
         for (int i = 0; i < numCollisions; i++)
         {
@@ -183,13 +183,14 @@ public class PhysicsObject : MovingObject
             }
             //check not collision inside an object 
             else*/
-            if (hits[i].distance != 0)
+            if (hits[i].distance != 0 || true)
             {
                 //collide with the closest 
                 if (hits[i].distance <= distance)
                 {
                     distance = hits[i].distance; //set new closest distance
                 }
+                
             }
         }
         if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
@@ -215,9 +216,8 @@ public class PhysicsObject : MovingObject
                 MovingObject moveingObj = collided.GetComponent<MovingObject>();
                 if (moveingObj != null)
                 {
-                    inputVelocity = moveingObj.MoveVelocity * Time.deltaTime;
-                    InputCollision(grounded);
-                    return false;
+                    inputVelocity = moveingObj.MoveVelocity * Time.deltaTime; //scale to proper time
+                    InputCollision(false);
                 }
                 break;
 
