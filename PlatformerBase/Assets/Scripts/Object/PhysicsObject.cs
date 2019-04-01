@@ -171,6 +171,7 @@ public class PhysicsObject : MovingObject
         numCollisions = rb2D.Cast(moveVector, filter, hits, distance); //cast the rigidbody into the scene and get collisions in hits
         for (int i = 0; i < numCollisions; i++)
         {
+            /*
             float moveableDistance = moveVector.magnitude;
             if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
             {
@@ -181,7 +182,8 @@ public class PhysicsObject : MovingObject
                 }
             }
             //check not collision inside an object 
-            else if (hits[i].distance != 0)
+            else*/
+            if (hits[i].distance != 0)
             {
                 //collide with the closest 
                 if (hits[i].distance <= distance)
@@ -209,6 +211,16 @@ public class PhysicsObject : MovingObject
                 HitSpikes();
                 break;
             //Move any objects that can be moved
+            case 10:
+                MovingObject moveingObj = collided.GetComponent<MovingObject>();
+                if (moveingObj != null)
+                {
+                    inputVelocity = moveingObj.MoveVelocity * Time.deltaTime;
+                    InputCollision(grounded);
+                    return false;
+                }
+                break;
+
             case 11: //SolidMovableObject
                 PhysicsObject moveObj = collided.GetComponent<PhysicsObject>();
                 if (moveObj != null)

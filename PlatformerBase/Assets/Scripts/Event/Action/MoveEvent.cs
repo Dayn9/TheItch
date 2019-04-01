@@ -141,7 +141,8 @@ public class MoveEvent : Global {
                         float percent = ((Vector2)transform.localPosition - origin).magnitude / (final - origin).magnitude;
                         rend.color = ((1 - percent) * initialColor) + (percent * finalColor);
                     }
-                    transform.localPosition += (moveVector.normalized * speed * Time.deltaTime);//move at speed along moveVector
+                    moveObj.MoveVelocity = moveVector.normalized * speed;
+                    transform.localPosition += (Vector3)moveObj.MoveVelocity * Time.deltaTime;//move at speed along moveVector
                 }
 
             }
