@@ -94,7 +94,6 @@ public class PhysicsObject : MovingObject
                         if (Vector2.Dot(gravityVelocity, gravity) >= 0) { grounded = true; } //check if velocity is in the same direction as gravity (falling)
 
                         gravityVelocity = Vector2.zero; //stop moving
-
                         float moveableDistance = moveVector.magnitude;
                         if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
                         {
@@ -151,7 +150,7 @@ public class PhysicsObject : MovingObject
             }
 
             if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
-            if (moveVelocity.magnitude != 0) { sprite.flipX = Vector2.Dot(transform.right, moveVelocity) < 0; } //face the correct direction
+            if (moveVector.magnitude > buffer) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
             #endregion
         }
 
@@ -168,7 +167,7 @@ public class PhysicsObject : MovingObject
         groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
         Vector2 moveVector = grounded ? Proj(inputVelocity, groundTangent): inputVelocity; //Project the moveVelocity onto the ground
 
-        Debug.DrawRay(transform.position, moveVector *100, Color.green, 5);
+        RaycastHit2D[] hits = new RaycastHit2D[8];
 
         numCollisions = rb2D.Cast(moveVector, filter, hits, distance); //cast the rigidbody into the scene and get collisions in hits
         for (int i = 0; i < numCollisions; i++)
@@ -196,7 +195,7 @@ public class PhysicsObject : MovingObject
             }
         }
         if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
-        return distance; //return the total distance moved
+        return distance - buffer; //return the total distance moved
     }
 
     #region helper methods
