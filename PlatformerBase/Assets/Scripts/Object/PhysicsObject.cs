@@ -94,6 +94,7 @@ public class PhysicsObject : MovingObject
                         if (Vector2.Dot(gravityVelocity, gravity) >= 0) { grounded = true; } //check if velocity is in the same direction as gravity (falling)
 
                         gravityVelocity = Vector2.zero; //stop moving
+                         
                         float moveableDistance = moveVector.magnitude;
                         if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
                         {
@@ -219,6 +220,10 @@ public class PhysicsObject : MovingObject
                 if (moveingObj != null)
                 {
                     inputVelocity = moveingObj.MoveVelocity * Time.deltaTime; //scale to proper time
+                    if (Vector2.Dot(inputVelocity, gravity) != 0) {
+                        gravityVelocity = inputVelocity;
+                    } //check if velocity is in the same direction as gravity (falling)
+                   
                     InputCollision(grounded);
                 }
                 break;
