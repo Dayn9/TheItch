@@ -164,10 +164,12 @@ public class PhysicsObject : MovingObject
     public float InputCollision(bool grounded)
     {
         //initial variable use for each velocity type
-        distance = inputVelocity.magnitude; //temporary distance to surface
+        float distance = inputVelocity.magnitude; //temporary distance to surface       
         groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
-        moveVector = Proj(inputVelocity, groundTangent); //Project the moveVelocity onto the ground
-        
+        Vector2 moveVector = grounded ? Proj(inputVelocity, groundTangent): inputVelocity; //Project the moveVelocity onto the ground
+
+        Debug.DrawRay(transform.position, moveVector *100, Color.green, 5);
+
         numCollisions = rb2D.Cast(moveVector, filter, hits, distance); //cast the rigidbody into the scene and get collisions in hits
         for (int i = 0; i < numCollisions; i++)
         {
@@ -183,7 +185,7 @@ public class PhysicsObject : MovingObject
             }
             //check not collision inside an object 
             else*/
-            if (hits[i].distance != 0 || true)
+            if (hits[i].distance != 0)
             {
                 //collide with the closest 
                 if (hits[i].distance <= distance)
@@ -213,11 +215,12 @@ public class PhysicsObject : MovingObject
                 break;
             //Move any objects that can be moved
             case 10:
+                //transform.parent = collided.transform;
                 MovingObject moveingObj = collided.GetComponent<MovingObject>();
                 if (moveingObj != null)
                 {
                     inputVelocity = moveingObj.MoveVelocity * Time.deltaTime; //scale to proper time
-                    InputCollision(false);
+                    InputCollision(grounded);
                 }
                 break;
 
