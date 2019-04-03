@@ -219,12 +219,20 @@ public class PhysicsObject : MovingObject
                 MovingObject moveingObj = collided.GetComponent<MovingObject>();
                 if (moveingObj != null)
                 {
-                    inputVelocity = moveingObj.MoveVelocity * Time.deltaTime; //scale to proper time
+                    inputVelocity = moveingObj.MoveVelocity; //get the input Veclocity
+                    //TODO only check once
                     if (Vector2.Dot(inputVelocity, gravity) != 0) {
                         gravityVelocity = inputVelocity;
-                    } //check if velocity is in the same direction as gravity (falling)
+
+                        /*if(Vector2.Dot(inputVelocity, gravity) > 0)
+                        {
+                            gravityVelocity = gravityVelocity.normalized * (gravityVelocity.magnitude + buffer);
+                        }*/
+
+                    }
                    
                     InputCollision(grounded);
+                    grounded = true;
                 }
                 break;
 
