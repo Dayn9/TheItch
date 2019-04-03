@@ -101,6 +101,7 @@ public class PhysicsObject : MovingObject
                             //collide with the closest
                             if (moveableDistance < distance)
                             {
+                                newGroundNormal = objectNormal; //set new ground normal
                                 distance = moveableDistance;
                             }
                         }
@@ -168,31 +169,15 @@ public class PhysicsObject : MovingObject
         groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
         Vector2 moveVector = grounded ? Proj(inputVelocity, groundTangent): inputVelocity; //Project the moveVelocity onto the ground
 
-        RaycastHit2D[] hits = new RaycastHit2D[8];
+        RaycastHit2D[] hits = new RaycastHit2D[8]; //create a new hits array for storing collision data
 
-        numCollisions = rb2D.Cast(moveVector, filter, hits, distance); //cast the rigidbody into the scene and get collisions in hits
+        float numCollisions = rb2D.Cast(moveVector, filter, hits, distance); //cast the rigidbody into the scene and get collisions in hits
         for (int i = 0; i < numCollisions; i++)
         {
-            /*
-            float moveableDistance = moveVector.magnitude;
-            if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
+            //collide with the closest not inside
+            if (hits[i].distance != 0 && hits[i].distance <= distance)
             {
-                //collide with the closest
-                if (moveableDistance < distance)
-                {
-                    distance = moveableDistance;
-                }
-            }
-            //check not collision inside an object 
-            else*/
-            if (hits[i].distance != 0)
-            {
-                //collide with the closest 
-                if (hits[i].distance <= distance)
-                {
-                    distance = hits[i].distance; //set new closest distance
-                }
-                
+                distance = hits[i].distance; //set new closest distance
             }
         }
         if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
@@ -219,19 +204,15 @@ public class PhysicsObject : MovingObject
                 MovingObject moveingObj = collided.GetComponent<MovingObject>();
                 if (moveingObj != null)
                 {
-                    inputVelocity = moveingObj.MoveVelocity; //get the input Veclocity
-                    //TODO only check once
-                    if (Vector2.Dot(inputVelocity, gravity) != 0) {
-                        /*if (Vector2.Dot(inputVelocity, gravity) < 0)
-                        {
-                            inputVelocity -= gravity * Time.deltaTime; //add gravity to velocity
-                        }*/
-                        gravityVelocity = inputVelocity;
-                        
-                    }
-                   
+                    inputVelocity = moveingObj.MoveVelocity; //get the input Veclocity                    
                     InputCollision(grounded);
-                    grounded = true;
+
+                    //inherit gravity
+                    if (Vector2.Dot(inputVelocity, gravity) != 0)
+                    {
+                        gravityVelocity = inputVelocity;
+                    }
+                    grounded = true; //insure grounded 
                 }
                 break;
 
@@ -240,7 +221,6 @@ public class PhysicsObject : MovingObject
                 if (moveObj != null)
                 {
                     moveObj.InputVelocity = moveVector;
-                    //Debug.Log(distance);
                     distance =  moveObj.InputCollision(grounded); //move the object and return the ditance it moved
                     return true;
                 }

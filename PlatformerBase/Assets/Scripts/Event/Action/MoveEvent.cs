@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(AudioPlayer))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class MoveEvent : Global {
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
     [Header("Before/True  -  After/False")]
@@ -13,7 +14,7 @@ public class MoveEvent : Global {
 
     [SerializeField] protected Vector2 origin; //position moving from
     [SerializeField] protected Vector2 final; //position moving to
-    [SerializeField] protected float speed; //how fast the object moves to final
+    [SerializeField] protected int speed; //how fast the object moves to final
     protected Vector3 moveVector = Vector3.zero; //moveVector to final
 
     [Header("Options")]
@@ -30,6 +31,8 @@ public class MoveEvent : Global {
     protected Collider2D[] colls;
 
     protected AudioPlayer audioPlayer;
+    protected Rigidbody2D rb2D;
+
 
     protected void Awake()
     {
@@ -60,6 +63,7 @@ public class MoveEvent : Global {
         }
 
         audioPlayer = GetComponent<AudioPlayer>();
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
      protected virtual void Start () {
@@ -113,13 +117,14 @@ public class MoveEvent : Global {
             if (move)
             {
                 moveVector = final - (Vector2)transform.localPosition; //get Vector towards final destination
+                moveObj.MoveVelocity = moveVector.normalized * speed * Time.deltaTime;
 
                 //snap into position when close enough
                 if (moveVector.magnitude < speed * Time.deltaTime)
                 {
                     transform.localPosition = final;
                     move = false;
-                    moveObj.MoveVelocity = Vector3.zero;
+                   
 
                     if (fadeTilemap) { rend.color = snapColor; } //set the color to the snapped color
                     if (snapCollider)
@@ -141,12 +146,13 @@ public class MoveEvent : Global {
                         float percent = ((Vector2)transform.localPosition - origin).magnitude / (final - origin).magnitude;
                         rend.color = ((1 - percent) * initialColor) + (percent * finalColor);
                     }
-
-                    moveObj.MoveVelocity = moveVector.normalized * speed * Time.deltaTime;
-                    transform.localPosition += (Vector3)moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - buffer); //move at speed along mov
-
+                    rb2D.position += moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - buffer); //move at speed along mov
                 }
 
+            }
+            else
+            {
+                moveObj.MoveVelocity = Vector3.zero;
             }
         }
     }
