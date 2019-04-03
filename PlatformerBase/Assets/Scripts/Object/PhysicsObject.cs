@@ -222,13 +222,12 @@ public class PhysicsObject : MovingObject
                     inputVelocity = moveingObj.MoveVelocity; //get the input Veclocity
                     //TODO only check once
                     if (Vector2.Dot(inputVelocity, gravity) != 0) {
-                        gravityVelocity = inputVelocity;
-
-                        /*if(Vector2.Dot(inputVelocity, gravity) > 0)
+                        /*if (Vector2.Dot(inputVelocity, gravity) < 0)
                         {
-                            gravityVelocity = gravityVelocity.normalized * (gravityVelocity.magnitude + buffer);
+                            inputVelocity -= gravity * Time.deltaTime; //add gravity to velocity
                         }*/
-
+                        gravityVelocity = inputVelocity;
+                        
                     }
                    
                     InputCollision(grounded);

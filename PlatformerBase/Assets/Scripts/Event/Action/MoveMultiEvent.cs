@@ -39,7 +39,7 @@ public class MoveMultiEvent : MoveEvent
         numTriggered += 1;
     }
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
         if (!paused)
         {

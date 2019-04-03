@@ -105,7 +105,7 @@ public class MoveEvent : Global {
         audioPlayer.Loop = true;
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         if (!paused)
         {
@@ -141,20 +141,14 @@ public class MoveEvent : Global {
                         float percent = ((Vector2)transform.localPosition - origin).magnitude / (final - origin).magnitude;
                         rend.color = ((1 - percent) * initialColor) + (percent * finalColor);
                     }
-                    
+
                     moveObj.MoveVelocity = moveVector.normalized * speed * Time.deltaTime;
-                    
+                    transform.localPosition += (Vector3)moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - buffer); //move at speed along mov
+
                 }
 
             }
         }
     }
-
-    private void FixedUpdate()
-    {
-        transform.localPosition += (Vector3)moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - buffer); //move at speed along moveVector
-    }
-
-
 }
 
