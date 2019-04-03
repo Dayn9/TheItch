@@ -14,7 +14,7 @@ public class MoveEvent : Global {
 
     [SerializeField] protected Vector2 origin; //position moving from
     [SerializeField] protected Vector2 final; //position moving to
-    [SerializeField] protected int speed; //how fast the object moves to final
+    [SerializeField] [Range(0, 5)]protected int speed; //how fast the object moves to final
     protected Vector3 moveVector = Vector3.zero; //moveVector to final
 
     [Header("Options")]
@@ -117,7 +117,7 @@ public class MoveEvent : Global {
             if (move)
             {
                 moveVector = final - (Vector2)transform.localPosition; //get Vector towards final destination
-                moveObj.MoveVelocity = moveVector.normalized * speed * Time.deltaTime;
+                moveObj.MoveVelocity = Vector2.Lerp(moveObj.MoveVelocity, moveVector.normalized * speed * Time.deltaTime, 0.1f);
 
                 //snap into position when close enough
                 if (moveVector.magnitude < speed * Time.deltaTime)

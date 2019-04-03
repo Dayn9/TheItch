@@ -204,14 +204,17 @@ public class PhysicsObject : MovingObject
                 MovingObject moveingObj = collided.GetComponent<MovingObject>();
                 if (moveingObj != null)
                 {
-                    inputVelocity = moveingObj.MoveVelocity; //get the input Veclocity                    
-                    InputCollision(grounded);
-
+                    inputVelocity = moveingObj.MoveVelocity ; //get the input Veclocity                    
+                    inputVelocity -= Vector2.Dot(inputVelocity, gravity) * (gravity * Time.deltaTime);
                     //inherit gravity
                     if (Vector2.Dot(inputVelocity, gravity) != 0)
                     {
+                        
                         gravityVelocity = inputVelocity;
                     }
+                    InputCollision(grounded);
+                    
+
                     grounded = true; //insure grounded 
                 }
                 break;
