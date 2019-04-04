@@ -29,6 +29,11 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
         if(myPhysObj == null) { myPhysObj = GetComponentInParent<PhysicsObject>(); }
         if (myPhysObj == null) { myPhysObj = GetComponentInChildren<PhysicsObject>(); }
 
+        if (!dialogueBox) {
+            dialogueBox = MainCamera.GetComponentInChildren<DialogueBox>();
+            Debug.Log(gameObject.name + "'s dialogue trigger needs manual assignment");
+        }
+
         dialogueBox.GetComponent<TextboxEvent>().addEvTrig(this);
     }
 
