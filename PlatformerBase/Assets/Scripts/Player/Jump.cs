@@ -34,7 +34,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     protected bool climbing;  
 
     [Header("Heartrate ")]
-    [SerializeField] private HeartbeatPower heartBeatPower; //ref to the heartbeat power script
+    private HeartbeatPower heartBeatPower; //ref to the heartbeat power script
     private bool moving = false;
     [SerializeField] private float restoreRate;
     [SerializeField] private float removeRate;
@@ -54,7 +54,10 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public int Health { get { return health; } }
     public int MaxHealth { get { return maxHealth; } }
     public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
-    public HeartbeatPower Power { get { return heartBeatPower; } }
+    public HeartbeatPower Power { get {
+            if (!heartBeatPower) { heartBeatPower = MainCamera.GetComponentInChildren<HeartbeatPower>(); }
+            return heartBeatPower; }
+    }
     public bool InFallZone { set { inFallZone = value; } }
     public Vector2 ReturnPosition { set { returnPosition = value; } }
     public Animator Animator { get { return anim; } }
@@ -77,6 +80,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     {
         anim = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
+
+        heartBeatPower = Power; //might be redundent, but get the heartbeat power
 
         if (maxHealth < 1) { maxHealth = 1; } //must have at leath one health point
         health = maxHealth;

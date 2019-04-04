@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Transition : EventTrigger{
 
     private SpriteRenderer render;
-
-    [SerializeField] private EventTrigger[] evTrigs; 
 
     private const float fadeAlpha = (172.0f / 255);
 
@@ -24,7 +23,6 @@ public class Transition : EventTrigger{
     protected override void Awake()
     {
         base.Awake();
-
         render = GetComponent<SpriteRenderer>();
         render.enabled = true;
 
@@ -34,7 +32,9 @@ public class Transition : EventTrigger{
 
     private void Start()
     {
-        foreach (EventTrigger evTrig in evTrigs)
+        //Find and hook up all the level changes
+        LevelChange[] changes = FindObjectsOfType<LevelChange>();
+        foreach (EventTrigger evTrig in changes)
         {
             evTrig.Before += new triggered(FadeOut);
         }

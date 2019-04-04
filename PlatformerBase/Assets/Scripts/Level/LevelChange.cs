@@ -12,13 +12,14 @@ public class LevelChange : EventTrigger
 
     [SerializeField] private bool resetToMenu = false; //for demo builds that need to reset whole game
 
-    [SerializeField] private EventTrigger evTrig;
     private bool changing = false;
 
     private void Start()
     {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
-        evTrig.After += new triggered(Advance);
+
+        Transition transition = FindObjectOfType<Transition>();
+        transition.After += new triggered(Advance);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

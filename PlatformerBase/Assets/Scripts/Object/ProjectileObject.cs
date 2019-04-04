@@ -86,16 +86,16 @@ public class ProjectileObject : MovingObject
                 break;
             //collision with player
             case 8:
-                //damage the player
-                collision.GetComponent<IHealthObject>().Damage(1);
-                //push the player
-                pushing = collision.GetComponent<PhysicsObject>();
-                pushing.InputVelocity = moveVelocity * pushForce;
-                pushing.MoveVelocity = Vector2.zero;
-                pushing.Frozen = true;
-                //deactivate projectile
-                //SetState(false);
-                //projectilePool.BurstParticles(transform.position);
+                if (collision.CompareTag("Player"))
+                {
+                    //damage the player
+                    collision.GetComponent<IHealthObject>().Damage(1);
+                    //push the player
+                    pushing = collision.GetComponent<PhysicsObject>();
+                    pushing.InputVelocity = moveVelocity * pushForce;
+                    pushing.MoveVelocity = Vector2.zero;
+                    pushing.Frozen = true;
+                }
                 break;
         }
     }
