@@ -442,10 +442,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddff18ac4dc671646a3de7e1db24e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightLimit: 0
-  leftLimit: 0
-  bottomLimit: 0
-  topLimit: 0
+  rightLimit: 20
+  leftLimit: -20
+  bottomLimit: -12
+  topLimit: 12
   follow: {fileID: 0}
   leaveTime: 0
   returnTime: 0
@@ -783,7 +783,6 @@ MonoBehaviour:
   addedSpeed: 0
   maxHealth: 0
   invulnerabilityTime: 0
-  heartBeatPower: {fileID: 0}
   restoreRate: 0
   removeRate: 0
   returnVelocityDivider: 0

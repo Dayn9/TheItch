@@ -4863,7 +4863,6 @@ MonoBehaviour:
   addedSpeed: 0.3
   maxHealth: 15
   invulnerabilityTime: 1.2
-  heartBeatPower: {fileID: 0}
   restoreRate: 1
   removeRate: 0.3
   returnVelocityDivider: 150
@@ -4906,7 +4905,7 @@ Animator:
   m_GameObject: {fileID: 1388502412840146}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a610374aff0e4b546bc85e3434d47521, type: 2}
+  m_Controller: {fileID: 22100000, guid: 90f5f3456ca05b04da106ba8f47add2f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
