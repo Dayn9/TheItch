@@ -202,6 +202,7 @@ public class PhysicsObject : MovingObject
             case 10:
                 //transform.parent = collided.transform;
                 MovingObject moveingObj = collided.GetComponent<MovingObject>();
+                if (!moveingObj) { moveingObj = collided.GetComponentInParent<MovingObject>(); }
                 if (moveingObj != null)
                 {
                     inputVelocity = moveingObj.MoveVelocity ; //get the input Veclocity                    

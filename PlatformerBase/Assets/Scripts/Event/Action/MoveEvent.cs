@@ -8,6 +8,9 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(AudioPlayer))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class MoveEvent : Global {
+
+    protected enum ColliderOn { Snap, Initial, Always }
+
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
     [Header("Before/True  -  After/False")]
     [SerializeField] protected bool beforeAfter; //when (before/after questCompleted) the event is triggered
@@ -18,7 +21,7 @@ public class MoveEvent : Global {
     protected Vector3 moveVector = Vector3.zero; //moveVector to final
 
     [Header("Options")]
-    [SerializeField] protected bool snapCollider;
+    [SerializeField] protected ColliderOn colliderOn = ColliderOn.Snap;
     [SerializeField] protected bool fadeTilemap;
     [SerializeField] protected Color initialColor = Color.white;
     [SerializeField] protected Color finalColor = Color.white;
@@ -31,8 +34,6 @@ public class MoveEvent : Global {
     protected Collider2D[] colls;
 
     protected AudioPlayer audioPlayer;
-    protected Rigidbody2D rb2D;
-
 
     protected void Awake()
     {
@@ -55,15 +56,12 @@ public class MoveEvent : Global {
             Assert.IsNotNull(rend);
         }
 
-        if (snapCollider)
-        {
+
             //get the Collider from somewhere in the object if Needed
             colls = GetComponentsInChildren<Collider2D>();
             Assert.IsNotNull(colls);
-        }
 
         audioPlayer = GetComponent<AudioPlayer>();
-        rb2D = GetComponent<Rigidbody2D>();
     }
 
      protected virtual void Start () {
@@ -87,22 +85,15 @@ public class MoveEvent : Global {
     {
         transform.localPosition = origin; //start at the origin
         if (fadeTilemap) { rend.color = initialColor; }
-        if (snapCollider)
-        {
-            foreach (Collider2D coll in colls)
-            {
-                if (coll.GetType() != (new CompositeCollider2D()).GetType())
-                {
-                    coll.enabled = false;
-                }
-            }
-        }
+        SetCols(colliderOn == ColliderOn.Always);
     }
 	
     //called by event, starts the movement
     protected virtual void Move()
     {
         move = true;
+
+        if (colliderOn == ColliderOn.Initial) { SetCols(true); }
 
         //loop the moving sound
         audioPlayer.PlaySound(0);
@@ -127,13 +118,7 @@ public class MoveEvent : Global {
                    
 
                     if (fadeTilemap) { rend.color = snapColor; } //set the color to the snapped color
-                    if (snapCollider)
-                    {       
-                        foreach (Collider2D coll in colls)
-                        {
-                            coll.enabled = true;
-                        }
-                    }
+                    if (colliderOn == ColliderOn.Snap) { SetCols(true); }
 
                     //play the snap sound and stop looping the moving SFX
                     audioPlayer.Loop = false;
@@ -145,8 +130,8 @@ public class MoveEvent : Global {
                     {
                         float percent = ((Vector2)transform.localPosition - origin).magnitude / (final - origin).magnitude;
                         rend.color = ((1 - percent) * initialColor) + (percent * finalColor);
-                    }
-                    rb2D.position += moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - buffer); //move at speed along mov
+                    }                 
+                    transform.position += (Vector3)moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - buffer); //move at speed along mov
                 }
 
             }
@@ -156,5 +141,18 @@ public class MoveEvent : Global {
             }
         }
     }
-}
 
+
+    protected void SetCols(bool active)
+    {
+        foreach (Collider2D coll in colls)
+        {
+            if (coll.GetType() != (new CompositeCollider2D()).GetType())
+            {
+                coll.enabled = active;
+            }
+        }
+    }
+
+
+}

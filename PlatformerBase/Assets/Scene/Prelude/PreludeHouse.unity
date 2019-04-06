@@ -57336,7 +57336,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: 104, y: 5, z: 0}
     second:
@@ -57348,7 +57348,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 2
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: 168, y: 13, z: 0}
     second:
@@ -57360,7 +57360,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   - first: {x: 116, y: 35, z: 0}
     second:
@@ -57372,7 +57372,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 2
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: 126, y: 35, z: 0}
     second:
@@ -57384,7 +57384,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 2
@@ -58102,9 +58102,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evTrig: {fileID: 699688065}
   beforeAfter: 1
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.05882353}
+    key1: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+    key2: {r: 1, g: 1, b: 1, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   snapCollider: 1
-  initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInOut: 1
 --- !u!4 &445353026 stripped
@@ -58187,9 +58214,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evTrig: {fileID: 671918959}
   beforeAfter: 1
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.05882353}
+    key1: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   snapCollider: 1
-  initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInOut: 1
 --- !u!66 &534253229
@@ -58770,7 +58824,7 @@ Transform:
   - {fileID: 2013945734}
   - {fileID: 1721138893}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &636484410
 MonoBehaviour:
@@ -59195,7 +59249,7 @@ Transform:
   - {fileID: 2108247658}
   - {fileID: 1385774840}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &876532282
 PrefabInstance:
@@ -59707,7 +59761,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TileSpriteArray.Array.data[8].m_Data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300404, guid: f0e3434ccb44b884798fe46138f8a1c8,
+        type: 3}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_Tiles.Array.data[69].second.m_TileIndex
@@ -60062,7 +60117,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TileAssetArray.Array.data[21].m_Data
       value: 
-      objectReference: {fileID: 11400000, guid: 9ab628ab2fd8f464b953739a8a9f503a,
+      objectReference: {fileID: 11400000, guid: 45e30e96ff3557940990adf6253505a3,
         type: 2}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
@@ -60471,19 +60526,18 @@ PrefabInstance:
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_Tiles.Array.data[73].second.m_TileSpriteIndex
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_TileSpriteArray.Array.data[5].m_RefCount
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_TileSpriteArray.Array.data[5].m_Data
       value: 
-      objectReference: {fileID: 21300418, guid: f0e3434ccb44b884798fe46138f8a1c8,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_Tiles.Array.data[73].second.m_TileIndex
@@ -60671,7 +60725,7 @@ PrefabInstance:
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_TileSpriteArray.Array.data[8].m_RefCount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
@@ -60726,22 +60780,22 @@ PrefabInstance:
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_Tiles.Array.data[47].second.m_TileSpriteIndex
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_Tiles.Array.data[35].second.m_TileSpriteIndex
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_Tiles.Array.data[23].second.m_TileSpriteIndex
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
       propertyPath: m_Tiles.Array.data[11].second.m_TileSpriteIndex
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280597115878, guid: b3ca14d092ec35c4fa2720aeae9513c5,
         type: 3}
@@ -65581,9 +65635,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evTrig: {fileID: 1754989584}
   beforeAfter: 1
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.05882353}
+    key1: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   snapCollider: 1
-  initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInOut: 1
 --- !u!66 &928960767
@@ -65968,7 +66049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
@@ -66013,7 +66094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4327974199604942, guid: 6e550d450efdc8c4f869c1931a6883c1, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114930025202489026, guid: 6e550d450efdc8c4f869c1931a6883c1,
         type: 3}
@@ -66609,9 +66690,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evTrig: {fileID: 463209598}
   beforeAfter: 1
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.05882353}
+    key1: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   snapCollider: 1
-  initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInOut: 1
 --- !u!66 &1028717456
@@ -67045,7 +67153,7 @@ PrefabInstance:
     - target: {fileID: 7419579213018741737, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Name
-      value: Camera (1)
+      value: Camera
       objectReference: {fileID: 0}
     - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
@@ -67127,11 +67235,6 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 298767483}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: areaName
@@ -67142,6 +67245,11 @@ PrefabInstance:
       propertyPath: evTrigs.Array.data[0]
       value: 
       objectReference: {fileID: 212205846}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7207351574517489337, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
@@ -67255,9 +67363,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evTrig: {fileID: 628684537}
   beforeAfter: 1
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.05882353}
+    key1: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   snapCollider: 1
-  initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInOut: 1
 --- !u!66 &1106313334
@@ -67765,9 +67900,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evTrig: {fileID: 1333014624}
   beforeAfter: 1
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.05882353}
+    key1: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   snapCollider: 1
-  initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInOut: 1
 --- !u!66 &1175752939
@@ -68232,11 +68394,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1385774840}
     m_Modifications:
-    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
-        type: 3}
-      propertyPath: itemsRequired.Array.data[0]
-      value: 
-      objectReference: {fileID: 1721138889}
     - target: {fileID: 4016547624261662, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.5
@@ -68269,6 +68426,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 1721138889}
     - target: {fileID: 212827760866747802, guid: dd9586f87d9b4cb49b874270f71ec290,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -72219,7 +72381,7 @@ Transform:
   - {fileID: 1333014622}
   - {fileID: 590722117}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1325057903
 MonoBehaviour:
@@ -72452,9 +72614,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evTrig: {fileID: 1500955006}
   beforeAfter: 1
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.05882353}
+    key1: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   snapCollider: 1
-  initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInOut: 1
 --- !u!66 &1380091976
@@ -73712,6 +73901,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1416453764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1817421221308370, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_Name
+      value: LargeBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 38.314873
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.946847
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220775168639642, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53dad87b4b4a3b04a84104ccfc032089, type: 3}
 --- !u!1 &1494553883
 GameObject:
   m_ObjectHideFlags: 0
@@ -73765,7 +74011,7 @@ MonoBehaviour:
   origin: {x: 0, y: -5.875}
   final: {x: 0, y: 0}
   speed: 5
-  snapCollider: 1
+  colliderOn: 1
   fadeTilemap: 1
   initialColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   finalColor: {r: 1, g: 1, b: 1, a: 0.5882353}
@@ -74009,7 +74255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062577596978482, guid: 7a6044f7e7ba63f48bf4700a572559ce, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4630005103800026, guid: 7a6044f7e7ba63f48bf4700a572559ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -74242,7 +74488,7 @@ Transform:
   - {fileID: 529295941}
   - {fileID: 385430314}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1721138889 stripped
 GameObject:
@@ -75204,9 +75450,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evTrig: {fileID: 590722119}
   beforeAfter: 1
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.05882353}
+    key1: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   snapCollider: 1
-  initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInOut: 1
 --- !u!66 &1742137077
@@ -75958,9 +76231,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evTrig: {fileID: 604958956}
   beforeAfter: 1
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 0.05882353}
+    key1: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   snapCollider: 1
-  initialColor: {r: 1, g: 1, b: 1, a: 0.05882353}
-  finalColor: {r: 0.70980394, g: 0.21568629, b: 0, a: 0.76862746}
   snapColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInOut: 1
 --- !u!66 &1953467223

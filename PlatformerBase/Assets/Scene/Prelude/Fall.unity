@@ -1921,8 +1921,8 @@ MonoBehaviour:
   beforeAfter: 0
   origin: {x: 0, y: 0}
   final: {x: -6, y: 0}
-  speed: 8
-  snapCollider: 0
+  speed: 5
+  colliderOn: 2
   fadeTilemap: 0
   initialColor: {r: 1, g: 1, b: 1, a: 1}
   finalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -103041,8 +103041,8 @@ GameObject:
   - component: {fileID: 1747871313}
   - component: {fileID: 1747871312}
   - component: {fileID: 1747871311}
-  m_Layer: 9
-  m_Name: BlockerOutline
+  m_Layer: 10
+  m_Name: BlockerSolid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108300,16 +108300,6 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 1652298317}
-    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: areaName
@@ -108320,6 +108310,16 @@ PrefabInstance:
       propertyPath: evTrigs.Array.data[0]
       value: 
       objectReference: {fileID: 1785448006}
+    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: evTrigs.Array.size

@@ -203,8 +203,6 @@ MonoBehaviour:
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   givenAtOffset: {x: 0, y: 0}
-  evTrigs:
-  - {fileID: 0}
   fadeRate: 1
   dialogueBox: {fileID: 7418588443544885799}
   areaName: Basophil
@@ -2679,7 +2677,6 @@ GameObject:
   - component: {fileID: 7443778577577470717}
   - component: {fileID: 7452392590630341619}
   - component: {fileID: 7449510614852589925}
-  - component: {fileID: 7418588442715595769}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -2799,26 +2796,6 @@ MonoBehaviour:
   m_PixelSnapping: 0
   m_CropFrameX: 1
   m_CropFrameY: 1
-  m_StretchFill: 0
---- !u!114 &7418588442715595769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7419579213018741737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AssetsPPU: 8
-  m_RefResolutionX: 320
-  m_RefResolutionY: 180
-  m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
   m_StretchFill: 0
 --- !u!1 &7419584072704544009
 GameObject:

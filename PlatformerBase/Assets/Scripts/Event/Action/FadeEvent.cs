@@ -10,9 +10,8 @@ public class FadeEvent : Global {
     [SerializeField]
     private bool beforeAfter; //when (before/after questCompleted) the event is triggered
 
+    [SerializeField] private Gradient gradient;
     [SerializeField] private bool snapCollider; //true when the collider is only active after the object fully fades in to the scene 
-    [SerializeField] private Color initialColor = Color.white; //starting color of the object
-    [SerializeField] private Color finalColor = Color.white; //target end color for the object
     [SerializeField] private Color snapColor = Color.white; //optional color to snap to instead of final color when reached
 
     private Tilemap render; //ref to the sprite renderer of the object
@@ -63,7 +62,7 @@ public class FadeEvent : Global {
         }
         else
         {
-            render.color = initialColor;
+            render.color = gradient.Evaluate(0);
         }
     }
 
@@ -92,7 +91,8 @@ public class FadeEvent : Global {
             }
             else
             {
-                render.color = ((1 - percent) * initialColor) + (percent * finalColor);
+                render.color = gradient.Evaluate(percent);
+                //render.color = ((1 - percent) * initialColor) + (percent * finalColor);
             }
             
         }

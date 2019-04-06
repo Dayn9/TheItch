@@ -59,12 +59,9 @@ public class MoveMultiEvent : MoveEvent
                     if(numTriggered == evTrigs.Length)
                     {
                         if (fadeTilemap) { rend.color = snapColor; } //set the color to the snapped color
-                        if (snapCollider)
+                        if (colliderOn == ColliderOn.Snap)
                         {
-                            foreach (Collider2D coll in colls)
-                            {
-                                coll.enabled = true;
-                            }
+                            SetCols(true);
                         }
                     }
 
