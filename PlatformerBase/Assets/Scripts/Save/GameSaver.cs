@@ -22,12 +22,22 @@ public class GameSaver : MonoBehaviour
     private static extern void WindowAlert(string message);
 
     private const string SaveFileName = "/GameSaveData.dat";
+    private string[] levelLookup = new string[] {
+            "Fall", //0
+            "Garden", //1
+            "Basophil", //2
+            "Shrine", //3
+            "Wilds", //4
+            "Climb",//5
+            "Graveyard",//6
+            "Island"//7
+    };
 
-    /// <summary>
-    /// Saves the game save data
-    /// </summary>
-    /// <param name="saveData">Data to save</param>
-    public static void SaveGameData(GameSaveData saveData)
+/// <summary>
+/// Saves the game save data
+/// </summary>
+/// <param name="saveData">Data to save</param>
+public static void SaveGameData(GameSaveData saveData)
     {
         string dataPath = Application.persistentDataPath + SaveFileName;
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -101,6 +111,20 @@ public class GameSaver : MonoBehaviour
         {
             Debug.Log(message);
         }
+    }
+
+    public string LevelNumToName(int levelNum)
+    {
+        return levelLookup[levelNum];
+    }
+
+    public int LevelNameToNum(string levelName)
+    {
+        for(int i = 0; i < levelLookup.Length; i++)
+        {
+            if(levelLookup[i] == levelName) { return i; }
+        }
+        return 0;
     }
 
 }

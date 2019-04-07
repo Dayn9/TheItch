@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestGameSaver : MonoBehaviour
+public class TestGameSaver : Global
 {
-    void Awake()
+    void Update()
     {
-        GameSaveData saveData = new GameSaveData
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            currentLevel = 1
-        };
+            GameSaveData saveData = new GameSaveData(1, Player.transform.position);
 
-        GameSaver.SaveGameData(saveData);
+            GameSaver.SaveGameData(saveData);
+        }
 
-
-        if(GameSaver.LoadGameData().currentLevel == 1)
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            GetComponent<SpriteRenderer>().color = Color.red;
+            GameSaveData loadedData = GameSaver.LoadGameData();
+            Debug.Log(loadedData.PlayerPosition());
         }
     }
 }
