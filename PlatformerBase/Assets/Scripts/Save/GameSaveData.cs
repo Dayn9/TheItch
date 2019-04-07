@@ -9,7 +9,7 @@ public class GameSaveData
     /// Contains all the data for a save file
     /// </summary>
 
-    private int currentLevel = 0;
+    public int currentLevel = 0;
     private float[] playerPosition;
     private List<int> textList;
 

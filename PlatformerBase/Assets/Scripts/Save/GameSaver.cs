@@ -22,7 +22,7 @@ public class GameSaver : MonoBehaviour
     private static extern void WindowAlert(string message);
 
     private const string SaveFileName = "/GameSaveData.dat";
-    private string[] levelLookup = new string[] {
+    private static string[] levelLookup = new string[] {
             "Fall", //0
             "Garden", //1
             "Basophil", //2
@@ -113,12 +113,12 @@ public static void SaveGameData(GameSaveData saveData)
         }
     }
 
-    public string LevelNumToName(int levelNum)
+    public static string LevelNumToName(int levelNum)
     {
         return levelLookup[levelNum];
     }
 
-    public int LevelNameToNum(string levelName)
+    public static int LevelNameToNum(string levelName)
     {
         for(int i = 0; i < levelLookup.Length; i++)
         {
