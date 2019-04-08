@@ -49,7 +49,6 @@ public class LevelChange : EventTrigger
                 item.transform.parent = null;
                 DontDestroyOnLoad(item);
             }
-            GameSaver.CurrentLevelName = levelName; //update the current level
             SceneManager.LoadScene(levelName, mode);
         }
     }

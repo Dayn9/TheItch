@@ -36,7 +36,7 @@ public class GameSaver : MonoBehaviour
     private static string currentLevelName; //name of the level player is currently on
     public static string CurrentLevelName {
         get {
-            if(currentLevelName.Length > 0)
+            if(currentLevelName != null && currentLevelName.Length > 0)
             {
                 return currentLevelName;
             }

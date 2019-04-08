@@ -26,11 +26,12 @@ public class HeartbeatPower : Global {
 
     void Awake()
     {
+        heartbeat = GetComponent<Heartbeat>();
         if(Heartbeat.BPM == -1)
         {
-            heartbeat.BPM = initialBPM;
+            Heartbeat.BPM = initialBPM;
         }
-        targetBPM = heartbeat.BPM;
+        targetBPM = Heartbeat.BPM;
     }
 
     private void Start()
@@ -60,19 +61,19 @@ public class HeartbeatPower : Global {
 
     void Update()
     {
-        if (!paused && targetBPM != heartbeat.BPM)
+        if (!paused && targetBPM != Heartbeat.BPM)
         {
-            float difference = targetBPM - heartbeat.BPM;
+            float difference = targetBPM - Heartbeat.BPM;
             heartbeat.ChangeRate = Mathf.Abs(difference);
             //snap to heartrate when moveDistance is small enough
             if (difference * Mathf.Sign(difference) < deltaHeartRate * Time.deltaTime)
             {
-                heartbeat.BPM = targetBPM;
+                Heartbeat.BPM = targetBPM;
                 heartbeat.SetDigitColor(bpmReadoutNormal);
             }
             else
             {
-                heartbeat.BPM += Mathf.Sign(difference) * deltaHeartRate * Time.deltaTime;
+                Heartbeat.BPM += Mathf.Sign(difference) * deltaHeartRate * Time.deltaTime;
                 heartbeat.SetDigitColor(Mathf.Sign(difference) > 0 ? bpmReadoutHeal : bpmReadoutDamage);
             }
 

@@ -11,7 +11,6 @@ public class AbilityHandler : Global {
 
     //fields for general or multipule variable reference 
     private IPlayer player;
-    private Heartbeat hb; //ref to the heartbeat component 
 
     [Header("Ability 0: Transfer")]
     [SerializeField] private GameObject abilityZeroPrefab; //prefab of the first bleed ability
@@ -59,7 +58,6 @@ public class AbilityHandler : Global {
     void Awake () {
         //find player refs
         player = Player.GetComponent<IPlayer>();
-        hb = player.Power.Heartbeat;
 
         //find power zero refs 
         powerZero = Instantiate(abilityZeroPrefab).GetComponent<AbilityTransfer>();
@@ -144,7 +142,7 @@ public class AbilityHandler : Global {
         {
             if (unlockedAbilities[0])
             {
-                if (hb.BPM > 1)
+                if (Heartbeat.BPM > 1)
                 {
                     powerZero.Useable = true;
                     //play the blled particle effect when mouse down or coming out of pause
@@ -171,7 +169,7 @@ public class AbilityHandler : Global {
                 {
                     partAbsorb.Play();
                     player.Power.RestoreBPM(increaseRate * Time.deltaTime);
-                    if(player.Power.Heartbeat.BPM < 200) {
+                    if(Heartbeat.BPM < 200) {
                         heartRateAdded += increaseRate * Time.deltaTime;
                     }
                     powerZero.AudioPlayer.PlaySound("ContinueSparkle");

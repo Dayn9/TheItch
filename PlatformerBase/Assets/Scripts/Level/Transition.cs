@@ -14,11 +14,12 @@ public class Transition : EventTrigger{
 
     [SerializeField] private float fadeRate = 1.0f;
 
-    private MovingObject playerFreeze;
-    private IPlayer playerFall;
+    private Jump player;
 
     [SerializeField] protected DialogueBox dialogueBox;
     [SerializeField] protected string areaName; //holds the name of area to display
+
+    public static int playerHealth = -1;
 
     protected override void Awake()
     {
@@ -38,12 +39,16 @@ public class Transition : EventTrigger{
         {
             evTrig.Before += new triggered(FadeOut);
         }
-        
-        //get references to various player components 
-        playerFreeze = Player.GetComponent<MovingObject>();
-        playerFall = Player.GetComponent<IPlayer>();
+
+        player = Player.GetComponent<Jump>();
 
         FadeIn(); //begin the fade in when the scene first loads 
+    }
+
+    private void LoadLevel()
+    {
+        player.Health = playerHealth == -1 ? player.MaxHealth : playerHealth ;
+        GameSaver.CurrentLevelName = areaName; //update the current level
     }
 
     private void FadeIn()
@@ -53,11 +58,13 @@ public class Transition : EventTrigger{
 
         fadeIn = true;
 
-        playerFreeze.Frozen = true; //stop the player from moving
-        playerFall.InFallZone = true;
+        player.Frozen = true; //stop the player from moving
+        player.InFallZone = true;
 
         CallBefore();
         dialogueBox.OnTriggerKeyPressed(areaName);
+
+        LoadLevel();        
     }
 
 
@@ -68,8 +75,9 @@ public class Transition : EventTrigger{
 
         fadeOut = true;
 
-        playerFreeze.Frozen = true; //stop the player from moving
-        playerFall.InFallZone = true;
+        player.Frozen = true; //stop the player from moving
+        player.InFallZone = true;
+        playerHealth = player.Health;
     }
 
     protected override void Update()
@@ -85,8 +93,8 @@ public class Transition : EventTrigger{
                     fadeIn = false;
                     render.enabled = false;
                     
-                    playerFreeze.Frozen = false; //stop the player from moving
-                    playerFall.InFallZone = false;
+                    player.Frozen = false; //stop the player from moving
+                    player.InFallZone = false;
                     return;
                 }
                 render.color = new Color(0, 0, 0, render.color.a - change);
@@ -99,8 +107,8 @@ public class Transition : EventTrigger{
                     render.color = new Color(0, 0, 0, 1);
                     fadeOut = false;
                     CallAfter(); 
-                    playerFreeze.Frozen = false; //stop the player from moving
-                    playerFall.InFallZone = false;
+                    player.Frozen = false; //stop the player from moving
+                    player.InFallZone = false;
                     return;
                 }
                 render.color = new Color(0, 0, 0, render.color.a + change);

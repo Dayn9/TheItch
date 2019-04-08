@@ -29,12 +29,11 @@ public class Heartbeat : Global {
     private const int maxHeartrate = 168;
 
 
-    public float BPM
+    public static float BPM
     {
         get { return bpm; }
         set { bpm = value; }
     }
-
 
     // Use this for initialization
     void Awake()
@@ -53,7 +52,6 @@ public class Heartbeat : Global {
         Assert.IsNotNull(heartAnimation, "heartbeat Animator not found");
         Assert.IsTrue(digits.Length == 3, "cannot find the 3 digits");
         Assert.IsNotNull(virus, "Virus controller not found");
-
     }
 
     //assign values to the individual components of the healthbeat 

@@ -6,7 +6,7 @@ public interface IPlayer{
     /// defines properties and methods related to player  
     /// </summary>
 
-    Vector2 ReturnPosition { set; } //set reset postion for checkpoints
+    Vector2 ReturnPosition { get; set; } //set reset postion for checkpoints
     HeartbeatPower Power { get; } //ref to heartbeatPower Component
     Animator Animator { get; }
 

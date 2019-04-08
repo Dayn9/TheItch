@@ -11,12 +11,15 @@ public class GameSaveData
 
     public int currentLevel = 0;
     private float[] playerPosition;
-    private List<int> textList;
+    public int health = 0;
+    public float bpm = 0;
 
-    public GameSaveData(int level, Vector2 playerPos)
+    public GameSaveData(int level, Vector2 playerPos, int health, float bpm)
     {
         currentLevel = level;
         playerPosition = new float[] { playerPos.x, playerPos.y };
+        this.health = health;
+        this.bpm = bpm;
     }
 
     public Vector2 PlayerPosition()

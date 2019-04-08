@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LoadButton : GenericButton
 { 
-
     protected override void OnClick()
     {
         GameSaveData loadData = GameSaver.LoadGameData();
+
         startPosition = loadData.PlayerPosition();
-        SceneManager.LoadScene(GameSaver.LevelNumToName(loadData.currentLevel), LoadSceneMode.Single);
+        Heartbeat.BPM = loadData.bpm;
+        Transition.playerHealth = loadData.health;
 
-
-        Debug.Log("LOAD");
+        GameSaver.CurrentLevelName = GameSaver.LevelNumToName(loadData.currentLevel);
+        SceneManager.LoadScene(GameSaver.CurrentLevelName, LoadSceneMode.Single);
     }
 }

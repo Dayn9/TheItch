@@ -6,9 +6,15 @@ public class SaveButton : GenericButton
 {
     protected override void OnClick()
     {
-        GameSaveData saveData = new GameSaveData(GameSaver.LevelNameToNum("Shrine"), Player.transform.position);
-        GameSaver.SaveGameData(saveData);
+        Jump player = Player.GetComponent<Jump>();
 
-        Debug.Log("SAVE");
+        GameSaveData saveData = new GameSaveData(
+            GameSaver.LevelNameToNum(GameSaver.CurrentLevelName),
+            player.ReturnPosition,
+            player.Health,
+            Heartbeat.BPM
+        );
+
+        GameSaver.SaveGameData(saveData);
     }
 }

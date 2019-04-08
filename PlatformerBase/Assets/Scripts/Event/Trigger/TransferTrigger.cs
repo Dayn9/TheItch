@@ -105,7 +105,7 @@ public class TransferTrigger : IndicatorTrigger
 
     private void GetMouseClick()
     {
-        validInput = ((Empty && Player.GetComponent<IPlayer>().Power.Heartbeat.BPM > healthObj.MaxHealth)
+        validInput = ((Empty && Heartbeat.BPM > healthObj.MaxHealth)
                 || (FullyHealed && AbilityHandler.IsUnlocked(1))); //check if indicator should be available
 
         //check for mouse in zone and able to interact

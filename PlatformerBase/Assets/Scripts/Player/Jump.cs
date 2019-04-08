@@ -25,7 +25,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     [Header("Health")]
     [SerializeField] private int maxHealth; //maximum health of the player
-    private int health; //health of the object
+    private static int health = -1; //health of the object
     [SerializeField] private float invulnerabilityTime; //how long the invulnerability timer lasts
     private float invulnerabilityTimer;
     private bool invulnerable; //true when player is immune to damage
@@ -51,15 +51,26 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     #endregion
 
     #region Properties 
-    public int Health { get { return health; } }
+    public int Health {
+        get { return health; }
+        set { health = value; }
+    }
     public int MaxHealth { get { return maxHealth; } }
-    public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
-    public HeartbeatPower Power { get {
+    public bool Invulnerable {
+        get { return invulnerable; }
+        set { invulnerable = value; }
+    }
+    public HeartbeatPower Power {
+        get {
             if (!heartBeatPower) { heartBeatPower = MainCamera.GetComponentInChildren<HeartbeatPower>(); }
-            return heartBeatPower; }
+            return heartBeatPower;
+        }
     }
     public bool InFallZone { set { inFallZone = value; } }
-    public Vector2 ReturnPosition { set { returnPosition = value; } }
+    public Vector2 ReturnPosition {
+        get { return returnPosition; }
+        set { returnPosition = value; }
+    }
     public Animator Animator { get { return anim; } }
 
     public override Vector2 MoveVelocity { get { return moveVelocity * moveSpeed; } }
@@ -84,7 +95,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         heartBeatPower = Power; //might be redundent, but get the heartbeat power
 
         if (maxHealth < 1) { maxHealth = 1; } //must have at leath one health point
-        health = maxHealth;
+        if (health < 0) { health = maxHealth; }
+
         SetReturnPosition(transform.position); //set the return position to 1 unit above where the player initially spawned
 
         if (startPosition != Vector2.one)
