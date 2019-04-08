@@ -9,10 +9,9 @@ public class LoadButton : GenericButton
     {
         GameSaveData loadData = GameSaver.LoadGameData();
 
-        startPosition = loadData.PlayerPosition();
-        Heartbeat.BPM = loadData.bpm;
-        Transition.playerHealth = loadData.health;
+        Transition.loadGame = true; //tell transition to load in the game and level data
 
+        startPosition = loadData.PlayerPosition();
         GameSaver.CurrentLevelName = GameSaver.LevelNumToName(loadData.currentLevel);
         SceneManager.LoadScene(GameSaver.CurrentLevelName, LoadSceneMode.Single);
     }

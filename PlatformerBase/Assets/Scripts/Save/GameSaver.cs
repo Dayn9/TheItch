@@ -33,6 +33,8 @@ public class GameSaver : MonoBehaviour
             "Island"//7
     };
 
+    public static GameSaveData loadedData = null;
+
     private static string currentLevelName; //name of the level player is currently on
     public static string CurrentLevelName {
         get {
@@ -117,7 +119,7 @@ public static void SaveGameData(GameSaveData saveData)
                 fileStream.Close();
             }
         }
-
+        loadedData = saveData;
         return saveData;
     }
 

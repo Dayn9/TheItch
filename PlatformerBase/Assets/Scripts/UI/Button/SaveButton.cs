@@ -10,6 +10,7 @@ public class SaveButton : GenericButton
 
         GameSaveData saveData = new GameSaveData(
             GameSaver.LevelNameToNum(GameSaver.CurrentLevelName),
+            player.transform.position,
             player.ReturnPosition,
             player.Health,
             Heartbeat.BPM

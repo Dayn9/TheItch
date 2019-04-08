@@ -19,7 +19,7 @@ public class Transition : EventTrigger{
     [SerializeField] protected DialogueBox dialogueBox;
     [SerializeField] protected string areaName; //holds the name of area to display
 
-    public static int playerHealth = -1;
+    public static bool loadGame = false;
 
     protected override void Awake()
     {
@@ -45,10 +45,16 @@ public class Transition : EventTrigger{
         FadeIn(); //begin the fade in when the scene first loads 
     }
 
-    private void LoadLevel()
+    private void LoadGame()
     {
-        player.Health = playerHealth == -1 ? player.MaxHealth : playerHealth ;
-        GameSaver.CurrentLevelName = areaName; //update the current level
+
+        GameSaveData loadedData = GameSaver.loadedData;
+
+        Heartbeat.BPM = loadedData.bpm;
+        player.Health = loadedData.health;
+        player.ReturnPosition = loadedData.PlayerReturnPosition();
+
+        loadGame = false;
     }
 
     private void FadeIn()
@@ -64,7 +70,10 @@ public class Transition : EventTrigger{
         CallBefore();
         dialogueBox.OnTriggerKeyPressed(areaName);
 
-        LoadLevel();        
+
+        GameSaver.CurrentLevelName = areaName; //update the current level
+        if (loadGame) { LoadGame(); }
+              
     }
 
 
@@ -77,7 +86,6 @@ public class Transition : EventTrigger{
 
         player.Frozen = true; //stop the player from moving
         player.InFallZone = true;
-        playerHealth = player.Health;
     }
 
     protected override void Update()
