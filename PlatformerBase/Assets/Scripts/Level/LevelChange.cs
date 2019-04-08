@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(BoxCollider2D))]
 public class LevelChange : EventTrigger
 {
-
     [SerializeField] private string levelName;
     [SerializeField] private LoadSceneMode mode;
     [Header("don't make (1, 1)")]
@@ -50,6 +49,7 @@ public class LevelChange : EventTrigger
                 item.transform.parent = null;
                 DontDestroyOnLoad(item);
             }
+            GameSaver.CurrentLevelName = levelName; //update the current level
             SceneManager.LoadScene(levelName, mode);
         }
     }

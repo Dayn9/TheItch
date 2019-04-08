@@ -33,6 +33,30 @@ public class GameSaver : MonoBehaviour
             "Island"//7
     };
 
+    private static string currentLevelName; //name of the level player is currently on
+    public static string CurrentLevelName {
+        get {
+            if(currentLevelName.Length > 0)
+            {
+                return currentLevelName;
+            }
+            return levelLookup[0];  //default to the first element in level lookup
+        }
+        set
+        {
+            //make sure the name is in the level lookup
+            foreach(string name in levelLookup)
+            {
+                if(name == value)
+                {
+                    currentLevelName = value;
+                    return;
+                }
+            }
+            currentLevelName = levelLookup[0]; //default to the first element in level lookup
+        }
+    }
+
 /// <summary>
 /// Saves the game save data
 /// </summary>
