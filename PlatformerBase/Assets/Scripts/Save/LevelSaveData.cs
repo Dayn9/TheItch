@@ -10,4 +10,18 @@ public class LevelSaveData
     public List<string> objectNames;
     public List<bool> objectStates;
 
+    public LevelSaveData(string name)
+    {
+        levelName = name;
+
+        objectNames = new List<string>();
+        objectStates = new List<bool>();
+    }
+
+    public void AddObject(string name, bool state)
+    {
+        objectNames.Add(name);
+        objectStates.Add(state);
+    }
+
 }

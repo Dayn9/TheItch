@@ -47,14 +47,18 @@ public class Transition : EventTrigger{
 
     private void LoadGame()
     {
+        GameSaveData gameData = GameSaver.gameData;
 
-        GameSaveData loadedData = GameSaver.loadedData;
-
-        Heartbeat.BPM = loadedData.bpm;
-        player.Health = loadedData.health;
-        player.ReturnPosition = loadedData.PlayerReturnPosition();
+        Heartbeat.BPM = gameData.bpm;
+        player.Health = gameData.health;
+        player.ReturnPosition = gameData.PlayerReturnPosition();
 
         loadGame = false;
+    }
+
+    private void LoadLevel()
+    {
+
     }
 
     private void FadeIn()

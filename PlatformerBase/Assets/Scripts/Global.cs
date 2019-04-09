@@ -47,7 +47,7 @@ public class Global : MonoBehaviour {
     /// <summary>
     /// accessor for player gameObject
     /// </summary>
-    protected GameObject Player {
+    protected static GameObject Player {
         get
         {
             if (player == null)

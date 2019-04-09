@@ -9,7 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 /// https://github.com/RITGameDev/GameSaveDemo/blob/master/Assets/Scripts/GameSave.cs
 /// </summary>
 
-public class GameSaver : MonoBehaviour
+public class GameSaver : Global
 {
     /// <summary>
     /// Handles the saving and loading of gameData
@@ -21,21 +21,44 @@ public class GameSaver : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void WindowAlert(string message);
 
-    private const string SaveFileName = "/GameSaveData.dat";
+    private const string FolderName = "/SaveFile0/";
+    private const string GameSaveFileName = "GameSaveData";
+    private const string FileExtension = ".dat";
 
-    public static GameSaveData loadedData = null;
+    public static GameSaveData gameData = null;
 
     public static string CurrentLevelName = "Fall"; //name of the level player is currently on
 
-/// <summary>
-/// Saves the game save data
-/// </summary>
-/// <param name="saveData">Data to save</param>
-public static void SaveGameData(GameSaveData saveData)
+
+    public static void SaveGameData()
     {
-        string dataPath = Application.persistentDataPath + SaveFileName;
+        Jump player = Player.GetComponent<Jump>();
+
+        //save the game data
+        GameSaveData saveData = new GameSaveData(
+            CurrentLevelName,
+            player.transform.position,
+            player.ReturnPosition,
+            player.Health,
+            Heartbeat.BPM
+        );
+
+        SaveGameData(saveData);
+    }
+
+/// <summary>
+    /// Saves the game save data
+    /// </summary>
+    /// <param name="saveData">Data to save</param>
+    public static void SaveGameData(GameSaveData saveData)
+    {
+        MakeDirectory();
+
+        string dataPath = Application.persistentDataPath + FolderName + GameSaveFileName + FileExtension;
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate);
+
+        
 
         try
         {
@@ -57,6 +80,36 @@ public static void SaveGameData(GameSaveData saveData)
         }
     }
 
+    public static void SaveLevelData(LevelSaveData saveData)
+    {
+        MakeDirectory();
+        string dataPath = Application.persistentDataPath + FolderName + saveData.levelName + FileExtension;
+
+        Debug.Log(dataPath);
+
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate);
+
+        try
+        {
+            binaryFormatter.Serialize(fileStream, saveData);
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                SyncFiles();
+            }
+
+        }
+        catch (System.Exception e)
+        {
+            PlatformSafeMessage("Serialization Failed: " + e.Message);
+        }
+        finally
+        {
+            //always close the fileStream
+            fileStream.Close();
+        }
+    }
+
     /// <summary>
     /// Loads in the game save data
     /// </summary>
@@ -64,7 +117,7 @@ public static void SaveGameData(GameSaveData saveData)
     public static GameSaveData LoadGameData()
     {
         GameSaveData saveData = null;
-        string dataPath = Application.persistentDataPath + SaveFileName;
+        string dataPath = Application.persistentDataPath + GameSaveFileName;
 
         //make sure the file actually exists
         if (File.Exists(dataPath))
@@ -87,7 +140,7 @@ public static void SaveGameData(GameSaveData saveData)
                 fileStream.Close();
             }
         }
-        loadedData = saveData;
+        gameData = saveData;
         return saveData;
     }
 
@@ -104,6 +157,15 @@ public static void SaveGameData(GameSaveData saveData)
         else
         {
             Debug.Log(message);
+        }
+    }
+
+    private static void MakeDirectory()
+    {
+        string filePath = Application.persistentDataPath + FolderName;
+        if (!Directory.Exists(filePath))
+        {
+            Directory.CreateDirectory(filePath);
         }
     }
 }

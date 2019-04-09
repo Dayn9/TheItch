@@ -1,21 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SaveButton : GenericButton
 {
     protected override void OnClick()
     {
-        Jump player = Player.GetComponent<Jump>();
+        GameSaver.SaveGameData();
 
-        GameSaveData saveData = new GameSaveData(
-            GameSaver.CurrentLevelName,
-            player.transform.position,
-            player.ReturnPosition,
-            player.Health,
-            Heartbeat.BPM
-        );
+        LevelSaveData levelData = new LevelSaveData(GameSaver.CurrentLevelName);
 
-        GameSaver.SaveGameData(saveData);
+        foreach(ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
+        {
+            Debug.Log(data.ToString());
+            levelData.AddObject(data.ToString(), data.State);
+        }
+
+        GameSaver.SaveLevelData(levelData);
     }
 }

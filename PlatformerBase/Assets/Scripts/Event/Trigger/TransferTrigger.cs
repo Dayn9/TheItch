@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(IHealthObject))]
-public class TransferTrigger : IndicatorTrigger
+public class TransferTrigger : IndicatorTrigger, ILevelData
 {
     private IHealthObject healthObj;
 
@@ -56,6 +56,12 @@ public class TransferTrigger : IndicatorTrigger
     /// </summary>
     public bool FullyHealed { get { return healthObj.Health == healthObj.MaxHealth; } }
     public bool Empty { get { return healthObj.Health == 0; } }
+
+    public bool State { get { return FullyHealed; } }
+    public void OnLevelLoad(bool state)
+    {
+        if (state) { healthObj.FullHeal(); }
+    }
 
     protected override void Update()
     {

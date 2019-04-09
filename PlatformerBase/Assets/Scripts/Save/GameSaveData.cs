@@ -20,7 +20,6 @@ public class GameSaveData
     //Inventory Info
     public List<string> itemNames; 
 
-
     public GameSaveData(string level, Vector2 playerPos, Vector2 resetPosition, int health, float bpm)
     {
         currentLevel = level;
