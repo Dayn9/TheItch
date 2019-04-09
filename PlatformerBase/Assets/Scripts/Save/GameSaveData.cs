@@ -9,13 +9,19 @@ public class GameSaveData
     /// Contains all the data for a save file
     /// </summary>
 
-    public int currentLevel = 0;
+    public string currentLevel = "Fall";
+
+    //Player Information
     private float[] playerPosition;
     private float[] playerReturnPosition; 
     public int health = 0;
     public float bpm = 0;
 
-    public GameSaveData(int level, Vector2 playerPos, Vector2 resetPosition, int health, float bpm)
+    //Inventory Info
+    public List<string> itemNames; 
+
+
+    public GameSaveData(string level, Vector2 playerPos, Vector2 resetPosition, int health, float bpm)
     {
         currentLevel = level;
         playerPosition = new float[] { playerPos.x, playerPos.y };

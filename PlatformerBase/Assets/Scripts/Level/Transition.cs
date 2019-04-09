@@ -70,7 +70,6 @@ public class Transition : EventTrigger{
         CallBefore();
         dialogueBox.OnTriggerKeyPressed(areaName);
 
-
         GameSaver.CurrentLevelName = areaName; //update the current level
         if (loadGame) { LoadGame(); }
               

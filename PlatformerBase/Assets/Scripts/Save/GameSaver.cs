@@ -22,42 +22,10 @@ public class GameSaver : MonoBehaviour
     private static extern void WindowAlert(string message);
 
     private const string SaveFileName = "/GameSaveData.dat";
-    private static string[] levelLookup = new string[] {
-            "Fall", //0
-            "Garden", //1
-            "Basophil", //2
-            "Shrine", //3
-            "Wilds", //4
-            "Climb",//5
-            "Graveyard",//6
-            "Island"//7
-    };
 
     public static GameSaveData loadedData = null;
 
-    private static string currentLevelName; //name of the level player is currently on
-    public static string CurrentLevelName {
-        get {
-            if(currentLevelName != null && currentLevelName.Length > 0)
-            {
-                return currentLevelName;
-            }
-            return levelLookup[0];  //default to the first element in level lookup
-        }
-        set
-        {
-            //make sure the name is in the level lookup
-            foreach(string name in levelLookup)
-            {
-                if(name == value)
-                {
-                    currentLevelName = value;
-                    return;
-                }
-            }
-            currentLevelName = levelLookup[0]; //default to the first element in level lookup
-        }
-    }
+    public static string CurrentLevelName = "Fall"; //name of the level player is currently on
 
 /// <summary>
 /// Saves the game save data
@@ -138,19 +106,4 @@ public static void SaveGameData(GameSaveData saveData)
             Debug.Log(message);
         }
     }
-
-    public static string LevelNumToName(int levelNum)
-    {
-        return levelLookup[levelNum];
-    }
-
-    public static int LevelNameToNum(string levelName)
-    {
-        for(int i = 0; i < levelLookup.Length; i++)
-        {
-            if(levelLookup[i] == levelName) { return i; }
-        }
-        return 0;
-    }
-
 }

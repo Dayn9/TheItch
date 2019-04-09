@@ -11,8 +11,10 @@ public class LoadButton : GenericButton
 
         Transition.loadGame = true; //tell transition to load in the game and level data
 
+        
+        GameSaver.CurrentLevelName = loadData.currentLevel;
         startPosition = loadData.PlayerPosition();
-        GameSaver.CurrentLevelName = GameSaver.LevelNumToName(loadData.currentLevel);
+
         SceneManager.LoadScene(GameSaver.CurrentLevelName, LoadSceneMode.Single);
     }
 }

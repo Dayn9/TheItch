@@ -9,7 +9,7 @@ public class SaveButton : GenericButton
         Jump player = Player.GetComponent<Jump>();
 
         GameSaveData saveData = new GameSaveData(
-            GameSaver.LevelNameToNum(GameSaver.CurrentLevelName),
+            GameSaver.CurrentLevelName,
             player.transform.position,
             player.ReturnPosition,
             player.Health,

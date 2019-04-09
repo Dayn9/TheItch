@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelSaveData : MonoBehaviour
+[System.Serializable]
+public class LevelSaveData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string levelName;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public List<string> objectNames;
+    public List<bool> objectStates;
+
 }
