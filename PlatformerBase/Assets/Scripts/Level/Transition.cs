@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class Transition : EventTrigger{
 
@@ -29,6 +29,13 @@ public class Transition : EventTrigger{
 
         //add self to dialogue box
         dialogueBox.GetComponent<TextboxEvent>().addEvTrig(this);
+
+        player = Player.GetComponent<Jump>();
+        GameSaver.CurrentLevelName = areaName; 
+        if (loadGame) { LoadGame(); }
+
+        //load in the level data
+        LoadLevel();
     }
 
     private void Start()
@@ -40,7 +47,7 @@ public class Transition : EventTrigger{
             evTrig.Before += new triggered(FadeOut);
         }
 
-        player = Player.GetComponent<Jump>();
+        
 
         FadeIn(); //begin the fade in when the scene first loads 
     }
@@ -56,9 +63,29 @@ public class Transition : EventTrigger{
         loadGame = false;
     }
 
+    /// <summary>
+    /// loads in the level data if it exists
+    /// </summary>
     private void LoadLevel()
     {
+        Debug.Log("load data");
 
+        LevelSaveData levelData = null;
+        if((levelData = GameSaver.LoadLevelData(areaName)) != null)
+        {
+            //create a dictionary of all the loaded in level dat
+            Dictionary<string, bool> stateLookup = new Dictionary<string, bool>();
+            for(int i = 0; i<levelData.objectNames.Count; i++)
+            {
+                stateLookup.Add(levelData.objectNames[i], levelData.objectStates[i]);
+            }
+            //loop through all the level data objects
+            foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
+            {
+                //load objects based on state from the dictionart
+                data.OnLevelLoad(stateLookup[data.Name]);
+            }
+        }
     }
 
     private void FadeIn()
@@ -74,9 +101,6 @@ public class Transition : EventTrigger{
         CallBefore();
         dialogueBox.OnTriggerKeyPressed(areaName);
 
-        GameSaver.CurrentLevelName = areaName; //update the current level
-        if (loadGame) { LoadGame(); }
-              
     }
 
 
@@ -95,7 +119,7 @@ public class Transition : EventTrigger{
     {
         if (!paused)
         {
-            if (fadeIn && Time.deltaTime < 0.2f) 
+            if (fadeIn && Time.deltaTime < 0.2f) //TODO maybe this isn't the best thing to check for
             {
                 float change = fadeRate * Time.deltaTime;
                 if (render.color.a - change <= 0)

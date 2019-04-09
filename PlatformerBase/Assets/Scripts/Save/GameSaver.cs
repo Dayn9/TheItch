@@ -46,7 +46,7 @@ public class GameSaver : Global
         SaveGameData(saveData);
     }
 
-/// <summary>
+    /// <summary>
     /// Saves the game save data
     /// </summary>
     /// <param name="saveData">Data to save</param>
@@ -117,7 +117,7 @@ public class GameSaver : Global
     public static GameSaveData LoadGameData()
     {
         GameSaveData saveData = null;
-        string dataPath = Application.persistentDataPath + GameSaveFileName;
+        string dataPath = Application.persistentDataPath + FolderName + GameSaveFileName + FileExtension;
 
         //make sure the file actually exists
         if (File.Exists(dataPath))
@@ -132,7 +132,7 @@ public class GameSaver : Global
             }
             catch(System.Exception e)
             {
-                PlatformSafeMessage("Deserialization Failed: " + e.Message);
+                PlatformSafeMessage("Game Deserialization Failed: " + e.Message);
             }
             finally
             {
@@ -141,6 +141,35 @@ public class GameSaver : Global
             }
         }
         gameData = saveData;
+        return saveData;
+    }
+
+    public static LevelSaveData LoadLevelData(string levelName)
+    {
+        LevelSaveData saveData = null;
+        string dataPath = Application.persistentDataPath + FolderName + levelName + FileExtension;
+
+        //make sure the file actually exists
+        if (File.Exists(dataPath))
+        {
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            FileStream fileStream = File.Open(dataPath, FileMode.Open);
+
+            try
+            {
+                saveData = (LevelSaveData)binaryFormatter.Deserialize(fileStream);
+            }
+            catch (System.Exception e)
+            {
+                PlatformSafeMessage("Level Deserialization Failed: " + e.Message);
+            }
+            finally
+            {
+                //always close the fileStream
+                fileStream.Close();
+            }
+        }
+
         return saveData;
     }
 

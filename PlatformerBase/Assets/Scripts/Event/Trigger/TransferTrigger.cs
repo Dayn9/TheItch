@@ -32,6 +32,7 @@ public class TransferTrigger : IndicatorTrigger, ILevelData
     {
         base.Awake();
         healthObj = GetComponent<IHealthObject>();
+
         //make sure the indicator has a heartbeat indicator
         if ((HbIndicator = indicator.GetComponent<HeartbeatIndicator>()) == null)
         {
@@ -58,9 +59,17 @@ public class TransferTrigger : IndicatorTrigger, ILevelData
     public bool Empty { get { return healthObj.Health == 0; } }
 
     public bool State { get { return FullyHealed; } }
+    public string Name { get { return gameObject.name; } }
     public void OnLevelLoad(bool state)
     {
-        if (state) { healthObj.FullHeal(); }
+        healthObj = GetComponent<IHealthObject>();
+        if (state) {
+            healthObj.FullHeal();
+        }
+        else
+        {
+            healthObj.Damage(healthObj.MaxHealth);
+        }
     }
 
     protected override void Update()
@@ -155,7 +164,6 @@ public class TransferTrigger : IndicatorTrigger, ILevelData
                 Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
                 containsMouse = false;
             }
-            
         }
     }
 

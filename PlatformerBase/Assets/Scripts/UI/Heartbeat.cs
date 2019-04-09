@@ -46,7 +46,6 @@ public class Heartbeat : Global {
         digits = transform.GetComponentsInChildren<Digit>();
         virus = GetComponentInChildren<VirusShaderController>();
 
-
         //make sure all the components of child objects are available
         Assert.IsNotNull(marker, "indicator SpriteRenderer not found");
         Assert.IsNotNull(heartAnimation, "heartbeat Animator not found");
