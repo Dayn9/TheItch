@@ -37,7 +37,7 @@ public class GameSaver : Global
         //save the game data
         GameSaveData saveData = new GameSaveData(
             CurrentLevelName,
-            player.transform.position,
+            player.transform.position + (player.InFallZone ? Vector3.up : Vector3.zero),
             player.ReturnPosition,
             player.Health,
             Heartbeat.BPM,

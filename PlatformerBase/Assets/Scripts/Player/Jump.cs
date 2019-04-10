@@ -66,7 +66,10 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             return heartBeatPower;
         }
     }
-    public bool InFallZone { set { inFallZone = value; } }
+    public bool InFallZone {
+        get { return inFallZone; }
+        set { inFallZone = value; }
+    }
     public Vector2 ReturnPosition {
         get { return returnPosition; }
         set { returnPosition = value; }
