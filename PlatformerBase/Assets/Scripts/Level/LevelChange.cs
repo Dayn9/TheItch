@@ -43,12 +43,9 @@ public class LevelChange : EventTrigger
             }
 
             startPosition = playerStart;
-            //detatch items from inventory so they can be passed on to the next scene
-            foreach (GameObject item in Items.Values)
-            {
-                item.transform.parent = null;
-                DontDestroyOnLoad(item);
-            }
+
+            Items.Clear();
+
             SceneManager.LoadScene(levelName, mode);
         }
     }

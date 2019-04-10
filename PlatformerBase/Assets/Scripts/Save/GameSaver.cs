@@ -59,8 +59,6 @@ public class GameSaver : Global
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate);
 
-        
-
         try
         {
             binaryFormatter.Serialize(fileStream, saveData);

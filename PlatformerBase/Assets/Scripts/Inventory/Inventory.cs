@@ -17,6 +17,8 @@ public class Inventory : Global {
 
     protected static GameObject collectEffect; //instantiated collect Effect
 
+    protected static Dictionary<string, int> allItemsStates; //keeps track of all the items states for level transitions and data loading
+
     public Dictionary<string, GameObject> Items {
         get {
             if(items == null)
@@ -36,7 +38,7 @@ public class Inventory : Global {
     public void AddItem(string name, GameObject obj)
     {
         Items.Add(name, obj);
-
+        allItemsStates[name] = 1;
         obj.transform.parent = inventoryUI; //make child of the inventoryUI
         DisplayItems();
     }
@@ -52,7 +54,8 @@ public class Inventory : Global {
             Items[name].GetComponent<CollectableItem>().Eaten(transform);
             //Destroy(Items[name]); //destroy the gameObject
             Items.Remove(name);
-        }
+            allItemsStates[name] = 2;
+}
         DisplayItems();
     }
 

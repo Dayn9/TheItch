@@ -27,6 +27,11 @@ public class CollectableItem : Inventory
         audioPlayer = GetComponentInParent<AudioPlayer>();
     }
 
+    private void Start()
+    {
+        if(allItemsStates[gameObject.name] != 0 && !collected) { gameObject.SetActive(false); }
+    }
+
     private void OnTriggerEnter2D(Collider2D coll)
     {
         //check if collision with player
@@ -36,17 +41,13 @@ public class CollectableItem : Inventory
             collectEffect.SetActive(true);
             collectEffect.GetComponent<Animator>().SetTrigger("Collect");
 
-
             AddItem(gameObject.name, gameObject); //add item to inventory and move to final location in UI
 
-            SpriteRenderer rend = GetComponent<SpriteRenderer>(); //make sure sorting layer and order is just above inventoryUI
-            SpriteRenderer invRend = inventoryUI.GetChild(0).GetComponent<SpriteRenderer>();
-            rend.sortingLayerID = invRend.sortingLayerID;
-            rend.sortingOrder = invRend.sortingOrder + 1;
+            Collected();
 
             targetPosition = transform.localPosition;
             transform.position = pickupPosition; //return to origional position for animation
-            collected = true; //start the animation
+             //start the animation
             moving = true;
 
             audioPlayer.PlaySound("itemCollect");
@@ -74,6 +75,15 @@ public class CollectableItem : Inventory
                 transform.localPosition = move.magnitude > minMoveDistance ? move : move.normalized * minMoveDistance;
             }
         }
+    }
+
+    public void Collected()
+    {
+        SpriteRenderer rend = GetComponent<SpriteRenderer>(); //make sure sorting layer and order is just above inventoryUI
+        SpriteRenderer invRend = inventoryUI.GetChild(0).GetComponent<SpriteRenderer>();
+        rend.sortingLayerID = invRend.sortingLayerID;
+        rend.sortingOrder = invRend.sortingOrder + 1;
+        collected = true;
     }
 
     public void Eaten(Transform target)

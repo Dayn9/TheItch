@@ -13,23 +13,42 @@ public class InventoryDisplay : Inventory {
 
     [SerializeField] protected GameObject collectEffectPrefab; //prefab for collection effects
 
+    [SerializeField] private List<GameObject> allItems;
+
     void Awake()
     {
         inventoryUI = transform; //set the inventory transform to this object
         display = transform.GetChild(0);
         hidden = true;
 
-        //may need to be removed later, makes sure no items stored when new level is loaded
-        if (Items.Count > 0)
-        {
-            Dictionary<string, GameObject> tempItems = Items;
-            foreach(GameObject item in Items.Values)
+        //set up the all items states if it doesn't already exist
+        if (allItemsStates == null) {
+            allItemsStates = new Dictionary<string, int>();
+            for(int i = 0; i < allItems.Count; i++)
             {
-                item.transform.parent = inventoryUI;
+                allItemsStates.Add(allItems[i].name, 0); //all items start in state 0 - uncollected
             }
-            DisplayItems();
-            hidden = false; //there are items so UI should be showing
         }
+
+        GameObject newItem = null; //temp newItem Gameobject
+        //Instantiate and activate the items
+        foreach(GameObject item in allItems)
+        {
+            newItem = Instantiate(item, inventoryUI); //instantiate all items as child objects
+            newItem.name = newItem.name.Substring(0, newItem.name.Length - 7); //remove (clone) from name
+
+            if(allItemsStates[item.name] == 1) //check if the item should be in the inventory
+            {
+                newItem.SetActive(true);
+                Items.Add(newItem.name, newItem); //directly add to the list (skips some unnecissary code)
+                newItem.GetComponent<CollectableItem>().Collected(); //sets the internal states and layers
+            }
+            else
+            {
+                newItem.SetActive(false);
+            }
+        }
+        DisplayItems();
 
         collectEffect = Instantiate(collectEffectPrefab, Vector2.zero, Quaternion.identity);
         collectEffect.SetActive(false);
