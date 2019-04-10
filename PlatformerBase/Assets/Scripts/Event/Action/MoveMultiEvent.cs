@@ -10,6 +10,12 @@ public class MoveMultiEvent : MoveEvent
 
     protected override void Start()
     {
+        //TODO: set up based on save data
+            transform.localPosition = origin; //start at the origin
+            if (fadeTilemap) { rend.color = initialColor; }
+            SetCols(colliderOn == ColliderOn.Always);
+
+
         foreach (EventTrigger evTrig in evTrigs)
         {
             if (beforeAfter)
@@ -21,8 +27,6 @@ public class MoveMultiEvent : MoveEvent
                 evTrig.After += new triggered(Move);
             }
         }
-
-        Setup();
     }
 
 

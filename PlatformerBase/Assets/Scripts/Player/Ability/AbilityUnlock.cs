@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class AbilityUnlock : BloodParticle {
+public class AbilityUnlock : BloodParticle, ILevelData {
 
     [SerializeField] private int numParticles;
     [SerializeField] private int abilityUnlocked;
@@ -13,6 +13,9 @@ public class AbilityUnlock : BloodParticle {
 
     private SpriteRenderer render;
     private Collider2D coll;
+
+    public bool State { get { return AbilityHandler.IsUnlocked(abilityUnlocked); } }
+    public string Name { get { return gameObject.name; } }
 
     protected override void Awake()
     {
@@ -23,6 +26,18 @@ public class AbilityUnlock : BloodParticle {
 
         //Assert.IsNotNull(text, "Need to add Unlock text for " + gameObject.name);
     }
+
+    public void OnLevelLoad(bool state)
+    {
+        if (AbilityHandler.IsUnlocked(abilityUnlocked))
+        {
+            render = GetComponent<SpriteRenderer>();
+            coll = GetComponent<Collider2D>();
+            render.enabled = false;
+            coll.enabled = false;
+        }
+    }
+
 
     private void Update()
     {
@@ -45,4 +60,6 @@ public class AbilityUnlock : BloodParticle {
             part.Play();
         }
     }
+
+
 }

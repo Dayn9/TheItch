@@ -65,24 +65,7 @@ public class MoveEvent : Global {
     }
 
      protected virtual void Start () {
-        //subscribe to proper event
-        if (beforeAfter)
-        {
-            evTrig.Before += new triggered(Move);
-        }
-        else
-        {
-            evTrig.After += new triggered(Move);
-        }
 
-        Setup();
-     }
-
-    /// <summary>
-    /// set up the starting properties for the object
-    /// </summary>
-    protected void Setup()
-    {
         if (evTrig.State)
         {
             transform.localPosition = final;
@@ -95,7 +78,18 @@ public class MoveEvent : Global {
             if (fadeTilemap) { rend.color = initialColor; }
             SetCols(colliderOn == ColliderOn.Always);
         }
-    }
+
+
+        //subscribe to proper event
+        if (beforeAfter)
+        {
+            evTrig.Before += new triggered(Move);
+        }
+        else
+        {
+            evTrig.After += new triggered(Move);
+        }
+     }
 	
     //called by event, starts the movement
     protected virtual void Move()

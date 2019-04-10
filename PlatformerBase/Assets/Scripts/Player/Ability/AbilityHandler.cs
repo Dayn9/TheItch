@@ -53,6 +53,10 @@ public class AbilityHandler : Global {
 
     public AbilityTransfer PowerZero { get { return powerZero; } }
     public AbilityAbsorb PowerOne { get { return powerOne; } }
+    public static bool[] Unlocked {
+        get { return unlockedAbilities; }
+        set { unlockedAbilities = value; }
+    }
 
     // Use this for initialization
     void Awake () {
@@ -75,9 +79,12 @@ public class AbilityHandler : Global {
 
         powerOne = Instantiate(abilityOnePrefab).GetComponent<AbilityAbsorb>();
         powerOne.gameObject.SetActive(false);
+    }
 
+    void Start()
+    {
         //all abilities start out false
-        if(unlockedAbilities == null)
+        if (unlockedAbilities == null)
         {
             unlockedAbilities = new bool[3]; //SET number of abilities here
             LockAll();

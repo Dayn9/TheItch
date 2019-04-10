@@ -56,6 +56,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
                 SetFrozen(true);
                 Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
                 CheckQuest();
+                Debug.Log(questCompleted);
                 if (questCompleted)
                 {
                     if (dialogueBox.FirstChunk) { CallAfter(); }

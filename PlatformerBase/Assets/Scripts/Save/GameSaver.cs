@@ -40,7 +40,8 @@ public class GameSaver : Global
             player.transform.position,
             player.ReturnPosition,
             player.Health,
-            Heartbeat.BPM
+            Heartbeat.BPM,
+            AbilityHandler.Unlocked
         );
 
         SaveGameData(saveData);

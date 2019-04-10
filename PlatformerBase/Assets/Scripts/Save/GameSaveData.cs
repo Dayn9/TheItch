@@ -16,17 +16,20 @@ public class GameSaveData
     private float[] playerReturnPosition; 
     public int health = 0;
     public float bpm = 0;
+    public bool[] unlockedAbilities;
 
     //Inventory Info
     public List<string> itemNames; 
 
-    public GameSaveData(string level, Vector2 playerPos, Vector2 resetPosition, int health, float bpm)
+    public GameSaveData(string level, Vector2 playerPos, Vector2 resetPosition, 
+        int health, float bpm, bool[] unlocked)
     {
         currentLevel = level;
         playerPosition = new float[] { playerPos.x, playerPos.y };
         playerReturnPosition = new float[] { resetPosition.x, resetPosition.y };
         this.health = health;
         this.bpm = bpm;
+        unlockedAbilities = unlocked;
     }
 
     public Vector2 PlayerReturnPosition()

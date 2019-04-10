@@ -58,6 +58,8 @@ public class Transition : EventTrigger{
         player.Health = gameData.health;
         player.ReturnPosition = gameData.PlayerReturnPosition();
 
+        AbilityHandler.Unlocked = gameData.unlockedAbilities;
+
         loadGame = false;
     }
 
@@ -80,8 +82,11 @@ public class Transition : EventTrigger{
             //loop through all the level data objects
             foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
             {
-                //load objects based on state from the dictionart
-                data.OnLevelLoad(stateLookup[data.Name]);
+                //load objects based on state from the dictionary
+                if (stateLookup.ContainsKey(data.Name))
+                {
+                    data.OnLevelLoad(stateLookup[data.Name]);
+                }
             }
         }
     }
