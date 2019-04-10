@@ -198,7 +198,34 @@ MonoBehaviour:
   - {fileID: 21300066, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
   - {fileID: 21300068, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
   - {fileID: 21300070, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
-  letterColor: {r: 0, g: 0, b: 0, a: 0}
+  - {fileID: 21300072, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300074, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300076, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300078, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300080, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300082, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300084, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300086, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300088, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300090, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300092, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300094, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300096, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300098, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300100, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300102, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300104, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300106, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300108, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300110, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300112, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300114, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300116, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300118, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300120, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 21300122, guid: 441eec6bad0bb5841befab193da6eebf, type: 3}
+  - {fileID: 0}
+  letterColor: {r: 0.42352945, g: 0.49411768, b: 0.5058824, a: 1}
 --- !u!212 &107856658
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -236,7 +263,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ebe67e3e9aca46d45a34490aa4b15bed, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -244,7 +271,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &107856659
@@ -397,7 +424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319794070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.54, y: -0.32, z: 0}
+  m_LocalPosition: {x: 7.499, y: -0.191, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1874378048}
@@ -953,7 +980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492877751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.54, y: -0.31999993, z: 0}
+  m_LocalPosition: {x: 7.49, y: -0.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1874378048}
@@ -1175,7 +1202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846058152}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.57, y: -1.6, z: 0}
+  m_LocalPosition: {x: 7.48, y: -1.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1874378048}
@@ -1651,7 +1678,7 @@ MonoBehaviour:
   buttonLocationOneOffset: {x: 7.5, y: -0.25}
   buttonLocationTwoOffset: {x: 7.5, y: -1.625}
   saveNumberLabelOffset: {x: 6.5, y: -1}
-  nameOutputLabelOffset: {x: 0.5, y: -2}
+  nameOutputLabelOffset: {x: 0.375, y: -1.875}
   newButton: {fileID: 319794071}
   playButton: {fileID: 492877752}
   deleteButton: {fileID: 846058153}

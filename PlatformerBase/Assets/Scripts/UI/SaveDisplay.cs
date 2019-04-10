@@ -49,11 +49,11 @@ public class SaveDisplay : MonoBehaviour
         }
         else
         {
-            Debug.Log("no file");
-
             //File doesn't exist
             playButton.gameObject.SetActive(false);
             deleteButton.gameObject.SetActive(false);
+
+            saveLevelNameBox.OnTriggerKeyPressed("---");
         }
 
     }
