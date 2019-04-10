@@ -4,8 +4,8 @@ using UnityEngine;
 public delegate void triggered();
 
 [RequireComponent(typeof(Collider2D))]
-public class EventTrigger : Inventory {
-
+public class EventTrigger : Inventory, ILevelData
+{
     [SerializeField] protected bool disableAfter;
 
     protected bool playerTouching = false; //true when dialogue is touching Charachter
@@ -25,6 +25,9 @@ public class EventTrigger : Inventory {
     public event triggered After; //Even Triggered on player interaction when quest complete
 
     protected AudioPlayer audioPlayer; //ref to the attached audio player
+
+    public virtual bool State { get { return questCompleted; } }
+    public string Name { get { return gameObject.name; } }
 
     protected virtual void Awake () {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
@@ -49,6 +52,12 @@ public class EventTrigger : Inventory {
     /// default event so null ref errors are not thrown
     /// </summary>
     protected void NullEvent() { }
+
+    public virtual void OnLevelLoad(bool state)
+    {
+        questCompleted = state;
+    }
+
 
     protected virtual void Update()
     {
@@ -110,14 +119,14 @@ public class EventTrigger : Inventory {
         if (!questCompleted) //only check for completion when incomplete
         {
             questCompleted = CheckItems();
-        }
 
-        if (Input.GetKey(KeyCode.T)) { questCompleted = true; }
+            if (Input.GetKey(KeyCode.T)) { questCompleted = true; }
 
-        if((givenOnComplete && questCompleted || !givenOnComplete) && itemGiven != null && itemGiven.activeSelf == false)
-        {
-            itemGiven.SetActive(true);
-            itemGiven.transform.position = Player.transform.position;
+            if ((givenOnComplete && questCompleted || !givenOnComplete) && itemGiven != null && itemGiven.activeSelf == false)
+            {
+                itemGiven.SetActive(true);
+                itemGiven.transform.position = Player.transform.position;
+            }
         }
 
         //if (audioPlayer != null) { audioPlayer.PlaySound(questCompleted ? 1 : 0); } //play audio bsed on quest completion

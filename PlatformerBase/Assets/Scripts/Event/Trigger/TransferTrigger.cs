@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(IHealthObject))]
-public class TransferTrigger : IndicatorTrigger, ILevelData
+public class TransferTrigger : IndicatorTrigger
 {
     private IHealthObject healthObj;
 
@@ -38,18 +38,16 @@ public class TransferTrigger : IndicatorTrigger, ILevelData
         {
             HbIndicator = indicator.AddComponent<HeartbeatIndicator>();
         }
-
-        HbIndicator.Total = healthObj.MaxHealth;
-        HbIndicator.CurrentHealth = healthObj.Health;
-
         zone = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
-        anim.SetBool("full", FullyHealed);
     }
 
     private void Start()
     {
         abilityHandler = Player.GetComponentInChildren<AbilityHandler>();
+        HbIndicator.Total = healthObj.MaxHealth;
+        HbIndicator.CurrentHealth = healthObj.Health;
+        anim.SetBool("full", FullyHealed);
     }
 
     /// <summary>
@@ -58,9 +56,8 @@ public class TransferTrigger : IndicatorTrigger, ILevelData
     public bool FullyHealed { get { return healthObj.Health == healthObj.MaxHealth; } }
     public bool Empty { get { return healthObj.Health == 0; } }
 
-    public bool State { get { return FullyHealed; } }
-    public string Name { get { return gameObject.name; } }
-    public void OnLevelLoad(bool state)
+    public override bool State { get { return FullyHealed; } }
+    public override void OnLevelLoad(bool state)
     {
         healthObj = GetComponent<IHealthObject>();
         if (state) {
@@ -88,7 +85,7 @@ public class TransferTrigger : IndicatorTrigger, ILevelData
                 }
                 else
                 {
-                    healthObj.Heal(transferRate * Time.deltaTime);                    
+                    healthObj.Heal(transferRate * Time.deltaTime);
                 }
                 //update the heartbeatIndicator
                 HbIndicator.CurrentHealth = healthObj.Health;

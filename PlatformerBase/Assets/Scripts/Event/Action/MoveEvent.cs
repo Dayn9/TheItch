@@ -57,9 +57,9 @@ public class MoveEvent : Global {
         }
 
 
-            //get the Collider from somewhere in the object if Needed
-            colls = GetComponentsInChildren<Collider2D>();
-            Assert.IsNotNull(colls);
+        //get the Collider from somewhere in the object if Needed
+        colls = GetComponentsInChildren<Collider2D>();
+        Assert.IsNotNull(colls);
 
         audioPlayer = GetComponent<AudioPlayer>();
     }
@@ -83,9 +83,18 @@ public class MoveEvent : Global {
     /// </summary>
     protected void Setup()
     {
-        transform.localPosition = origin; //start at the origin
-        if (fadeTilemap) { rend.color = initialColor; }
-        SetCols(colliderOn == ColliderOn.Always);
+        if (evTrig.State)
+        {
+            transform.localPosition = final;
+            if (fadeTilemap) { rend.color = snapColor; } //set the color to the snapped color
+            if (colliderOn == ColliderOn.Snap) { SetCols(true); }
+        }
+        else
+        {
+            transform.localPosition = origin; //start at the origin
+            if (fadeTilemap) { rend.color = initialColor; }
+            SetCols(colliderOn == ColliderOn.Always);
+        }
     }
 	
     //called by event, starts the movement

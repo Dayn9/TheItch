@@ -11,6 +11,12 @@ public class SpritechangeEvent : MonoBehaviour {
 
     void Start()
     {
+        //check if saved
+        if (evTrig.State)
+        {
+            SetSprite();
+        }
+
         //subscribe to proper event
         if (beforeAfter)
         {

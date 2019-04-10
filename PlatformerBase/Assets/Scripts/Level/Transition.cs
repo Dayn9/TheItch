@@ -47,8 +47,6 @@ public class Transition : EventTrigger{
             evTrig.Before += new triggered(FadeOut);
         }
 
-        
-
         FadeIn(); //begin the fade in when the scene first loads 
     }
 

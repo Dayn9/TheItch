@@ -41,10 +41,9 @@ public class HeartbeatObject : MonoBehaviour, IHealthObject
         health = (int)floatHealth;
     }
 
-    private void Awake()
+    private void Start()
     {
-        //if health is not max, consider it 0
-        //health = health == maxHealth ? maxHealth : 0; 
+        //set the float health after the level data has been loaded in
         floatHealth = health;
     }
 }

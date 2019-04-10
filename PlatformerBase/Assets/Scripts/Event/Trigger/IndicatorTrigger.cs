@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IndicatorTrigger : EventTrigger {
+public class IndicatorTrigger : EventTrigger
+{
 
     [SerializeField] protected GameObject indicatorPrefab; //object that appears when the player can interact with object
     [SerializeField] protected Vector3 indicatorOffset; //offset from door to display above object
@@ -62,4 +63,6 @@ public class IndicatorTrigger : EventTrigger {
             if (disableAfter) { gameObject.SetActive(false); }
         }
     }
+
+
 }
