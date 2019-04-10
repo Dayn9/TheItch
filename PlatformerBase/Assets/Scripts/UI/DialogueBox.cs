@@ -4,7 +4,6 @@ using UnityEngine;
 
 public enum TextSize { Small, Large, SmallFull, AreaName }
 
-[RequireComponent(typeof(UIAnchor))]
 [RequireComponent(typeof(AudioPlayer))]
 public class DialogueBox : Pause {
     
@@ -136,7 +135,7 @@ public class DialogueBox : Pause {
     public virtual bool OnTriggerKeyPressed(string message)
     {
         SetAllRenderers(true);
-        audioPlayer.PlaySound(0);
+        //audioPlayer.PlaySound(0);
         //check if there new message
         if (dialogueChunk == -1)
         {

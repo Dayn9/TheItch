@@ -34,7 +34,10 @@ public class SaveDisplay : MonoBehaviour
         deleteButton.localPosition = buttonLocationTwoOffset;
         saveNumberLabel.localPosition = saveNumberLabelOffset;
         saveLevelNameBox.transform.localPosition = nameOutputLabelOffset;
+    }
 
+    private void Start()
+    {
         folderName = "/SaveFile" + (saveNumber - 1).ToString() + "/"; //get the folder name
         //check if the file already exists
         string filePath = Application.persistentDataPath + folderName;
@@ -55,7 +58,6 @@ public class SaveDisplay : MonoBehaviour
 
             saveLevelNameBox.OnTriggerKeyPressed("---");
         }
-
     }
 
     // Update is called once per frame
