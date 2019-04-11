@@ -149,7 +149,6 @@ public class Transition : EventTrigger{
                     GameSaver.SaveGameData();
                     GameSaver.SaveLevelData(); //save the game
                     CallAfter();
-                    Debug.Log("we got there");
                     player.Frozen = false; 
                     player.InFallZone = false;
                     return;

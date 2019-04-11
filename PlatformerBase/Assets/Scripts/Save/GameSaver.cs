@@ -196,7 +196,6 @@ public class GameSaver : Global
                 fileStream.Close();
             }
         }
-        Debug.Log(saveData.objectNames.Count);
         return saveData;
     }
 
