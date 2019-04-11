@@ -38,6 +38,16 @@ public class SaveDisplay : MonoBehaviour
 
     private void Start()
     {
+        Refresh(); //set the save file data
+    }
+    
+    /// <summary>
+    /// called when the save file dat needs updating
+    /// </summary>
+    public void Refresh()
+    {
+        saveLevelNameBox.Reset();
+
         folderName = "/SaveFile" + (saveNumber - 1).ToString() + "/"; //get the folder name
         //check if the file already exists
         string filePath = Application.persistentDataPath + folderName;
@@ -45,6 +55,8 @@ public class SaveDisplay : MonoBehaviour
         {
             //File Exists
             newButton.gameObject.SetActive(false);
+            playButton.gameObject.SetActive(true);
+            deleteButton.gameObject.SetActive(true);
 
             //get the name of the level saved on
             GameSaveData saveData = GameSaver.LoadGameData(saveNumber);
@@ -53,6 +65,7 @@ public class SaveDisplay : MonoBehaviour
         else
         {
             //File doesn't exist
+            newButton.gameObject.SetActive(true);
             playButton.gameObject.SetActive(false);
             deleteButton.gameObject.SetActive(false);
 
@@ -60,9 +73,4 @@ public class SaveDisplay : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

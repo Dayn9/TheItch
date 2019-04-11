@@ -221,4 +221,13 @@ public class GameSaver : Global
             Directory.CreateDirectory(filePath);
         }
     }
+
+    public static void RemoveDirectory()
+    {
+        string filePath = Application.persistentDataPath + folderName;
+        if (Directory.Exists(filePath))
+        {
+            Directory.Delete(filePath, true);
+        }
+    }
 }

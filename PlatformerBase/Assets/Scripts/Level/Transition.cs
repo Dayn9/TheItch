@@ -70,8 +70,6 @@ public class Transition : EventTrigger{
     /// </summary>
     private void LoadLevel()
     {
-        Debug.Log("load data");
-
         LevelSaveData levelData = null;
         if((levelData = GameSaver.LoadLevelData(areaName)) != null)
         {

@@ -527,7 +527,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 333152302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd03c40d1625d8643b0fbe3dd64cd07c, type: 3}
+  m_Script: {fileID: 11500000, guid: 33a3880dd87259a4b9510a62c9644e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 846058152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd03c40d1625d8643b0fbe3dd64cd07c, type: 3}
+  m_Script: {fileID: 11500000, guid: 33a3880dd87259a4b9510a62c9644e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
@@ -2012,14 +2012,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inheritGravity: 0
-  moveSpeed: 0
-  jumpSpeed: 0
-  addedSpeed: 0
-  maxHealth: 0
-  invulnerabilityTime: 0
-  restoreRate: 0
-  removeRate: 0
-  returnVelocityDivider: 0
+  moveSpeed: 12
+  jumpSpeed: 21
+  addedSpeed: 0.3
+  maxHealth: 15
+  invulnerabilityTime: 1.2
+  restoreRate: 1
+  removeRate: 0.3
+  returnVelocityDivider: 150
 --- !u!4 &1533869715
 Transform:
   m_ObjectHideFlags: 0

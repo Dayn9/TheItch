@@ -56,8 +56,6 @@ public class EventTrigger : Inventory, ILevelData
     public virtual void OnLevelLoad(bool state)
     {
         questCompleted = state;
-
-        Debug.Log(Name + ": " + state);
     }
 
 
