@@ -79,6 +79,9 @@ public class Transition : EventTrigger{
             {
                 stateLookup.Add(levelData.objectNames[i], levelData.objectStates[i]);
             }
+
+            Debug.Log((FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>()).Count<ILevelData>());
+
             //loop through all the level data objects
             foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
             {

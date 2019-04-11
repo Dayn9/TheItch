@@ -19,8 +19,17 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
     {
         base.Start();
         //get reference to gameobject to activate after mandatory dialogue
-        after = transform.GetChild(0).gameObject;
-        after.SetActive(false);
+        if (!after)
+        {
+            after = transform.GetChild(0).gameObject;
+            after.SetActive(talked);
+        }
+    }
+
+    public override bool State { get { return talked; } }
+    public override void OnLevelLoad(bool state)
+    {
+        talked = state;
     }
 
     protected override void Update()

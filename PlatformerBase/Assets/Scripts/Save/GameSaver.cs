@@ -90,11 +90,14 @@ public class GameSaver : Global
     {
         LevelSaveData levelData = new LevelSaveData(currentLevelName);
 
+        
         //add the states data of all the level data objects 
         foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
         {
             levelData.AddObject(data.Name, data.State);
         }
+
+        Debug.Log(levelData.objectNames.Count);
 
         SaveLevelData(levelData);
     }
@@ -103,7 +106,7 @@ public class GameSaver : Global
     /// 
     /// </summary>
     /// <param name="saveData"></param>
-    private static void SaveLevelData(LevelSaveData saveData)
+    public static void SaveLevelData(LevelSaveData saveData)
     {
         MakeDirectory();
         string dataPath = Application.persistentDataPath + folderName + saveData.levelName + FileExtension;
@@ -193,7 +196,7 @@ public class GameSaver : Global
                 fileStream.Close();
             }
         }
-
+        Debug.Log(saveData.objectNames.Count);
         return saveData;
     }
 

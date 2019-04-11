@@ -32,6 +32,11 @@ public class CameraPanEvent : Pause
     {
         camController = MainCamera.GetComponent<BaseCamera>();
 
+        if (evTrig.State)
+        {
+            gameObject.SetActive(false);
+        }
+
         //subscribe to proper event
         if (beforeAfter)
         {
