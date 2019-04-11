@@ -21,7 +21,7 @@ public class InventoryDisplay : Inventory {
     {
         inventoryUI = transform; //set the inventory transform to this object
         display = transform.GetChild(0);
-        hidden = true;
+        //hidden = true;
 
         //set up the all items states if it doesn't already exist
         if (allItemsStates == null) {
@@ -50,6 +50,8 @@ public class InventoryDisplay : Inventory {
 
         collectEffect = Instantiate(collectEffectPrefab, Vector2.zero, Quaternion.identity);
         collectEffect.SetActive(false);
+
+        hidden = (Items.Count == 0);
     }
 
     private void Start()

@@ -13,6 +13,7 @@ public class StartButton : Button
 
     protected override void OnClick()
     {
+        GameSaver.FolderNumber = GetComponentInParent<SaveDisplay>().saveNumber;
         SceneManager.LoadScene(levelName, mode);
     }
 

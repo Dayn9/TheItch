@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveDisplay : MonoBehaviour
 {
     [Header("Setup Variables")]
-    [SerializeField] [Range(1, 3)] private int saveNumber;
+    [SerializeField] [Range(1, 3)] public int saveNumber;
     [SerializeField] private Vector2 buttonLocationOneOffset;
     [SerializeField] private Vector2 buttonLocationTwoOffset;
     [SerializeField] private Vector2 saveNumberLabelOffset;
@@ -47,7 +47,7 @@ public class SaveDisplay : MonoBehaviour
             newButton.gameObject.SetActive(false);
 
             //get the name of the level saved on
-            GameSaveData saveData = GameSaver.LoadGameData();
+            GameSaveData saveData = GameSaver.LoadGameData(saveNumber);
             saveLevelNameBox.OnTriggerKeyPressed(saveData.currentLevel);
         }
         else

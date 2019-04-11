@@ -31,7 +31,7 @@ public class Transition : EventTrigger{
         dialogueBox.GetComponent<TextboxEvent>().addEvTrig(this);
 
         player = Player.GetComponent<Jump>();
-        GameSaver.CurrentLevelName = areaName; 
+        GameSaver.currentLevelName = areaName; 
         if (loadGame) {
             LoadGame();
         }

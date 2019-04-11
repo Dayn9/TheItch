@@ -22,13 +22,15 @@ public class GameSaver : Global
     [DllImport("__Internal")]
     private static extern void WindowAlert(string message);
 
-    private const string FolderName = "/SaveFile0/";
+    private static string folderName = "/SaveFile0/";
     private const string GameSaveFileName = "GameSaveData";
     private const string FileExtension = ".dat";
 
     public static GameSaveData gameData = null;
 
-    public static string CurrentLevelName = "Fall"; //name of the level player is currently on
+    public static string currentLevelName = "Fall"; //name of the level player is currently on
+
+    public static int FolderNumber { set { folderName = "/SaveFile" + (value - 1)+ "/"; } }
 
     /// <summary>
     /// General Game Saving
@@ -39,7 +41,7 @@ public class GameSaver : Global
 
         //save the game data
         GameSaveData saveData = new GameSaveData(
-            CurrentLevelName,
+            currentLevelName,
             player.transform.position + (player.InFallZone ? Vector3.up : Vector3.zero),
             player.ReturnPosition,
             player.Health,
@@ -55,11 +57,11 @@ public class GameSaver : Global
     /// Saves the game save data
     /// </summary>
     /// <param name="saveData">Data to save</param>
-    public static void SaveGameData(GameSaveData saveData)
+    private static void SaveGameData(GameSaveData saveData)
     {
         MakeDirectory();
 
-        string dataPath = Application.persistentDataPath + FolderName + GameSaveFileName + FileExtension;
+        string dataPath = Application.persistentDataPath + folderName + GameSaveFileName + FileExtension;
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate);
 
@@ -86,7 +88,7 @@ public class GameSaver : Global
 
     public static void SaveLevelData()
     {
-        LevelSaveData levelData = new LevelSaveData(CurrentLevelName);
+        LevelSaveData levelData = new LevelSaveData(currentLevelName);
 
         //add the states data of all the level data objects 
         foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
@@ -101,10 +103,10 @@ public class GameSaver : Global
     /// 
     /// </summary>
     /// <param name="saveData"></param>
-    public static void SaveLevelData(LevelSaveData saveData)
+    private static void SaveLevelData(LevelSaveData saveData)
     {
         MakeDirectory();
-        string dataPath = Application.persistentDataPath + FolderName + saveData.levelName + FileExtension;
+        string dataPath = Application.persistentDataPath + folderName + saveData.levelName + FileExtension;
 
         Debug.Log(dataPath);
 
@@ -135,10 +137,11 @@ public class GameSaver : Global
     /// Loads in the game save data
     /// </summary>
     /// <returns>Deserialized Game Data</returns>
-    public static GameSaveData LoadGameData()
+    public static GameSaveData LoadGameData(int f)
     {
+        FolderNumber = f;
         GameSaveData saveData = null;
-        string dataPath = Application.persistentDataPath + FolderName + GameSaveFileName + FileExtension;
+        string dataPath = Application.persistentDataPath + folderName + GameSaveFileName + FileExtension;
 
         //make sure the file actually exists
         if (File.Exists(dataPath))
@@ -168,7 +171,7 @@ public class GameSaver : Global
     public static LevelSaveData LoadLevelData(string levelName)
     {
         LevelSaveData saveData = null;
-        string dataPath = Application.persistentDataPath + FolderName + levelName + FileExtension;
+        string dataPath = Application.persistentDataPath + folderName + levelName + FileExtension;
 
         //make sure the file actually exists
         if (File.Exists(dataPath))
@@ -212,7 +215,7 @@ public class GameSaver : Global
 
     private static void MakeDirectory()
     {
-        string filePath = Application.persistentDataPath + FolderName;
+        string filePath = Application.persistentDataPath + folderName;
         if (!Directory.Exists(filePath))
         {
             Directory.CreateDirectory(filePath);
