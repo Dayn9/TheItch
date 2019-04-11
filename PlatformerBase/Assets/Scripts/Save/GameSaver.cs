@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -29,7 +30,9 @@ public class GameSaver : Global
 
     public static string CurrentLevelName = "Fall"; //name of the level player is currently on
 
-
+    /// <summary>
+    /// General Game Saving
+    /// </summary>
     public static void SaveGameData()
     {
         Jump player = Player.GetComponent<Jump>();
@@ -41,7 +44,8 @@ public class GameSaver : Global
             player.ReturnPosition,
             player.Health,
             Heartbeat.BPM,
-            AbilityHandler.Unlocked
+            AbilityHandler.Unlocked,
+            Inventory.ItemStates
         );
 
         SaveGameData(saveData);
@@ -79,6 +83,24 @@ public class GameSaver : Global
         }
     }
 
+
+    public static void SaveLevelData()
+    {
+        LevelSaveData levelData = new LevelSaveData(CurrentLevelName);
+
+        //add the states data of all the level data objects 
+        foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
+        {
+            levelData.AddObject(data.Name, data.State);
+        }
+
+        SaveLevelData(levelData);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="saveData"></param>
     public static void SaveLevelData(LevelSaveData saveData)
     {
         MakeDirectory();

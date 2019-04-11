@@ -15,6 +15,8 @@ public class InventoryDisplay : Inventory {
 
     [SerializeField] private List<GameObject> allItems;
 
+    public static bool loadGame = false;
+
     void Awake()
     {
         inventoryUI = transform; //set the inventory transform to this object
@@ -26,26 +28,22 @@ public class InventoryDisplay : Inventory {
             allItemsStates = new Dictionary<string, int>();
             for(int i = 0; i < allItems.Count; i++)
             {
-                allItemsStates.Add(allItems[i].name, 0); //all items start in state 0 - uncollected
+                allItemsStates.Add(allItems[i].name, loadGame ? GameSaver.gameData.itemStates[i]: 0); //all items start in state 0 - uncollected
             }
+            loadGame = false;
         }
 
         GameObject newItem = null; //temp newItem Gameobject
         //Instantiate and activate the items
         foreach(GameObject item in allItems)
         {
-            newItem = Instantiate(item, inventoryUI); //instantiate all items as child objects
-            newItem.name = newItem.name.Substring(0, newItem.name.Length - 7); //remove (clone) from name
-
             if(allItemsStates[item.name] == 1) //check if the item should be in the inventory
             {
+                newItem = Instantiate(item, inventoryUI); //instantiate all items as child objects
+                newItem.name = newItem.name.Substring(0, newItem.name.Length - 7); //remove (clone) from name
                 newItem.SetActive(true);
                 Items.Add(newItem.name, newItem); //directly add to the list (skips some unnecissary code)
                 newItem.GetComponent<CollectableItem>().Collected(); //sets the internal states and layers
-            }
-            else
-            {
-                newItem.SetActive(false);
             }
         }
         DisplayItems();

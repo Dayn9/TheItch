@@ -29,6 +29,19 @@ public class Inventory : Global {
         }
         //To set items use AddItem() and RemoveItem
     } 
+
+    public static int[] ItemStates {
+        get {
+            int[] states = new int[allItemsStates.Count];
+            int i = 0;
+            foreach(int state in allItemsStates.Values)
+            {
+                states[i] = state;
+                i++;
+            }
+            return states;
+        }
+    }
     
     /// <summary>
     /// Add an item into the player's inventory

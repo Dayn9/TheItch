@@ -8,12 +8,12 @@ public class LoadButton : GenericButton
     protected override void OnClick()
     {
         GameSaveData loadData = GameSaver.LoadGameData();
-
-        Transition.loadGame = true; //tell transition to load in the game and level data
-
         GameSaver.CurrentLevelName = loadData.currentLevel;
+        
         startPosition = loadData.PlayerPosition();
 
+        Transition.loadGame = true; //tell transition to load in the game and level data
+        InventoryDisplay.loadGame = true;
         SceneManager.LoadScene(GameSaver.CurrentLevelName, LoadSceneMode.Single);
     }
 }

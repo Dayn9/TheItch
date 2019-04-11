@@ -32,7 +32,9 @@ public class Transition : EventTrigger{
 
         player = Player.GetComponent<Jump>();
         GameSaver.CurrentLevelName = areaName; 
-        if (loadGame) { LoadGame(); }
+        if (loadGame) {
+            LoadGame();
+        }
 
         //load in the level data
         LoadLevel();
@@ -103,7 +105,6 @@ public class Transition : EventTrigger{
 
         CallBefore();
         dialogueBox.OnTriggerKeyPressed(areaName);
-
     }
 
 
@@ -144,8 +145,11 @@ public class Transition : EventTrigger{
                 {
                     render.color = new Color(0, 0, 0, 1);
                     fadeOut = false;
-                    CallAfter(); 
-                    player.Frozen = false; //stop the player from moving
+                    GameSaver.SaveGameData();
+                    GameSaver.SaveLevelData(); //save the game
+                    CallAfter();
+                    Debug.Log("we got there");
+                    player.Frozen = false; 
                     player.InFallZone = false;
                     return;
                 }

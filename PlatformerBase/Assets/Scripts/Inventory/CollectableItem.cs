@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Profiling;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class CollectableItem : Inventory
