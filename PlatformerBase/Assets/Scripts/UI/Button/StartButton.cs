@@ -14,6 +14,7 @@ public class StartButton : Button
     protected override void OnClick()
     {
         GameSaver.FolderNumber = GetComponentInParent<SaveDisplay>().saveNumber;
+        BackgroundAudioPlayer.menu = false;
         SceneManager.LoadScene(levelName, mode);
     }
 

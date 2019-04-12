@@ -14,6 +14,7 @@ public class LoadButton : GenericButton
 
         Transition.loadGame = true; //tell transition to load in the game and level data
         InventoryDisplay.loadGame = true;
+        BackgroundAudioPlayer.menu = false;
         SceneManager.LoadScene(GameSaver.currentLevelName, LoadSceneMode.Single);
     }
 }

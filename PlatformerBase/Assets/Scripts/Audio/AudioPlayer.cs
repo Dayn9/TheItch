@@ -44,6 +44,16 @@ public class AudioPlayer : Global {
             source.Play();
         }
     }
+    
+
+    public void PlaySoundOverride(int index)
+    {
+        currentPriority = sounds[index].Priority;
+        source.clip = sounds[index].Clip;
+        source.Play();
+
+        Debug.Log("FOR TESTING SOUNDS ONLY");
+    }
 
     /// <summary>
     /// Plays a sound by name
