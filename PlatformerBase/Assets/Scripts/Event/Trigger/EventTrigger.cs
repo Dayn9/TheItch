@@ -28,6 +28,7 @@ public class EventTrigger : Inventory, ILevelData
 
     public virtual bool State { get { return questCompleted; } }
     public string Name { get { return gameObject.name; } }
+    public GameObject ItemGiven { get { return itemGiven; } }
 
     protected virtual void Awake () {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
@@ -37,16 +38,14 @@ public class EventTrigger : Inventory, ILevelData
         After = new triggered(NullEvent);
 
         audioPlayer = GetComponentInParent<AudioPlayer>();
-
         if (itemGiven != null)
         {
-            string name = itemGiven.name;
-            itemGiven = Instantiate(itemGiven, transform.parent);
-            itemGiven.name = name;
+
             itemGiven.transform.position = transform.position + (Vector3)givenAtOffset;
             itemGiven.SetActive(false);
         }
     }
+
 
     /// <summary>
     /// default event so null ref errors are not thrown

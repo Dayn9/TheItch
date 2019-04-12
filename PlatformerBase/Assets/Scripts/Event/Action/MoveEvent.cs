@@ -70,7 +70,7 @@ public class MoveEvent : Global {
         {
             transform.localPosition = final;
             if (fadeTilemap) { rend.color = snapColor; } //set the color to the snapped color
-            if (colliderOn == ColliderOn.Snap) { SetCols(true); }
+            SetCols(true);
         }
         else
         {
