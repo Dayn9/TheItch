@@ -11,12 +11,7 @@ public class MoveMultiEvent : MoveEvent
     protected override void Start()
     {
         //TODO: set up based on save data
-            transform.localPosition = origin; //start at the origin
-            if (fadeTilemap) { rend.color = initialColor; }
-            SetCols(colliderOn == ColliderOn.Always);
-
-
-        foreach (EventTrigger evTrig in evTrigs)
+        foreach(EventTrigger evTrig in evTrigs)
         {
             if (beforeAfter)
             {
@@ -26,10 +21,25 @@ public class MoveMultiEvent : MoveEvent
             {
                 evTrig.After += new triggered(Move);
             }
+
+            if (evTrig.State) { numTriggered += 1; }
+        }
+
+        transform.localPosition = Vector2.Lerp(origin, final, numTriggered / evTrigs.Length);
+
+        if (numTriggered == evTrigs.Length)
+        {
+            if (fadeTilemap) { rend.color = snapColor; } //set the color to the snapped color
+           
+            SetCols(true);
+        }
+        else
+        {
+            //transform.localPosition = origin; //start at the origin
+            if (fadeTilemap) { rend.color = initialColor; }
+            SetCols(colliderOn == ColliderOn.Always);
         }
     }
-
-
 
     //called by event, starts the movement
     protected override void Move()
