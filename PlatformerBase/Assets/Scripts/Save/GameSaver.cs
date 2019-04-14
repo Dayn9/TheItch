@@ -97,8 +97,6 @@ public class GameSaver : Global
             levelData.AddObject(data.Name, data.State);
         }
 
-        Debug.Log(levelData.objectNames.Count);
-
         SaveLevelData(levelData);
     }
 

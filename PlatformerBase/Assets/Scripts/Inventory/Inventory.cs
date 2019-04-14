@@ -42,6 +42,11 @@ public class Inventory : Global {
             return states;
         }
     }
+
+    public static void ClearItemStates()
+    {
+        allItemsStates = null;
+    }
     
     /// <summary>
     /// Add an item into the player's inventory

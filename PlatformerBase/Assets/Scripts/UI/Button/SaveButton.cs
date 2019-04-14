@@ -22,14 +22,11 @@ public class SaveButton : GenericButton
 
         LevelSaveData levelData = new LevelSaveData(GameSaver.currentLevelName);
 
-
         //add the states data of all the level data objects 
         foreach (ILevelData data in levelDataObjects)
         {
             levelData.AddObject(data.Name, data.State);
         }
-
-        Debug.Log(levelData.objectNames.Count);
 
         GameSaver.SaveLevelData(levelData);
     }
