@@ -1,0 +1,65 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MoveRepeat : MoveEvent
+{
+    [SerializeField] private float waitTime;
+    private float waitTimer = 0;
+
+    private bool towards;
+
+    protected override void Start()
+    {
+        transform.localPosition = origin; //start at the origin
+        towards = true;
+        SetCols(true);
+
+        move = evTrig.State;
+
+        evTrig.Before += new triggered(ToggleMove);
+        evTrig.After += new triggered(ToggleMove);
+
+    }
+
+    private void ToggleMove()
+    {
+        move = !move;
+        waitTimer = 0;
+    }
+
+    protected override void FixedUpdate()
+    {
+        if (!paused)
+        {
+            //move from current position towards final position
+            if (move && waitTimer >= waitTime)
+            {
+                moveVector = (towards ? final : origin) - (Vector2)transform.localPosition; //get Vector towards final destination
+                moveObj.MoveVelocity = Vector2.Lerp(moveObj.MoveVelocity, moveVector.normalized * speed * Time.deltaTime, 0.1f);
+
+                //snap into position when close enough
+                if (moveVector.magnitude < speed * Time.deltaTime)
+                {
+                    transform.localPosition = (towards ? final : origin);
+                    towards = !towards;
+                    waitTimer = 0;
+
+                    //play the snap sound and stop looping the moving SFX
+                    audioPlayer.Loop = false;
+                    audioPlayer.PlaySound(1);
+                }
+                else
+                {
+                    transform.position += (Vector3)moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - buffer); //move at speed along mov
+                }
+            }
+            else
+            {
+                moveObj.MoveVelocity = Vector3.zero;
+                waitTimer += Time.deltaTime;
+            }
+        }
+    }
+
+}

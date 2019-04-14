@@ -10,16 +10,15 @@ public class ProjectileObject : MovingObject
     private float speed; //how fast the projectile is moving
 
     private ParticleSystem.ForceOverLifetimeModule myForceOverLifetime; //force over lifetime module of particle system
-    private ParticleSystem.EmissionModule myEmission;
+    private ParticleSystem.EmissionModule myEmission; //ref to emission module
 
     private SpriteRenderer render;
+    private ProjectilePool projectilePool; //ref to the particle pool parent object
 
-    private ProjectilePool projectilePool;
+    private const int pushForce = 7; //amount of force applied to the objects on collision
+    private PhysicsObject pushing; // physics object being pushed
 
-    private const int pushForce = 7;
-    private PhysicsObject pushing;
-
-    private bool active = false;
+    private bool active = false; //active state for the projectile pool
 
     public ProjectilePool ProjectilePool { set { projectilePool = value; } }
     public bool Active { get { return active; } }

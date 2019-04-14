@@ -11,7 +11,7 @@ public class MoveEvent : Global {
 
     protected enum ColliderOn { Snap, Initial, Always }
 
-    [SerializeField] private EventTrigger evTrig; //eventTrigger 
+    [SerializeField] protected EventTrigger evTrig; //eventTrigger 
     [Header("Before/True  -  After/False")]
     [SerializeField] protected bool beforeAfter; //when (before/after questCompleted) the event is triggered
 

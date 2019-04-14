@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -10,7 +9,7 @@ using UnityEditor;
 
 namespace UnityEditor
 {
-    
+
     //dictates which layer(s) are currently being painted to with brush
     public enum BuildingBrushType
     {
@@ -52,9 +51,9 @@ namespace UnityEditor
             }
             //try to find the child object
             GameObject child = GameObject.Find(brushTarget.name + searchName);
-            
+
             //make the child object if it doesn't exist
-            if(child == null)
+            if (child == null)
             {
                 child = new GameObject();
                 child.name = brushTarget.name + searchName;
@@ -64,7 +63,7 @@ namespace UnityEditor
                 //add required components based on brush type
                 child.AddComponent<Tilemap>();
                 //add Tilemap Renderer
-                if(brushType == BuildingBrushType.Detail || brushType == BuildingBrushType.Ladder)
+                if (brushType == BuildingBrushType.Detail || brushType == BuildingBrushType.Ladder)
                 {
                     TilemapRenderer render;
                     render = child.AddComponent<TilemapRenderer>();
@@ -88,7 +87,7 @@ namespace UnityEditor
             // Do not allow editing palettes
             if (brushTarget.layer == 31)
                 return;
-            
+
             switch (brushType)
             {
                 //alternate visible tilemaps
@@ -114,7 +113,7 @@ namespace UnityEditor
                     break;
             }
         }
-        
+
         public override void Erase(GridLayout grid, GameObject brushTarget, Vector3Int position)
         {
             // Do not allow editing palettes
@@ -147,7 +146,7 @@ namespace UnityEditor
             }
         }
 
-        
+
         public override void BoxFill(GridLayout grid, GameObject brushTarget, BoundsInt position)
         {
             // Do not allow editing palettes
@@ -179,7 +178,7 @@ namespace UnityEditor
                     break;
             }
         }
-        
+
         public override void FloodFill(GridLayout grid, GameObject brushTarget, Vector3Int position)
         {
             // Do not allow editing palettes
@@ -218,7 +217,6 @@ namespace UnityEditor
             // Do not allow editing palettes
             if (brushTarget.layer == 31)
                 return;
-
             switch (brushType)
             {
                 //alternate visible tilemaps
@@ -244,13 +242,11 @@ namespace UnityEditor
                     break;
             }
         }
-
         public override void Pick(GridLayout grid, GameObject brushTarget, BoundsInt position, Vector3Int pivot)
         {
             // Do not allow editing palettes
             if (brushTarget.layer == 31)
                 return;
-
             switch (brushType)
             {
                 //alternate visible tilemaps
@@ -276,13 +272,11 @@ namespace UnityEditor
                     break;
             }
         }
-
         public override void Move(GridLayout grid, GameObject brushTarget, BoundsInt from, BoundsInt to)
         {
             // Do not allow editing palettes
             if (brushTarget.layer == 31)
                 return;
-
             switch (brushType)
             {
                 //alternate visible tilemaps
@@ -310,8 +304,8 @@ namespace UnityEditor
         }*/
 
 #if UNITY_EDITOR
-//create asset menu for prefab brush
-[MenuItem("Assets/Create/BuildingBrush")]
+        //create asset menu for prefab brush
+        [MenuItem("Assets/Create/BuildingBrush")]
         public static void CreateBuildingBrush()
         {
             string path = EditorUtility.SaveFilePanelInProject("Save BuildingBrush", "New BuildingBrush", "asset", "Save BuildingBrush", "Assets");
@@ -319,7 +313,7 @@ namespace UnityEditor
 
             AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<BuildingBrush>(), path);
         }
-        #endif
+#endif
     }
 
 #if UNITY_EDITOR
