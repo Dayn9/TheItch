@@ -17,7 +17,6 @@ public class EventTrigger : Inventory, ILevelData
     [Header("--- Item Given ---")]
     [SerializeField] protected GameObject itemGiven; //item given to the player
     [SerializeField] private bool givenOnComplete; //true = given on quest complete, false = given on initial interaction
-    [SerializeField] private Vector2 givenAtOffset; //offset to spawn the item at
 
     protected bool questCompleted = false; //true when quest has been completed
 
@@ -28,7 +27,6 @@ public class EventTrigger : Inventory, ILevelData
 
     public virtual bool State { get { return questCompleted; } }
     public string Name { get { return gameObject.name; } }
-    public GameObject ItemGiven { get { return itemGiven; } }
 
     protected virtual void Awake () {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
@@ -38,12 +36,8 @@ public class EventTrigger : Inventory, ILevelData
         After = new triggered(NullEvent);
 
         audioPlayer = GetComponentInParent<AudioPlayer>();
-        if (itemGiven != null)
-        {
 
-            itemGiven.transform.position = transform.position + (Vector3)givenAtOffset;
-            itemGiven.SetActive(false);
-        }
+        if (itemGiven) { itemGiven.transform.localPosition = transform.localPosition; }
     }
 
 
@@ -57,6 +51,12 @@ public class EventTrigger : Inventory, ILevelData
         questCompleted = state;
     }
 
+    
+    private void OnEnable()
+    {
+        //don't active the item given when this object activates
+        if (itemGiven) { itemGiven.SetActive(false); }
+    }
 
     protected virtual void Update()
     {
@@ -125,6 +125,7 @@ public class EventTrigger : Inventory, ILevelData
             {
                 itemGiven.SetActive(true);
                 itemGiven.transform.position = Player.transform.position;
+                itemGiven = null; //break reference 
             }
         }
 

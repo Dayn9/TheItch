@@ -46,12 +46,6 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
                     SetFrozen(false);
                     Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
                     after.SetActive(true);
-
-                    //TODO: efficiency please
-                    if (after.GetComponent<EventTrigger>().ItemGiven)
-                    {
-                        after.GetComponent<EventTrigger>().ItemGiven.SetActive(false);
-                    }
                    
                     talked = true;
                 }
