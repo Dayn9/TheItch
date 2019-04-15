@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveRepeat : MoveEvent
 {
+    [SerializeField] private bool startImmediatly = false;
     [SerializeField] private float waitTime;
     private float waitTimer = 0;
 
@@ -17,7 +18,10 @@ public class MoveRepeat : MoveEvent
 
         move = evTrig.State;
 
-        evTrig.Before += new triggered(ToggleMove);
+        if (!beforeAfter)
+        {
+            evTrig.Before += new triggered(ToggleMove);
+        }
         evTrig.After += new triggered(ToggleMove);
 
     }
@@ -25,7 +29,7 @@ public class MoveRepeat : MoveEvent
     private void ToggleMove()
     {
         move = !move;
-        waitTimer = 0;
+        waitTimer = startImmediatly ? waitTime : 0;
     }
 
     protected override void FixedUpdate()

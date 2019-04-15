@@ -38,7 +38,6 @@ public class AbilityUnlock : BloodParticle, ILevelData {
         }
     }
 
-
     private void Update()
     {
         MoveParticles();
