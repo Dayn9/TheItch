@@ -109,8 +109,6 @@ public class GameSaver : Global
         MakeDirectory();
         string dataPath = Application.persistentDataPath + folderName + saveData.levelName + FileExtension;
 
-        Debug.Log(dataPath);
-
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate);
 
