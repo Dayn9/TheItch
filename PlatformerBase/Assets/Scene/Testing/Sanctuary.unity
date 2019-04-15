@@ -2398,7 +2398,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   - first: {x: 25, y: -24, z: 0}
     second:
@@ -2410,7 +2410,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -32, y: -18, z: 0}
     second:
@@ -2422,7 +2422,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 5
       m_IsLooping: 1
   - first: {x: 51, y: -10, z: 0}
     second:
@@ -38731,42 +38731,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000,
         type: 0}
-    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
-        type: 3}
-      propertyPath: itemsRequired.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
-        type: 3}
-      propertyPath: questDialogue
-      value: I hear the gem stones are beautiful this time of year
-      objectReference: {fileID: 0}
-    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
-        type: 3}
-      propertyPath: itemsRequired.Array.data[0]
-      value: 
-      objectReference: {fileID: 1053095009852926, guid: a14f9cecd9f58c5478797ecded428b2e,
-        type: 3}
-    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
-        type: 3}
-      propertyPath: completedDialogue
-      value: '@ Mark'
-      objectReference: {fileID: 0}
-    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
-        type: 3}
-      propertyPath: dialogueBox
-      value: 
-      objectReference: {fileID: 1232465839}
-    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
-        type: 3}
-      propertyPath: faceImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
-        type: 3}
-      propertyPath: itemsEaten
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 83004413648692308, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38821,6 +38785,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
+        type: 3}
+      propertyPath: itemsRequired.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
+        type: 3}
+      propertyPath: questDialogue
+      value: I hear the gem stones are beautiful this time of year
+      objectReference: {fileID: 0}
+    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 1053095009852926, guid: a14f9cecd9f58c5478797ecded428b2e,
+        type: 3}
+    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
+        type: 3}
+      propertyPath: completedDialogue
+      value: '@ Mark'
+      objectReference: {fileID: 0}
+    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
+        type: 3}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 1232465839}
+    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
+        type: 3}
+      propertyPath: faceImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
+        type: 3}
+      propertyPath: itemsEaten
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 83004413648692309, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
         type: 3}
