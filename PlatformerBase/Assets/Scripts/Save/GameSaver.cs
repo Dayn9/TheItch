@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -71,8 +73,8 @@ public class GameSaver : Global
             if(Application.platform == RuntimePlatform.WebGLPlayer)
             {
                 SyncFiles();
+               
             }
-
         }
         catch(System.Exception e)
         {
@@ -148,7 +150,6 @@ public class GameSaver : Global
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             FileStream fileStream = File.Open(dataPath, FileMode.Open);
 
-            
             try
             {
                 saveData = (GameSaveData)binaryFormatter.Deserialize(fileStream);
@@ -214,7 +215,8 @@ public class GameSaver : Global
     private static void MakeDirectory()
     {
         string filePath = Application.persistentDataPath + folderName;
-        if (!Directory.Exists(filePath))
+        //make a new file folder if not a web build
+        if (!Directory.Exists(filePath) && Application.platform != RuntimePlatform.WebGLPlayer)
         {
             Directory.CreateDirectory(filePath);
         }
@@ -223,8 +225,22 @@ public class GameSaver : Global
     public static void RemoveDirectory()
     {
         string filePath = Application.persistentDataPath + folderName;
-        if (Directory.Exists(filePath))
+
+        if(Application.platform == RuntimePlatform.WebGLPlayer)
         {
+            //loop through all the possible files names and delete them
+            foreach(string file in new string[] { "GameSaveDat", "Fall", "Garden", "Basophil", "Wilds", "Shrine", "Climb"})
+            {
+                string fileName = filePath + file + FileExtension;
+                if (Directory.Exists(fileName))
+                {
+                    Directory.Delete(fileName, true);
+                }
+            }
+        }
+        else if (Directory.Exists(filePath))
+        {
+            //remove the file folder
             Directory.Delete(filePath, true);
         }
     }
