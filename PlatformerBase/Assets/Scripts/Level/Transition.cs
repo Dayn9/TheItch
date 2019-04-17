@@ -28,7 +28,7 @@ public class Transition : EventTrigger{
         render.enabled = true;
 
         //add self to dialogue box
-        dialogueBox.GetComponent<TextboxEvent>().addEvTrig(this);
+        dialogueBox.GetComponent<TextboxEvent>().AddEvTrig(this);
 
         player = Player.GetComponent<Jump>();
         GameSaver.currentLevelName = areaName; 

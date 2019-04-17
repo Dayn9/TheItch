@@ -36,7 +36,7 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
             Debug.Log(gameObject.name + "'s dialogue trigger needs manual assignment");
         }
 
-        dialogueBox.GetComponent<TextboxEvent>().addEvTrig(this);
+        dialogueBox.GetComponent<TextboxEvent>().AddEvTrig(this);
     }
 
     protected virtual void Start()

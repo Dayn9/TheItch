@@ -45,7 +45,7 @@ public class TextboxEvent : EventTrigger
     /// adds a new evnt trigger to the currentlist
     /// </summary>
     /// <param name="evTrig">new Dialogue box event trigger</param>
-    public void addEvTrig(EventTrigger evTrig)
+    public void AddEvTrig(EventTrigger evTrig)
     {
         if (evTrigs == null) { evTrigs = new List<EventTrigger>(); }
         evTrigs.Add(evTrig);

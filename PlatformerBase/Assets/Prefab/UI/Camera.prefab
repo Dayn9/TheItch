@@ -202,7 +202,6 @@ MonoBehaviour:
   itemsEaten: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
-  givenAtOffset: {x: 0, y: 0}
   fadeRate: 1
   dialogueBox: {fileID: 7418588443544885799}
   areaName: Basophil
@@ -860,7 +859,6 @@ MonoBehaviour:
   itemsEaten: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
-  givenAtOffset: {x: 0, y: 0}
   evTrigs: []
   animatedOffset: {x: 0, y: -10, z: 0}
   speed: 50
@@ -1139,6 +1137,7 @@ MonoBehaviour:
   - {fileID: 2241015619861189915, guid: 358651e6b3d87d74da685d5691f40e89, type: 3}
   - {fileID: 1056609929947600966, guid: db842cff638229e4da016e5e0a163d9f, type: 3}
   - {fileID: 5774088609482879379, guid: aee97b35488f37647a9d2941f529d897, type: 3}
+  - {fileID: 1639334932364593431, guid: 7463b0a80e8dcd1488797e3b44aac4d3, type: 3}
 --- !u!82 &7480537199612198199
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1913,7 +1912,6 @@ MonoBehaviour:
   itemsEaten: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
-  givenAtOffset: {x: 0, y: 0}
   evTrigs: []
   animatedOffset: {x: 0, y: -10, z: 0}
   speed: 50
@@ -2362,7 +2360,6 @@ MonoBehaviour:
   itemsEaten: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
-  givenAtOffset: {x: 0, y: 0}
   evTrigs: []
   animatedOffset: {x: 0, y: 3, z: 0}
   speed: 5
