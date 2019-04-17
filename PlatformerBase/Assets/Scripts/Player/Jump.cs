@@ -329,12 +329,12 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public void Heal(int amount)
     {
         //add health up to max health
-        health = (health + amount) % maxHealth;
+        health = Mathf.Clamp((health + amount), 0, MaxHealth);
     }
     public void Heal(float amount)
     {
         //add health up to max health
-        health = (health + (int)amount) % maxHealth;
+        health = Mathf.Clamp((health + (int)amount), 0, MaxHealth);
     }
 
     public void FullHeal()

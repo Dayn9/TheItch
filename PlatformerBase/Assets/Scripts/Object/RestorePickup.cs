@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class RestorePickup : BloodParticle {
 
-    private const int restoreAmount = 10;
+    private const int restoreAmount = 1;
 
     private BoxCollider2D zone;
     private SpriteRenderer render;
@@ -43,9 +43,9 @@ public class RestorePickup : BloodParticle {
     {
         //transform.parent = Player.transform;
 
-        SendParticlesTo(Player.GetComponent<MovingObject>(), restoreAmount);
+        SendParticlesTo(Player.GetComponent<MovingObject>(), restoreAmount * 10);
 
-        Player.GetComponent<IPlayer>().Power.RestoreBPM(restoreAmount);
+        Player.GetComponent<IHealthObject>().Heal(restoreAmount);
         render.enabled = false;
         zone.enabled = false;
 
