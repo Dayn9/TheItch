@@ -28,7 +28,11 @@ public class PhysicsObject : MovingObject
     private int layer; //temporary layer of collided object
     private Vector2 objectNormal; //temporary normal of solid colliding with
 
-    protected bool inFallZone; //true when the player is in a fallZone
+    protected bool touchingWater; //true when object is touching water
+    protected bool stillTouchingWater;
+    private const float waterMultiplier = 0.75f; 
+
+    protected bool inFallZone; //true when the object is in a fallZone
     #endregion
 
     public Vector2 InputVelocity { set { inputVelocity = value;}}
@@ -75,12 +79,14 @@ public class PhysicsObject : MovingObject
     {
         if (!paused)
         {
+            stillTouchingWater = false;
             #region gravity collision
             gravityVelocity += gravity * Time.deltaTime; //add gravity to velocity
             grounded = false;
             if (!inFallZone)
             {
                 moveVector = gravityVelocity; //temporary falling vector for collision checking
+                if (touchingWater) { moveVector *= waterMultiplier; } //scale down vector when in water
                 distance = Mathf.Clamp(moveVector.magnitude, 0, maxGravity); //temporary distance to surface
                 Vector2 newGroundNormal = groundNormal; //temporary normal for surface collisions
                 int numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
@@ -93,8 +99,8 @@ public class PhysicsObject : MovingObject
                     {
                         if (Vector2.Dot(gravityVelocity, gravity) >= 0) { grounded = true; } //check if velocity is in the same direction as gravity (falling)
 
-                        gravityVelocity = Vector2.zero; //stop moving
-                         
+                        //gravityVelocity = Vector2.zero; //stop moving * * * MOVED TO COLLIDE WITH CLOSEST SECTION * * *
+
                         float moveableDistance = moveVector.magnitude;
                         if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
                         {
@@ -108,6 +114,8 @@ public class PhysicsObject : MovingObject
                         //collide with the closest
                         else if (hits[i].distance < distance)
                         {
+                            gravityVelocity = Vector2.zero; //stop moving
+
                             distance = hits[i].distance; //set new closest distance
                             newGroundNormal = objectNormal; //set new ground normal
 
@@ -125,9 +133,10 @@ public class PhysicsObject : MovingObject
             #endregion
 
             #region movement collision
-            distance = moveVelocity.magnitude; //temporary distance to surface
             groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
             moveVector = Proj(moveVelocity, groundTangent); //Project the moveVelocity onto the ground
+            if (touchingWater) { moveVector *= waterMultiplier; } //scale down vector when in water
+            distance = moveVector.magnitude; //temporary distance to surface
             numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
             for (int i = 0; i < numCollisions; i++)
             {
@@ -154,6 +163,7 @@ public class PhysicsObject : MovingObject
             if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
             if (moveVector.magnitude > buffer) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
             #endregion
+            touchingWater = stillTouchingWater; 
         }
 
     }
@@ -210,7 +220,6 @@ public class PhysicsObject : MovingObject
                     //inherit gravity
                     if (Vector2.Dot(inputVelocity, gravity) != 0)
                     {
-                        
                         gravityVelocity = inputVelocity;
                     }
                     InputCollision(grounded);
@@ -257,7 +266,11 @@ public class PhysicsObject : MovingObject
     /// <summary>
     /// to be overridden in child classes when object collides with ladders
     /// </summary>
-    protected virtual void TouchWater() { }
+    protected virtual void TouchWater()
+    {
+        stillTouchingWater = true;
+        touchingWater = true;
+    }
 
     /// <summary>
     /// to be overridden in child classes when object collides with spikes

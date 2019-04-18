@@ -12,10 +12,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     #region private fields
     [Header("Movement")]
     [SerializeField] private float moveSpeed; //how fast the object can move
-
     [SerializeField] private float jumpSpeed; //initial jump speed
     [Range(-gravityMag, gravityMag)] [SerializeField] private float addedSpeed; //gravity added on the way up
-
     private Vector2 movementInput; //user input that will move the player
     private bool jumping = false; //is the player jumping
 
@@ -125,7 +123,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             }
             //get and then modify cardinal input 
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            if(climbing && Input.GetButton("Jump")) { movementInput += Vector2.up; }
+            if((climbing) && Input.GetButton("Jump")) { movementInput += Vector2.up; }
             movementInput = movementInput.normalized * Mathf.Clamp(movementInput.magnitude, 0, 1.0f) * moveSpeed; //make sure length of input vector is less than 1; 
 
             //can input a jump before you hit the ground
@@ -221,6 +219,10 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             {
                 climbing = true;
             }
+            if(touchingWater)
+            {
+                swimming = canSwim;
+            }
             touchingLadder = false; //reset every time 
             if (climbing)
             {
@@ -233,13 +235,16 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 //update moveVelocity to be only in direction of ground normal
                 if (grounded) { moveVelocity = Proj(moveVelocity, groundTangent); }        
             }
-            swimming = false;
             base.FixedUpdate();
             if (!touchingLadder)
             {
                 climbing = false;
             }
-            
+            if (!touchingWater)
+            {
+                swimming = false;
+            }
+
             #endregion
 
             #region Animation
@@ -306,6 +311,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     protected override void TouchWater()
     {
+        base.TouchWater();
+        //start climbing if move velocity is up or down (not just side to side)
         swimming = canSwim;
     }
 
