@@ -9,7 +9,6 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 {
     //TODO : Remove health system?
 
-
     #region private fields
     [Header("Movement")]
     [SerializeField] private float moveSpeed; //how fast the object can move
@@ -31,7 +30,10 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     private bool invulnerable; //true when player is immune to damage
 
     private bool touchingLadder; //true when player is touching the ladder
-    protected bool climbing;  
+    private bool climbing;
+
+    private bool canSwim = false;
+    private bool swimming;
 
     [Header("Heartrate ")]
     private HeartbeatPower heartBeatPower; //ref to the heartbeat power script
@@ -77,7 +79,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     public Animator Animator { get { return anim; } }
 
     public override Vector2 MoveVelocity { get { return moveVelocity * moveSpeed; } }
-
+    public bool CanSwim { set { canSwim = value; } }
 
     public float MoveSpeed {
         get { return moveSpeed; }
@@ -179,9 +181,9 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             
             #region Movement
             //jumping when on ground
-            if (jumping && (grounded || climbing))
+            if (jumping && (grounded || climbing || swimming))
             {
-                gravityVelocity += (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *  Time.deltaTime;
+                gravityVelocity /*+*/= (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *  Time.deltaTime;
                 jumping = false; //insures that you can only jump once after pressing jump button
                 //climbing = false; //jump out of climbing
             }
@@ -231,11 +233,13 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 //update moveVelocity to be only in direction of ground normal
                 if (grounded) { moveVelocity = Proj(moveVelocity, groundTangent); }        
             }
+            swimming = false;
             base.FixedUpdate();
             if (!touchingLadder)
             {
                 climbing = false;
             }
+            
             #endregion
 
             #region Animation
@@ -298,6 +302,11 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         {
             climbing = true;
         }
+    }
+
+    protected override void TouchWater()
+    {
+        swimming = canSwim;
     }
 
     #region Health

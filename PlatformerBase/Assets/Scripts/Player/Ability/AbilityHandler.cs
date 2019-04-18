@@ -36,6 +36,9 @@ public class AbilityHandler : Global {
     private const int sprintTime = 5; //time spent sprinting / exhausted
     /// private float sprintTimer = 0; //timer used to keep track of sprinting
 
+    [Header("Ability 3: Swimming")]
+    [SerializeField] private float healRate;
+
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
 
@@ -86,7 +89,7 @@ public class AbilityHandler : Global {
         //all abilities start out false
         if (unlockedAbilities == null)
         {
-            unlockedAbilities = new bool[3]; //SET number of abilities here
+            unlockedAbilities = new bool[4]; //SET number of abilities here
             LockAll();
         }
         //setup has already occured in first scene
@@ -101,6 +104,11 @@ public class AbilityHandler : Global {
                 partAbsorb.gameObject.SetActive(true);
                 powerOne.gameObject.SetActive(true);
             }
+            if (unlockedAbilities[2])
+            {
+                player.CanSwim = true;
+            }
+            
         }
     }
 
@@ -125,6 +133,7 @@ public class AbilityHandler : Global {
             unlockedAbilities[ability] = true;
             switch (ability)
             {
+                default:
                 case 0:
                     powerZero.gameObject.SetActive(true);
                     break;
@@ -132,6 +141,9 @@ public class AbilityHandler : Global {
                 case 2:
                     powerOne.gameObject.SetActive(true);
                     partAbsorb.gameObject.SetActive(true);
+                    break;
+                case 3:
+                    player.CanSwim = true;
                     break;
             }
         }

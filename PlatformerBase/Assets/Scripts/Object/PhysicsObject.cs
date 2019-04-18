@@ -214,7 +214,6 @@ public class PhysicsObject : MovingObject
                         gravityVelocity = inputVelocity;
                     }
                     InputCollision(grounded);
-                    
 
                     grounded = true; //insure grounded 
                 }
@@ -229,9 +228,11 @@ public class PhysicsObject : MovingObject
                     return true;
                 }
                 break;
-            //don't collide with ladder 
-            case 14:
+            case 14: //Ladder
                 TouchLadder();
+                return true; //don't collide with ladder 
+            case 4: //Water
+                TouchWater();
                 return true;
         }
         return false;
@@ -252,6 +253,11 @@ public class PhysicsObject : MovingObject
     /// to be overridden in child classes when object collides with ladders
     /// </summary>
     protected virtual void TouchLadder() { }
+
+    /// <summary>
+    /// to be overridden in child classes when object collides with ladders
+    /// </summary>
+    protected virtual void TouchWater() { }
 
     /// <summary>
     /// to be overridden in child classes when object collides with spikes
