@@ -12,6 +12,8 @@ public interface IPlayer{
 
     //player states
     bool InFallZone { set; }
+
+    bool TouchingWater{ get; }
     bool CanSwim { set; }
     //bool Frozen { get; set; }
 

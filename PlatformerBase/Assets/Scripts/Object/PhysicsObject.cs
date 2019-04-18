@@ -40,6 +40,7 @@ public class PhysicsObject : MovingObject
     public float MaxGravity { get { return maxGravity; } }
     public Vector2 Gravity { get { return gravity; } }
     public bool Grounded { get { return grounded; } }
+
     //Called on Initialization 
     protected virtual void Start()
     {

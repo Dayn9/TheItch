@@ -37,7 +37,6 @@ public class AbilityHandler : Global {
     /// private float sprintTimer = 0; //timer used to keep track of sprinting
 
     [Header("Ability 3: Swimming")]
-    [SerializeField] private float healRate;
 
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
@@ -215,6 +214,14 @@ public class AbilityHandler : Global {
                 player.MoveSpeed = sprinting ? sprintMoveSpeed : orignMoveSpeed;
                 player.JumpSpeed = sprinting ? sprintJumpSpeed : originJumpSpeed;
                 player.Animator.speed = sprinting ? sprintMoveSpeed / orignMoveSpeed : 1; //set animation speed to match 
+            }
+
+            if (unlockedAbilities[3])
+            {
+                if (player.TouchingWater)
+                {
+                    
+                }
             }
         }
         //game is paused
