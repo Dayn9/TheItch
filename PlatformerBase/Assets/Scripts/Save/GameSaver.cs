@@ -229,12 +229,12 @@ public class GameSaver : Global
         if(Application.platform == RuntimePlatform.WebGLPlayer)
         {
             //loop through all the possible files names and delete them
-            foreach(string file in new string[] { "GameSaveDat", "Fall", "Garden", "Basophil", "Wilds", "Shrine", "Climb"})
+            foreach(string file in new string[] { GameSaveFileName, "Fall", "Garden", "Basophil", "Wilds", "Shrine", "Sanctuary", "Graveyard", "Island"})
             {
                 string fileName = filePath + file + FileExtension;
-                if (Directory.Exists(fileName))
+                if (File.Exists(fileName))
                 {
-                    Directory.Delete(fileName, true);
+                    File.Delete(fileName);
                 }
             }
         }
