@@ -247,7 +247,6 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             {
                 swimming = false;
             }
-
             #endregion
 
             #region Animation

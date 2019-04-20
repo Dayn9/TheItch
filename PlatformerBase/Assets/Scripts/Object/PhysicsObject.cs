@@ -137,7 +137,7 @@ public class PhysicsObject : MovingObject
             groundTangent = grounded ? Tangent(groundNormal) : Tangent(-gravity); //set the ground Tangent
             moveVector = Proj(moveVelocity, groundTangent); //Project the moveVelocity onto the ground
             if (touchingWater) { moveVector *= waterMultiplier; } //scale down vector when in water
-            distance = moveVector.magnitude; //temporary distance to surface
+            distance = moveVelocity.magnitude; //temporary distance to surface
             numCollisions = rb2D.Cast(moveVector, filter, hits, distance);
             for (int i = 0; i < numCollisions; i++)
             {
