@@ -80,7 +80,7 @@ public class Transition : EventTrigger{
                 stateLookup.Add(levelData.objectNames[i], levelData.objectStates[i]);
             }
 
-            Debug.Log((FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>()).Count<ILevelData>());
+            //Debug.Log((FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>()).Count<ILevelData>());
 
             //loop through all the level data objects
             foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
@@ -90,6 +90,17 @@ public class Transition : EventTrigger{
                 {
                     data.OnLevelLoad(stateLookup[data.Name]);
                 }
+            }
+
+            BreakableTilemap breakable = FindObjectOfType<BreakableTilemap>();
+            if (breakable)
+            {
+                List<Vector2Int> tempBroken = new List<Vector2Int>();
+                foreach(int[] pos in levelData.broken)
+                {
+                    tempBroken.Add(new Vector2Int(pos[0], pos[1]));
+                }
+                breakable.Broken = tempBroken;
             }
         }
     }

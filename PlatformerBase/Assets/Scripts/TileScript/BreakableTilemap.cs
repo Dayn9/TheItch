@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Tilemap))]
 [RequireComponent(typeof(BreakParticles))]
@@ -10,10 +12,30 @@ public class BreakableTilemap : MonoBehaviour
 
     [SerializeField] private TileBase brokenTile;
 
+    private List<Vector2Int> broken;
+
+    public List<Vector2Int> Broken
+    {
+        get { return broken; }
+        set {
+            if (broken == null || broken.Count == 0) {
+                broken = value;
+                tilemap = GetComponent<Tilemap>();
+                //break all the tiles that should be broken
+                foreach(Vector2Int broke in broken)
+                {
+                    tilemap.SetTile((Vector3Int)broke, brokenTile);
+                }
+            }
+        }
+    }
+
     private void Awake()
     {
         tilemap = GetComponent<Tilemap>();
         breakPart = GetComponent<BreakParticles>();
+
+        if (broken == null) { broken = new List<Vector2Int>(); };
     }
 
     public void BreakTile(Vector2 pos)
@@ -44,6 +66,8 @@ public class BreakableTilemap : MonoBehaviour
             {
                 tilemap.SetTile(tilePositions[i], brokenTile);
                 breakPart.BreakAt(tilePositions[i]); //spawn particles
+
+                broken.Add((Vector2Int)tilePositions[i]);
             }
         }
     }

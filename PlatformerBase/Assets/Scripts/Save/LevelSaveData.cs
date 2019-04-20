@@ -9,6 +9,7 @@ public class LevelSaveData
 
     public List<string> objectNames;
     public List<bool> objectStates;
+    public List<int[]> broken;
 
     public LevelSaveData(string name)
     {
@@ -16,12 +17,18 @@ public class LevelSaveData
 
         objectNames = new List<string>();
         objectStates = new List<bool>();
+        broken = new List<int[]>();
     }
 
     public void AddObject(string name, bool state)
     {
         objectNames.Add(name);
         objectStates.Add(state);
+    }
+
+    public void AddBroken(Vector2Int pos)
+    {
+        broken.Add(new int[] { pos.x, pos.y} );
     }
 
 }
