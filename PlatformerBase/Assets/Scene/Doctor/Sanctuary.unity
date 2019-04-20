@@ -2509,7 +2509,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 25, y: -24, z: 0}
     second:
@@ -2521,7 +2521,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: -32, y: -18, z: 0}
     second:
@@ -2533,7 +2533,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 4
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   - first: {x: 51, y: -10, z: 0}
     second:
@@ -2545,7 +2545,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 4
@@ -37107,7 +37107,7 @@ PrefabInstance:
     - target: {fileID: 3254771367814480709, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: m_Name
-      value: Walker
+      value: Worker1
       objectReference: {fileID: 0}
     - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
@@ -37117,15 +37117,21 @@ PrefabInstance:
     - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: questDialogue
-      value: You should go talk to the Head Healer, He's quite wise
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: completedDialogue
-      value: 'You should go see the head healer, he''s quite wise
+      value: 'You should go see the head healer, she''s quite wise
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: faceImage
+      value: 
+      objectReference: {fileID: 21300068, guid: 9d43b17ce4ed6374084be8d269b8365f,
+        type: 3}
     - target: {fileID: 3254771367814480717, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37226,6 +37232,17 @@ PrefabInstance:
       propertyPath: path.Array.data[1].pauseTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480716, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f0614162b1145b43af19e45c323e31d,
+        type: 3}
+    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 4016ef0d6695ae24fa6aa6221b89f8d8,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
 --- !u!1 &1460128487
@@ -38618,7 +38635,7 @@ PrefabInstance:
     - target: {fileID: 3254771367814480709, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: m_Name
-      value: Jumper
+      value: Worker2
       objectReference: {fileID: 0}
     - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
@@ -38628,9 +38645,20 @@ PrefabInstance:
     - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: questDialogue
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: completedDialogue
       value: I've been trying to make this jump for such a long time, I need to get
         out of here!
       objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: faceImage
+      value: 
+      objectReference: {fileID: 21300034, guid: 9d43b17ce4ed6374084be8d269b8365f,
+        type: 3}
     - target: {fileID: 3254771367814480717, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38736,6 +38764,27 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480714, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480716, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480716, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a62aff8ea6b6ced4c95d4720fe00a0ef,
+        type: 3}
+    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: a452904caeb9cba4bae3d1cdbb25d25a,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
 --- !u!1001 &1687469335
@@ -39878,7 +39927,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8c8c89b64924a142b5fb9dfe7c1c8fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39898,7 +39947,7 @@ SpriteRenderer:
   m_SortingLayerID: -1657582667
   m_SortingLayer: -3
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300008, guid: 115b13b1b4b8d6e449b239481e789bc4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e33f06ce9d6553944b7cbcd492c8b6d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -40056,6 +40105,7 @@ GameObject:
   - component: {fileID: 4372957996786630542}
   - component: {fileID: 8223073199511112474}
   - component: {fileID: 4372957996786630543}
+  - component: {fileID: 4372957996786630541}
   m_Layer: 8
   m_Name: Healer
   m_TagString: Untagged
@@ -40063,6 +40113,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &4372957996786630541
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372957996786630540}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: ed1ed0722c2ab1446848610ef12d28da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4372957996786630542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40081,7 +40150,7 @@ MonoBehaviour:
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   dialogueBox: {fileID: 955150470}
-  faceImage: {fileID: 21300000, guid: 115b13b1b4b8d6e449b239481e789bc4, type: 3}
+  faceImage: {fileID: 21300070, guid: 9d43b17ce4ed6374084be8d269b8365f, type: 3}
   enterDialogue: Hello
   completedDialogue: Welcome to the Halfway House. Our goal is to help people reach
     their full potential and gain abilities that they never thought possible. Theres
@@ -40106,7 +40175,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 2.25, y: 2.25}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -40136,9 +40205,9 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 1.75, z: 0}
   dialogueBox: {fileID: 955150470}
-  faceImage: {fileID: 21300000, guid: 115b13b1b4b8d6e449b239481e789bc4, type: 3}
+  faceImage: {fileID: 21300000, guid: e33f06ce9d6553944b7cbcd492c8b6d7, type: 3}
   questDialogue: NO QUEST
-  completedDialogue: Go get 'em
+  completedDialogue: C'mon you got this. Hold the right mous button to sprint
 --- !u!4 &4425315177775422665
 Transform:
   m_ObjectHideFlags: 0
@@ -47648,7 +47717,7 @@ PrefabInstance:
     - target: {fileID: 8834012406486797113, guid: d881f9b826e5f124db5fa2fc087b0ab7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38
+      value: -36.5
       objectReference: {fileID: 0}
     - target: {fileID: 8834012406486797113, guid: d881f9b826e5f124db5fa2fc087b0ab7,
         type: 3}
