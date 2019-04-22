@@ -13,6 +13,7 @@ public class EventTrigger : Inventory, ILevelData
     [Header("--- Items Required ---")]
     [SerializeField] protected List<GameObject> itemsRequired; //items required to complete quest
     [SerializeField] protected bool itemsEaten; //true when required items are taken when triggered
+    [SerializeField] private int abilityRequired = 0; 
 
     [Header("--- Item Given ---")]
     [SerializeField] protected GameObject itemGiven; //item given to the player
@@ -117,7 +118,7 @@ public class EventTrigger : Inventory, ILevelData
     {
         if (!questCompleted) //only check for completion when incomplete
         {
-            questCompleted = CheckItems();
+            questCompleted = CheckItems() && CheckAbility();
 
             if (Input.GetKey(KeyCode.T)) { questCompleted = true; }
 
@@ -130,6 +131,15 @@ public class EventTrigger : Inventory, ILevelData
         }
 
         //if (audioPlayer != null) { audioPlayer.PlaySound(questCompleted ? 1 : 0); } //play audio bsed on quest completion
+    }
+
+    /// <summary>
+    /// check if the required ability has been unlocked
+    /// </summary>
+    /// <returns></returns>
+    private bool CheckAbility()
+    {
+        return AbilityHandler.Unlocked[abilityRequired];
     }
 
     /// <summary>
