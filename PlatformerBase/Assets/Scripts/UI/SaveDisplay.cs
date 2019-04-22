@@ -48,10 +48,9 @@ public class SaveDisplay : MonoBehaviour
     {
         saveLevelNameBox.Reset();
 
-        folderName = "/SaveFile" + (saveNumber - 1).ToString() + "/"; //get the folder name
+        GameSaver.FolderNumber = saveNumber;
         //check if the file already exists
-        string filePath = Application.persistentDataPath + folderName;
-        if (Directory.Exists(filePath))
+        if (File.Exists(GameSaver.SaveName))
         {
             //File Exists
             newButton.gameObject.SetActive(false);

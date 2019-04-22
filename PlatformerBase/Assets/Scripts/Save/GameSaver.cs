@@ -32,7 +32,8 @@ public class GameSaver : Global
 
     public static string currentLevelName = "Fall"; //name of the level player is currently on
 
-    public static int FolderNumber { set { folderName = "/SaveFile" + (value - 1)+ "/"; } }
+    public static int FolderNumber { set { folderName = "/SaveFile" + (value - 1) /*+ "/"*/; } }
+    public static string SaveName { get { return Application.persistentDataPath + folderName + GameSaveFileName + FileExtension; } }
 
     /// <summary>
     /// General Game Saving
@@ -61,7 +62,7 @@ public class GameSaver : Global
     /// <param name="saveData">Data to save</param>
     private static void SaveGameData(GameSaveData saveData)
     {
-        MakeDirectory();
+        //MakeDirectory();
 
         string dataPath = Application.persistentDataPath + folderName + GameSaveFileName + FileExtension;
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -92,7 +93,6 @@ public class GameSaver : Global
     {
         LevelSaveData levelData = new LevelSaveData(currentLevelName);
 
-        
         //add the states data of all the level data objects 
         foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
         {
@@ -108,7 +108,6 @@ public class GameSaver : Global
     /// <param name="saveData"></param>
     public static void SaveLevelData(LevelSaveData saveData)
     {
-        MakeDirectory();
         string dataPath = Application.persistentDataPath + folderName + saveData.levelName + FileExtension;
 
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -226,7 +225,7 @@ public class GameSaver : Global
     {
         string filePath = Application.persistentDataPath + folderName;
 
-        if(Application.platform == RuntimePlatform.WebGLPlayer)
+        if(Application.platform == RuntimePlatform.WebGLPlayer || true)
         {
             //loop through all the possible files names and delete them
             foreach(string file in new string[] { GameSaveFileName, "Fall", "Garden", "Basophil", "Wilds", "Shrine", "Sanctuary", "Graveyard", "Island"})
@@ -234,8 +233,14 @@ public class GameSaver : Global
                 string fileName = filePath + file + FileExtension;
                 if (File.Exists(fileName))
                 {
+                    PlatformSafeMessage("file found: " + file);
                     File.Delete(fileName);
                 }
+            }
+            if(File.Exists(filePath))
+            {
+                PlatformSafeMessage("file found: " + filePath);
+                File.Delete(filePath);
             }
         }
         else if (Directory.Exists(filePath))
