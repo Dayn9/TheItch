@@ -32,8 +32,10 @@ public class GameSaver : Global
 
     public static string currentLevelName = "Fall"; //name of the level player is currently on
 
-    public static int FolderNumber { set { folderName = "/SaveFile" + (value - 1) /*+ "/"*/; } }
+    public static int FolderNumber { set { folderName = "/SaveFile" + (value - 1) + (Web ? "_" : "/"); } }
     public static string SaveName { get { return Application.persistentDataPath + folderName + GameSaveFileName + FileExtension; } }
+    
+    private static bool Web { get { return Application.platform == RuntimePlatform.WebGLPlayer; } }
 
     /// <summary>
     /// General Game Saving
@@ -62,7 +64,7 @@ public class GameSaver : Global
     /// <param name="saveData">Data to save</param>
     private static void SaveGameData(GameSaveData saveData)
     {
-        //MakeDirectory();
+        if (!Web) { MakeDirectory(); }
 
         string dataPath = Application.persistentDataPath + folderName + GameSaveFileName + FileExtension;
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -71,11 +73,7 @@ public class GameSaver : Global
         try
         {
             binaryFormatter.Serialize(fileStream, saveData);
-            if(Application.platform == RuntimePlatform.WebGLPlayer)
-            {
-                SyncFiles();
-               
-            }
+            if (Web) { SyncFiles(); }
         }
         catch(System.Exception e)
         {
@@ -116,11 +114,7 @@ public class GameSaver : Global
         try
         {
             binaryFormatter.Serialize(fileStream, saveData);
-            if (Application.platform == RuntimePlatform.WebGLPlayer)
-            {
-                SyncFiles();
-            }
-
+            if (Web) { SyncFiles(); }
         }
         catch (System.Exception e)
         {
@@ -215,7 +209,7 @@ public class GameSaver : Global
     {
         string filePath = Application.persistentDataPath + folderName;
         //make a new file folder if not a web build
-        if (!Directory.Exists(filePath) && Application.platform != RuntimePlatform.WebGLPlayer)
+        if (!Directory.Exists(filePath))
         {
             Directory.CreateDirectory(filePath);
         }
@@ -225,7 +219,7 @@ public class GameSaver : Global
     {
         string filePath = Application.persistentDataPath + folderName;
 
-        if(Application.platform == RuntimePlatform.WebGLPlayer || true)
+        if(Web)
         {
             //loop through all the possible files names and delete them
             foreach(string file in new string[] { GameSaveFileName, "Fall", "Garden", "Basophil", "Wilds", "Shrine", "Sanctuary", "Graveyard", "Island"})

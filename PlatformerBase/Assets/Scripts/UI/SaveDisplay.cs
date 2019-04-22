@@ -14,8 +14,6 @@ public class SaveDisplay : MonoBehaviour
     [SerializeField] private Vector2 saveNumberLabelOffset;
     [SerializeField] private Vector2 nameOutputLabelOffset;
 
-    private string folderName = "/SaveFileX/";
-
     [Space(5)]
     [Header("References too child objects")]
     [SerializeField] private Transform newButton;
@@ -68,6 +66,7 @@ public class SaveDisplay : MonoBehaviour
             playButton.gameObject.SetActive(false);
             deleteButton.gameObject.SetActive(false);
 
+            //blank name field
             saveLevelNameBox.OnTriggerKeyPressed("---");
         }
     }
