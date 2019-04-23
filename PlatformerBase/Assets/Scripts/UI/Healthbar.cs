@@ -11,14 +11,13 @@ public class Healthbar : Global {
     [SerializeField] private Sprite tick2;
 
     private const int numTicks = 64; //pixel width of the actual healthbar
-    private int playerHealth; //ref to player object's health
-    private int playerMaxHealth; //ref to player object's max health
+
+    private IHealthObject playerHealth;
 
     private void Start()
     {
         //get the player's health and maxHealth
-        playerHealth = Player.GetComponent<IHealthObject>().Health;
-        playerMaxHealth = Player.GetComponent<IHealthObject>().MaxHealth;
+        playerHealth = Player.GetComponent<IHealthObject>();
 
         GameObject tick;
         //fill the healthbar with ticks
@@ -38,11 +37,11 @@ public class Healthbar : Global {
         if (!paused)
         {
             //get the player's health
-            playerHealth = Player.GetComponent<IHealthObject>().Health;
+            int hp = Mathf.FloorToInt(playerHealth.Health);
 
             //set the digits
-            digitOne.SetNumber(playerHealth < 10 ? 10 : (playerHealth - (playerHealth % 10)) / 10);
-            digitTwo.SetNumber(playerHealth % 10);
+            digitOne.SetNumber(hp < 10 ? 10 : (hp - (hp % 10)) / 10);
+            digitTwo.SetNumber(hp % 10);
 
             //Adjust ticks on the healthbar 
             SetActive();
@@ -55,7 +54,7 @@ public class Healthbar : Global {
     private void SetActive()
     {
         int childOffset = transform.childCount - numTicks;
-        float convertedHealth = playerHealth * numTicks / playerMaxHealth;
+        float convertedHealth = playerHealth.Health * numTicks / playerHealth.MaxHealth;
 
         //loop through all gameobjects
         for (int i = 1; i <= numTicks; i++)

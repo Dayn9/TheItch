@@ -22,7 +22,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     [Header("Health")]
     [SerializeField] private int maxHealth; //maximum health of the player
-    private static int health = -1; //health of the object
+    private static float health = -1; //health of the object
     [SerializeField] private float invulnerabilityTime; //how long the invulnerability timer lasts
     private float invulnerabilityTimer;
     private bool invulnerable; //true when player is immune to damage
@@ -52,7 +52,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     #endregion
 
     #region Properties 
-    public int Health {
+    public float Health {
         get { return health; }
         set { health = value; }
     }
@@ -319,7 +319,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     }
 
     #region Health
-    public void Damage(int amount)
+    public void Damage(float amount)
     {
         if (!invulnerable)
         {
@@ -339,20 +339,10 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
         }
     }
 
-    public void Damage(float amount)
-    {
-        Damage(Mathf.FloorToInt(amount));
-    }
-
-    public void Heal(int amount)
-    {
-        //add health up to max health
-        health = Mathf.Clamp((health + amount), 0, MaxHealth);
-    }
     public void Heal(float amount)
     {
         //add health up to max health
-        health = Mathf.Clamp((health + (int)amount), 0, MaxHealth);
+        health = Mathf.Clamp(health + amount, 0, MaxHealth);
     }
 
     public void FullHeal()

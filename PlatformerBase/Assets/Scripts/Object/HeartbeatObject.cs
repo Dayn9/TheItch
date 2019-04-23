@@ -6,11 +6,10 @@ public class HeartbeatObject : MonoBehaviour, IHealthObject
 {
 
     [SerializeField] private int maxHealth; //maximum health of the object
-    [SerializeField] private int health; //health of the object
+    [SerializeField] private float health; //health of the object
     private bool invulnerable = true; //true when player is immune to damage
-    private float floatHealth;
 
-    public int Health { get { return health; } }
+    public float Health { get { return health; } }
     public int MaxHealth { get { return maxHealth; } }
     public bool Invulnerable { get { return invulnerable; } set { invulnerable = value; } }
 
@@ -19,31 +18,13 @@ public class HeartbeatObject : MonoBehaviour, IHealthObject
         health = maxHealth;
     }
 
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
         health = Mathf.Clamp(health + amount, 0, maxHealth);
     }
 
-    public void Heal(float amount)
-    {
-        floatHealth = Mathf.Clamp(floatHealth + amount, 0, maxHealth);
-        health = (int)floatHealth;
-    }
-
-    public void Damage(int amount)
-    {
-        health = Mathf.Clamp(health - amount, 0, maxHealth);
-    }
-
     public void Damage(float amount)
     {
-        floatHealth = Mathf.Clamp(floatHealth - amount, 0, maxHealth);
-        health = (int)floatHealth;
-    }
-
-    private void Start()
-    {
-        //set the float health after the level data has been loaded in
-        floatHealth = health;
+        health = Mathf.Clamp(health - amount, 0, maxHealth);
     }
 }

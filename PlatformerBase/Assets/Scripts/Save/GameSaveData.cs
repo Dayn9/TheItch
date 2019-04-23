@@ -14,7 +14,7 @@ public class GameSaveData
     //Player Information
     private float[] playerPosition;
     private float[] playerReturnPosition; 
-    public int health = 0;
+    public float health = 0;
     public float bpm = 0;
     public bool[] unlockedAbilities;
     public int[] itemStates;
@@ -23,7 +23,7 @@ public class GameSaveData
     public List<string> itemNames; 
 
     public GameSaveData(string currentLevel, Vector2 playerPosition, Vector2 playerReturnPosition, 
-        int health, float bpm, bool[] unlockedAbilities, int[] itemStates)
+        float health, float bpm, bool[] unlockedAbilities, int[] itemStates)
     {
         this.currentLevel = currentLevel;
         this.playerPosition = new float[] { playerPosition.x, playerPosition.y };

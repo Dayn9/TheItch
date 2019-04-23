@@ -37,10 +37,10 @@ public class AbilityHandler : Global {
     /// private float sprintTimer = 0; //timer used to keep track of sprinting
 
     [Header("Ability 3: Swimming")]
-    [SerializeField] private int rateOverDistance;
-    [SerializeField] [Range(0, 1)] private float moveWeight;
-    private ParticleSystem partWater;
-    private PhysicsObject playerMove;
+    [SerializeField] private int rateOverDistance; //how many water particles to emit
+    [SerializeField] [Range(0, 1)] private float moveWeight; //weight given to moveVeclocity
+    private ParticleSystem partWater; //ref to the water particle system
+    private PhysicsObject playerMove; //ref to the player's PhysicsObject data
 
 
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
