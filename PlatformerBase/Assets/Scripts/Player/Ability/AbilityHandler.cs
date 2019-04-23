@@ -10,7 +10,7 @@ public class AbilityHandler : Global {
     /// </summary>
 
     //fields for general or multipule variable reference 
-    private IPlayer player;
+    private Jump player;
 
     [Header("Ability 0: Transfer")]
     [SerializeField] private GameObject abilityZeroPrefab; //prefab of the first bleed ability
@@ -40,8 +40,7 @@ public class AbilityHandler : Global {
     [SerializeField] private int rateOverDistance; //how many water particles to emit
     [SerializeField] [Range(0, 1)] private float moveWeight; //weight given to moveVeclocity
     private ParticleSystem partWater; //ref to the water particle system
-    private PhysicsObject playerMove; //ref to the player's PhysicsObject data
-
+    [SerializeField] private float waterHealRate;
 
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
@@ -68,9 +67,8 @@ public class AbilityHandler : Global {
     // Use this for initialization
     void Awake () {
         //find player refs
-        player = Player.GetComponent<IPlayer>();
-        playerMove = Player.GetComponent<PhysicsObject>();
-
+        player = Player.GetComponent<Jump>();
+    
         //find power zero refs 
         powerZero = Instantiate(abilityZeroPrefab).GetComponent<AbilityTransfer>();
         powerZero.gameObject.SetActive(false);
@@ -86,7 +84,7 @@ public class AbilityHandler : Global {
         partAbsorb.gameObject.SetActive(false);
 
         partWater = transform.GetChild(1).GetComponent<ParticleSystem>();
-        partWater.gameObject.SetActive(false);
+        partWater.gameObject.SetActive(true);
 
         powerOne = Instantiate(abilityOnePrefab).GetComponent<AbilityAbsorb>();
         powerOne.gameObject.SetActive(false);
@@ -115,7 +113,6 @@ public class AbilityHandler : Global {
             if (unlockedAbilities[3])
             {
                 player.CanSwim = true;
-                partWater.gameObject.SetActive(true);
             }
         }
     }
@@ -152,7 +149,6 @@ public class AbilityHandler : Global {
                     break;
                 case 3:
                     player.CanSwim = true;
-                    partWater.gameObject.SetActive(true);
                     break;
             }
         }
@@ -225,14 +221,22 @@ public class AbilityHandler : Global {
                 player.Animator.speed = sprinting ? sprintMoveSpeed / orignMoveSpeed : 1; //set animation speed to match 
             }
 
-            if (unlockedAbilities[3])
+            if (player.TouchingWater)
             {
-                if (player.TouchingWater)
+                partWater.Play();
+                partWater.Emit((int)(((player.GravityVelocity.magnitude * (1 - moveWeight)) +
+                    (player.MoveVelocity.magnitude * moveWeight)) * rateOverDistance * Time.deltaTime));
+
+                if (unlockedAbilities[3])
                 {
-                    partWater.Emit((int)(((playerMove.GravityVelocity.magnitude * (1 - moveWeight)) + 
-                        (playerMove.MoveVelocity.magnitude * moveWeight)) * rateOverDistance * Time.deltaTime));
+                    player.Heal(waterHealRate * Time.deltaTime);   
                 }
             }
+            else
+            {
+                partWater.Stop();
+            }
+            
         }
         //game is paused
         else

@@ -22,7 +22,6 @@ public class SaveDisplay : MonoBehaviour
     [SerializeField] private Transform saveNumberLabel;
     [SerializeField] private DialogueBox saveLevelNameBox;
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -70,5 +69,4 @@ public class SaveDisplay : MonoBehaviour
             saveLevelNameBox.OnTriggerKeyPressed("---");
         }
     }
-
 }
