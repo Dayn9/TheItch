@@ -37,6 +37,8 @@ public class AbilityHandler : Global {
     /// private float sprintTimer = 0; //timer used to keep track of sprinting
 
     [Header("Ability 3: Swimming")]
+    private ParticleSystem partWater;
+    private MovingObject playerMove;
 
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
@@ -64,6 +66,7 @@ public class AbilityHandler : Global {
     void Awake () {
         //find player refs
         player = Player.GetComponent<IPlayer>();
+        playerMove = Player.GetComponent<MovingObject>();
 
         //find power zero refs 
         powerZero = Instantiate(abilityZeroPrefab).GetComponent<AbilityTransfer>();
@@ -78,6 +81,9 @@ public class AbilityHandler : Global {
 
         partAbsorb = transform.GetChild(0).GetComponent<ParticleSystem>();
         partAbsorb.gameObject.SetActive(false);
+
+        partWater = transform.GetChild(1).GetComponent<ParticleSystem>();
+        partWater.gameObject.SetActive(false);
 
         powerOne = Instantiate(abilityOnePrefab).GetComponent<AbilityAbsorb>();
         powerOne.gameObject.SetActive(false);
@@ -98,16 +104,16 @@ public class AbilityHandler : Global {
             {
                 powerZero.gameObject.SetActive(true);
             }
-            if (unlockedAbilities[1])
+            if (unlockedAbilities[1] || unlockedAbilities[2])
             {
                 partAbsorb.gameObject.SetActive(true);
                 powerOne.gameObject.SetActive(true);
             }
-            if (unlockedAbilities[2])
+            if (unlockedAbilities[3])
             {
                 player.CanSwim = true;
+                partWater.gameObject.SetActive(true);
             }
-            
         }
     }
 
@@ -143,6 +149,7 @@ public class AbilityHandler : Global {
                     break;
                 case 3:
                     player.CanSwim = true;
+                    partWater.gameObject.SetActive(true);
                     break;
             }
         }
@@ -154,7 +161,6 @@ public class AbilityHandler : Global {
         {
             for (int i = 0; i < unlockedAbilities.Length; i++) { Unlock(i); }
         }
-
 
         if (!paused)
         {
@@ -220,7 +226,11 @@ public class AbilityHandler : Global {
             {
                 if (player.TouchingWater)
                 {
-                    
+                    partWater.Play();
+                }
+                else
+                {
+                    partWater.Stop();
                 }
             }
         }
