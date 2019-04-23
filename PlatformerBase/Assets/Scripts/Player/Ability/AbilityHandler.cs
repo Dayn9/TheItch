@@ -37,8 +37,11 @@ public class AbilityHandler : Global {
     /// private float sprintTimer = 0; //timer used to keep track of sprinting
 
     [Header("Ability 3: Swimming")]
+    [SerializeField] private int rateOverDistance;
+    [SerializeField] [Range(0, 1)] private float moveWeight;
     private ParticleSystem partWater;
-    private MovingObject playerMove;
+    private PhysicsObject playerMove;
+
 
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
@@ -66,7 +69,7 @@ public class AbilityHandler : Global {
     void Awake () {
         //find player refs
         player = Player.GetComponent<IPlayer>();
-        playerMove = Player.GetComponent<MovingObject>();
+        playerMove = Player.GetComponent<PhysicsObject>();
 
         //find power zero refs 
         powerZero = Instantiate(abilityZeroPrefab).GetComponent<AbilityTransfer>();
@@ -226,11 +229,8 @@ public class AbilityHandler : Global {
             {
                 if (player.TouchingWater)
                 {
-                    partWater.Play();
-                }
-                else
-                {
-                    partWater.Stop();
+                    partWater.Emit((int)(((playerMove.GravityVelocity.magnitude * (1 - moveWeight)) + 
+                        (playerMove.MoveVelocity.magnitude * moveWeight)) * rateOverDistance * Time.deltaTime));
                 }
             }
         }
