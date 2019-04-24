@@ -9777,8 +9777,9 @@ MonoBehaviour:
   sprintJumpSpeed: 24
   increaseRate: 10
   heartRateRemoved: 10
-  rateOverDistance: 150
+  rateOverDistance: 300
   moveWeight: 0.25
+  waterHealRate: 1
 --- !u!1 &7955496491053998174
 GameObject:
   m_ObjectHideFlags: 0
@@ -9947,7 +9948,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10385,7 +10386,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -10644,7 +10645,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 150
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -12387,7 +12388,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -12544,7 +12545,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 2
+    frequency: 0.0001
     damping: 0
     octaves: 1
     octaveMultiplier: 0.5
