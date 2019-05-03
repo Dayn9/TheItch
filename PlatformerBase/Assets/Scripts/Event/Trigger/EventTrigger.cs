@@ -50,6 +50,18 @@ public class EventTrigger : Inventory, ILevelData
     public virtual void OnLevelLoad(bool state)
     {
         questCompleted = state;
+        if (itemsEaten)
+        {
+            foreach(GameObject item in itemsRequired)
+            {
+                if (item.GetComponent<CollectableItem>().Persists && questCompleted)
+                {
+                    GameObject i = Instantiate(item);
+                    i.transform.position = transform.position;
+                    i.GetComponent<CollectableItem>().Eaten(transform);
+                }
+            }
+        }
     }
 
     

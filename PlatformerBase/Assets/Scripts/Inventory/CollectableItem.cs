@@ -6,6 +6,7 @@ public class CollectableItem : Inventory
     private const float speed = 4.0f;
     private const float minMoveDistance = 0.05f;
 
+    [SerializeField] private bool persists;
     private bool collected = false;
     private bool used = false;
     private bool moving = false;
@@ -18,6 +19,8 @@ public class CollectableItem : Inventory
 
     private AudioPlayer audioPlayer;
 
+    public bool Persists { get { return persists; } }
+
     public void Awake()
     {
         render = GetComponent<SpriteRenderer>();
@@ -28,7 +31,8 @@ public class CollectableItem : Inventory
 
     private void Start()
     {
-        if(allItemsStates[gameObject.name] != 0 && !collected) { gameObject.SetActive(false); }
+        if (persists && used) { return; } //exit out when creating for 
+        if (allItemsStates[gameObject.name] != 0 && !collected) { gameObject.SetActive(false); }
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -90,12 +94,15 @@ public class CollectableItem : Inventory
         transform.parent = target;
         targetPosition = Vector2.zero;
 
+        Debug.Log("EAT");
+
         SpriteRenderer targetRender = target.GetComponent<SpriteRenderer>();
         if (targetRender != null)
         {
             render.sortingLayerID = targetRender.sortingLayerID;
-            render.sortingOrder = targetRender.sortingOrder - 1;
+            render.sortingOrder = targetRender.sortingOrder + (persists ? 1: - 1);
         }
+        collected = true; 
         used = true;
         moving = true;
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 61184755239107894}
   - component: {fileID: 114814864347545602}
   m_Layer: 10
-  m_Name: Gem
+  m_Name: WaterGem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,3 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f921fe66d2c3ce7458a6c5d7a83560af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persists: 1
