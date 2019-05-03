@@ -19,23 +19,11 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _GradientTex:
-        m_Texture: {fileID: 2800000, guid: 8e048b5fbd4ab544282493928a4cbceb, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4fc6a35609ed58848ad6a8f89b158168, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TransitionTex:
-        m_Texture: {fileID: 2800000, guid: 508ab0c2d0b291a498acea7fdf6530bd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 145bd437d4dbaab46bab2cc32cfdb001, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-<<<<<<< HEAD
     - _Cutoff: 3e-45
-=======
-    - _Cutoff: 1.124e-42
->>>>>>> 0b5f7d409d02520fbc55be91eb584fbfafcfd88c
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 1}
