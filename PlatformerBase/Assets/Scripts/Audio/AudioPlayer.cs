@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : Global {
@@ -9,7 +10,7 @@ public class AudioPlayer : Global {
     /// contains the sound files that can be played by an object and the ability to play those sounds
     /// </summary>
 
-    [SerializeField] private SoundFile[] sounds; //array of all sounds available to this Audio Player
+    [SerializeField] protected SoundFile[] sounds; //array of all sounds available to this Audio Player
     private Dictionary<string, SoundFile> soundDict; //dictionary to get sound files by name 
 
     protected AudioSource source; //ref to the attached audioSource

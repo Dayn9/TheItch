@@ -16,6 +16,8 @@ public class Reseter : Inventory {
         Player.GetComponent<AbilityHandler>().LockAll(); //re lock all the abilities
         Items.Clear();
         startPosition = Vector2.one;
+
+        BackgroundAudioPlayer.menu = true;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }

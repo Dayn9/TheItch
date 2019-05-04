@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(DontDestroy))] //background audio player shouldn't be destroyed
 public class BackgroundAudioPlayer : AudioPlayer
@@ -9,17 +10,56 @@ public class BackgroundAudioPlayer : AudioPlayer
 
     public static bool menu = true;
 
-    private void Start()
+    private AudioSource[] sources;
+    private float[] targetVolumes;
+    private float[] currentVolumes;
+    [SerializeField] private float fadeRate;
+
+    [SerializeField] private AudioMixer backgroundMixer;
+
+    
+
+    private void Awake()
     {
-        if(soundP == 0)
+        sources = GetComponents<AudioSource>();
+
+        /*soundDict = new Dictionary<string, SoundFile>();
+        foreach (SoundFile soundFile in sounds)
+        {
+            soundDict.Add(soundFile.Name, soundFile);
+        }*/
+
+
+
+        if (soundP == 0)
         {
             soundP = 2;
-            PlaySound(0);
+            sources[0].clip = sounds[0].Clip;
+            sources[1].clip = sounds[1].Clip;
+            backgroundMixer.SetFloat("TrackAVol", -80);
+            backgroundMixer.SetFloat("TrackBVol", -80);
+
+            targetVolumes = new float[] { 0, -80 };
+            currentVolumes = new float[] { -80, -80 };
         }
+
+        foreach (AudioSource source in sources)
+        {
+            source.loop = true;
+            source.mute = muted; //make sure the source isn't playing while muted 
+            source.Play();
+        }
+
     }
 
     private void Update()
     {
+        backgroundMixer.GetFloat("TrackAVol", out currentVolumes[0]);
+        backgroundMixer.GetFloat("TrackBVol", out currentVolumes[1]);
+
+        backgroundMixer.SetFloat("TrackAVol", Mathf.Lerp(currentVolumes[0], targetVolumes[0], fadeRate));
+        backgroundMixer.SetFloat("TrackBVol", Mathf.Lerp(currentVolumes[1], targetVolumes[1], fadeRate));
+
         if (!menu)
         {
             float bpm = Heartbeat.BPM;
