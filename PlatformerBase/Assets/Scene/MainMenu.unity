@@ -595,6 +595,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1858374345653828, guid: 16d5745161845c44a8218673838f4cf8, type: 3}
+      propertyPath: m_Name
+      value: Audio
+      objectReference: {fileID: 0}
     - target: {fileID: 1247241025540261016, guid: 16d5745161845c44a8218673838f4cf8,
         type: 3}
       propertyPath: Loop
@@ -611,10 +615,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 243556752749112554, guid: b952018ca85a02b468b2f9c56f0fed31,
         type: 2}
-    - target: {fileID: 1858374345653828, guid: 16d5745161845c44a8218673838f4cf8, type: 3}
-      propertyPath: m_Name
-      value: Audio
-      objectReference: {fileID: 0}
     - target: {fileID: 4753028201410784, guid: 16d5745161845c44a8218673838f4cf8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -677,7 +677,7 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 952809127, guid: 16d5745161845c44a8218673838f4cf8, type: 3}
       propertyPath: fadeRate
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 952809127, guid: 16d5745161845c44a8218673838f4cf8, type: 3}
       propertyPath: sounds.Array.data[3].loops

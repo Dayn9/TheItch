@@ -36,11 +36,11 @@ public class BackgroundAudioPlayer : AudioPlayer
             soundP = 2;
             sources[0].clip = sounds[0].Clip;
             sources[1].clip = sounds[1].Clip;
-            backgroundMixer.SetFloat("TrackAVol", -80);
+            backgroundMixer.SetFloat("TrackAVol", -40);
             backgroundMixer.SetFloat("TrackBVol", -80);
 
             targetVolumes = new float[] { 0, -80 };
-            currentVolumes = new float[] { -80, -80 };
+            currentVolumes = new float[] { -40, -80 };
         }
 
         foreach (AudioSource source in sources)
@@ -49,8 +49,9 @@ public class BackgroundAudioPlayer : AudioPlayer
             source.mute = muted; //make sure the source isn't playing while muted 
             source.Play();
         }
-
     }
+
+
 
     private void Update()
     {
@@ -62,21 +63,24 @@ public class BackgroundAudioPlayer : AudioPlayer
 
         if (!menu)
         {
-            float bpm = Heartbeat.BPM;
-            if (bpm <= 32)
+            if (Heartbeat.BPM <= 32)
             {
                 if (soundP != 2)
                 {
                     soundP = 2;
-                    PlaySoundOverride(2);
+                    sources[0].clip = sounds[2].Clip;
+                    sources[0].Play();
+                    targetVolumes = new float[] { 0, -80 };
                 }
             }
-            else if (bpm >= 168)
+            else if (Heartbeat.BPM >= 168)
             {
                 if (soundP != 3)
                 {
                     soundP = 3;
-                    PlaySoundOverride(3);
+                    sources[0].clip = sounds[3].Clip;
+                    sources[0].Play();
+                    targetVolumes = new float[] { 0, -80 };
                 }
             }
             else
@@ -84,8 +88,19 @@ public class BackgroundAudioPlayer : AudioPlayer
                 if (soundP != 1)
                 {
                     soundP = 1;
-                    PlaySoundOverride(1);
+                    sources[1].Play();
+                    targetVolumes = new float[] { -80, 0 };
                 }
+            }
+        }
+        else
+        {
+            if(soundP != 0)
+            {
+                soundP = 0;
+                targetVolumes = new float[] { 0, -80 };
+                sources[0].clip = sounds[0].Clip;
+                sources[0].Play();
             }
         }
     } 
