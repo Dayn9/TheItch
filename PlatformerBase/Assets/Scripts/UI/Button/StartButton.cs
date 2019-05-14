@@ -8,7 +8,7 @@ public class StartButton : Button
 
     protected override void OnActive()
     {
-        buttonRender.sprite = inactive;
+        render.sprite = inactive;
     }
 
     protected override void OnClick()
@@ -22,6 +22,6 @@ public class StartButton : Button
 
     protected override void OnEnter()
     {
-        buttonRender.sprite = active;
+        render.sprite = active;
     }
 }

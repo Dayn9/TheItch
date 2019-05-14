@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(SpriteRenderer))]
 public abstract class Button : Pause {
 
-    protected SpriteRenderer buttonRender; //ref to spriteRenderer component
+    protected SpriteRenderer render; //ref to spriteRenderer component
     [SerializeField] protected Vector2 offset; //offset of collider from transform center
     [SerializeField] protected Rect area; //bounding shape of the button, never gets adjusted 
 
@@ -21,7 +21,7 @@ public abstract class Button : Pause {
 
     protected virtual void Awake()
     {
-        buttonRender = GetComponent<SpriteRenderer>();
+        render = GetComponent<SpriteRenderer>();
         //set the area based on starting position and offset
         pos = (Vector2)transform.position + offset;
 
