@@ -11,6 +11,8 @@ public class Inventory : Global {
 
     protected static Transform inventoryUI; //ref to the transform of the inventory display
 
+    protected const int inventorySize = 6;
+
     //Offsets and spacings between items in inventory
     private const float offsetY = 3.75f; //offset from anchor along y axis
     private const float spacing = -1.5f; //spacing between individual items

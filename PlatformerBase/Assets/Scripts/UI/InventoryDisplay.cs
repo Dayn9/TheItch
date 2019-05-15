@@ -12,8 +12,9 @@ public class InventoryDisplay : Inventory {
     private Vector2 moveVector; //temporary vector when moving 
 
     [SerializeField] protected GameObject collectEffectPrefab; //prefab for collection effects
-
     [SerializeField] private List<GameObject> allItems;
+
+    [SerializeField] private GameObject itemLabelPrefab;
 
     public static bool loadGame = false;
 
@@ -22,6 +23,15 @@ public class InventoryDisplay : Inventory {
         inventoryUI = transform; //set the inventory transform to this object
         display = transform.GetChild(0);
         //hidden = true;
+
+        GameObject tempItemLabel;
+        for (int i = 0; i < inventorySize; i++)
+        {
+            tempItemLabel = Instantiate(itemLabelPrefab, display);
+            tempItemLabel.name = "Item Label " + i;
+            tempItemLabel.GetComponent<ItemLabel>().SlotNum = i;
+            tempItemLabel.transform.localPosition = new Vector2(-0.5f, 2.875f - (1.5f * i));
+        }
 
         //set up the all items states if it doesn't already exist
         if (allItemsStates == null) {

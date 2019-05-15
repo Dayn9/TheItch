@@ -5,11 +5,13 @@ using UnityEngine;
 public class ItemLabel : Button
 {
     private int numChars = 3; //number of characters in this item label 
+    private const float maxWidth = 5; //width of the sprite
+    private float hiddenWidth; //width of the sprite when not visible
 
-    private const float maxWidth = 4; //width of the sprite
-    private float hiddenWidth;
+    private float targetWidth; //width of the sprite being lerped to
 
-    private float targetWidth;
+    private int slotNum = 0;
+    public int SlotNum { set { slotNum = value; } }
 
     private void Start()
     {
@@ -31,7 +33,7 @@ public class ItemLabel : Button
     protected new void Update()
     {
         base.Update();
-        render.size = new Vector2(Mathf.Lerp(render.size.x, targetWidth, 0.5f), 
+        render.size = new Vector2(Mathf.Lerp(render.size.x, targetWidth, 0.3f), 
                                   render.size.y);
     }
 }
