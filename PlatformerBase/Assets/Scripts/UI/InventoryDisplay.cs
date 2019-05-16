@@ -24,11 +24,15 @@ public class InventoryDisplay : Inventory {
         display = transform.GetChild(0);
         //hidden = true;
 
+        itemLabels = new List<ItemLabel>();
         GameObject tempItemLabel;
         for (int i = 0; i < inventorySize; i++)
         {
             tempItemLabel = Instantiate(itemLabelPrefab, display);
             tempItemLabel.name = "Item Label " + i;
+
+            itemLabels.Add(tempItemLabel.GetComponent<ItemLabel>());
+
             tempItemLabel.GetComponent<ItemLabel>().SlotNum = i;
             tempItemLabel.transform.localPosition = new Vector2(-0.5f, 2.875f - (1.5f * i));
         }

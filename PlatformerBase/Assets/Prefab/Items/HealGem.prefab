@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1053095009852926, guid: a14f9cecd9f58c5478797ecded428b2e, type: 3}
       propertyPath: m_Name
-      value: Gem
+      value: HealGem
       objectReference: {fileID: 0}
     - target: {fileID: 4927971617090270, guid: a14f9cecd9f58c5478797ecded428b2e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -61,5 +61,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300034, guid: 4374a73e242e3f14d8ddffedfd7009a0,
         type: 3}
+    - target: {fileID: 114814864347545602, guid: a14f9cecd9f58c5478797ecded428b2e,
+        type: 3}
+      propertyPath: itemtype
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114814864347545602, guid: a14f9cecd9f58c5478797ecded428b2e,
+        type: 3}
+      propertyPath: itemStyle
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a14f9cecd9f58c5478797ecded428b2e, type: 3}

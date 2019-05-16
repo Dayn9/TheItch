@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+public enum ItemType { Key, Gem, Lily, Skull, Letter }
+public enum ItemStyle { Default, Blood, Heal, Water, Virus}
+
 [RequireComponent(typeof(SpriteRenderer))]
 public class CollectableItem : Inventory
 {
@@ -19,6 +22,11 @@ public class CollectableItem : Inventory
 
     private AudioPlayer audioPlayer;
 
+    [SerializeField] private ItemType itemtype;
+    [SerializeField] private ItemStyle itemStyle;
+
+    public ItemType ItemType { get { return itemtype; } }
+    public ItemStyle ItemStyle { get { return itemStyle; } }
     public bool Persists { get { return persists; } }
 
     public void Awake()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 988242200351500176}
   - component: {fileID: 988242200351500182}
   m_Layer: 0
-  m_Name: ItemLabelKeyTest
+  m_Name: ItemLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,9 @@ MonoBehaviour:
     y: 0.25
     width: 1.25
     height: 1.25
-  active: {fileID: 0}
-  inactive: {fileID: 0}
-  requiresPause: 0
+  labels:
+  - {fileID: 21300000, guid: 66cbf1d604c83ac43ae4940c493975b0, type: 3}
+  - {fileID: 21300002, guid: 66cbf1d604c83ac43ae4940c493975b0, type: 3}
+  - {fileID: 21300004, guid: 66cbf1d604c83ac43ae4940c493975b0, type: 3}
+  - {fileID: 21300006, guid: 66cbf1d604c83ac43ae4940c493975b0, type: 3}
+  - {fileID: 21300008, guid: 66cbf1d604c83ac43ae4940c493975b0, type: 3}

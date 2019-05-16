@@ -21,6 +21,8 @@ public class Inventory : Global {
 
     protected static Dictionary<string, int> allItemsStates; //keeps track of all the items states for level transitions and data loading
 
+    protected static List<ItemLabel> itemLabels;
+
     public Dictionary<string, GameObject> Items {
         get {
             if(items == null)
@@ -75,7 +77,7 @@ public class Inventory : Global {
             //Destroy(Items[name]); //destroy the gameObject
             Items.Remove(name);
             allItemsStates[name] = 2;
-}
+        }
         DisplayItems();
     }
 
@@ -89,6 +91,10 @@ public class Inventory : Global {
         {
             //position item relative to inventoryUI
             Items[item].transform.localPosition = new Vector2(0.0f, offsetY + (index * spacing));
+
+            CollectableItem collectableitem = Items[item].GetComponent<CollectableItem>();
+            itemLabels[index].SetLabel(collectableitem.ItemType, collectableitem.ItemStyle);
+
             index++;
         }
     }
