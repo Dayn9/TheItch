@@ -19,15 +19,21 @@ public class ItemLabel : Inventory
     private float targetWidth; //width of the sprite being lerped to
 
     [SerializeField] private Sprite[] labels; //key, gem, lily, skull, letter
+    [SerializeField] private Color[] styles;
 
     private int slotNum = 0;
     public int SlotNum { set { slotNum = value; } }
+
+    [SerializeField] private Material styleMat;
 
     private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
         //set the area based on starting position and offset
         pos = (Vector2)transform.position + offset;
+
+        render.material = styleMat;
+        render.material.SetColor("_ReplaceColor", styles[0]);
 
         SetHiddenWidth();
     }
@@ -59,6 +65,7 @@ public class ItemLabel : Inventory
 
     public void SetLabel(ItemType type, ItemStyle style)
     {
+        //set the text to match item type
         switch (type)
         {
             case ItemType.Key:
@@ -81,7 +88,29 @@ public class ItemLabel : Inventory
                 render.sprite = labels[4];
                 numChars = 6;
                 break;
-        }   
+        }
+
+        //set the color to match item style
+        switch (style)
+        {
+            default:
+            case ItemStyle.Default:
+                render.material.SetColor("_ReplaceColor", styles[0]);
+                break;
+            case ItemStyle.Blood:
+                render.material.SetColor("_ReplaceColor", styles[1]);
+                break;
+            case ItemStyle.Heal:
+                render.material.SetColor("_ReplaceColor", styles[2]);
+                break;
+            case ItemStyle.Water:
+                render.material.SetColor("_ReplaceColor", styles[3]);
+                break;
+            case ItemStyle.Virus:
+                render.material.SetColor("_ReplaceColor", styles[4]);
+                break;
+        }
+
         SetHiddenWidth();
     }
 
@@ -90,7 +119,7 @@ public class ItemLabel : Inventory
     /// </summary>
     protected void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.cyan;
 
         pos = (Vector2)transform.position + offset;
         bounds = new Rect(pos.x + area.x, pos.y + area.y, area.width, area.height);
