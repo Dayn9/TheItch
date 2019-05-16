@@ -939,6 +939,7 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  abilityRequired: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
@@ -4488,6 +4489,7 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  abilityRequired: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   dialogueBox: {fileID: 647655302}
@@ -93916,6 +93918,7 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  abilityRequired: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   dialogueBox: {fileID: 647655302}
@@ -93933,11 +93936,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1964721290}
     m_Modifications:
-    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
-        type: 3}
-      propertyPath: itemsRequired.Array.data[0]
-      value: 
-      objectReference: {fileID: 1447275410}
     - target: {fileID: 4016547624261662, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.5
@@ -93970,6 +93968,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 1447275410}
     - target: {fileID: 212827760866747802, guid: dd9586f87d9b4cb49b874270f71ec290,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -94025,6 +94028,7 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  abilityRequired: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
@@ -103643,6 +103647,7 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  abilityRequired: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   dialogueBox: {fileID: 647655302}
@@ -108537,6 +108542,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 855868534}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1464934332}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1909219682}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1772847489}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[4]
+      value: 
+      objectReference: {fileID: 250034557}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1571728325}
     - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -108637,41 +108677,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 855868534}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1464934332}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1909219682}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1772847489}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[4]
-      value: 
-      objectReference: {fileID: 250034557}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[5]
-      value: 
-      objectReference: {fileID: 1571728325}
     - target: {fileID: 7418588443544885796, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: evTrigs.Array.size
@@ -109550,6 +109555,7 @@ MonoBehaviour:
   disableAfter: 0
   itemsRequired: []
   itemsEaten: 0
+  abilityRequired: 0
   itemGiven: {fileID: 0}
   givenOnComplete: 0
   dialogueBox: {fileID: 647655302}

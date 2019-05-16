@@ -9,8 +9,6 @@ public class IndicatorTrigger : EventTrigger
     [SerializeField] protected Vector3 indicatorOffset; //offset from door to display above object
     protected GameObject indicator; //ref to instatiated indicatorPrefab
 
-    protected KeyCode[] triggers = new KeyCode[] { KeyCode.DownArrow, KeyCode.S }; //Keys that will start and advance the dialogue
-
     protected override void Awake()
     {
         //create the indicator and position it propperly 
@@ -28,7 +26,7 @@ public class IndicatorTrigger : EventTrigger
         if (!paused)
         {
             //check if in contact with the player and player is interacting 
-            if (playerTouching && (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1])))
+            if (playerTouching && CheckInput())
             {
                 CheckQuest();
                 if (questCompleted)
@@ -43,6 +41,14 @@ public class IndicatorTrigger : EventTrigger
                 }
             }
         }
+    }
+
+    protected bool CheckInput()
+    {
+        return Input.GetKeyDown(KeyCode.DownArrow) || 
+                Input.GetKeyDown(KeyCode.S) || 
+                Input.GetMouseButtonDown(0) || 
+                Input.GetMouseButtonDown(1);
     }
 
     protected override void OnTriggerEnter2D(Collider2D coll)

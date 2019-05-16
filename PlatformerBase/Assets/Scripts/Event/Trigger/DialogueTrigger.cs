@@ -51,7 +51,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
         //check if in contact with the player and player is interacting 
         if (playerTouching && !Pause.menuPaused)
         {
-            if (Input.GetKeyDown(triggers[0]) || Input.GetKeyDown(triggers[1]) || Input.GetMouseButtonDown(0))
+            if (CheckInput())
             {
                 SetFrozen(true);
                 Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
