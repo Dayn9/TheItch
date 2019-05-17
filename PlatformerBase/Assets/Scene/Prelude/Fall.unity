@@ -4494,12 +4494,10 @@ MonoBehaviour:
   givenOnComplete: 0
   dialogueBox: {fileID: 647655302}
   faceImage: {fileID: 0}
-  enterDialogue: Two years ago a small farming village was struck by a virus. The
-    entire population became covered in rashes and stopped working because of the
-    pain.
-  completedDialogue: Two years ago a small farming village was struck by a virus.
-    The entire population became covered in rashes and stopped working because of
-    the pain.
+  enterDialogue: 
+  completedDialogue: Two years ago the farming town of Prurere was suddenly struck
+    with a deadly virus. The skin rashes caused by the Virus made it difficult to
+    work and much of the wheat farms grew out of control
 --- !u!61 &855868535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -93923,12 +93921,10 @@ MonoBehaviour:
   givenOnComplete: 0
   dialogueBox: {fileID: 647655302}
   faceImage: {fileID: 0}
-  enterDialogue: 'The phenomenon recieved a lot of attention and soon the village
-    flooded with doctors looking for answers. Meanwhile, the virus started to spread
-    in a nearby town. '
-  completedDialogue: 'The phenomenon recieved a lot of attention and soon the village
-    flooded with doctors looking for answers. Meanwhile, the virus started to spread
-    in a nearby town. '
+  enterDialogue: 
+  completedDialogue: Doctors flooded to the locked down town with hopes of finding
+    a cure for the virus. thier efforts revealed that the virus only spreads when
+    the host's heartrate got too high or too low, but no cure was found
 --- !u!1001 &1542993299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103652,12 +103648,10 @@ MonoBehaviour:
   givenOnComplete: 0
   dialogueBox: {fileID: 647655302}
   faceImage: {fileID: 0}
-  enterDialogue: Many explorers traveled into the caverns in search of the doctor
-    but none succeeded. With no cure, the virus continued to spread around the world.
-    They call it... THE ITCH
-  completedDialogue: Many explorers traveled into the caverns in search of the doctor
-    but none succeeded. With no cure, the virus continued to spread around the world.
-    They call it... THE ITCH
+  enterDialogue: 
+  completedDialogue: The doctor never returned and explorers began disappering into
+    the caverns in search. But with no cure, the virus is now spreading to other nearby
+    towns. They call it... THE ITCH
 --- !u!61 &1772847490
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -109560,16 +109554,13 @@ MonoBehaviour:
   givenOnComplete: 0
   dialogueBox: {fileID: 647655302}
   faceImage: {fileID: 0}
-  enterDialogue: 'We learned that the virus lives in the bloodstream and that an increased
-    heartrate would prevent it from causing rashes. One Doctor claimed to have developed
-    a cure, but disappeared underground without ever revealing it.
+  enterDialogue: '
 
 '
-  completedDialogue: 'We learned that the virus lives in the bloodstream and that
-    an increased heartrate would prevent it from causing rashes. One Doctor claimed
-    to have developed a cure, but disappeared underground without ever revealing it.
-
-'
+  completedDialogue: After months of no progross, one doctor emerged with a possible
+    cure that required a blood lily from the underground caverns. Soon after, the
+    doctor gathered some of the affected townspeople and ventured below in search
+    of the lily
 --- !u!1001 &1948307149
 PrefabInstance:
   m_ObjectHideFlags: 0
