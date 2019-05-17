@@ -39,9 +39,9 @@ public class DialogueBox : Pause {
             {
                 case TextSize.AreaName: //used for the area name text
                     numLines = 1;
-                    charsPerLine = 15; //TODO find max number of chars (optimize slightly)
+                    charsPerLine = 10; 
                     initialOffset = Vector2.zero;
-                    offset = new Vector2(0.75f, -1.125f);
+                    offset = new Vector2(1.125f, -1.375f);
                     break;
                 case TextSize.Small: //used for charachter dialogue
                     numLines = 4;
