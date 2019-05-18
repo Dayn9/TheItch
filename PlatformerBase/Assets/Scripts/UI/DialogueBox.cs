@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TextSize { Small, Large, SmallFull, AreaName }
+public enum TextSize { Small, Large, SmallFull, AreaName, SaveLocationName }
 
 [RequireComponent(typeof(AudioPlayer))]
 public class DialogueBox : Pause {
@@ -42,6 +42,12 @@ public class DialogueBox : Pause {
                     charsPerLine = 10; 
                     initialOffset = Vector2.zero;
                     offset = new Vector2(1.125f, -1.375f);
+                    break;
+                case TextSize.SaveLocationName:
+                    numLines = 1;
+                    charsPerLine = 10;
+                    initialOffset = Vector2.zero;
+                    offset = new Vector2(0.75f, -1.125f);
                     break;
                 case TextSize.Small: //used for charachter dialogue
                     numLines = 4;
