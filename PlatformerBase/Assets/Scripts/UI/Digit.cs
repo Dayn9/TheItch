@@ -19,7 +19,7 @@ public class Digit : MonoBehaviour {
 
     private void Start()
     {
-        SetNumber(10); //start blank
+        //SetNumber(10); //start blank
     }
 
     public void SetNumber(int num)

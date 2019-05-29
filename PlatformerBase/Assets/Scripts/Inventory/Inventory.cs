@@ -98,5 +98,13 @@ public class Inventory : Global {
             index++;
         }
     }
+
+    public static void PlayCollectionEffectAt(Vector2 target)
+    {
+        collectEffect.transform.position = target;
+        collectEffect.SetActive(true);
+        collectEffect.GetComponent<Animator>().SetTrigger("Collect");
+    }
+
 }
  

@@ -11,32 +11,60 @@ public class Books : MonoBehaviour
     private bool hidden = true; //true when inventory is empty and display not showing
     private Vector2 moveVector; //temporary vector when moving 
 
-    void Update()
+    [SerializeField] private Digit collectedDigit;
+    [SerializeField] private Digit totalDigit;
+    private int collectedPages = 0;
+    private int totalPages;
+
+    private const float displayTime = 3.0f;
+    private float timer = 0;
+
+    private void Update()
     {
-        if (!Pause.menuPaused && false) //TODO
+        if (!Pause.menuPaused) //TODO
         {
             //display is hidden but there are items
-            if (hidden /*&& Items.Count > 0*/)
+            if (hidden && timer < displayTime)
             {
                 MoveToLocalPosition(openOffset);
             }
             //display is showing but there are no items
-            else if (!hidden /*&& Items.Count == 0*/)
+            else if (!hidden && timer > displayTime)
             {
                 MoveToLocalPosition(hiddenOffset);
             }
-
-            
+            timer += Time.deltaTime;
         }
+        collectedDigit.SetNumber(collectedPages);
+
 
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 10); //TODO delete this garbage
     }
 
+    private void Awake()
+    {
+        totalPages = FindObjectsOfType<Page>().Length;
+        collectedPages = 0;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         openOffset = transform.localPosition;
         transform.localPosition = hidden ? hiddenOffset : openOffset; //move the display to a hidden position if hidden
+
+        collectedDigit.SetNumber(collectedPages);
+        totalDigit.SetNumber(totalPages);
+    }
+
+    public void CollectPage()
+    {
+        collectedPages++;
+        if(collectedPages > totalPages)
+        {
+
+        }
+        timer = 0;
     }
 
     /// <summary>
