@@ -20,15 +20,40 @@ public class Books : Global
     private const float displayTime = 3.0f;
     private float timer = 0;
 
-
     [SerializeField] protected Vector2 offset; //offset of collider from transform center
     [SerializeField] protected Rect area; //bounding shape of the button, never gets adjusted 
     private Vector2 pos; //position of the button with offset
     private Rect bounds; //actual bounds of the button
 
+    private Book book;
+
+    private void Awake()
+    {
+        //find the book in child objects
+        book = GetComponentInChildren<Book>();
+
+        totalPages = FindObjectsOfType<Page>().Length;
+        collectedPages = 0;
+
+        //set the area based on starting position and offset
+        pos = (Vector2)transform.position + offset;
+
+        timer = 0;
+    }
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        openOffset = transform.localPosition;
+        transform.localPosition = hidden ? hiddenOffset : openOffset; //move the display to a hidden position if hidden
+
+        collectedDigit.SetNumber(collectedPages);
+        totalDigit.SetNumber(totalPages);
+    }
+
     private void Update()
     {
-        if (!Pause.menuPaused) //TODO
+        if (!Pause.menuPaused) 
         {
             //display is hidden but there are items
             if (hidden && move)
@@ -67,33 +92,13 @@ public class Books : Global
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 10); //TODO delete this garbage
     }
 
-    private void Awake()
-    {
-        totalPages = FindObjectsOfType<Page>().Length;
-        collectedPages = 0;
-
-        //set the area based on starting position and offset
-        pos = (Vector2)transform.position + offset;
-
-        timer = 0;
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        openOffset = transform.localPosition;
-        transform.localPosition = hidden ? hiddenOffset : openOffset; //move the display to a hidden position if hidden
-
-        collectedDigit.SetNumber(collectedPages);
-        totalDigit.SetNumber(totalPages);
-    }
-
     public void CollectPage()
     {
         collectedPages++;
-        if(collectedPages > totalPages)
+        if(collectedPages >= totalPages)
         {
-
+            //Unlock the book
+            book.Unlock();
         }
         move = true;
         timer = 0;

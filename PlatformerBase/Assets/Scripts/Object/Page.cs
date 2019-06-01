@@ -12,15 +12,18 @@ public class Page : MonoBehaviour, ILevelData
 
     private static Books books;
 
+    [SerializeField] private Sprite[] pagesImages;
+
     private void Awake()
     {
         if (!books) { books = FindObjectOfType<Books>(); }
 
         //select a random sprite
+        GetComponent<SpriteRenderer>().sprite = pagesImages[Random.Range(0, pagesImages.Length)];
     }
     private void Start()
     {
-        
+        gameObject.SetActive(collected);
     }
     private void Update()
     {
@@ -29,8 +32,8 @@ public class Page : MonoBehaviour, ILevelData
 
     public void OnLevelLoad(bool state)
     {
-        collected = state;
-        gameObject.SetActive(collected);
+        collected = !state;
+        books.CollectPage();
     }
 
 

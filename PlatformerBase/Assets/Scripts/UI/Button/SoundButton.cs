@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundButton : Button {
+public class SoundButton : Button { 
 
     [SerializeField] private Sprite mActive;
     [SerializeField] private Sprite mInactive;
