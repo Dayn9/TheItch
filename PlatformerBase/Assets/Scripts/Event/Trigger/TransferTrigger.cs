@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(IHealthObject))]
 public class TransferTrigger : IndicatorTrigger
 {
@@ -13,6 +14,7 @@ public class TransferTrigger : IndicatorTrigger
     public HeartbeatIndicator HbIndicator { get; private set; }
 
     private Animator anim;
+    private SpriteRenderer render;
 
     //clicking related variables
     private BoxCollider2D zone;
@@ -40,7 +42,9 @@ public class TransferTrigger : IndicatorTrigger
         }
         zone = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
     }
+
 
     private void Start()
     {
@@ -112,6 +116,9 @@ public class TransferTrigger : IndicatorTrigger
             {
                 HbIndicator.SetSprite(anim.GetBool("full") ? outHighlight : inHighlight);
             }
+            //fade the color when ability one hasn't been  unlocked yet
+            render.color = Color.Lerp(FullyHealed && !AbilityHandler.IsUnlocked(1) ? 
+                new Color(1,1,1,0.25f) : Color.white, render.color, 0.90f);
         }
     }
 

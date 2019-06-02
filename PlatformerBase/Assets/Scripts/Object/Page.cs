@@ -23,7 +23,7 @@ public class Page : MonoBehaviour, ILevelData
     }
     private void Start()
     {
-        gameObject.SetActive(collected);
+        gameObject.SetActive(!collected);
     }
     private void Update()
     {
@@ -34,6 +34,7 @@ public class Page : MonoBehaviour, ILevelData
     {
         collected = !state;
         books.CollectPage();
+        gameObject.SetActive(!collected);
     }
 
 
