@@ -93,6 +93,12 @@ public class CollectableItem : Inventory
         rend.sortingLayerID = invRend.sortingLayerID;
         rend.sortingOrder = invRend.sortingOrder + 1;
         collected = true;
+
+        SteamAchievement sa;
+        if(sa = GetComponent<SteamAchievement>())
+        {
+            sa.Achieve();
+        }
     }
 
     public void Eaten(Transform target)
