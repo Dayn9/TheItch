@@ -58371,7 +58371,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: 104, y: 5, z: 0}
     second:
@@ -58383,7 +58383,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: 168, y: 13, z: 0}
     second:
@@ -58407,7 +58407,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 5
       m_IsLooping: 1
   - first: {x: 126, y: 35, z: 0}
     second:
@@ -58419,7 +58419,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 1
@@ -62550,39 +62550,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: rightLimit
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: leftLimit
-      value: -38
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: bottomLimit
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: topLimit
-      value: 61
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
       propertyPath: follow
       value: 
       objectReference: {fileID: 298767483}
-    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: leaveTime
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452392590630341619, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: returnTime
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
@@ -69874,7 +69844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747846318752318, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 3}
@@ -70024,7 +69994,7 @@ Transform:
   - {fileID: 529295941}
   - {fileID: 385430314}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1721138889 stripped
 GameObject:

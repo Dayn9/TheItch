@@ -88,6 +88,10 @@ public class ItemLabel : Inventory
                 render.sprite = labels[4];
                 numChars = 6;
                 break;
+            case ItemType.Cure:
+                render.sprite = labels[5];
+                numChars = 4;
+                break;
         }
 
         //set the color to match item style

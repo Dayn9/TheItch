@@ -1622,8 +1622,6 @@ GameObject:
   - component: {fileID: 7452504275811686553}
   - component: {fileID: 7480537199612198199}
   - component: {fileID: 7452441606577703119}
-  - component: {fileID: 7481112553780977663}
-  - component: {fileID: 7449899275873858541}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -1696,6 +1694,7 @@ MonoBehaviour:
   - {fileID: 41479791610337309, guid: 2b708349f3dcf164a964b17005c28d6c, type: 3}
   - {fileID: 3911645162935972504, guid: 3d302d547368cfe488b1599919d186b9, type: 3}
   - {fileID: 1056609929947600966, guid: db842cff638229e4da016e5e0a163d9f, type: 3}
+  - {fileID: 2269148410902687343, guid: d77925e203c968241822f4fd087ae88d, type: 3}
   itemLabelPrefab: {fileID: 988242200351500179, guid: 776bd92259103434789061345fcdb75d,
     type: 3}
 --- !u!82 &7480537199612198199
@@ -1795,118 +1794,6 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!114 &7452441606577703119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7418009058639403941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290f164ee06b69649affe5f5fbfef6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - clip: {fileID: 8300000, guid: 91a48c7738f3eeb4ba57f2d9574edd94, type: 3}
-    priority: 0
-    loops: 0
---- !u!82 &7481112553780977663
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7418009058639403941}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &7449899275873858541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3227,13 +3114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddff18ac4dc671646a3de7e1db24e8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightLimit: 20
-  leftLimit: -80
-  bottomLimit: -16
-  topLimit: 73
+  rightLimit: 200
+  leftLimit: -38
+  bottomLimit: -17
+  topLimit: 61
   follow: {fileID: 0}
-  leaveTime: 0.8
-  returnTime: 0.6
+  leaveTime: 1.2
+  returnTime: 0.8
   dist: 5
   offsetFromPlayer: {x: 0, y: 1.5}
 --- !u!114 &7449510614852589925

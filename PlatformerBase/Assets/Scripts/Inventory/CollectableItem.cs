@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum ItemType { Key, Gem, Lily, Skull, Letter }
+public enum ItemType { Key, Gem, Lily, Skull, Letter, Cure }
 public enum ItemStyle { Default, Blood, Heal, Water, Virus}
 
 [RequireComponent(typeof(SpriteRenderer))]
