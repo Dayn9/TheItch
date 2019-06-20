@@ -68,7 +68,10 @@ public class EventTrigger : Inventory, ILevelData
     private void OnEnable()
     {
         //don't active the item given when this object activates
-        if (itemGiven) { itemGiven.SetActive(false); }
+        if (itemGiven) {
+            itemGiven.SetActive(false);
+            Debug.Log(gameObject.name);
+        }
     }
 
     protected virtual void Update()

@@ -93,6 +93,11 @@ public class CollectableItem : Inventory
         rend.sortingLayerID = invRend.sortingLayerID;
         rend.sortingOrder = invRend.sortingOrder + 1;
         collected = true;
+
+        if(itemtype == ItemType.Cure)
+        {
+            Player.GetComponent<AbilityHandler>().LockAll(); //re lock all the abilities
+        }
     }
 
     public void Eaten(Transform target)
