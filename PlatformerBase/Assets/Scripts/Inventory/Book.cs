@@ -14,6 +14,8 @@ public class Book : Button
     private Color lockedColor;
     private Color highlightColor;
 
+    [SerializeField] private GameObject DoctorsNote;
+
     protected override void Awake()
     {
         base.Awake();
@@ -47,6 +49,6 @@ public class Book : Button
 
     protected override void OnClick()
     {
-        Debug.Log("Joined a Book Club");
+        DoctorsNote.SetActive(true);
     }
 }

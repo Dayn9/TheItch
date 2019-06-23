@@ -62632,10 +62632,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1923789962559069221, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7419579213018741737, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449802895720474553, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: initialBPM
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
@@ -62697,21 +62707,6 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 298767483}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: areaName
-      value: Garden
-      objectReference: {fileID: 0}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 212205846}
     - target: {fileID: 1303381903182940955, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: collected
@@ -62722,17 +62717,27 @@ PrefabInstance:
       propertyPath: total
       value: 
       objectReference: {fileID: 1175940732}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: areaName
+      value: Garden
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 212205846}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7207351574517489337, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 381811b82c59500408af4a9ff93d7fdd,
         type: 3}
-    - target: {fileID: 7449802895720474553, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: initialBPM
-      value: 120
-      objectReference: {fileID: 0}
     - target: {fileID: 7205959057393040699, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_SortingLayerID

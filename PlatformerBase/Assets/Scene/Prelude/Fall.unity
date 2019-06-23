@@ -108270,7 +108270,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   - first: {x: 16, y: -132, z: 0}
     second:
@@ -108318,7 +108318,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: 14, y: -18, z: 0}
     second:
@@ -108330,7 +108330,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 4
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 1
@@ -108703,17 +108703,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300006, guid: 3267f62941dabf444ac501dc11465bba,
-        type: 3}
-    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -108794,15 +108783,10 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 1652298317}
-    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
@@ -108814,10 +108798,15 @@ PrefabInstance:
       propertyPath: evTrigs.Array.data[0]
       value: 
       objectReference: {fileID: 1785448006}
-    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
@@ -108864,6 +108853,17 @@ PrefabInstance:
       propertyPath: maxTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300006, guid: 3267f62941dabf444ac501dc11465bba,
+        type: 3}
+    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!1 &1896862862
