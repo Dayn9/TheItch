@@ -223,6 +223,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cure
       objectReference: {fileID: 0}
+    - target: {fileID: 2269148410902687343, guid: d77925e203c968241822f4fd087ae88d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7791258420021864612, guid: d77925e203c968241822f4fd087ae88d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4761,6 +4766,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &557202405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2546377550922172176, guid: bbe10861b3b38df44b57c4771c5252e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1926038570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &557202409 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1926038570}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &608125541
 GameObject:
   m_ObjectHideFlags: 0
@@ -103742,7 +103759,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 2
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: -124, y: -13, z: 0}
     second:
@@ -103766,7 +103783,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 3
       m_IsLooping: 1
   - first: {x: -121, y: 37, z: 0}
     second:
@@ -103778,7 +103795,7 @@ Tilemap:
       - {fileID: 21300004, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300006, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: -90, y: 45, z: 0}
     second:
@@ -103790,7 +103807,7 @@ Tilemap:
       - {fileID: 21300020, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300022, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 4
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 1
@@ -130913,6 +130930,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938da4e7bb942364e806e07592b5144a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1926038570
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4176181320143388984}
+    m_Modifications:
+    - target: {fileID: 2546377550922172176, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_Name
+      value: VirusKey
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546377550922172176, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540666444644113560, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bbe10861b3b38df44b57c4771c5252e8, type: 3}
 --- !u!114 &1933431585 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
@@ -134699,7 +134790,7 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   abilityRequired: 0
-  itemGiven: {fileID: 0}
+  itemsGiven: []
   givenOnComplete: 0
   dialogueBox: {fileID: 292502172}
   faceImage: {fileID: 21300000, guid: ec6b8afbcd66d244984606200ce13145, type: 3}
@@ -134742,6 +134833,7 @@ Transform:
   m_Children:
   - {fileID: 4176181320318636073}
   - {fileID: 85023633}
+  - {fileID: 557202409}
   m_Father: {fileID: 1798626946151672769}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -134762,7 +134854,9 @@ MonoBehaviour:
   - {fileID: 188773751}
   itemsEaten: 1
   abilityRequired: 0
-  itemGiven: {fileID: 490481249}
+  itemsGiven:
+  - {fileID: 490481249}
+  - {fileID: 557202405}
   givenOnComplete: 0
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
@@ -134874,7 +134968,7 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   abilityRequired: 0
-  itemGiven: {fileID: 0}
+  itemsGiven: []
   givenOnComplete: 0
 --- !u!1 &4176181320318636077
 GameObject:

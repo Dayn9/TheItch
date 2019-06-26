@@ -554,33 +554,33 @@ PrefabInstance:
       propertyPath: topLimit
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f18874ebfc85818479912024c5d3d883,
         type: 3}
-    - target: {fileID: 7207526253200531225, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300032, guid: 3267f62941dabf444ac501dc11465bba,
         type: 3}
+    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207526253200531225, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!1001 &429020955
@@ -41903,7 +41903,7 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   abilityRequired: 0
-  itemGiven: {fileID: 0}
+  itemsGiven: []
   givenOnComplete: 0
   dialogueBox: {fileID: 955150470}
   faceImage: {fileID: 21300070, guid: 9d43b17ce4ed6374084be8d269b8365f, type: 3}
@@ -41956,7 +41956,7 @@ MonoBehaviour:
   itemsRequired: []
   itemsEaten: 0
   abilityRequired: 2
-  itemGiven: {fileID: 0}
+  itemsGiven: []
   givenOnComplete: 0
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}

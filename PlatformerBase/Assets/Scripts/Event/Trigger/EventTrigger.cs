@@ -16,7 +16,7 @@ public class EventTrigger : Inventory, ILevelData
     [SerializeField] private int abilityRequired = 0; 
 
     [Header("--- Item Given ---")]
-    [SerializeField] protected GameObject itemGiven; //item given to the player
+    [SerializeField] protected List<GameObject> itemsGiven; //item given to the player
     [SerializeField] private bool givenOnComplete; //true = given on quest complete, false = given on initial interaction
 
     protected bool questCompleted = false; //true when quest has been completed
@@ -38,7 +38,7 @@ public class EventTrigger : Inventory, ILevelData
 
         audioPlayer = GetComponentInParent<AudioPlayer>();
 
-        if (itemGiven) { itemGiven.transform.localPosition = transform.localPosition; }
+        if (itemsGiven.Count > 0) { itemsGiven.ForEach(i => i.transform.localPosition = transform.localPosition); }
     }
 
 
@@ -68,9 +68,8 @@ public class EventTrigger : Inventory, ILevelData
     private void OnEnable()
     {
         //don't active the item given when this object activates
-        if (itemGiven) {
-            itemGiven.SetActive(false);
-            Debug.Log(gameObject.name);
+        if (itemsGiven.Count > 0) {
+            itemsGiven.ForEach(i => i.SetActive(false));
         }
     }
 
@@ -137,11 +136,17 @@ public class EventTrigger : Inventory, ILevelData
 
             if (Input.GetKey(KeyCode.T)) { questCompleted = true; }
 
-            if ((givenOnComplete && questCompleted || !givenOnComplete) && itemGiven != null && itemGiven.activeSelf == false)
+            if ((givenOnComplete && questCompleted || !givenOnComplete) && itemsGiven.Count > 0 && itemsGiven[0].activeSelf == false)
             {
-                itemGiven.SetActive(true);
-                itemGiven.transform.position = Player.transform.position;
-                itemGiven = null; //break reference 
+                foreach(GameObject itemGiven in itemsGiven)
+                {
+                    if (itemGiven && itemGiven.activeSelf == false)
+                    {
+                        itemGiven.SetActive(true);
+                        itemGiven.transform.position = Player.transform.position;
+                    }
+                }
+                itemsGiven.Clear(); //break reference 
             }
         }
 
