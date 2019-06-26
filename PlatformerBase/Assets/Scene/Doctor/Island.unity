@@ -621,6 +621,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 1923789962559069221, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -701,6 +706,12 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 936750309}
+    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4030f3808f7b84b4199d3843c98aebb4,
+        type: 3}
     - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
