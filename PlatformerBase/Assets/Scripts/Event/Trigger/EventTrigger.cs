@@ -18,6 +18,7 @@ public class EventTrigger : Inventory, ILevelData
     [Header("--- Item Given ---")]
     [SerializeField] protected List<GameObject> itemsGiven; //item given to the player
     [SerializeField] private bool givenOnComplete; //true = given on quest complete, false = given on initial interaction
+    [SerializeField] private bool indirect = false;
 
     protected bool questCompleted = false; //true when quest has been completed
 
@@ -38,7 +39,7 @@ public class EventTrigger : Inventory, ILevelData
 
         audioPlayer = GetComponentInParent<AudioPlayer>();
 
-        if (itemsGiven.Count > 0) { itemsGiven.ForEach(i => i.transform.localPosition = transform.localPosition); }
+        if (itemsGiven.Count > 0 && !indirect) { itemsGiven.ForEach(i => i.transform.localPosition = transform.localPosition); }
     }
 
 
@@ -143,7 +144,10 @@ public class EventTrigger : Inventory, ILevelData
                     if (itemGiven && itemGiven.activeSelf == false)
                     {
                         itemGiven.SetActive(true);
-                        itemGiven.transform.position = Player.transform.position;
+                        if (!indirect)
+                        {
+                            itemGiven.transform.position = Player.transform.position;
+                        }
                     }
                 }
                 itemsGiven.Clear(); //break reference 
