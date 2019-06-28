@@ -105,8 +105,6 @@ public class CollectableItem : Inventory
         transform.parent = target;
         targetPosition = Vector2.zero;
 
-        Debug.Log("EAT");
-
         SpriteRenderer targetRender = target.GetComponent<SpriteRenderer>();
         if (targetRender != null)
         {

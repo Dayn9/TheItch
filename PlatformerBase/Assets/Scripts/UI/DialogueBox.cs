@@ -109,6 +109,7 @@ public class DialogueBox : Pause {
         charachterFace.transform.position = transform.position + new Vector3(-9.0f, 0.0f, 0.0f);
         charachterImage = charachterFace.GetComponent<SpriteRenderer>();
         charachterImage.sortingLayerID = GetComponent<SpriteRenderer>().sortingLayerID;
+        charachterImage.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
         charachterImage.sprite = letters[letters.Length-1];
 
         SetAllRenderers(false);
