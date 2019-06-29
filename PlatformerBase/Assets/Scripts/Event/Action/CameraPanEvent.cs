@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+
+//Adapted from: https://chicounity3d.wordpress.com/2014/05/23/how-to-lerp-like-a-pro/
 public class CameraPanEvent : Pause
 {
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
@@ -9,19 +9,21 @@ public class CameraPanEvent : Pause
     [Header("Before/True  -  After/False")]
     [SerializeField] private bool beforeAfter; //when (before/after questCompleted) the event is triggered
 
-    private Vector2 origin; //position moving from
-    [SerializeField] private Vector2 final; //position moving to
+    private Vector3 origin; //position moving from
+    [SerializeField] private Vector3 final; //position moving to
     [SerializeField] private bool useTarget;
     [SerializeField] private Transform target;
-    [SerializeField] private float moveTime = 1;
 
-    [SerializeField] private float holdTime;
-    private float holdTimer = 0;
+    [SerializeField] [Range(1, 5)] private float holdTime = 3f;
+    private float currentHoldTime;
 
-    private Vector2 velocity = Vector2.zero;
     private bool move = false;
     private bool movingOut = true;
     private BaseCamera camController; //ref to camera controller 
+
+
+    [SerializeField] [Range(1, 5)] private float lerpTime = 3f;
+    private float currentLerpTime;
 
     private void Awake()
     {
@@ -52,100 +54,71 @@ public class CameraPanEvent : Pause
     private void Move()
     {
         move = true;
-        movingOut = true;
+        //movingOut = true;
 
         origin = camController.transform.localPosition;
-
-        if (useTarget) { final = target.transform.position; }
+        currentLerpTime = 0f;
+        if (useTarget) {
+            final = target.transform.position;
+            final.z = origin.z;
+        }
 
         camController.Manual = true; //take over control
         PauseGame(true);
     }
 
-    public void Update()
+    private void Update()
     {
         if (!menuPaused)
         {
-            if (move && holdTimer == 0)
+            if (move && currentLerpTime < lerpTime)
             {
-                //smooth damp the camera
-                Vector2.SmoothDamp(camController.transform.localPosition, (movingOut ? final : origin), ref velocity, moveTime);
-
-                if (((movingOut ? final : origin) - (Vector2)camController.transform.localPosition).magnitude < 0.1f ||
-                    (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0)))
+                //increment timer once per frame
+                currentLerpTime += Time.deltaTime;
+                if (currentLerpTime > lerpTime)
                 {
-                    Vector3 snapPos = (movingOut ? final : origin);
-                    snapPos.z = camController.transform.position.z;
-                    camController.transform.localPosition = snapPos;
+                    currentLerpTime = lerpTime;
+                }
 
-                    if (!movingOut)
+                float p = currentLerpTime / lerpTime; //calculate percentage
+                if (p == 1)
+                {
+                    if (movingOut)
                     {
+                        camController.transform.localPosition = final;
+                        movingOut = false;
+                        currentHoldTime = 0;
+                    }
+                    else
+                    {
+                        camController.transform.localPosition = origin;
                         move = false;
                         camController.Manual = false;
                         PauseGame(false);
                     }
-                    else
-                    {
-                        movingOut = false;
-                        holdTimer += Time.deltaTime; //starts the hold period 
-                    }
                 }
                 else
                 {
-                    camController.transform.localPosition += (Vector3)velocity * Time.deltaTime * 2f;//move at speed along moveVector
-                }
-            }
-            else if (move && holdTimer < holdTime)
-            {
-                holdTimer += Time.deltaTime;
-                if (holdTimer >= holdTime)
-                {
-                    holdTimer = 0; //reset the timer and start moving back out
-                }
-            }
-
-            /*
-
-            //Static In and Out
-            if (move && holdTimer == 0)
-            {
-                moveVector = (movingOut ? final : origin) - (Vector2)camController.transform.localPosition; //get Vector towards final destination
-                                                                                                            //snap into position when close enough
-                if (moveVector.magnitude < speed * Time.deltaTime )
-                //|| Mathf.Abs(moveVector.x) < speed * Time.deltaTime || 2 * Mathf.Abs(moveVector.y) < speed * Time.deltaTime
-                {
-                    Vector3 snapPos = (movingOut ? final : origin);
-                    snapPos.z = camController.transform.position.z;
-                    camController.transform.localPosition = snapPos;
-                    if (!movingOut)
+                    p = p * p * p * (p * (6f * p - 15f) + 10f); //smootherstep!
+                    if (movingOut)
                     {
-                        move = false;
-                        camController.Manual = false;
-                        PauseGame(false);
+                        camController.transform.localPosition = Vector3.Lerp(origin, final, p);
                     }
                     else
                     {
-                        movingOut = false;
-                        holdTimer += Time.deltaTime; //starts the hold period 
+                        camController.transform.localPosition = Vector3.Lerp(final, origin, p);
                     }
-                }
-                else
-                {
-                    camController.transform.localPosition += (moveVector.normalized * speed * Time.deltaTime);//move at speed along moveVector
+                    
                 }
             }
-            else if (move && holdTimer < holdTime)
+            else if (move && currentHoldTime < holdTime)
             {
-                holdTimer += Time.deltaTime;
-                if (holdTimer >= holdTime)
+                currentHoldTime+= Time.deltaTime;
+                if (currentHoldTime > holdTime)
                 {
-                    holdTimer = 0; //reset the timer and start moving back out
+                    currentLerpTime = 0; //reset the timer and start moving back out
                 }
             }
-            
-            */
-
-
         }
     }
 }
