@@ -49,6 +49,11 @@ public class Book : Button
 
     protected override void OnClick()
     {
-        DoctorsNote.SetActive(true);
+        if (unlocked)
+        {
+            DoctorsNote.SetActive(true);
+            otherPause = true;
+        }
+        
     }
 }

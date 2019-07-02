@@ -25,8 +25,6 @@ public class Books : Global
     private Vector2 pos; //position of the button with offset
     private Rect bounds; //actual bounds of the button
 
-    private Book book;
-
     private int TotalPages {
         get{
             if(totalPages == 0)
@@ -39,8 +37,6 @@ public class Books : Global
 
     private void Awake()
     {
-        //find the book in child objects
-        book = GetComponentInChildren<Book>();
         collectedPages = 0;
 
         //set the area based on starting position and offset
@@ -106,7 +102,7 @@ public class Books : Global
         if(collectedPages >= TotalPages)
         {
             //Unlock the book
-            book.Unlock();
+            GetComponentInChildren<Book>().Unlock();
         }
         move = true;
         timer = 0;

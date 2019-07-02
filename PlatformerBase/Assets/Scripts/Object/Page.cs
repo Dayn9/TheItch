@@ -33,7 +33,10 @@ public class Page : MonoBehaviour, ILevelData
     public void OnLevelLoad(bool state)
     {
         collected = !state;
-        books.CollectPage();
+        if (collected)
+        {
+            books.CollectPage();
+        }
         gameObject.SetActive(!collected);
     }
 
