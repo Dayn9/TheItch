@@ -68,6 +68,14 @@ public class InventoryDisplay : Inventory {
         hidden = (Items.Count == 0);
     }
 
+    public void CreateVirusKey()
+    {
+        Debug.Log("VIRUS");
+        GameObject virusKey = Instantiate(allItems.Find(i => i.name == "VirusKey"), Player.transform.position, Quaternion.identity);
+        virusKey.name = "VirusKey";
+        virusKey.SetActive(true);
+    }
+
     private void Start()
     {
         display.localPosition = hidden ? hiddenOffset : Vector2.zero; //move the display to a hidden position if hidden

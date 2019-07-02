@@ -23,6 +23,10 @@ public class Inventory : Global {
 
     protected static List<ItemLabel> itemLabels;
 
+    protected static int gemLock; //number of gems that have been collected 
+
+    public static int GemLock { get { return gemLock; } } //hides setting for children only 
+
     public Dictionary<string, GameObject> Items {
         get {
             if(items == null)
@@ -74,11 +78,25 @@ public class Inventory : Global {
         if (Items.ContainsKey(name))
         {
             Items[name].GetComponent<CollectableItem>().Eaten(transform);
+            CheckGemLock(name);
             //Destroy(Items[name]); //destroy the gameObject
             Items.Remove(name);
             allItemsStates[name] = 2;
         }
         DisplayItems();
+    }
+
+    private void CheckGemLock(string name)
+    {
+        if (Items[name].GetComponent<CollectableItem>().IsGem)
+        {
+            Debug.Log("It's a Gem!");
+            gemLock++;
+            if (gemLock >= 4)
+            {
+                inventoryUI.GetComponent<InventoryDisplay>().CreateVirusKey();
+            }
+        }
     }
 
     /// <summary>

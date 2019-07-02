@@ -14,7 +14,7 @@ public class Books : Global
     [SerializeField] private Digit collectedDigit;
     [SerializeField] private Digit totalDigit;
     private int collectedPages = 0;
-    private int totalPages;
+    private int totalPages = 0;
 
     private bool move = false;
     private const float displayTime = 3.0f;
@@ -27,12 +27,20 @@ public class Books : Global
 
     private Book book;
 
+    private int TotalPages {
+        get{
+            if(totalPages == 0)
+            {
+                totalPages = FindObjectsOfType<Page>().Length;
+            }
+            return totalPages;
+        }
+    }
+
     private void Awake()
     {
         //find the book in child objects
         book = GetComponentInChildren<Book>();
-
-        totalPages = FindObjectsOfType<Page>().Length;
         collectedPages = 0;
 
         //set the area based on starting position and offset
@@ -48,7 +56,7 @@ public class Books : Global
         transform.localPosition = hidden ? hiddenOffset : openOffset; //move the display to a hidden position if hidden
 
         collectedDigit.SetNumber(collectedPages);
-        totalDigit.SetNumber(totalPages);
+        totalDigit.SetNumber(TotalPages);
     }
 
     private void Update()
@@ -95,7 +103,7 @@ public class Books : Global
     public void CollectPage()
     {
         collectedPages++;
-        if(collectedPages >= totalPages)
+        if(collectedPages >= TotalPages)
         {
             //Unlock the book
             book.Unlock();

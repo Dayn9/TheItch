@@ -55,11 +55,11 @@ public class EventTrigger : Inventory, ILevelData
         {
             foreach(GameObject item in itemsRequired)
             {
-                if (item.GetComponent<CollectableItem>().Persists && questCompleted)
+                if (item.GetComponent<CollectableItem>().IsGem && questCompleted)
                 {
-                    GameObject i = Instantiate(item);
-                    i.transform.position = transform.position;
-                    i.GetComponent<CollectableItem>().Eaten(transform);
+                    GameObject gem = Instantiate(item);
+                    gem.transform.position = transform.position;
+                    gem.GetComponent<CollectableItem>().Eaten(transform);
                 }
             }
         }

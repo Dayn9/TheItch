@@ -52,7 +52,8 @@ public class GameSaver : Global
             player.Health,
             Heartbeat.BPM,
             AbilityHandler.Unlocked,
-            Inventory.ItemStates
+            Inventory.ItemStates,
+            Inventory.GemLock
         );
 
         SaveGameData(saveData);

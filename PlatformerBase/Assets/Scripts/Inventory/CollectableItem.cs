@@ -9,7 +9,6 @@ public class CollectableItem : Inventory
     private const float speed = 4.0f;
     private const float minMoveDistance = 0.05f;
 
-    [SerializeField] private bool persists;
     private bool collected = false;
     private bool used = false;
     private bool moving = false;
@@ -27,7 +26,7 @@ public class CollectableItem : Inventory
 
     public ItemType ItemType { get { return itemtype; } }
     public ItemStyle ItemStyle { get { return itemStyle; } }
-    public bool Persists { get { return persists; } }
+    public bool IsGem { get { return itemtype == ItemType.Gem; } }
 
     public void Awake()
     {
@@ -39,7 +38,7 @@ public class CollectableItem : Inventory
 
     private void Start()
     {
-        if (persists && used) { return; } //exit out when creating for 
+        if (IsGem && used) { return; } //exit out when creating for 
         if (allItemsStates[gameObject.name] != 0 && !collected) { gameObject.SetActive(false); }
     }
 
@@ -109,7 +108,7 @@ public class CollectableItem : Inventory
         if (targetRender != null)
         {
             render.sortingLayerID = targetRender.sortingLayerID;
-            render.sortingOrder = targetRender.sortingOrder + (persists ? 1: - 1);
+            render.sortingOrder = targetRender.sortingOrder + (IsGem ? 1: - 1);
         }
         collected = true; 
         used = true;
