@@ -58,6 +58,10 @@ public class ItemLabel : Inventory
                 targetWidth = bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition))
                     ? maxWidth : hiddenWidth;
             }
+            else
+            {
+                targetWidth = 0;
+            }
 
             render.size = new Vector2(Mathf.Lerp(render.size.x, targetWidth, 0.3f), render.size.y);
         }
