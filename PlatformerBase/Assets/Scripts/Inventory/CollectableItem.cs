@@ -44,8 +44,8 @@ public class CollectableItem : Inventory
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        //check if collision with player
-        if (!collected && coll.CompareTag("Player"))
+        //check if collision with player while player isn't returning
+        if (!collected && coll.CompareTag("Player") && !Player.GetComponent<IPlayer>().IsReturning) ;
         {
             PlayCollectionEffectAt(transform.position);
 
