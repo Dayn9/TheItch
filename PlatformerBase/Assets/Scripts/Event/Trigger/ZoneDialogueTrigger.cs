@@ -90,6 +90,9 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
     public void SetFrozen(bool frozen)
     {
         playerPhysObj.Frozen = frozen;
-        myPhysObj.Frozen = frozen;
+        if (myPhysObj != null)
+        {
+            myPhysObj.Frozen = frozen;
+        }
     }
 }
