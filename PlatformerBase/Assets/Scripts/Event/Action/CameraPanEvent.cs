@@ -24,6 +24,11 @@ public class CameraPanEvent : Pause
     [SerializeField] [Range(1, 5)] private float lerpTime = 3f;
     private float currentLerpTime;
 
+    private void Awake()
+    {
+        
+    }
+
     void Start()
     {
         camController = MainCamera.GetComponent<BaseCamera>();
