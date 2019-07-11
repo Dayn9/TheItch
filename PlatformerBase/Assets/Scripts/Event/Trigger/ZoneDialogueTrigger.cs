@@ -53,6 +53,7 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
         {
             //check for quest completion and display appropriate dialogue
             CheckQuest();
+           
             dialogueBox.OnTriggerKeyPressed(questCompleted ? completedDialogue : enterDialogue, faceImage);
         }
     }

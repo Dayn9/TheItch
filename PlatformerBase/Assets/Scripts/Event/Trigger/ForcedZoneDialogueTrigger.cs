@@ -19,7 +19,7 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
     {
         base.Start();
         //get reference to gameobject to activate after mandatory dialogue
-        if (!after)
+        if (after == null)
         {
             after = transform.GetChild(0).gameObject;
             after.SetActive(talked);

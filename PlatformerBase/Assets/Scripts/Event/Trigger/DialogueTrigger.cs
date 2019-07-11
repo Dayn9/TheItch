@@ -94,6 +94,12 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
         }
     }
 
+    protected override void OnTriggerEnter2D(Collider2D coll)
+    {
+        dialogueBox.Reset();
+        base.OnTriggerEnter2D(coll);
+    }
+
     protected override void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
