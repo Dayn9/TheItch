@@ -111,7 +111,7 @@ public class EventTrigger : Inventory, ILevelData
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
+        if (coll.gameObject.layer.Equals(LayerMask.NameToLayer("Player"))) //trigger dialogue when player touches 
         {
             playerTouching = true;
         }
@@ -119,7 +119,7 @@ public class EventTrigger : Inventory, ILevelData
 
     protected virtual void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
+        if (coll.gameObject.layer.Equals(LayerMask.NameToLayer("Player"))) //exit dialogue when player leaves
         {
             playerTouching = false;
             if (disableAfter) { gameObject.SetActive(false); }
