@@ -19,6 +19,7 @@ public class Building : Global {
 
     private static Fade fade; //ref to the fade in the UI fade gameobject
     private Renderer[] myRenderers; //array of all renderers in building (used to fade)
+    private Renderer[] cameraRenderers;
 
     /// <summary>
     /// gets or finds the ref to the fade script in the fade UI gameobject
@@ -66,15 +67,17 @@ public class Building : Global {
         //fade the background
         if (currentLayer == 0)
         {
+            cameraRenderers = MainCamera.GetComponentsInChildren<Renderer>();
+
             Fade.EnableFade(myRenderers);
             fade.EnableFade(Player.GetComponent<Renderer>());
-            fade.EnableFade(MainCamera.GetComponentsInChildren<Renderer>());
+            fade.EnableFade(cameraRenderers);
         }
         else if (layer == 0)
         {
             Fade.DisableFade(myRenderers);
             fade.DisableFade(Player.GetComponent<Renderer>());
-            fade.DisableFade(MainCamera.GetComponentsInChildren<Renderer>());
+            fade.DisableFade(cameraRenderers);
         }
 
         //go back a layer

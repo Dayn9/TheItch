@@ -22,19 +22,14 @@ public class InventoryDisplay : Inventory {
     {
         inventoryUI = transform; //set the inventory transform to this object
         display = transform.GetChild(0);
+        inventoryRenderer = display.GetComponent<SpriteRenderer>();
         //hidden = true;
 
         itemLabels = new List<ItemLabel>();
-        GameObject tempItemLabel;
+        
         for (int i = 0; i < inventorySize; i++)
         {
-            tempItemLabel = Instantiate(itemLabelPrefab, display);
-            tempItemLabel.name = "Item Label " + i;
-
-            itemLabels.Add(tempItemLabel.GetComponent<ItemLabel>());
-
-            tempItemLabel.GetComponent<ItemLabel>().SlotNum = i;
-            tempItemLabel.transform.localPosition = new Vector2(-0.5f, 2.875f - (1.5f * i));
+            CreateItemLabel(i);
         }
 
         //set up the all items states if it doesn't already exist
@@ -66,6 +61,26 @@ public class InventoryDisplay : Inventory {
         collectEffect.SetActive(false);
 
         hidden = (Items.Count == 0);
+    }
+
+    public void CreateItemLabel(int i)
+    {
+        GameObject tempItemLabel;
+        tempItemLabel = Instantiate(itemLabelPrefab, display);
+        tempItemLabel.name = "Item Label " + i;
+
+        itemLabels.Add(tempItemLabel.GetComponent<ItemLabel>());
+
+        tempItemLabel.GetComponent<ItemLabel>().SlotNum = i;
+        tempItemLabel.transform.localPosition = new Vector2(-0.5f, -3.125f - (1.5f * i));
+    }
+
+    public void CreateVirusKey()
+    {
+        Debug.Log("VIRUS");
+        GameObject virusKey = Instantiate(allItems.Find(i => i.name == "VirusKey"), Player.transform.position, Quaternion.identity);
+        virusKey.name = "VirusKey";
+        virusKey.SetActive(true);
     }
 
     private void Start()

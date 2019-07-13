@@ -19,7 +19,7 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
     {
         base.Start();
         //get reference to gameobject to activate after mandatory dialogue
-        if (!after)
+        if (after == null && transform.childCount > 0)
         {
             after = transform.GetChild(0).gameObject;
             after.SetActive(talked);
@@ -45,8 +45,10 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
                     //unfreeze player and activate after object
                     SetFrozen(false);
                     Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
-                    after.SetActive(true);
-                   
+                    if (after != null)
+                    {
+                        after.SetActive(true);
+                    }
                     talked = true;
                 }
             }

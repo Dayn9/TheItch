@@ -10,11 +10,12 @@ public class Inventory : Global {
     private static Dictionary<string, GameObject> items; //player inventory
 
     protected static Transform inventoryUI; //ref to the transform of the inventory display
+    protected static SpriteRenderer inventoryRenderer;
 
     protected const int inventorySize = 6;
 
     //Offsets and spacings between items in inventory
-    private const float offsetY = 3.75f; //offset from anchor along y axis
+    private const float offsetY = -2.25f; //offset from anchor along y axis
     private const float spacing = -1.5f; //spacing between individual items
 
     protected static GameObject collectEffect; //instantiated collect Effect
@@ -22,6 +23,10 @@ public class Inventory : Global {
     protected static Dictionary<string, int> allItemsStates; //keeps track of all the items states for level transitions and data loading
 
     protected static List<ItemLabel> itemLabels;
+
+    protected static int gemLock; //number of gems that have been collected 
+
+    public static int GemLock { get { return gemLock; } } //hides setting for children only 
 
     public Dictionary<string, GameObject> Items {
         get {
@@ -74,11 +79,25 @@ public class Inventory : Global {
         if (Items.ContainsKey(name))
         {
             Items[name].GetComponent<CollectableItem>().Eaten(transform);
+            CheckGemLock(name);
             //Destroy(Items[name]); //destroy the gameObject
             Items.Remove(name);
             allItemsStates[name] = 2;
         }
         DisplayItems();
+    }
+
+    private void CheckGemLock(string name)
+    {
+        if (Items[name].GetComponent<CollectableItem>().IsGem)
+        {
+            Debug.Log("It's a Gem!");
+            gemLock++;
+            if (gemLock >= 4)
+            {
+                inventoryUI.GetComponent<InventoryDisplay>().CreateVirusKey();
+            }
+        }
     }
 
     /// <summary>
@@ -93,10 +112,16 @@ public class Inventory : Global {
             Items[item].transform.localPosition = new Vector2(0.0f, offsetY + (index * spacing));
 
             CollectableItem collectableitem = Items[item].GetComponent<CollectableItem>();
+            //create a new Item label if needed
+            if(index >= itemLabels.Count - 1)
+            {
+                inventoryUI.GetComponent<InventoryDisplay>().CreateItemLabel(index+1);
+            }
             itemLabels[index].SetLabel(collectableitem.ItemType, collectableitem.ItemStyle);
 
             index++;
         }
+        inventoryRenderer.size = new Vector2(1.75f, 3.0f + (index * 1.5f));
     }
 
     public static void PlayCollectionEffectAt(Vector2 target)

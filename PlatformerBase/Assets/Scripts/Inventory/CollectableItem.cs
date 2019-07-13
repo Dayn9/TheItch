@@ -9,7 +9,6 @@ public class CollectableItem : Inventory
     private const float speed = 4.0f;
     private const float minMoveDistance = 0.05f;
 
-    [SerializeField] private bool persists;
     private bool collected = false;
     private bool used = false;
     private bool moving = false;
@@ -27,7 +26,7 @@ public class CollectableItem : Inventory
 
     public ItemType ItemType { get { return itemtype; } }
     public ItemStyle ItemStyle { get { return itemStyle; } }
-    public bool Persists { get { return persists; } }
+    public bool IsGem { get { return itemtype == ItemType.Gem; } }
 
     public void Awake()
     {
@@ -39,14 +38,14 @@ public class CollectableItem : Inventory
 
     private void Start()
     {
-        if (persists && used) { return; } //exit out when creating for 
+        if (IsGem && used) { return; } //exit out when creating for 
         if (allItemsStates[gameObject.name] != 0 && !collected) { gameObject.SetActive(false); }
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        //check if collision with player
-        if (!collected && coll.CompareTag("Player"))
+        //check if collision with player while player isn't returning
+        if (!collected && coll.CompareTag("Player") && !Player.GetComponent<IPlayer>().IsReturning)
         {
             PlayCollectionEffectAt(transform.position);
 
@@ -99,6 +98,11 @@ public class CollectableItem : Inventory
         {
             sa.Achieve();
         }
+
+        if(itemtype == ItemType.Cure)
+        {
+            Player.GetComponent<AbilityHandler>().LockAll(); //re lock all the abilities
+        }
     }
 
     public void Eaten(Transform target)
@@ -106,13 +110,11 @@ public class CollectableItem : Inventory
         transform.parent = target;
         targetPosition = Vector2.zero;
 
-        Debug.Log("EAT");
-
         SpriteRenderer targetRender = target.GetComponent<SpriteRenderer>();
         if (targetRender != null)
         {
             render.sortingLayerID = targetRender.sortingLayerID;
-            render.sortingOrder = targetRender.sortingOrder + (persists ? 1: - 1);
+            render.sortingOrder = targetRender.sortingOrder + (IsGem ? 1: - 1);
         }
         collected = true; 
         used = true;

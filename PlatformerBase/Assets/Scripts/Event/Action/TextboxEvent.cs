@@ -27,6 +27,11 @@ public class TextboxEvent : EventTrigger
     [SerializeField] private float maxTime;
     private float timer;
 
+    /// <summary>
+    /// returns true when the textbox is moving in OR out
+    /// </summary>
+    public bool IsMoving { get { return moveIn || moveOut; } }
+
     void Start()
     {
         foreach (EventTrigger evTrig in evTrigs)
@@ -72,6 +77,7 @@ public class TextboxEvent : EventTrigger
                     {
                         CallAfter();
                         GetComponent<DialogueBox>().Reset();
+
                         transform.localPosition = visiblePosition + animatedOffset; //reset the localPosition
                     }
                     moveOut = false;

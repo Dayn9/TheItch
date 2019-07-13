@@ -16,8 +16,9 @@ public class EventTrigger : Inventory, ILevelData
     [SerializeField] private int abilityRequired = 0; 
 
     [Header("--- Item Given ---")]
-    [SerializeField] protected GameObject itemGiven; //item given to the player
+    [SerializeField] protected List<GameObject> itemsGiven; //item given to the player
     [SerializeField] private bool givenOnComplete; //true = given on quest complete, false = given on initial interaction
+    [SerializeField] private bool indirect = false;
 
     protected bool questCompleted = false; //true when quest has been completed
 
@@ -38,7 +39,7 @@ public class EventTrigger : Inventory, ILevelData
 
         audioPlayer = GetComponentInParent<AudioPlayer>();
 
-        if (itemGiven) { itemGiven.transform.localPosition = transform.localPosition; }
+        if (itemsGiven.Count > 0 && !indirect) { itemsGiven.ForEach(i => i.transform.localPosition = transform.localPosition); }
     }
 
 
@@ -54,11 +55,11 @@ public class EventTrigger : Inventory, ILevelData
         {
             foreach(GameObject item in itemsRequired)
             {
-                if (item.GetComponent<CollectableItem>().Persists && questCompleted)
+                if (item.GetComponent<CollectableItem>().IsGem && questCompleted)
                 {
-                    GameObject i = Instantiate(item);
-                    i.transform.position = transform.position;
-                    i.GetComponent<CollectableItem>().Eaten(transform);
+                    GameObject gem = Instantiate(item);
+                    gem.transform.position = transform.position;
+                    gem.GetComponent<CollectableItem>().Eaten(transform);
                 }
             }
         }
@@ -68,7 +69,9 @@ public class EventTrigger : Inventory, ILevelData
     private void OnEnable()
     {
         //don't active the item given when this object activates
-        if (itemGiven) { itemGiven.SetActive(false); }
+        if (itemsGiven.Count > 0) {
+            itemsGiven.ForEach(i => i.SetActive(false));
+        }
     }
 
     protected virtual void Update()
@@ -108,7 +111,7 @@ public class EventTrigger : Inventory, ILevelData
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
+        if (coll.gameObject.layer.Equals(LayerMask.NameToLayer("Player"))) //trigger dialogue when player touches 
         {
             playerTouching = true;
         }
@@ -116,7 +119,7 @@ public class EventTrigger : Inventory, ILevelData
 
     protected virtual void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
+        if (coll.gameObject.layer.Equals(LayerMask.NameToLayer("Player"))) //exit dialogue when player leaves
         {
             playerTouching = false;
             if (disableAfter) { gameObject.SetActive(false); }
@@ -134,11 +137,20 @@ public class EventTrigger : Inventory, ILevelData
 
             if (Input.GetKey(KeyCode.T)) { questCompleted = true; }
 
-            if ((givenOnComplete && questCompleted || !givenOnComplete) && itemGiven != null && itemGiven.activeSelf == false)
+            if ((givenOnComplete && questCompleted || !givenOnComplete) && itemsGiven.Count > 0 && itemsGiven[0].activeSelf == false)
             {
-                itemGiven.SetActive(true);
-                itemGiven.transform.position = Player.transform.position;
-                itemGiven = null; //break reference 
+                foreach(GameObject itemGiven in itemsGiven)
+                {
+                    if (itemGiven && itemGiven.activeSelf == false)
+                    {
+                        itemGiven.SetActive(true);
+                        if (!indirect)
+                        {
+                            itemGiven.transform.position = Player.transform.position;
+                        }
+                    }
+                }
+                itemsGiven.Clear(); //break reference 
             }
         }
 

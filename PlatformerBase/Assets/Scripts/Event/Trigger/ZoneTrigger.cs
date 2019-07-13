@@ -11,6 +11,7 @@ public class ZoneTrigger : EventTrigger {
         {
             CheckQuest(); //callecd for item given reasons (don't delete)
             CallBefore();
+            //if (disableAfter) { gameObject.SetActive(false); } DONT 
         }
     }
 

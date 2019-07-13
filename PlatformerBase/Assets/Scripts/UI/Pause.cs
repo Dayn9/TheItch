@@ -54,7 +54,7 @@ public class Pause : Global {
         {
             audioPlayer = GetComponentInParent<AudioPlayer>();
         }
-        //Assert.IsNotNull(audioPlayer, gameObject.name + " cannot find an audioplayer");
+        Assert.IsNotNull(audioPlayer, gameObject.name + " cannot find an audioplayer");
     }
 
     private void Update()

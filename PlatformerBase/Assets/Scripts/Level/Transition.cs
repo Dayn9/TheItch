@@ -62,6 +62,9 @@ public class Transition : EventTrigger{
 
         AbilityHandler.Unlocked = gameData.unlockedAbilities;
 
+        gemLock = gameData.gemLock;
+        Debug.Log(gemLock);
+
         loadGame = false;
     }
 

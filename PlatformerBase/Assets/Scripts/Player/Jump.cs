@@ -7,8 +7,6 @@
 [RequireComponent(typeof(AbilityHandler))]
 public class Jump : PhysicsObject, IHealthObject, IPlayer
 {
-    //TODO : Remove health system?
-
     #region private fields
     [Header("Movement")]
     [SerializeField] private float moveSpeed; //how fast the object can move
@@ -80,6 +78,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     public override Vector2 MoveVelocity { get { return moveVelocity * moveSpeed; } }
     public bool CanSwim { set { canSwim = value; } }
+    public bool IsReturning { get { return returning; } }
 
     public float MoveSpeed {
         get { return moveSpeed; }
