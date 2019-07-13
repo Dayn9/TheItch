@@ -10,7 +10,7 @@ public class SteamAchievement : MonoBehaviour
     private bool achieved = false;
     private static bool request = false;
 
-    private void Awake()
+    private void Start()
     {
         if (!request) { request = SteamUserStats.RequestCurrentStats(); }
     }
