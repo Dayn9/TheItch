@@ -38,6 +38,9 @@ public class Transition : EventTrigger{
 
         //load in the level data
         LoadLevel();
+
+        //save the game data to update current level
+        GameSaver.SaveGameData();
     }
 
     private void Start()
@@ -63,7 +66,6 @@ public class Transition : EventTrigger{
         AbilityHandler.Unlocked = gameData.unlockedAbilities;
 
         gemLock = gameData.gemLock;
-        Debug.Log(gemLock);
 
         loadGame = false;
     }

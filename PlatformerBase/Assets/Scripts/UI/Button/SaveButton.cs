@@ -5,40 +5,35 @@ using System.Linq;
 
 public class SaveButton : GenericButton
 {
-    private IEnumerable<ILevelData> levelDataObjects; //ref to all the level data objects in the scene
-    private BreakableTilemap breakable; //ref to the breakable tilemap
+    [SerializeField] private Sprite savedText;
+    [SerializeField] private Sprite errorText;
+
+    [SerializeField] private SpriteRenderer message;
+
+    private Color targetColor;
 
     protected override void Awake()
     {
-        levelDataObjects = FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>();
-        breakable = FindObjectOfType<BreakableTilemap>();
         base.Awake();
+
+        message.color = new Color(1, 1, 1, 0);
     }
 
     protected override void OnClick()
     {
-        //default save for the game data
-        GameSaver.SaveGameData();
+        bool gameSave = GameSaver.SaveGameData();
+        bool levelSave = GameSaver.SaveLevelData();
 
-        //create a new level save object
-        LevelSaveData levelData = new LevelSaveData(GameSaver.currentLevelName);
-
-        //add the states data of all the level data objects 
-        foreach (ILevelData data in levelDataObjects)
-        {
-            levelData.AddObject(data.Name, data.State);
-        }
-
-        //add the breakable tilemap data
-        if (breakable)
-        {
-            foreach(Vector2Int broken in breakable.Broken)
-            {
-                levelData.AddBroken(broken);
-            }
-        }
-
-        //save the level data
-        GameSaver.SaveLevelData(levelData);
+        message.sprite = gameSave && levelSave ? savedText : errorText;
+        targetColor = Color.white;
     }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        message.color = Color.Lerp(message.color, targetColor, 0.2f);
+        if (message.color == Color.white) { targetColor = new Color(1,1,1,0); }
+    }
+
 }

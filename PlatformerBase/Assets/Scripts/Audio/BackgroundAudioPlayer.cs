@@ -17,8 +17,6 @@ public class BackgroundAudioPlayer : AudioPlayer
 
     [SerializeField] private AudioMixer backgroundMixer;
 
-    
-
     private void Awake()
     {
         sources = GetComponents<AudioSource>();
@@ -28,8 +26,6 @@ public class BackgroundAudioPlayer : AudioPlayer
         {
             soundDict.Add(soundFile.Name, soundFile);
         }*/
-
-
 
         if (soundP == 0)
         {
@@ -47,11 +43,12 @@ public class BackgroundAudioPlayer : AudioPlayer
         {
             source.loop = true;
             source.mute = muted; //make sure the source isn't playing while muted 
-            source.Play();
+            if (source.enabled)
+            {
+                source.Play();
+            }
         }
     }
-
-
 
     private void Update()
     {

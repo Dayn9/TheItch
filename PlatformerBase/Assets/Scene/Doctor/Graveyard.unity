@@ -11932,12 +11932,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferZero
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5
@@ -11987,6 +11981,12 @@ PrefabInstance:
       propertyPath: health
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &123563951 stripped
@@ -12751,38 +12751,38 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: areaName
+      value: Graveyard
+      objectReference: {fileID: 0}
     - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2f5af9d093b04dc42b677787da2488ce,
         type: 3}
-    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 7207526253200531225, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300030, guid: 3267f62941dabf444ac501dc11465bba,
-        type: 3}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: areaName
-      value: Graveyard
-      objectReference: {fileID: 0}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7207526253200531225, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300030, guid: 3267f62941dabf444ac501dc11465bba,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!1 &321821319
@@ -13531,7 +13531,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 623028581
   m_SortingLayer: -5
-  m_SortingOrder: 4
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -72989,12 +72989,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferOne
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.5
@@ -73049,6 +73043,12 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!114 &752399516 stripped
@@ -77154,12 +77154,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferThree
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.5
@@ -77214,6 +77208,12 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &1037563767 stripped
@@ -77342,12 +77342,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferOne (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -37.5
@@ -77402,6 +77396,12 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!1 &1137976749
@@ -77997,12 +77997,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferTwo
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5
@@ -78057,6 +78051,12 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!114 &1323108230 stripped
@@ -95327,12 +95327,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferZero (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
@@ -95387,6 +95381,12 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &2120277993 stripped

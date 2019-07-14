@@ -40,7 +40,7 @@ public class GameSaver : Global
     /// <summary>
     /// General Game Saving
     /// </summary>
-    public static void SaveGameData()
+    public static bool SaveGameData()
     {
         Jump player = Player.GetComponent<Jump>();
 
@@ -56,14 +56,14 @@ public class GameSaver : Global
             Inventory.GemLock
         );
 
-        SaveGameData(saveData);
+        return SaveGameData(saveData);
     }
 
     /// <summary>
     /// Saves the game save data
     /// </summary>
     /// <param name="saveData">Data to save</param>
-    private static void SaveGameData(GameSaveData saveData)
+    private static bool SaveGameData(GameSaveData saveData)
     {
         if (!Web) { MakeDirectory(); }
 
@@ -71,10 +71,12 @@ public class GameSaver : Global
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate);
 
+        bool success = false;
         try
         {
             binaryFormatter.Serialize(fileStream, saveData);
             if (Web) { SyncFiles(); }
+            success = true;
         }
         catch(System.Exception e)
         {
@@ -85,37 +87,51 @@ public class GameSaver : Global
             //always close the fileStream
             fileStream.Close();
         }
+        return success;
     }
 
-
-    public static void SaveLevelData()
+    public static bool SaveLevelData()
     {
+        //create a new level save object
         LevelSaveData levelData = new LevelSaveData(currentLevelName);
 
+        IEnumerable<ILevelData> levelDataObjects = FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>();
         //add the states data of all the level data objects 
-        foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
+        foreach (ILevelData data in levelDataObjects)
         {
             levelData.AddObject(data.Name, data.State);
         }
 
-        SaveLevelData(levelData);
+        BreakableTilemap breakable = FindObjectOfType<BreakableTilemap>();
+        //add the breakable tilemap data
+        if (breakable)
+        {
+            foreach (Vector2Int broken in breakable.Broken)
+            {
+                levelData.AddBroken(broken);
+            }
+        }
+        //save the level data
+        return SaveLevelData(levelData);
     }
 
     /// <summary>
     /// 
     /// </summary>
     /// <param name="saveData"></param>
-    public static void SaveLevelData(LevelSaveData saveData)
+    public static bool SaveLevelData(LevelSaveData saveData)
     {
         string dataPath = Application.persistentDataPath + folderName + saveData.levelName + FileExtension;
 
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream fileStream = File.Open(dataPath, FileMode.OpenOrCreate);
 
+        bool success = false;
         try
         {
             binaryFormatter.Serialize(fileStream, saveData);
             if (Web) { SyncFiles(); }
+            success = true;
         }
         catch (System.Exception e)
         {
@@ -126,6 +142,7 @@ public class GameSaver : Global
             //always close the fileStream
             fileStream.Close();
         }
+        return success;
     }
 
     /// <summary>
