@@ -23,11 +23,9 @@ public class TransferTrigger : IndicatorTrigger
     [SerializeField] private Sprite inHighlight;
     [SerializeField] private Sprite outHighlight;
 
-    [SerializeField] private Texture2D cursor;
-    [SerializeField] private Texture2D cursorH;
-
     private bool containsMouse = false;
 
+    private static CursorChange cursorChange;
     private static AbilityHandler abilityHandler;
 
     protected override void Awake()
@@ -49,6 +47,7 @@ public class TransferTrigger : IndicatorTrigger
     private void Start()
     {
         abilityHandler = Player.GetComponentInChildren<AbilityHandler>();
+        cursorChange = MainCamera.GetComponent<CursorChange>();
         HbIndicator.Total = healthObj.MaxHealth;
         HbIndicator.CurrentHealth = healthObj.Health;
         anim.SetBool("full", FullyHealed);
@@ -133,7 +132,7 @@ public class TransferTrigger : IndicatorTrigger
             indicator.SetActive(true);
 
             if (!containsMouse) {
-                Cursor.SetCursor(cursorH, Vector2.zero, CursorMode.Auto);
+                cursorChange.Hovering = true;
                 audioPlayer.PlaySound(0); //play the hover sound
             }
 
@@ -165,7 +164,7 @@ public class TransferTrigger : IndicatorTrigger
             indicator.SetActive(false);
             if (containsMouse)
             {
-                Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+                cursorChange.Hovering = false;
                 containsMouse = false;
             }
         }

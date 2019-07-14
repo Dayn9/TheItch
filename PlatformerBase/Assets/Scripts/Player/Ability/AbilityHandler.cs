@@ -64,7 +64,7 @@ public class AbilityHandler : Global {
         set { unlockedAbilities = value; }
     }
 
-    // Use this for initialization
+    // Use this for initialization 
     void Awake () {
         //find player refs
         player = Player.GetComponent<Jump>();

@@ -3247,6 +3247,7 @@ GameObject:
   - component: {fileID: 7443778577577470717}
   - component: {fileID: 7452392590630341619}
   - component: {fileID: 7449510614852589925}
+  - component: {fileID: 1652696221033746864}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -3369,6 +3370,23 @@ MonoBehaviour:
   m_CropFrameX: 1
   m_CropFrameY: 1
   m_StretchFill: 0
+--- !u!114 &1652696221033746864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7419579213018741737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266e69f12efd0f94e89f0fb7e57c4deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normal: {fileID: 2800000, guid: 89f3d02cdadde754bb6c319247cf7699, type: 3}
+  hover: {fileID: 2800000, guid: 130c6d0020db9e043970282a7bab70c8, type: 3}
+  left: {fileID: 2800000, guid: cfba5bec14bf83d4c919bed1bebf3cb2, type: 3}
+  right: {fileID: 2800000, guid: 1364b5313f55e6e4e941c9c10a5a2939, type: 3}
+  both: {fileID: 2800000, guid: 6b04a9a40f72d8049b7f312d5dd8ef12, type: 3}
 --- !u!1 &7419584072704544009
 GameObject:
   m_ObjectHideFlags: 0
