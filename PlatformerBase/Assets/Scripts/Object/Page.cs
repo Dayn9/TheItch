@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class Page : MonoBehaviour, ILevelData
+public class Page : Inventory, ILevelData
 {
     private bool collected = false;
 
@@ -45,7 +45,7 @@ public class Page : MonoBehaviour, ILevelData
     {
         if (!collected && coll.CompareTag("Player"))
         {
-            Inventory.PlayCollectionEffectAt(transform.position);
+            PlayCollectionEffectAt(transform.position);
 
             books.CollectPage();
 

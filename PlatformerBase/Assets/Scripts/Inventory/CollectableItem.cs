@@ -19,8 +19,6 @@ public class CollectableItem : Inventory
 
     private SpriteRenderer render;
 
-    private AudioPlayer audioPlayer;
-
     [SerializeField] private ItemType itemtype;
     [SerializeField] private ItemStyle itemStyle;
 
@@ -32,8 +30,6 @@ public class CollectableItem : Inventory
     {
         render = GetComponent<SpriteRenderer>();
         pickupPosition = transform.position;
-
-        audioPlayer = GetComponentInParent<AudioPlayer>();
     }
 
     private void Start()
@@ -57,8 +53,6 @@ public class CollectableItem : Inventory
             transform.position = pickupPosition; //return to origional position for animation
              //start the animation
             moving = true;
-
-            audioPlayer.PlaySound("itemCollect");
         }
     }
 

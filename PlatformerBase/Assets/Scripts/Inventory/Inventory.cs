@@ -124,11 +124,12 @@ public class Inventory : Global {
         inventoryRenderer.size = new Vector2(1.75f, 3.0f + (index * 1.5f));
     }
 
-    public static void PlayCollectionEffectAt(Vector2 target)
+    public  void PlayCollectionEffectAt(Vector2 target)
     {
         collectEffect.transform.position = target;
         collectEffect.SetActive(true);
         collectEffect.GetComponent<Animator>().SetTrigger("Collect");
+        collectEffect.GetComponent<AudioPlayer>().PlaySound(0);
     }
 
 }
