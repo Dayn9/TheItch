@@ -28,7 +28,7 @@ public abstract class Button : Pause {
         GetAudioPlayer();
     }
 
-    protected void Update () {
+    protected virtual void Update () {
         if (paused || !requiresPause)
         {
             OnActive();
