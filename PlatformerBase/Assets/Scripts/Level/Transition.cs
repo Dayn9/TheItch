@@ -75,6 +75,8 @@ public class Transition : EventTrigger{
     /// </summary>
     private void LoadLevel()
     {
+        GameSaver.levelDataObjects = FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>();
+
         LevelSaveData levelData = null;
         if((levelData = GameSaver.LoadLevelData(areaName)) != null)
         {
@@ -88,7 +90,7 @@ public class Transition : EventTrigger{
             //Debug.Log((FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>()).Count<ILevelData>());
 
             //loop through all the level data objects
-            foreach (ILevelData data in FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>())
+            foreach (ILevelData data in GameSaver.levelDataObjects)
             {
                 //load objects based on state from the dictionary
                 if (stateLookup.ContainsKey(data.Name))

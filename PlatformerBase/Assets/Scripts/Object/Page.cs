@@ -7,10 +7,14 @@ public class Page : Inventory, ILevelData
 {
     private bool collected = false;
 
-    public bool State { get { return collected; } }
+    public bool State { get {
+            Debug.Log(Name + " " + collected);
+            return collected; } }
     public string Name { get { return gameObject.name; } }
 
     private static Books books;
+    private SpriteRenderer render;
+
 
     [SerializeField] private Sprite[] pagesImages;
 
@@ -18,13 +22,16 @@ public class Page : Inventory, ILevelData
     {
         if (!books) { books = FindObjectOfType<Books>(); }
 
+
         //select a random sprite
-        GetComponent<SpriteRenderer>().sprite = pagesImages[Random.Range(0, pagesImages.Length)];
+        render = GetComponent<SpriteRenderer>();
+        render.sprite = pagesImages[Random.Range(0, pagesImages.Length)];
     }
     private void Start()
     {
-        gameObject.SetActive(!collected);
+        render.enabled = !collected;
     }
+
     private void Update()
     {
         
@@ -32,12 +39,12 @@ public class Page : Inventory, ILevelData
 
     public void OnLevelLoad(bool state)
     {
-        collected = !state;
+        collected = state;
         if (collected)
         {
             books.CollectPage();
         }
-        gameObject.SetActive(!collected);
+        render.enabled = !collected;
     }
 
 
@@ -50,7 +57,7 @@ public class Page : Inventory, ILevelData
             books.CollectPage();
 
             collected = true;
-            gameObject.SetActive(false);
+            render.enabled = false;
         }
     }
 }

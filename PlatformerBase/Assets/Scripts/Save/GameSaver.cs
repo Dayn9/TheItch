@@ -34,7 +34,9 @@ public class GameSaver : Global
 
     public static int FolderNumber { set { folderName = "/SaveFile" + (value - 1) + (Web ? "_" : "/"); } }
     public static string SaveName { get { return Application.persistentDataPath + folderName + GameSaveFileName + FileExtension; } }
-    
+
+    public static IEnumerable<ILevelData> levelDataObjects;
+
     private static bool Web { get { return Application.platform == RuntimePlatform.WebGLPlayer; } }
 
     /// <summary>
@@ -95,7 +97,6 @@ public class GameSaver : Global
         //create a new level save object
         LevelSaveData levelData = new LevelSaveData(currentLevelName);
 
-        IEnumerable<ILevelData> levelDataObjects = FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>();
         //add the states data of all the level data objects 
         foreach (ILevelData data in levelDataObjects)
         {
