@@ -67,6 +67,9 @@ public class Transition : EventTrigger{
 
         gemLock = gameData.gemLock;
 
+        Books.AchievementPages = gameData.pagesCollected;
+        DialogueBox.PeopleTalked = gameData.peopleTalked;
+
         loadGame = false;
     }
 

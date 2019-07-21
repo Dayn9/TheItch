@@ -7,21 +7,17 @@ public class Page : Inventory, ILevelData
 {
     private bool collected = false;
 
-    public bool State { get {
-            Debug.Log(Name + " " + collected);
-            return collected; } }
+    public bool State { get { return collected; } }
     public string Name { get { return gameObject.name; } }
 
     private static Books books;
     private SpriteRenderer render;
-
 
     [SerializeField] private Sprite[] pagesImages;
 
     private void Awake()
     {
         if (!books) { books = FindObjectOfType<Books>(); }
-
 
         //select a random sprite
         render = GetComponent<SpriteRenderer>();
@@ -44,9 +40,9 @@ public class Page : Inventory, ILevelData
         {
             books.CollectPage();
         }
+        render = GetComponent<SpriteRenderer>();
         render.enabled = !collected;
     }
-
 
     private void OnTriggerEnter2D(Collider2D coll)
     {

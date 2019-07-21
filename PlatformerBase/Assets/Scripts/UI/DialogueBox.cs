@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum TextSize { Small, Large, SmallFull, AreaName, SaveLocationName }
 
@@ -28,6 +29,22 @@ public class DialogueBox : Pause {
     protected bool openDoubleQuote = false;
    
     public bool FirstChunk { get { return dialogueChunk == -1; } }
+
+    private static bool[] peopleTalked;
+    public static bool[] PeopleTalked
+    {
+        get
+        {
+            if (peopleTalked == null) { peopleTalked = new bool[13]; }
+            return peopleTalked;
+        }
+        set
+        {
+            if (peopleTalked == null) { peopleTalked = new bool[13]; }
+            peopleTalked = value;
+        }
+    }
+
     
     public TextSize Size
     {

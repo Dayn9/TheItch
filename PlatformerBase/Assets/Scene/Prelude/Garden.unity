@@ -1507,6 +1507,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 1295297125}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: When your heartrate gets too high you can click and hold to expend
@@ -59679,7 +59680,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   - first: {x: 61, y: 2, z: 0}
     second:
@@ -59691,7 +59692,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 5
       m_IsLooping: 1
   - first: {x: 104, y: 5, z: 0}
     second:
@@ -59703,7 +59704,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   - first: {x: 168, y: 13, z: 0}
     second:
@@ -59715,7 +59716,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 5
       m_IsLooping: 1
   - first: {x: 116, y: 35, z: 0}
     second:
@@ -59727,7 +59728,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 126, y: 35, z: 0}
     second:
@@ -59739,7 +59740,7 @@ Tilemap:
       - {fileID: 21300502, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       - {fileID: 21300504, guid: 7896b5792c7635d4699fa5d01020f820, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 1
@@ -62739,6 +62740,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 1.5, z: 0}
   dialogueBox: {fileID: 1295297125}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: "\"Every itch begins from a place of itchlessness\"      \n-
@@ -62873,6 +62875,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 1295297125}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: 
@@ -63280,6 +63283,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 1.875, z: 0}
   dialogueBox: {fileID: 1295297125}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Here lies the free time of Dane Sherman
@@ -64006,6 +64010,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300024, guid: 9d43b17ce4ed6374084be8d269b8365f,
         type: 3}
+    - target: {fileID: 114930025202489026, guid: 6e550d450efdc8c4f869c1931a6883c1,
+        type: 3}
+      propertyPath: personIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 212806290724191650, guid: 6e550d450efdc8c4f869c1931a6883c1,
         type: 3}
       propertyPath: m_SortingOrder
@@ -65029,11 +65038,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 7449802895720474553, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: initialBPM
-      value: 120
-      objectReference: {fileID: 0}
     - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65094,16 +65098,17 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 298767483}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 1923789962559069221, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: areaName
-      value: Garden
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: evTrigs.Array.data[0]
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 212205846}
+      objectReference: {fileID: 21300022, guid: 3267f62941dabf444ac501dc11465bba,
+        type: 3}
     - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
@@ -65119,12 +65124,22 @@ PrefabInstance:
       propertyPath: total
       value: 
       objectReference: {fileID: 1175940732}
-    - target: {fileID: 1923789962559069221, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 7208008205218328421, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7208008205218328421, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: areaName
+      value: Garden
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 212205846}
+    - target: {fileID: 7207323955734484355, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -65135,10 +65150,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 381811b82c59500408af4a9ff93d7fdd,
         type: 3}
-    - target: {fileID: 7207323955734484355, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 7449802895720474553, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: initialBPM
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4613686064355638610, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
@@ -72167,6 +72182,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 1295297125}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Transfering energy into vines makes them grow, but it also decreases

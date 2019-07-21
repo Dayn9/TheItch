@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SteamAchievement))]
 public class Books : Global
 {
     [SerializeField] private Vector2 hiddenOffset; //relative position of display when hidden
@@ -24,6 +25,9 @@ public class Books : Global
     [SerializeField] protected Rect area; //bounding shape of the button, never gets adjusted 
     private Vector2 pos; //position of the button with offset
     private Rect bounds; //actual bounds of the button
+
+    private static int achievmentPages;
+    public static int AchievementPages { get { return achievmentPages; } set { achievmentPages = value; } }
 
     private int TotalPages {
         get{
@@ -103,6 +107,13 @@ public class Books : Global
         {
             //Unlock the book
             GetComponentInChildren<Book>().Unlock();
+
+            //check if the steam achievment has been unlocked
+            if(achievmentPages >= 33)
+            {
+                GetComponent<SteamAchievement>().Achieve();
+            }
+
         }
         move = true;
         timer = 0;

@@ -19,12 +19,14 @@ public class GameSaveData
     public bool[] unlockedAbilities;
     public int[] itemStates;
     public int gemLock;
+    public int pagesCollected;
+    public bool[] peopleTalked;
 
     //Inventory Info
     public List<string> itemNames; 
 
     public GameSaveData(string currentLevel, Vector2 playerPosition, Vector2 playerReturnPosition, 
-        float health, float bpm, bool[] unlockedAbilities, int[] itemStates, int gemLock)
+        float health, float bpm, bool[] unlockedAbilities, int[] itemStates, int gemLock, int pagesCollected, bool[] peopleTalked)
     {
         this.currentLevel = currentLevel;
         this.playerPosition = new float[] { playerPosition.x, playerPosition.y };
@@ -34,6 +36,8 @@ public class GameSaveData
         this.unlockedAbilities = unlockedAbilities;
         this.itemStates = itemStates;
         this.gemLock = gemLock;
+        this.pagesCollected = pagesCollected;
+        this.peopleTalked = peopleTalked;
     }
 
     public Vector2 PlayerReturnPosition()

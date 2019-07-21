@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 1303381903182940955}
   - component: {fileID: 8541234946914417504}
   - component: {fileID: 5165029895120428043}
+  - component: {fileID: 1197403013112397644}
   m_Layer: 0
   m_Name: Books
   m_TagString: Untagged
@@ -558,6 +559,19 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 372b66d2bae6b95448bff2a171a34f36, type: 3}
     priority: 0
     loops: 0
+--- !u!114 &1197403013112397644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5975538321008040058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e99146511cb2264a8661d9395d3525a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  APIName: achievement_books
 --- !u!1 &6254480368257828250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,6 +1514,7 @@ GameObject:
   - component: {fileID: 7480718985116650473}
   - component: {fileID: 7449690904264966665}
   - component: {fileID: 7449900823675084741}
+  - component: {fileID: 8793552557130006867}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -1828,6 +1843,19 @@ MonoBehaviour:
   - {fileID: 0}
   letterColor: {r: 0.9568628, g: 0.5058824, b: 0.30980393, a: 1}
   scrollSpeed: 25
+--- !u!114 &8793552557130006867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417924718289120395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e99146511cb2264a8661d9395d3525a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  APIName: achievement_people
 --- !u!1 &7418009058639403941
 GameObject:
   m_ObjectHideFlags: 0

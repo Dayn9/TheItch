@@ -1307,22 +1307,28 @@ PrefabInstance:
       propertyPath: topLimit
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f18874ebfc85818479912024c5d3d883,
         type: 3}
+    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300032, guid: 3267f62941dabf444ac501dc11465bba,
+        type: 3}
+    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7363031402924937865, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Enabled
@@ -1333,12 +1339,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300032, guid: 3267f62941dabf444ac501dc11465bba,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!1001 &420037973
@@ -64995,6 +64995,11 @@ PrefabInstance:
       propertyPath: abilityRequired
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: personIndex
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3254771367814480716, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: m_Sprite
@@ -66562,6 +66567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: abilityRequired
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: personIndex
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3254771367814480716, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
@@ -68892,6 +68902,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 1.75, z: 0}
   dialogueBox: {fileID: 955150470}
+  personIndex: 10
   faceImage: {fileID: 21300000, guid: e33f06ce9d6553944b7cbcd492c8b6d7, type: 3}
   questDialogue: Welcome to the Sanctuary friend. Feel free to saty as long as you
     need. If you're looking to cure that virus you've come to the right place, All

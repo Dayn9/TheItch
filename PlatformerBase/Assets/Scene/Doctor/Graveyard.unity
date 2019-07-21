@@ -168,6 +168,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: The smell of blood fills the Air
@@ -12051,6 +12052,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: They trade the lead, back and forth
@@ -12751,6 +12753,23 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2f5af9d093b04dc42b677787da2488ce,
+        type: 3}
+    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300030, guid: 3267f62941dabf444ac501dc11465bba,
+        type: 3}
+    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
@@ -12761,28 +12780,11 @@ PrefabInstance:
       propertyPath: areaName
       value: Graveyard
       objectReference: {fileID: 0}
-    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2f5af9d093b04dc42b677787da2488ce,
-        type: 3}
     - target: {fileID: 7207526253200531225, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300030, guid: 3267f62941dabf444ac501dc11465bba,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!1 &321821319
@@ -12841,6 +12843,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Tony
@@ -12974,6 +12977,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: I dream of wild horses
@@ -13436,6 +13440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: itemsEaten
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: personIndex
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3254771367814480716, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
@@ -17722,6 +17731,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: Talk to the Gravedigger
   completedDialogue: jump multiple times to swim up a waterfall
@@ -73305,6 +73315,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Hooves turn to black claws. Eyes open, no fear.
@@ -77526,6 +77537,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Racing down the track as the line approaches
@@ -78193,6 +78205,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Hooves beating in sync on the broken earth
@@ -90049,6 +90062,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: '"I would rather die of passion than of boredom"  -Zola'

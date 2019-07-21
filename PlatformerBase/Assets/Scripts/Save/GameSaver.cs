@@ -55,7 +55,9 @@ public class GameSaver : Global
             Heartbeat.BPM,
             AbilityHandler.Unlocked,
             Inventory.ItemStates,
-            Inventory.GemLock
+            Inventory.GemLock,
+            Books.AchievementPages,
+            DialogueBox.PeopleTalked
         );
 
         return SaveGameData(saveData);

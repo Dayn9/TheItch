@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Linq;
 
 public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
 {
@@ -38,6 +37,15 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0))
             {
+                if (personIndex >= 0 && DialogueBox.PeopleTalked[personIndex] == false)
+                {
+                    DialogueBox.PeopleTalked[personIndex] = true;
+                    SteamAchievement achieve;
+                    if (!DialogueBox.PeopleTalked.ToList().Contains(false) && (achieve = dialogueBox.GetComponent<SteamAchievement>()) != null)
+                    {
+                        achieve.Achieve();
+                    }
+                } 
                 CheckQuest();
                 //send the dialogue and check if ended
                 if (dialogueBox.OnTriggerKeyPressed(questCompleted ? completedDialogue : enterDialogue, faceImage))

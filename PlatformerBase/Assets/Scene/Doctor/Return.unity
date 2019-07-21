@@ -77008,6 +77008,11 @@ PrefabInstance:
       propertyPath: topLimit
       value: 85
       objectReference: {fileID: 0}
+    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1303381903182940955, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: openOffset.x
@@ -77032,11 +77037,6 @@ PrefabInstance:
         type: 3}
       propertyPath: initialBPM
       value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
@@ -77155,6 +77155,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 1.75, z: 0}
   dialogueBox: {fileID: 2000886703}
+  personIndex: -1
   faceImage: {fileID: 21300000, guid: 115b13b1b4b8d6e449b239481e789bc4, type: 3}
   questDialogue: 'What do you want? Probably come to tell me some sad story about
     some family member or friend you think I killed. Just because you call it a virus
@@ -77246,6 +77247,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 1.75, z: 0}
   dialogueBox: {fileID: 0}
+  personIndex: 12
   faceImage: {fileID: 21300000, guid: 115b13b1b4b8d6e449b239481e789bc4, type: 3}
   questDialogue: 
   completedDialogue: The virus gives you power, why are you trying to find a cure?
