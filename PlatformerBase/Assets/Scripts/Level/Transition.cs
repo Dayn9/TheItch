@@ -7,12 +7,12 @@ public class Transition : EventTrigger{
 
     private SpriteRenderer render;
 
-    private const float fadeAlpha = (172.0f / 255);
+    private const float fadeAlpha = 0.675f;
 
     private bool fadeIn = false;
     private bool fadeOut = false;
 
-    [SerializeField] private float fadeRate = 1.0f;
+    private const float fadeRate = 1.0f;
 
     private Jump player;
 
@@ -38,9 +38,6 @@ public class Transition : EventTrigger{
 
         //load in the level data
         LoadLevel();
-
-        //save the game data to update current level
-        GameSaver.SaveGameData();
     }
 
     private void Start()
@@ -53,6 +50,9 @@ public class Transition : EventTrigger{
         }
 
         FadeIn(); //begin the fade in when the scene first loads 
+        
+        //save the game data to update current level
+        GameSaver.SaveGameData();
     }
 
     private void LoadGame()
@@ -145,7 +145,7 @@ public class Transition : EventTrigger{
     {
         if (!paused)
         {
-            if (fadeIn && Time.deltaTime < 0.2f) //TODO maybe this isn't the best thing to check for
+            if (fadeIn) 
             {
                 float change = fadeRate * Time.deltaTime;
                 if (render.color.a - change <= 0)
@@ -154,7 +154,7 @@ public class Transition : EventTrigger{
                     fadeIn = false;
                     render.enabled = false;
                     
-                    player.Frozen = false; //stop the player from moving
+                    player.Frozen = false; 
                     player.InFallZone = false;
                     return;
                 }
