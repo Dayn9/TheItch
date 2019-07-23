@@ -979,7 +979,7 @@ Transform:
   - {fileID: 720955234}
   - {fileID: 1523798892}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &205309760 stripped
 Transform:
@@ -1207,7 +1207,7 @@ Transform:
   - {fileID: 1470431808}
   - {fileID: 113141680}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &377710905 stripped
 GameObject:
@@ -1306,6 +1306,11 @@ PrefabInstance:
         type: 3}
       propertyPath: topLimit
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: areaName
+      value: Sanctuary
       objectReference: {fileID: 0}
     - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
@@ -58706,7 +58711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4747846318752318, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4747846318752318, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -61539,7 +61544,7 @@ Transform:
   - {fileID: 420037974}
   - {fileID: 2074502366}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &955150470 stripped
 MonoBehaviour:
@@ -63931,7 +63936,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 623028581
   m_SortingLayer: -5
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -65006,6 +65011,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 5f0614162b1145b43af19e45c323e31d,
         type: 3}
+    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 4016ef0d6695ae24fa6aa6221b89f8d8,
+        type: 2}
     - target: {fileID: 3254771367814480714, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: path.Array.size
@@ -65056,11 +65066,6 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 4016ef0d6695ae24fa6aa6221b89f8d8,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
 --- !u!4 &1361554884 stripped
@@ -66584,6 +66589,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: a62aff8ea6b6ced4c95d4720fe00a0ef,
         type: 3}
+    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: a452904caeb9cba4bae3d1cdbb25d25a,
+        type: 2}
     - target: {fileID: 3254771367814480714, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: path.Array.size
@@ -66639,11 +66649,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: a452904caeb9cba4bae3d1cdbb25d25a,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
 --- !u!1001 &1687469335
@@ -67587,7 +67592,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 623028581
   m_SortingLayer: -5
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -68904,7 +68909,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 955150470}
   personIndex: 10
   faceImage: {fileID: 21300000, guid: e33f06ce9d6553944b7cbcd492c8b6d7, type: 3}
-  questDialogue: Welcome to the Sanctuary friend. Feel free to saty as long as you
+  questDialogue: Welcome to the Sanctuary friend. Feel free to stay as long as you
     need. If you're looking to cure that virus you've come to the right place, All
     I need is a healing lily and I can make everything better.
   completedDialogue: 'Not again! I tried, but it looks like this will only allow you

@@ -25,7 +25,7 @@ public class Page : Inventory, ILevelData
     }
     private void Start()
     {
-        render.enabled = !collected;
+        //render.enabled = !collected;
     }
 
     private void Update()

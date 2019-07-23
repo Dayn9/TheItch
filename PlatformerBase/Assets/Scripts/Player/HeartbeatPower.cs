@@ -27,7 +27,7 @@ public class HeartbeatPower : Global {
     void Awake()
     {
         heartbeat = GetComponent<Heartbeat>();
-        if(Heartbeat.BPM == -1 || true)
+        if(Heartbeat.BPM == -1)
         {
             Heartbeat.BPM = initialBPM;
         }

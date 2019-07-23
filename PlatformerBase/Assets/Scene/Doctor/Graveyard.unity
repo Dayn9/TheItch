@@ -312,6 +312,12 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 2546377550922172176, guid: bbe10861b3b38df44b57c4771c5252e8,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
 --- !u!4 &51906431 stripped
@@ -12753,6 +12759,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: areaName
+      value: Graveyard
+      objectReference: {fileID: 0}
     - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
@@ -12774,11 +12785,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: areaName
-      value: Graveyard
       objectReference: {fileID: 0}
     - target: {fileID: 7207526253200531225, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
