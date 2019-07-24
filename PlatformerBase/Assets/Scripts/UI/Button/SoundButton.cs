@@ -16,10 +16,6 @@ public class SoundButton : Button {
     protected override void OnClick()
     {
         muted = !muted;
-        foreach (AudioSource source in audios)
-        {
-            source.mute = muted;
-        }
     }
 
     protected override void OnEnter()

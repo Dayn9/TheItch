@@ -10,8 +10,6 @@ public class Pause : Global {
 
     protected static Animator[] animators; //ref to all the animators in the scene
 
-    protected static AudioSource[] audios; //ref t all audioSources in the scene
-
     protected Fade fade; //ref to the fade object in the scene 
     public static bool menuPaused = false; //true when menu is paused
     public static bool otherPause = false; //true when something else is paused
@@ -43,8 +41,7 @@ public class Pause : Global {
 
     private void Start()
     {
-        //find all the AudioSorces in the scene once everything has been Instantiated
-        audios = FindObjectsOfType<AudioSource>();
+
     }
 
     protected void GetAudioPlayer()
@@ -86,10 +83,6 @@ public class Pause : Global {
         if (Input.GetKeyDown(KeyCode.M))
         {
             muted = !muted;
-            foreach (AudioSource source in audios)
-            {
-                source.mute = muted;
-            }
         }
     }
 

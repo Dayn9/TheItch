@@ -12,7 +12,9 @@ public class SteamAchievement : MonoBehaviour
 
     private void Start()
     {
-        if (!request) { request = SteamUserStats.RequestCurrentStats(); }
+        if (!request) {
+            request = SteamUserStats.RequestCurrentStats();
+        }
     }
 
     public void Achieve()

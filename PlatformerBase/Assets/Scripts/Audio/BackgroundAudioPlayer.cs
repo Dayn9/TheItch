@@ -50,8 +50,9 @@ public class BackgroundAudioPlayer : AudioPlayer
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         backgroundMixer.GetFloat("TrackAVol", out currentVolumes[0]);
         backgroundMixer.GetFloat("TrackBVol", out currentVolumes[1]);
 

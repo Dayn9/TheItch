@@ -29,7 +29,7 @@ public abstract class Button : Pause {
     }
 
     protected virtual void Update () {
-        if (paused || !requiresPause)
+        if (menuPaused || !requiresPause)
         {
             OnActive();
             //update the collider position
