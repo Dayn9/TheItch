@@ -233,11 +233,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -148.5
+      value: 19.5
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.1
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4894800065709238, guid: 80261ec61f9ea364592b48a675de6141, type: 3}
       propertyPath: m_LocalPosition.z
@@ -888,6 +888,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 4030f3808f7b84b4199d3843c98aebb4,
         type: 3}
+    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1317652639
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
@@ -110002,7 +110012,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   - first: {x: -124, y: -13, z: 0}
     second:
@@ -110014,7 +110024,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: -59, y: 16, z: 0}
     second:
@@ -110026,7 +110036,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 5
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   - first: {x: -78, y: 35, z: 0}
     second:
@@ -110038,7 +110048,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 2
+      m_AnimationTimeOffset: 4
       m_IsLooping: 1
   - first: {x: -121, y: 37, z: 0}
     second:
@@ -110062,7 +110072,7 @@ Tilemap:
       - {fileID: 21300020, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300022, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 3
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 1
@@ -124774,16 +124784,16 @@ ParticleSystem:
       maxColor: {r: 0.41960788, g: 0.4039216, b: 0.32941177, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.41960788, g: 0.4039216, b: 0.32941177, a: 1}
-        key1: {r: 0.7137255, g: 0.65882355, b: 0.38431376, a: 1}
+        key0: {r: 0.7137255, g: 0.65882355, b: 0.38431376, a: 1}
+        key1: {r: 0.41960788, g: 0.4039216, b: 0.32941177, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 19595
-        ctime1: 19667
+        ctime0: 8192
+        ctime1: 65535
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -124833,7 +124843,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -125149,13 +125159,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1024
+    maxNumParticles: 128
     size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -125597,8 +125607,26 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
+          time: 0.099
+          value: 1
+          inSlope: -0.0000001326021
+          outSlope: -0.0000001326021
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.1
+          value: 0.5
+          inSlope: -0.00000014901161
+          outSlope: -0.00000014901161
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
           time: 0.899
-          value: 0.9999999
+          value: 0.5
           inSlope: -0.00000018365448
           outSlope: -0.00000018365448
           tangentMode: 0
@@ -125607,7 +125635,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 0.9
-          value: 0.50048727
+          value: 0.25
           inSlope: 0.05924402
           outSlope: 0.05924402
           tangentMode: 0
@@ -125616,7 +125644,7 @@ ParticleSystem:
           outWeight: 0.22709315
         - serializedVersion: 3
           time: 1
-          value: 0.5
+          value: 0.25
           inSlope: 0.0000016689281
           outSlope: 0.0000016689281
           tangentMode: 0
@@ -126112,8 +126140,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: -3
+      scalar: 2
+      minScalar: -2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -126166,7 +126194,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1
-      minScalar: 0.5
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -126913,7 +126941,7 @@ ParticleSystem:
     inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
-    enabled: 0
+    enabled: 1
     multiplier: 1
     influenceFilter: 0
     influenceMask:
@@ -128142,7 +128170,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -128195,7 +128223,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2

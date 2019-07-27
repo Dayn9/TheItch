@@ -33,7 +33,7 @@ public class Building : Global {
     }
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         physPlayer = Player.GetComponent<PhysicsObject>();
 

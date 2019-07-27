@@ -42,6 +42,7 @@ public class Books : Global
     private void Awake()
     {
         collectedPages = 0;
+        totalPages = FindObjectsOfType<Page>().Length;
 
         //set the area based on starting position and offset
         pos = (Vector2)transform.position + offset;

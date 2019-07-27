@@ -38,6 +38,10 @@ public class BreakableTilemap : MonoBehaviour
         if (broken == null) { broken = new List<Vector2Int>(); };
     }
 
+    /// <summary>
+    /// replaces any solid tiles in a 3x3 are with empty ones
+    /// </summary>
+    /// <param name="pos">approx center to break</param>
     public void BreakTile(Vector2 pos)
     {
         Vector3Int projectilePosition = new Vector3Int(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), 0);
@@ -70,5 +74,9 @@ public class BreakableTilemap : MonoBehaviour
                 broken.Add((Vector2Int)tilePositions[i]);
             }
         }
+    }
+
+    private void OnTriggerExit2D() {
+        GetComponent<CompositeCollider2D>().isTrigger = false;
     }
 }

@@ -307,17 +307,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300030, guid: 4374a73e242e3f14d8ddffedfd7009a0,
         type: 3}
-    - target: {fileID: 61865142819802584, guid: dd9586f87d9b4cb49b874270f71ec290,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
         type: 3}
       propertyPath: itemsRequired.Array.data[0]
       value: 
       objectReference: {fileID: 2546377550922172176, guid: bbe10861b3b38df44b57c4771c5252e8,
         type: 3}
+    - target: {fileID: 61865142819802584, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
 --- !u!4 &51906431 stripped
@@ -713,16 +713,16 @@ ParticleSystem:
       maxColor: {r: 0.41960788, g: 0.4039216, b: 0.32941177, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.41960788, g: 0.4039216, b: 0.32941177, a: 1}
-        key1: {r: 0.7137255, g: 0.65882355, b: 0.38431376, a: 1}
+        key0: {r: 0.7137255, g: 0.65882355, b: 0.38431376, a: 1}
+        key1: {r: 0.41960788, g: 0.4039216, b: 0.32941177, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 19595
-        ctime1: 19667
+        ctime0: 8192
+        ctime1: 65535
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -772,7 +772,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1088,13 +1088,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1024
+    maxNumParticles: 128
     size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1536,8 +1536,26 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
+          time: 0.099
+          value: 1
+          inSlope: -0.0000001326021
+          outSlope: -0.0000001326021
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.1
+          value: 0.5
+          inSlope: -0.00000014901161
+          outSlope: -0.00000014901161
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
           time: 0.899
-          value: 0.9999999
+          value: 0.5
           inSlope: -0.00000018365448
           outSlope: -0.00000018365448
           tangentMode: 0
@@ -1546,7 +1564,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 0.9
-          value: 0.50048727
+          value: 0.25
           inSlope: 0.05924402
           outSlope: 0.05924402
           tangentMode: 0
@@ -1555,7 +1573,7 @@ ParticleSystem:
           outWeight: 0.22709315
         - serializedVersion: 3
           time: 1
-          value: 0.5
+          value: 0.25
           inSlope: 0.0000016689281
           outSlope: 0.0000016689281
           tangentMode: 0
@@ -2051,8 +2069,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: -3
+      scalar: 2
+      minScalar: -2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2105,7 +2123,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1
-      minScalar: 0.5
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2852,7 +2870,7 @@ ParticleSystem:
     inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
-    enabled: 0
+    enabled: 1
     multiplier: 1
     influenceFilter: 0
     influenceMask:
@@ -4081,7 +4099,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4134,7 +4152,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -12764,18 +12782,6 @@ PrefabInstance:
       propertyPath: areaName
       value: Graveyard
       objectReference: {fileID: 0}
-    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2f5af9d093b04dc42b677787da2488ce,
-        type: 3}
-    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300030, guid: 3267f62941dabf444ac501dc11465bba,
-        type: 3}
     - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
@@ -12786,11 +12792,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2f5af9d093b04dc42b677787da2488ce,
+        type: 3}
     - target: {fileID: 7207526253200531225, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300030, guid: 3267f62941dabf444ac501dc11465bba,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!1 &321821319
