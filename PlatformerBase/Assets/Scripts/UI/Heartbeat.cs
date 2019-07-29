@@ -21,7 +21,7 @@ public class Heartbeat : Global {
     private const float audioThreshhold = 0.5f; //min change rate to hear heartbeat
     private float changeRate = 0; //rate bpm is currently changing
     private float timer = 0; //fade timer
-    private const float fadeTime = 3.0f; //time (seconds) it takes for heartbeat audio to completely fade out
+    private const float fadeTime = 2.0f; //time (seconds) it takes for heartbeat audio to completely fade out
 
     public float ChangeRate { set { changeRate = value; } }
 

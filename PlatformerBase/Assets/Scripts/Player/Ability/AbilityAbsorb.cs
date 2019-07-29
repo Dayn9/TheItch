@@ -30,7 +30,7 @@ public class AbilityAbsorb : BloodParticle
             //snap to players position
             //transform.position = (Vector2)Player.transform.position ;
 
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(1) && AbilityHandler.IsUnlocked(1))
             {
                 //particleEmission += particlesSent * Time.deltaTime;
                 //SendParticlesTo(playerObj, Mathf.FloorToInt(particleEmission));
@@ -40,10 +40,6 @@ public class AbilityAbsorb : BloodParticle
                 partRend.sortingOrder = playerRend.sortingOrder - 1;
 
                 //part.Play();
-            }
-            else if (Input.GetMouseButtonUp(1))
-            {
-                //part.Stop();
             }
 
             //move the particles toward their target

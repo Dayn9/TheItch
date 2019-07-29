@@ -1307,6 +1307,12 @@ PrefabInstance:
       propertyPath: topLimit
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f18874ebfc85818479912024c5d3d883,
+        type: 3}
     - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
@@ -1318,22 +1324,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: areaName
-      value: Sanctuary
-      objectReference: {fileID: 0}
     - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f18874ebfc85818479912024c5d3d883,
-        type: 3}
+      propertyPath: areaName
+      value: Sanctuary
+      objectReference: {fileID: 0}
     - target: {fileID: 7363031402924937865, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Enabled
@@ -65011,11 +65011,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 5f0614162b1145b43af19e45c323e31d,
         type: 3}
-    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 4016ef0d6695ae24fa6aa6221b89f8d8,
-        type: 2}
     - target: {fileID: 3254771367814480714, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: path.Array.size
@@ -65066,6 +65061,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 4016ef0d6695ae24fa6aa6221b89f8d8,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
 --- !u!4 &1361554884 stripped
@@ -66589,11 +66589,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: a62aff8ea6b6ced4c95d4720fe00a0ef,
         type: 3}
-    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: a452904caeb9cba4bae3d1cdbb25d25a,
-        type: 2}
     - target: {fileID: 3254771367814480714, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: path.Array.size
@@ -66649,6 +66644,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 815198174, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: a452904caeb9cba4bae3d1cdbb25d25a,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af054e1659be0bf47a4784d2f11f567a, type: 3}
 --- !u!1001 &1687469335
@@ -66960,7 +66960,7 @@ PrefabInstance:
     - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
         type: 3}
       propertyPath: questDialogue
-      value: I hear the gem stones are beautiful this time of year
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
         type: 3}
@@ -66970,7 +66970,7 @@ PrefabInstance:
     - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
         type: 3}
       propertyPath: completedDialogue
-      value: '@ Mark'
+      value: If god has made me itchy, why should I not itch
       objectReference: {fileID: 0}
     - target: {fileID: 83004413648692299, guid: df4ed9b7ba2c0154d867f8ba99df59a5,
         type: 3}

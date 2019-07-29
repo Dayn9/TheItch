@@ -87,15 +87,16 @@ public class CollectableItem : Inventory
         rend.sortingOrder = invRend.sortingOrder + 1;
         collected = true;
 
-        SteamAchievement sa;
-        if(sa = GetComponent<SteamAchievement>())
-        {
-            sa.Achieve();
-        }
-
-        if(itemtype == ItemType.Cure)
+        if (itemtype == ItemType.Cure)
         {
             Player.GetComponent<AbilityHandler>().LockAll(); //re lock all the abilities
+        }
+
+	
+        SteamAchievement sa;
+        if (sa = GetComponent<SteamAchievement>())
+        {
+            sa.Achieve();
         }
     }
 

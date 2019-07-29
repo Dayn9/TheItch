@@ -34,7 +34,8 @@ public class AbilityHandler : Global {
     private bool sprinting = false; //true when the player is sprinting
     private const int minSprintBPM = 170; //minimum heartrate the player can use the sprint ability at
     private const int sprintTime = 5; //time spent sprinting / exhausted
-    /// private float sprintTimer = 0; //timer used to keep track of sprinting
+    // private float sprintTimer = 0; //timer used to keep track of sprinting
+    [SerializeField] private float sprintHealRate;
 
     [Header("Ability 3: Swimming")]
     [SerializeField] private int rateOverDistance; //how many water particles to emit
@@ -124,6 +125,10 @@ public class AbilityHandler : Global {
     public void LockAll()
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
+        player.CanSwim = false;
+        powerZero.gameObject.SetActive(false);
+        partAbsorb.gameObject.SetActive(false);
+        powerOne.gameObject.SetActive(false);
     }
 
 
@@ -155,12 +160,12 @@ public class AbilityHandler : Global {
     }
 
     void Update () {
-
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.U))
         {
             for (int i = 0; i < unlockedAbilities.Length; i++) { Unlock(i); }
         }
-
+#endif
         if (!paused)
         {
             if (unlockedAbilities[0])
@@ -208,6 +213,7 @@ public class AbilityHandler : Global {
                 if (Input.GetMouseButton(1))
                 {
                     sprinting = true;
+                    player.Heal(sprintHealRate * Time.deltaTime);
                 }
                 //stop the sprinting
                 else if (sprinting && Input.GetMouseButtonUp(1))

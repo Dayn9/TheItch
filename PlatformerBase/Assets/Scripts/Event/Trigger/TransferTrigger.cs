@@ -116,8 +116,15 @@ public class TransferTrigger : IndicatorTrigger
                 HbIndicator.SetSprite(anim.GetBool("full") ? outHighlight : inHighlight);
             }
             //fade the color when ability one hasn't been  unlocked yet
-            render.color = Color.Lerp(FullyHealed && !AbilityHandler.IsUnlocked(1) ? 
-                new Color(1,1,1,0.25f) : Color.white, render.color, 0.90f);
+            if((FullyHealed && !AbilityHandler.IsUnlocked(1)) || (!FullyHealed && !AbilityHandler.IsUnlocked(0)))
+            {
+                render.color = Color.Lerp(new Color(1, 1, 1, 0.25f), render.color, 0.9f);
+            }
+            else
+            {
+                render.color = Color.Lerp(Color.white, render.color, 0.9f);
+            }
+
         }
     }
 

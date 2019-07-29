@@ -4862,11 +4862,10 @@ MonoBehaviour:
   moveSpeed: 12
   jumpSpeed: 21
   addedSpeed: 0.3
-  maxHealth: 15
+  maxHealth: 16
   invulnerabilityTime: 1.2
-  healRate: 0
   restoreRate: 1
-  removeRate: 0.3
+  removeRate: 1
   returnVelocityDivider: 150
 --- !u!60 &60862902103302590
 PolygonCollider2D:
@@ -9777,6 +9776,7 @@ MonoBehaviour:
   sprintJumpSpeed: 24
   increaseRate: 10
   heartRateRemoved: 10
+  sprintHealRate: 1
   rateOverDistance: 300
   moveWeight: 0.25
   waterHealRate: 1
