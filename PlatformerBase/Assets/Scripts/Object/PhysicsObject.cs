@@ -127,10 +127,6 @@ public class PhysicsObject : MovingObject
                             }
                         }
                     }
-                    else if(hits[i].distance == 0)
-                    {
-                        InsideLayer(hits[i].transform.gameObject);
-                    }
                 }
                 rb2D.position += moveVector.normalized * (distance - buffer); //move object by the distance to nearest collision
                 groundNormal = newGroundNormal; //set the ground normal to normal of closest surface
@@ -249,16 +245,6 @@ public class PhysicsObject : MovingObject
                 return true;
         }
         return false;
-    }
-
-    private void InsideLayer(GameObject collided)
-    {
-        switch (collided.layer)
-        {
-            case 17:
-                collided.GetComponent<CompositeCollider2D>().isTrigger = true;
-                break;
-        }
     }
 
     /// <summary>

@@ -243,7 +243,7 @@ public class GameSaver : Global
         if(Web)
         {
             //loop through all the possible files names and delete them
-            foreach(string file in new string[] { GameSaveFileName, "Fall", "Garden", "Basophil", "Wilds", "Shrine", "Sanctuary", "Graveyard", "Island"})
+            foreach(string file in new string[] { GameSaveFileName, "Fall", "Garden", "Basophil", "Wilds", "Shrine", "Sanctuary", "Graveyard", "Island", "Return"})
             {
                 string fileName = filePath + file + FileExtension;
                 if (File.Exists(fileName))

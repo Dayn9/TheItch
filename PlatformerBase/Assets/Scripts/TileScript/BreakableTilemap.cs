@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 [RequireComponent(typeof(Tilemap))]
 [RequireComponent(typeof(BreakParticles))]
-public class BreakableTilemap : MonoBehaviour
+public class BreakableTilemap : Global
 {
     private Tilemap tilemap;
     private BreakParticles breakPart;
@@ -36,6 +36,19 @@ public class BreakableTilemap : MonoBehaviour
         breakPart = GetComponent<BreakParticles>();
 
         if (broken == null) { broken = new List<Vector2Int>(); };
+    }
+
+    private void Start()
+    {
+        //For edge case of player clipping into BreakableTilemap
+        Vector3Int playerPos = Vector3Int.FloorToInt(Player.transform.position);
+        if (tilemap.GetTile(playerPos))
+        {
+            tilemap.SetTile(playerPos, brokenTile);
+            breakPart.BreakAt(playerPos); //spawn particles
+
+            broken.Add((Vector2Int)playerPos);
+        }
     }
 
     /// <summary>
@@ -74,9 +87,5 @@ public class BreakableTilemap : MonoBehaviour
                 broken.Add((Vector2Int)tilePositions[i]);
             }
         }
-    }
-
-    private void OnTriggerExit2D() {
-        GetComponent<CompositeCollider2D>().isTrigger = false;
     }
 }

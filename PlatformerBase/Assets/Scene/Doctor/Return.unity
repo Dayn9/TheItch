@@ -76933,6 +76933,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 7449802895720474553, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: initialBPM
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -77008,6 +77013,16 @@ PrefabInstance:
       propertyPath: topLimit
       value: 85
       objectReference: {fileID: 0}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2124082735}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: areaName
+      value: Return
+      objectReference: {fileID: 0}
     - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
@@ -77022,21 +77037,6 @@ PrefabInstance:
         type: 3}
       propertyPath: openOffset.y
       value: -11.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 2124082735}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: areaName
-      value: Shrine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7449802895720474553, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: initialBPM
-      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
