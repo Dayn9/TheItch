@@ -10,7 +10,8 @@ public class Building : Global {
     private const int doorAboveLayer = 8; //order in sorting layer of door that leads back a layer
     private const int doorBelowLayer = 4; //order in sorting layer of door that leads forward a layer
 
-    private PhysicsObject physPlayer; //ref to physicsObject type script attached to player
+    private PhysicsObject physPlayer; //ref to PhysicsObject type script attached to player
+    private AbilityHandler ability; //ref to the AbilityHandler attached to player
 
     private int currentLayer = 0; //layer of the building the player is currently in
 
@@ -36,6 +37,7 @@ public class Building : Global {
     private void Start()
     {
         physPlayer = Player.GetComponent<PhysicsObject>();
+        ability = Player.GetComponent<AbilityHandler>();
 
         solidDoor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         transparentDoor = new Color(1.0f, 1.0f, 1.0f, doorAboveAlpha);
@@ -86,6 +88,7 @@ public class Building : Global {
             if (layer == 0)
             {
                 Exterior.SetActive(false);
+                ability.Inside = true;
                 physPlayer.SetCollision("SolidMoveableObject", true);
             }
             else
@@ -108,6 +111,7 @@ public class Building : Global {
             if (layer == 0)
             {
                 Exterior.SetActive(true);
+                ability.Inside = false;
                 physPlayer.SetCollision("SolidMoveableObject", false);
             }
             else

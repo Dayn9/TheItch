@@ -43,6 +43,8 @@ public class AbilityHandler : Global {
     private ParticleSystem partWater; //ref to the water particle system
     [SerializeField] private float waterHealRate;
 
+    private bool inside = false;
+
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
 
@@ -64,6 +66,7 @@ public class AbilityHandler : Global {
         get { return unlockedAbilities; }
         set { unlockedAbilities = value; }
     }
+    public bool Inside { set { inside = value; } }
 
     // Use this for initialization 
     void Awake () {
@@ -170,7 +173,7 @@ public class AbilityHandler : Global {
         {
             if (unlockedAbilities[0])
             {
-                if (Heartbeat.BPM > 1)
+                if (Heartbeat.BPM > 1 && !inside)
                 {
                     powerZero.Useable = true;
                     //play the blled particle effect when mouse down or coming out of pause
@@ -193,7 +196,7 @@ public class AbilityHandler : Global {
 
             if (unlockedAbilities[1])
             {
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(1) && !inside)
                 {
                     partAbsorb.Play();
                     player.Power.RestoreBPM(increaseRate * Time.deltaTime);
@@ -210,13 +213,13 @@ public class AbilityHandler : Global {
 
             if (unlockedAbilities[2])
             {
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(1) && !inside)
                 {
                     sprinting = true;
                     player.Heal(sprintHealRate * Time.deltaTime);
                 }
                 //stop the sprinting
-                else if (sprinting && Input.GetMouseButtonUp(1))
+                else if (sprinting && Input.GetMouseButtonUp(1) && !inside)
                 {
                     //player.Power.RemoveBPM(heartRateAdded + heartRateRemoved);
                     sprinting = false;

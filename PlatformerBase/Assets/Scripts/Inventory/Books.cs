@@ -108,14 +108,15 @@ public class Books : Global
         {
             //Unlock the book
             GetComponentInChildren<Book>().Unlock();
-
-            //check if the steam achievment has been unlocked
-            if(achievmentPages >= 33)
-            {
-                GetComponent<SteamAchievement>().Achieve();
-            }
-
         }
+
+        Debug.Log(achievmentPages);
+        //check if the steam achievment has been unlocked
+        if (achievmentPages >= 33)
+        {
+            GetComponent<SteamAchievement>().Achieve();
+        }
+
         move = true;
         timer = 0;
 

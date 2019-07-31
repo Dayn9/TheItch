@@ -50,6 +50,7 @@ public class Page : Inventory, ILevelData
         {
             PlayCollectionEffectAt(transform.position);
 
+            Books.AchievementPages++;
             books.CollectPage();
 
             collected = true;
