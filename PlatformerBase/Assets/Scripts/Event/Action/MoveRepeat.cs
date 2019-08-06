@@ -50,8 +50,8 @@ public class MoveRepeat : MoveEvent
                     waitTimer = 0;
 
                     //play the snap sound and stop looping the moving SFX
-                    audioPlayer.Loop = false;
-                    audioPlayer.PlaySound(1);
+                    //audioPlayer.Loop = false;
+                    //audioPlayer.PlaySound(1);
                 }
                 else
                 {

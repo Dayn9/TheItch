@@ -106,6 +106,10 @@ public class CollectableItem : Inventory
         targetPosition = Vector2.zero;
 
         SpriteRenderer targetRender = target.GetComponent<SpriteRenderer>();
+        if(targetRender == null)
+        {
+            targetRender = target.GetComponentInParent<SpriteRenderer>();
+        }
         if (targetRender != null)
         {
             render.sortingLayerID = targetRender.sortingLayerID;

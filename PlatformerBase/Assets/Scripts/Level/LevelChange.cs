@@ -38,6 +38,7 @@ public class LevelChange : EventTrigger
         {
             if (resetToMenu)
             {
+                GameSaver.RemoveDirectory();
                 GetComponent<Reseter>().ResetGame();
                 return;
             }

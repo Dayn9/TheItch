@@ -163,7 +163,7 @@ public class EventTrigger : Inventory, ILevelData
     /// <returns></returns>
     private bool CheckAbility()
     {
-        return AbilityHandler.Unlocked[abilityRequired];
+        return abilityRequired < 0 ? true : AbilityHandler.Unlocked[abilityRequired];
     }
 
     /// <summary>

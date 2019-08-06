@@ -10,7 +10,10 @@ public class ZoneTrigger : EventTrigger {
         if (!questCompleted && coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
         {
             CheckQuest(); //callecd for item given reasons (don't delete)
-            CallBefore();
+            if (questCompleted)
+            {
+                CallBefore();
+            }
             //if (disableAfter) { gameObject.SetActive(false); } DONT 
         }
     }
