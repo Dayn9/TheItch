@@ -1307,23 +1307,6 @@ PrefabInstance:
       propertyPath: topLimit
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f18874ebfc85818479912024c5d3d883,
-        type: 3}
-    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300032, guid: 3267f62941dabf444ac501dc11465bba,
-        type: 3}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: areaName
@@ -1334,6 +1317,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f18874ebfc85818479912024c5d3d883,
+        type: 3}
     - target: {fileID: 7363031402924937865, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Enabled
@@ -1344,6 +1338,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300032, guid: 3267f62941dabf444ac501dc11465bba,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!1001 &420037973
@@ -56616,18 +56616,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferOne
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: mouseOffSprite
-      value: 
-      objectReference: {fileID: 21300008, guid: 56a0ababcc7a0024c90dfca66b5204f7,
-        type: 3}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 104.5
@@ -56677,6 +56665,18 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: mouseOffSprite
+      value: 
+      objectReference: {fileID: 21300008, guid: 56a0ababcc7a0024c90dfca66b5204f7,
+        type: 3}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!1 &718207102
@@ -61354,12 +61354,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferZero
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 57.5
@@ -61409,6 +61403,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!114 &936750309 stripped
@@ -66568,11 +66568,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 632755054}
     m_Modifications:
-    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
-        type: 3}
-      propertyPath: itemsRequired.Array.data[0]
-      value: 
-      objectReference: {fileID: 1790918779}
     - target: {fileID: 4016547624261662, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -66620,6 +66615,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 1790918779}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
 --- !u!4 &1687469336 stripped
@@ -68819,11 +68819,12 @@ MonoBehaviour:
   dialogueBox: {fileID: 955150470}
   personIndex: 10
   faceImage: {fileID: 21300000, guid: e33f06ce9d6553944b7cbcd492c8b6d7, type: 3}
-  questDialogue: Welcome to the Sanctuary friend. Feel free to stay as long as you
-    need. If you're looking to cure that virus you've come to the right place, All
-    I need is a healing lily and I can make everything better.
-  completedDialogue: 'Not again! I tried, but it looks like this will only allow you
-    to use the virus to run faster rather than getting rid of it.  '
+  questDialogue: Welcome to the Sanctuary, friend. Feel free to stay as long as you
+    need. If you're looking to cure that virus you've come to the right place. All
+    I need is a healing lily and I can make everything better
+  completedDialogue: Not again! I tried, but it looks like this will only allow you
+    to use the virus to run faster rather than getting rid of it. It should also heal
+    the virus while you run
 --- !u!61 &4372957996786630543
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -407,12 +407,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferEight
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -82.5
@@ -462,6 +456,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &161469974 stripped
@@ -582,12 +582,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000,
         type: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -122.5
@@ -625,6 +619,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &286822042 stripped
@@ -877,6 +877,16 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 936750309}
+    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: areaName
+      value: Island
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923789962559069221, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
@@ -899,16 +909,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300020, guid: 3267f62941dabf444ac501dc11465bba,
         type: 3}
-    - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: areaName
-      value: Island
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923789962559069221, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!114 &292502172 stripped
@@ -1691,12 +1691,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferFour
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -105.5
@@ -1746,6 +1740,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &466206165 stripped
@@ -110790,12 +110790,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferSix
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.5
@@ -110845,6 +110839,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!1001 &729282503
@@ -110948,12 +110948,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferTen
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -92.5
@@ -111003,6 +110997,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!1 &754944769
@@ -117009,17 +117009,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000,
         type: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -105.5
@@ -117057,6 +117046,17 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &950982007 stripped
@@ -117076,12 +117076,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferZero
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -62.5
@@ -117131,6 +117125,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &975682347 stripped
@@ -118491,12 +118491,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferEleven
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -121.5
@@ -118546,6 +118540,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!1 &1167601395
@@ -123355,12 +123355,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferNine
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.5
@@ -123410,6 +123404,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &1222123283 stripped
@@ -124028,12 +124028,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferFive
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -82.5
@@ -124083,6 +124077,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &1306447761 stripped
@@ -137517,18 +137517,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferOne
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: mouseOffSprite
-      value: 
-      objectReference: {fileID: 21300008, guid: 56a0ababcc7a0024c90dfca66b5204f7,
-        type: 3}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -82.5
@@ -137578,6 +137566,18 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: mouseOffSprite
+      value: 
+      objectReference: {fileID: 21300008, guid: 56a0ababcc7a0024c90dfca66b5204f7,
+        type: 3}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &1696090189 stripped
@@ -137615,12 +137615,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferTwelve
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -55.5
@@ -137670,6 +137664,12 @@ PrefabInstance:
       propertyPath: health
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!4 &1903812355 stripped
@@ -138051,12 +138051,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransferSeven
       objectReference: {fileID: 0}
-    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
-        type: 3}
-      propertyPath: inHighlight
-      value: 
-      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
-        type: 3}
     - target: {fileID: 4576116219697970, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -78.5
@@ -138106,6 +138100,12 @@ PrefabInstance:
       propertyPath: health
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114662423995653162, guid: 7205242cdd61dc74a97346cd96a8afff,
+        type: 3}
+      propertyPath: inHighlight
+      value: 
+      objectReference: {fileID: 21300008, guid: fb292d14fa008884a808031d94144b91,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7205242cdd61dc74a97346cd96a8afff, type: 3}
 --- !u!212 &1052531840341333906
@@ -142218,10 +142218,10 @@ MonoBehaviour:
   personIndex: -1
   faceImage: {fileID: 21300028, guid: 9d43b17ce4ed6374084be8d269b8365f, type: 3}
   questDialogue: The blood lily should be around here somewhere...
-  completedDialogue: 'I can''t believe after all this time, I''ve finally have a cure!!!
-    Thank you for retrieving that lily. There should be an path up to the surface
-    around here, take this cure back up to Purere. Even holding it should cause the
-    virus to vanish. '
+  completedDialogue: 'I can''t believe after all this time, we finally have a cure!!!
+    Thank you for retrieving that lily. There should be a path up to the surface around
+    here. take this cure back up to Purere. Even holding it should cause the virus
+    to vanish. '
 --- !u!61 &4176181320143388986
 BoxCollider2D:
   m_ObjectHideFlags: 0
