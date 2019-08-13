@@ -55,7 +55,9 @@ public class EventTrigger : Inventory, ILevelData
         {
             foreach(GameObject item in itemsRequired)
             {
-                if (item.GetComponent<CollectableItem>().IsGem && questCompleted)
+                //check for Gem items when quest completed
+                CollectableItem collItem = item.GetComponent<CollectableItem>();
+                if (questCompleted && collItem != null && collItem.IsGem)
                 {
                     GameObject gem = Instantiate(item);
                     gem.transform.position = transform.position;
