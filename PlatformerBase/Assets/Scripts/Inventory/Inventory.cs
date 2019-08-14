@@ -14,8 +14,8 @@ public class Inventory : Global {
 
     protected const int inventorySize = 6;
 
-    //Offsets and spacings between items in inventory
-    private const float offsetY = -2.25f; //offset from anchor along y axis
+    //Offsets and spacings between items in inventory 
+    private const float offsetY = -2.375f; //offset from anchor along y axis
     private const float spacing = -1.5f; //spacing between individual items
 
     protected static GameObject collectEffect; //instantiated collect Effect
@@ -121,7 +121,7 @@ public class Inventory : Global {
 
             index++;
         }
-        inventoryRenderer.size = new Vector2(1.75f, 3.0f + (index * 1.5f));
+        inventoryRenderer.size = new Vector2(2.0f, 3.0f + (index * 1.5f));
     }
 
     public  void PlayCollectionEffectAt(Vector2 target)
