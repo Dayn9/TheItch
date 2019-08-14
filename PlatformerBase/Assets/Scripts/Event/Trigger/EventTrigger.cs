@@ -19,6 +19,7 @@ public class EventTrigger : Inventory, ILevelData
     [SerializeField] protected List<GameObject> itemsGiven; //item given to the player
     [SerializeField] private bool givenOnComplete; //true = given on quest complete, false = given on initial interaction
     [SerializeField] private bool indirect = false;
+    [SerializeField] protected bool givenImmediatly = true; //Last minute addition for edge case that I despise but...
 
     protected bool questCompleted = false; //true when quest has been completed
 
@@ -137,26 +138,38 @@ public class EventTrigger : Inventory, ILevelData
         {
             questCompleted = CheckItems() && CheckAbility();
 
+#if UNITY_EDITOR
             if (Input.GetKey(KeyCode.T)) { questCompleted = true; }
-
-            if ((givenOnComplete && questCompleted || !givenOnComplete) && itemsGiven.Count > 0 && itemsGiven[0].activeSelf == false)
+#endif
+            //give the items to player
+            if (givenImmediatly)
             {
-                foreach(GameObject itemGiven in itemsGiven)
-                {
-                    if (itemGiven && itemGiven.activeSelf == false)
-                    {
-                        itemGiven.SetActive(true);
-                        if (!indirect)
-                        {
-                            itemGiven.transform.position = Player.transform.position;
-                        }
-                    }
-                }
-                itemsGiven.Clear(); //break reference 
+                GiveItems();
             }
         }
 
         //if (audioPlayer != null) { audioPlayer.PlaySound(questCompleted ? 1 : 0); } //play audio bsed on quest completion
+    }
+
+    /// <summary>
+    /// spawns all given items when appropriate and breaks references
+    /// </summary>
+    protected void GiveItems()
+    {
+        if((givenOnComplete && questCompleted || !givenOnComplete) && itemsGiven.Count > 0 && itemsGiven[0].activeSelf == false){
+            foreach (GameObject itemGiven in itemsGiven)
+            {
+                if (itemGiven && itemGiven.activeSelf == false)
+                {
+                    itemGiven.SetActive(true);
+                    if (!indirect)
+                    {
+                        itemGiven.transform.position = Player.transform.position;
+                    }
+                }
+            }
+            itemsGiven.Clear(); //break reference 
+        }
     }
 
     /// <summary>

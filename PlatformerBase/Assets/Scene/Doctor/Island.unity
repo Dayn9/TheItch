@@ -449,6 +449,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
 --- !u!114 &153854625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110219,7 +110220,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 1
+      m_AnimationTimeOffset: 2
       m_IsLooping: 1
   - first: {x: -124, y: -13, z: 0}
     second:
@@ -110231,7 +110232,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 1
       m_IsLooping: 1
   - first: {x: -59, y: 16, z: 0}
     second:
@@ -110243,7 +110244,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 5
       m_IsLooping: 1
   - first: {x: -78, y: 35, z: 0}
     second:
@@ -110255,7 +110256,7 @@ Tilemap:
       - {fileID: 21300028, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300030, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 4
+      m_AnimationTimeOffset: 5
       m_IsLooping: 1
   - first: {x: -121, y: 37, z: 0}
     second:
@@ -110267,7 +110268,7 @@ Tilemap:
       - {fileID: 21300004, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       - {fileID: 21300006, guid: c59dd45df4672f24783046034b2ae324, type: 3}
       m_AnimationSpeed: 6
-      m_AnimationTimeOffset: 2
+      m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -90, y: 45, z: 0}
     second:
@@ -145922,6 +145923,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   dialogueBox: {fileID: 292502172}
   personIndex: 11
   faceImage: {fileID: 21300028, guid: 9d43b17ce4ed6374084be8d269b8365f, type: 3}
@@ -145990,6 +145992,7 @@ MonoBehaviour:
   - {fileID: 153854622}
   givenOnComplete: 1
   indirect: 0
+  givenImmediatly: 0
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 1.75, z: 0}
@@ -146104,6 +146107,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
 --- !u!1 &4176181320318636077
 GameObject:
   m_ObjectHideFlags: 0
