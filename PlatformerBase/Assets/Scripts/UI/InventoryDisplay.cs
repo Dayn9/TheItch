@@ -73,7 +73,7 @@ public class InventoryDisplay : Inventory {
 
         tempItemLabel.GetComponent<ItemLabel>().SlotNum = i;
 
-        tempItemLabel.transform.localPosition = new Vector2(-0.625f, -3.25f - (1.5f * i));
+        tempItemLabel.transform.localPosition = new Vector2(-0.5f, -3.25f - (1.5f * i));
     }
 
     public void CreateVirusKey()

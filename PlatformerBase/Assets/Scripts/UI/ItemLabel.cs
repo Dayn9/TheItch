@@ -13,7 +13,7 @@ public class ItemLabel : Inventory
     private Rect bounds; //actual bounds of the button
 
     private int numChars = 3; //number of characters in this item label 
-    private const float maxWidth = 5; //width of the sprite
+    private const float maxWidth = 5.125f; //width of the sprite
     private float hiddenWidth; //width of the sprite when not visible
 
     private float targetWidth; //width of the sprite being lerped to
@@ -26,14 +26,26 @@ public class ItemLabel : Inventory
 
     [SerializeField] private Material styleMat;
 
+    private SpriteRenderer underlayRender;
+
     private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
+        
+
         //set the area based on starting position and offset
         pos = (Vector2)transform.position + offset;
 
         render.material = styleMat;
-        render.material.SetColor("_ReplaceColor", styles[0]);
+        render.material.SetColor("_ReplaceColor", styles[0]); 
+
+        
+    }
+
+    private void Start()
+    {
+        underlayRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        Debug.Log(underlayRender.name);
 
         SetHiddenWidth();
     }
@@ -42,6 +54,7 @@ public class ItemLabel : Inventory
     {
         hiddenWidth = ((maxWidth * pixelsPerUnit) - (numChars * 6) - 1) / pixelsPerUnit;
         render.size = new Vector2(hiddenWidth, render.size.y);
+        underlayRender.size = render.size;
     }
 
     protected void Update()
@@ -60,10 +73,11 @@ public class ItemLabel : Inventory
             }
             else
             {
-                targetWidth = 0;
+                targetWidth = 0.0f;
             }
 
             render.size = new Vector2(Mathf.Lerp(render.size.x, targetWidth, 0.3f), render.size.y);
+            underlayRender.size = render.size;
         }
     }
 
@@ -97,6 +111,8 @@ public class ItemLabel : Inventory
                 numChars = 4;
                 break;
         }
+
+        underlayRender.sprite = render.sprite;
 
         //set the color to match item style
         switch (style)
