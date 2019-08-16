@@ -3744,6 +3744,11 @@ MonoBehaviour:
   bpmReadoutNormal: {r: 0.7960785, g: 0.36078432, b: 0.17254902, a: 1}
   bpmReadoutDamage: {r: 0.9568628, g: 0.5058824, b: 0.30980393, a: 1}
   bpmReadoutHeal: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+  outlineDefault: {r: 0.08627451, g: 0.09411766, b: 0.11764707, a: 1}
+  outlineTransfer: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+  outlineAbsorb: {r: 0.9568628, g: 0.5058824, b: 0.30980393, a: 1}
+  outlineWater: {r: 0.4431373, g: 0.5372549, b: 0.56078434, a: 1}
+  outlineVirus: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &7449807123662406441
 MonoBehaviour:
   m_ObjectHideFlags: 0

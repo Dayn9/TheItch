@@ -18,6 +18,17 @@ public class HeartbeatPower : Global {
     [SerializeField] private Color bpmReadoutDamage; //color of BPM readoutr when damaged
     [SerializeField] private Color bpmReadoutHeal; //color of BPM raeadout when healing
 
+    [Space(10)]
+    [SerializeField] private Color outlineDefault;
+    [SerializeField] private Color outlineTransfer;
+    [SerializeField] private Color outlineAbsorb;
+    [SerializeField] private Color outlineWater;
+    [SerializeField] private Color outlineVirus;
+
+    private SpriteRenderer render;
+    private Color[] outlineColorLookup;
+    
+
     public Heartbeat Heartbeat { get {
             if(heartbeat == null) { heartbeat = GetComponent<Heartbeat>(); }
             return heartbeat;
@@ -32,11 +43,25 @@ public class HeartbeatPower : Global {
             Heartbeat.BPM = initialBPM;
         }
         targetBPM = Heartbeat.BPM;
+
+        render = GetComponent<SpriteRenderer>();
+        outlineColorLookup = new Color[] { outlineDefault, outlineTransfer, outlineAbsorb, outlineWater, outlineVirus };
+        SetOutlineColor(0);
     }
 
     private void Start()
     {
         heartbeat.SetDigitColor(bpmReadoutNormal);
+    }
+
+    /// <summary>
+    /// { outlineDefault, outlineTransfer, outlineAbsorb, outlineWater, outlineVirus }
+    /// </summary>
+    /// <param name="colorKey">index from color lookup</param>
+    public void SetOutlineColor(int colorKey)
+    {
+        if(colorKey < 0 || colorKey > outlineColorLookup.Length) { colorKey = 0; } //out of range goes to zero
+        render.material.SetColor("_Color", outlineColorLookup[colorKey]);
     }
     
     /// <summary>
@@ -76,7 +101,6 @@ public class HeartbeatPower : Global {
                 Heartbeat.BPM += Mathf.Sign(difference) * deltaHeartRate * Time.deltaTime;
                 heartbeat.SetDigitColor(Mathf.Sign(difference) > 0 ? bpmReadoutHeal : bpmReadoutDamage);
             }
-
         }
     }
 }
