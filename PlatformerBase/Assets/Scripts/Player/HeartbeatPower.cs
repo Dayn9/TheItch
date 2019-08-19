@@ -27,10 +27,15 @@ public class HeartbeatPower : Global {
 
     private SpriteRenderer render;
     private Color[] outlineColorLookup;
-    
 
-    public Heartbeat Heartbeat { get {
-            if(heartbeat == null) { heartbeat = GetComponent<Heartbeat>(); }
+    private Color targetOutlineColor;
+    private Color targetDigitColor;
+
+    public Heartbeat Heartbeat
+    {
+        get
+        {
+            if (heartbeat == null) { heartbeat = GetComponent<Heartbeat>(); }
             return heartbeat;
         }
     }
@@ -61,7 +66,17 @@ public class HeartbeatPower : Global {
     public void SetOutlineColor(int colorKey)
     {
         if(colorKey < 0 || colorKey > outlineColorLookup.Length) { colorKey = 0; } //out of range goes to zero
-        render.material.SetColor("_Color", outlineColorLookup[colorKey]);
+        if (colorKey == 0)
+        {
+            targetOutlineColor = outlineDefault;
+            targetDigitColor = bpmReadoutNormal;
+        }
+        else
+        {
+            targetOutlineColor = outlineColorLookup[colorKey];
+            targetDigitColor = outlineColorLookup[colorKey];
+        }
+        
     }
     
     /// <summary>
@@ -86,21 +101,30 @@ public class HeartbeatPower : Global {
 
     void Update()
     {
-        if (!paused && targetBPM != Heartbeat.BPM)
+        if (!paused)
         {
-            float difference = targetBPM - Heartbeat.BPM;
-            heartbeat.ChangeRate = Mathf.Abs(difference);
-            //snap to heartrate when moveDistance is small enough
-            if (difference * Mathf.Sign(difference) < deltaHeartRate * Time.deltaTime)
+            //lerp color to target
+            render.material.SetColor("_Outline", Color.Lerp(render.material.GetColor("_Outline"), targetOutlineColor, 0.1f));
+            heartbeat.SetDigitColor(Color.Lerp(heartbeat.GetDigitColor(), targetDigitColor, 0.1f));
+            Heartbeat.BPM = targetBPM;
+
+            /*
+            if (targetBPM != Heartbeat.BPM)
             {
-                Heartbeat.BPM = targetBPM;
-                heartbeat.SetDigitColor(bpmReadoutNormal);
-            }
-            else
-            {
-                Heartbeat.BPM += Mathf.Sign(difference) * deltaHeartRate * Time.deltaTime;
-                heartbeat.SetDigitColor(Mathf.Sign(difference) > 0 ? bpmReadoutHeal : bpmReadoutDamage);
-            }
+                float difference = targetBPM - Heartbeat.BPM;
+                heartbeat.ChangeRate = Mathf.Abs(difference);
+                //snap to heartrate when moveDistance is small enough
+                if (difference * Mathf.Sign(difference) < deltaHeartRate * Time.deltaTime)
+                {
+                    Heartbeat.BPM = targetBPM;
+                    heartbeat.SetDigitColor(bpmReadoutNormal);
+                }
+                else
+                {
+                    Heartbeat.BPM += Mathf.Sign(difference) * deltaHeartRate * Time.deltaTime;
+                    heartbeat.SetDigitColor(Mathf.Sign(difference) > 0 ? bpmReadoutHeal : bpmReadoutDamage);
+                }
+            } */
         }
     }
 }

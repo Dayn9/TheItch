@@ -33,6 +33,11 @@ public class Digit : MonoBehaviour {
         render.color = newColor;
     }
 
+    public Color GetColor()
+    {
+        return render.color;
+    }
+
 
     /*                                                     IM JUST TRYNA DO SOMETIN COOL!
 #if UNITY_EDITOR

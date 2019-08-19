@@ -171,6 +171,8 @@ public class AbilityHandler : Global {
 #endif
         if (!paused)
         {
+            player.Power.SetOutlineColor(0);
+
             if (unlockedAbilities[0])
             {
                 if (Heartbeat.BPM > 1 && !inside)
@@ -181,6 +183,7 @@ public class AbilityHandler : Global {
                     {
                         part.Play();
                         powerZero.AudioPlayer.PlaySound("ContinueSparkle");
+                        player.Power.SetOutlineColor(1);
                     }
                     else
                     {
@@ -204,6 +207,7 @@ public class AbilityHandler : Global {
                         heartRateAdded += increaseRate * Time.deltaTime;
                     }
                     powerZero.AudioPlayer.PlaySound("ContinueSparkle");
+                    player.Power.SetOutlineColor(2);
                 }
                 else
                 {
@@ -238,7 +242,8 @@ public class AbilityHandler : Global {
 
                 if (unlockedAbilities[3])
                 {
-                    player.Heal(waterHealRate * Time.deltaTime);   
+                    player.Heal(waterHealRate * Time.deltaTime);
+                    player.Power.SetOutlineColor(3);
                 }
             }
             else

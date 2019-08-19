@@ -129,6 +129,11 @@ public class Heartbeat : Global {
         digits[2].SetColor(color);
     }
 
+    public Color GetDigitColor()
+    {
+        return digits[0].GetColor();
+    }
+
     /// <summary>
     /// Updates the virus shader to match the current health of the player
     /// </summary>

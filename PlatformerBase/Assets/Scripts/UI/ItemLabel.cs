@@ -45,7 +45,6 @@ public class ItemLabel : Inventory
     private void Start()
     {
         underlayRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
-        Debug.Log(underlayRender.name);
 
         SetHiddenWidth();
     }
