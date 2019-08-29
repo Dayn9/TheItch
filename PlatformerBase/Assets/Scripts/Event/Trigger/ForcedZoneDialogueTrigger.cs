@@ -40,10 +40,10 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
                 if (personIndex >= 0 && DialogueBox.PeopleTalked[personIndex] == false)
                 {
                     DialogueBox.PeopleTalked[personIndex] = true;
-                    SteamAchievement achieve;
-                    if (!DialogueBox.PeopleTalked.ToList().Contains(false) && (achieve = dialogueBox.GetComponent<SteamAchievement>()) != null)
+                    
+                    if (!DialogueBox.PeopleTalked.ToList().Contains(false))
                     {
-                        achieve.Achieve();
+                        
                     }
                 } 
                 CheckQuest();

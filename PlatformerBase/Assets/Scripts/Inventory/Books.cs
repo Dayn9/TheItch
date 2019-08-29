@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SteamAchievement))]
 public class Books : Global
 {
     [SerializeField] private Vector2 hiddenOffset; //relative position of display when hidden
@@ -112,7 +111,7 @@ public class Books : Global
         //check if the steam achievment has been unlocked
         if (achievmentPages >= 33)
         {
-            GetComponent<SteamAchievement>().Achieve();
+            
         }
 
         move = true;

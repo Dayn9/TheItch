@@ -92,12 +92,7 @@ public class CollectableItem : Inventory
             Player.GetComponent<AbilityHandler>().LockAll(); //re lock all the abilities
         }
 
-	
-        SteamAchievement sa;
-        if (sa = GetComponent<SteamAchievement>())
-        {
-            sa.Achieve();
-        }
+
     }
 
     public void Eaten(Transform target)
