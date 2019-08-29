@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 4337200700683159729}
   - component: {fileID: 2874791436579449412}
   - component: {fileID: 3928553378012761626}
+  - component: {fileID: 4560624726709330385}
   m_Layer: 10
   m_Name: Cure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7791258420021864612
 Transform:
   m_ObjectHideFlags: 0
@@ -119,6 +120,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f921fe66d2c3ce7458a6c5d7a83560af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persists: 0
   itemtype: 5
   itemStyle: 0
+--- !u!114 &4560624726709330385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269148410902687343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e99146511cb2264a8661d9395d3525a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  APIName: achievement_cure

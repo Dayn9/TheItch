@@ -18,8 +18,24 @@ public class HeartbeatPower : Global {
     [SerializeField] private Color bpmReadoutDamage; //color of BPM readoutr when damaged
     [SerializeField] private Color bpmReadoutHeal; //color of BPM raeadout when healing
 
-    public Heartbeat Heartbeat { get {
-            if(heartbeat == null) { heartbeat = GetComponent<Heartbeat>(); }
+    [Space(10)]
+    [SerializeField] private Color outlineDefault;
+    [SerializeField] private Color outlineTransfer;
+    [SerializeField] private Color outlineAbsorb;
+    [SerializeField] private Color outlineWater;
+    [SerializeField] private Color outlineVirus;
+
+    private SpriteRenderer render;
+    private Color[] outlineColorLookup;
+
+    private Color targetOutlineColor;
+    private Color targetDigitColor;
+
+    public Heartbeat Heartbeat
+    {
+        get
+        {
+            if (heartbeat == null) { heartbeat = GetComponent<Heartbeat>(); }
             return heartbeat;
         }
     }
@@ -27,16 +43,40 @@ public class HeartbeatPower : Global {
     void Awake()
     {
         heartbeat = GetComponent<Heartbeat>();
-        if(Heartbeat.BPM == -1 || true)
+        if(Heartbeat.BPM == -1)
         {
             Heartbeat.BPM = initialBPM;
         }
         targetBPM = Heartbeat.BPM;
+
+        render = GetComponent<SpriteRenderer>();
+        outlineColorLookup = new Color[] { outlineDefault, outlineTransfer, outlineAbsorb, outlineWater, outlineVirus };
+        SetOutlineColor(0);
     }
 
     private void Start()
     {
         heartbeat.SetDigitColor(bpmReadoutNormal);
+    }
+
+    /// <summary>
+    /// { outlineDefault, outlineTransfer, outlineAbsorb, outlineWater, outlineVirus }
+    /// </summary>
+    /// <param name="colorKey">index from color lookup</param>
+    public void SetOutlineColor(int colorKey)
+    {
+        if(colorKey < 0 || colorKey > outlineColorLookup.Length) { colorKey = 0; } //out of range goes to zero
+        if (colorKey == 0)
+        {
+            targetOutlineColor = outlineDefault;
+            targetDigitColor = bpmReadoutNormal;
+        }
+        else
+        {
+            targetOutlineColor = outlineColorLookup[colorKey];
+            targetDigitColor = outlineColorLookup[colorKey];
+        }
+        
     }
     
     /// <summary>
@@ -61,22 +101,30 @@ public class HeartbeatPower : Global {
 
     void Update()
     {
-        if (!paused && targetBPM != Heartbeat.BPM)
+        if (!paused)
         {
-            float difference = targetBPM - Heartbeat.BPM;
-            heartbeat.ChangeRate = Mathf.Abs(difference);
-            //snap to heartrate when moveDistance is small enough
-            if (difference * Mathf.Sign(difference) < deltaHeartRate * Time.deltaTime)
-            {
-                Heartbeat.BPM = targetBPM;
-                heartbeat.SetDigitColor(bpmReadoutNormal);
-            }
-            else
-            {
-                Heartbeat.BPM += Mathf.Sign(difference) * deltaHeartRate * Time.deltaTime;
-                heartbeat.SetDigitColor(Mathf.Sign(difference) > 0 ? bpmReadoutHeal : bpmReadoutDamage);
-            }
+            //lerp color to target
+            render.material.SetColor("_Outline", Color.Lerp(render.material.GetColor("_Outline"), targetOutlineColor, 0.1f));
+            heartbeat.SetDigitColor(Color.Lerp(heartbeat.GetDigitColor(), targetDigitColor, 0.1f));
+            Heartbeat.BPM = targetBPM;
 
+            /*
+            if (targetBPM != Heartbeat.BPM)
+            {
+                float difference = targetBPM - Heartbeat.BPM;
+                heartbeat.ChangeRate = Mathf.Abs(difference);
+                //snap to heartrate when moveDistance is small enough
+                if (difference * Mathf.Sign(difference) < deltaHeartRate * Time.deltaTime)
+                {
+                    Heartbeat.BPM = targetBPM;
+                    heartbeat.SetDigitColor(bpmReadoutNormal);
+                }
+                else
+                {
+                    Heartbeat.BPM += Mathf.Sign(difference) * deltaHeartRate * Time.deltaTime;
+                    heartbeat.SetDigitColor(Mathf.Sign(difference) > 0 ? bpmReadoutHeal : bpmReadoutDamage);
+                }
+            } */
         }
     }
 }

@@ -947,6 +947,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 647655302}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: If your heartrate goes above 168 or below 32 the virus inside you
     will spread
@@ -4495,6 +4496,7 @@ MonoBehaviour:
   givenOnComplete: 0
   indirect: 0
   dialogueBox: {fileID: 647655302}
+  personIndex: -1
   faceImage: {fileID: 0}
   enterDialogue: 
   completedDialogue: 'Two years ago the farming town of Prurere was suddenly struck
@@ -93986,11 +93988,12 @@ MonoBehaviour:
   givenOnComplete: 0
   indirect: 0
   dialogueBox: {fileID: 647655302}
+  personIndex: -1
   faceImage: {fileID: 0}
   enterDialogue: 
   completedDialogue: Doctors flooded to the locked down town with hopes of finding
-    a cure for the virus. thier efforts revealed that the virus only spreads when
-    a host's heartrate gets too high or too low. Despite thier best efforts, no cure
+    a cure for the virus. their efforts revealed that the virus only spreads when
+    a host's heartrate gets too high or too low. Despite their best efforts, no cure
     was ever found
 --- !u!1001 &1542993299
 PrefabInstance:
@@ -94099,9 +94102,10 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 647655302}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
-  completedDialogue: Zoe. Victim of the Virus, Run around until her heartrate got
+  completedDialogue: Zoe. Victim of the Virus, Ran around until her heartrate got
     too high
 --- !u!61 &1571728326
 BoxCollider2D:
@@ -103715,9 +103719,10 @@ MonoBehaviour:
   givenOnComplete: 0
   indirect: 0
   dialogueBox: {fileID: 647655302}
+  personIndex: -1
   faceImage: {fileID: 0}
   enterDialogue: 
-  completedDialogue: The doctor never returned and explorers began disappering into
+  completedDialogue: The doctor never returned and explorers began disappearing into
     the caverns in search. But with no cure, the virus is now spreading to other nearby
     towns. They call it... THE ITCH
 --- !u!61 &1772847490
@@ -108772,6 +108777,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 855868534}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1464934332}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1909219682}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1772847489}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[4]
+      value: 
+      objectReference: {fileID: 250034557}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1571728325}
     - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -108852,32 +108892,6 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 1652298317}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300006, guid: 3267f62941dabf444ac501dc11465bba,
-        type: 3}
-    - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: areaName
@@ -108888,41 +108902,21 @@ PrefabInstance:
       propertyPath: evTrigs.Array.data[0]
       value: 
       objectReference: {fileID: 1785448006}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 5975538321008040058, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: evTrigs.Array.size
-      value: 6
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 855868534}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
-      propertyPath: evTrigs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1464934332}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1909219682}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1772847489}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[4]
-      value: 
-      objectReference: {fileID: 250034557}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[5]
-      value: 
-      objectReference: {fileID: 1571728325}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7418588443544885796, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: evTrigs.Array.data[0]
@@ -108932,6 +108926,16 @@ PrefabInstance:
         type: 3}
       propertyPath: maxTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418588443642215572, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208008205218328421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
@@ -109761,6 +109765,7 @@ MonoBehaviour:
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 647655302}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Tess. Victim of the Virus, Stayed still until her heartrate got
@@ -109940,11 +109945,12 @@ MonoBehaviour:
   givenOnComplete: 0
   indirect: 0
   dialogueBox: {fileID: 647655302}
+  personIndex: -1
   faceImage: {fileID: 0}
   enterDialogue: '
 
 '
-  completedDialogue: After months of no progross, one doctor emerged with a possible
+  completedDialogue: After months of no progress, one doctor emerged with a possible
     cure that required a blood lily from the underground caverns. and Soon after,
     the doctor gathered some of the affected townspeople to venture below in search
     of the lily

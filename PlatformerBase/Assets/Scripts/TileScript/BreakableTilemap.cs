@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 [RequireComponent(typeof(Tilemap))]
 [RequireComponent(typeof(BreakParticles))]
-public class BreakableTilemap : MonoBehaviour
+public class BreakableTilemap : Global
 {
     private Tilemap tilemap;
     private BreakParticles breakPart;
@@ -38,6 +38,23 @@ public class BreakableTilemap : MonoBehaviour
         if (broken == null) { broken = new List<Vector2Int>(); };
     }
 
+    private void Start()
+    {
+        //For edge case of player clipping into BreakableTilemap
+        Vector3Int playerPos = Vector3Int.FloorToInt(Player.transform.position);
+        if (tilemap.GetTile(playerPos))
+        {
+            tilemap.SetTile(playerPos, brokenTile);
+            breakPart.BreakAt(playerPos); //spawn particles
+
+            broken.Add((Vector2Int)playerPos);
+        }
+    }
+
+    /// <summary>
+    /// replaces any solid tiles in a 3x3 are with empty ones
+    /// </summary>
+    /// <param name="pos">approx center to break</param>
     public void BreakTile(Vector2 pos)
     {
         Vector3Int projectilePosition = new Vector3Int(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), 0);

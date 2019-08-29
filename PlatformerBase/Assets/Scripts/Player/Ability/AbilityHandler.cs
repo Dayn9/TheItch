@@ -34,13 +34,16 @@ public class AbilityHandler : Global {
     private bool sprinting = false; //true when the player is sprinting
     private const int minSprintBPM = 170; //minimum heartrate the player can use the sprint ability at
     private const int sprintTime = 5; //time spent sprinting / exhausted
-    /// private float sprintTimer = 0; //timer used to keep track of sprinting
+    // private float sprintTimer = 0; //timer used to keep track of sprinting
+    [SerializeField] private float sprintHealRate;
 
     [Header("Ability 3: Swimming")]
     [SerializeField] private int rateOverDistance; //how many water particles to emit
     [SerializeField] [Range(0, 1)] private float moveWeight; //weight given to moveVeclocity
     private ParticleSystem partWater; //ref to the water particle system
     [SerializeField] private float waterHealRate;
+
+    private bool inside = false;
 
     //idea for exhaust: have a sprint timer that increases while sprinting and then decreases while exhasted
     private static bool[] unlockedAbilities; //array for which abilities have been unlocked
@@ -63,6 +66,7 @@ public class AbilityHandler : Global {
         get { return unlockedAbilities; }
         set { unlockedAbilities = value; }
     }
+    public bool Inside { set { inside = value; } }
 
     // Use this for initialization 
     void Awake () {
@@ -124,6 +128,10 @@ public class AbilityHandler : Global {
     public void LockAll()
     {
         for (int i = 0; i < unlockedAbilities.Length; i++) { unlockedAbilities[i] = false; }
+        player.CanSwim = false;
+        powerZero.gameObject.SetActive(false);
+        partAbsorb.gameObject.SetActive(false);
+        powerOne.gameObject.SetActive(false);
     }
 
 
@@ -155,17 +163,19 @@ public class AbilityHandler : Global {
     }
 
     void Update () {
-
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.U))
         {
             for (int i = 0; i < unlockedAbilities.Length; i++) { Unlock(i); }
         }
-
+#endif
         if (!paused)
         {
+            player.Power.SetOutlineColor(0);
+
             if (unlockedAbilities[0])
             {
-                if (Heartbeat.BPM > 1)
+                if (Heartbeat.BPM > 1 && !inside)
                 {
                     powerZero.Useable = true;
                     //play the blled particle effect when mouse down or coming out of pause
@@ -173,6 +183,7 @@ public class AbilityHandler : Global {
                     {
                         part.Play();
                         powerZero.AudioPlayer.PlaySound("ContinueSparkle");
+                        player.Power.SetOutlineColor(1);
                     }
                     else
                     {
@@ -188,7 +199,7 @@ public class AbilityHandler : Global {
 
             if (unlockedAbilities[1])
             {
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(1) && !inside)
                 {
                     partAbsorb.Play();
                     player.Power.RestoreBPM(increaseRate * Time.deltaTime);
@@ -196,6 +207,7 @@ public class AbilityHandler : Global {
                         heartRateAdded += increaseRate * Time.deltaTime;
                     }
                     powerZero.AudioPlayer.PlaySound("ContinueSparkle");
+                    player.Power.SetOutlineColor(2);
                 }
                 else
                 {
@@ -205,12 +217,13 @@ public class AbilityHandler : Global {
 
             if (unlockedAbilities[2])
             {
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(1) && !inside)
                 {
                     sprinting = true;
+                    player.Heal(sprintHealRate * Time.deltaTime);
                 }
                 //stop the sprinting
-                else if (sprinting && Input.GetMouseButtonUp(1))
+                else if (sprinting && Input.GetMouseButtonUp(1) && !inside)
                 {
                     //player.Power.RemoveBPM(heartRateAdded + heartRateRemoved);
                     sprinting = false;
@@ -229,7 +242,8 @@ public class AbilityHandler : Global {
 
                 if (unlockedAbilities[3])
                 {
-                    player.Heal(waterHealRate * Time.deltaTime);   
+                    player.Heal(waterHealRate * Time.deltaTime);
+                    player.Power.SetOutlineColor(3);
                 }
             }
             else

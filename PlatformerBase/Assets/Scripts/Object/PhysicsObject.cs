@@ -199,7 +199,6 @@ public class PhysicsObject : MovingObject
     /// <summary>
     /// handles additional layer checks for specific collision behavior
     /// </summary>
-    /// <param name="layer">layer collided with</param>
     private bool LayerChecks(GameObject collided, Vector2 moveVector, out float distance)
     {
         distance = moveVector.magnitude;

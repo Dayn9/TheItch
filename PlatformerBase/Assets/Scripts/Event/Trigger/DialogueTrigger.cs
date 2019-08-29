@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class DialogueTrigger : IndicatorTrigger, IDialogue {
     [SerializeField] private DialogueBox dialogueBox;
+    [SerializeField] private int personIndex = -1;
 
     [Tooltip("img should be 32x32 pixels")]
     [SerializeField] private Sprite faceImage; //image to display in dialogue box
@@ -53,6 +55,16 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
         {
             if (CheckInput())
             {
+                if (personIndex >= 0 && DialogueBox.PeopleTalked[personIndex] == false)
+                {
+                    DialogueBox.PeopleTalked[personIndex] = true;
+                    SteamAchievement achieve;
+                    if (!DialogueBox.PeopleTalked.ToList().Contains(false) && (achieve = dialogueBox.GetComponent<SteamAchievement>()) != null)
+                    {
+                        achieve.Achieve();
+                    }
+                }
+
                 SetFrozen(true);
                 Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
                 CheckQuest();
@@ -62,6 +74,10 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
                     if (dialogueBox.OnTriggerKeyPressed(completedDialogue, faceImage))
                     {
                         SetFrozen(false);
+                        if (!givenImmediatly) //#Got'em
+                        {
+                            GiveItems();
+                        }
                     }
                 }
                 else
@@ -102,7 +118,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
 
     protected override void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
+        if (coll.CompareTag("Player")) //exit dialogue when player leaves
         {
             indicator.SetActive(false);
             playerTouching = false;

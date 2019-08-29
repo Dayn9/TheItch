@@ -34,7 +34,9 @@ public class GameSaver : Global
 
     public static int FolderNumber { set { folderName = "/SaveFile" + (value - 1) + (Web ? "_" : "/"); } }
     public static string SaveName { get { return Application.persistentDataPath + folderName + GameSaveFileName + FileExtension; } }
-    
+
+    public static IEnumerable<ILevelData> levelDataObjects;
+
     private static bool Web { get { return Application.platform == RuntimePlatform.WebGLPlayer; } }
 
     /// <summary>
@@ -53,7 +55,9 @@ public class GameSaver : Global
             Heartbeat.BPM,
             AbilityHandler.Unlocked,
             Inventory.ItemStates,
-            Inventory.GemLock
+            Inventory.GemLock,
+            Books.AchievementPages,
+            DialogueBox.PeopleTalked
         );
 
         return SaveGameData(saveData);
@@ -95,7 +99,6 @@ public class GameSaver : Global
         //create a new level save object
         LevelSaveData levelData = new LevelSaveData(currentLevelName);
 
-        IEnumerable<ILevelData> levelDataObjects = FindObjectsOfType<MonoBehaviour>().OfType<ILevelData>();
         //add the states data of all the level data objects 
         foreach (ILevelData data in levelDataObjects)
         {
@@ -240,7 +243,7 @@ public class GameSaver : Global
         if(Web)
         {
             //loop through all the possible files names and delete them
-            foreach(string file in new string[] { GameSaveFileName, "Fall", "Garden", "Basophil", "Wilds", "Shrine", "Sanctuary", "Graveyard", "Island"})
+            foreach(string file in new string[] { GameSaveFileName, "Fall", "Garden", "Basophil", "Wilds", "Shrine", "Sanctuary", "Graveyard", "Island", "Return"})
             {
                 string fileName = filePath + file + FileExtension;
                 if (File.Exists(fileName))

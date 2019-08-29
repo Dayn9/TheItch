@@ -6,6 +6,8 @@ public class StartButton : Button
     [SerializeField] private string levelName;
     [SerializeField] private LoadSceneMode mode;
 
+    [SerializeField] private bool credits = false;
+
     protected override void OnActive()
     {
         render.sprite = inactive;
@@ -13,10 +15,13 @@ public class StartButton : Button
 
     protected override void OnClick()
     {
-        GameSaver.FolderNumber = GetComponentInParent<SaveDisplay>().saveNumber;
-        GameSaver.gameData = null;
-        Inventory.ClearItemStates();
-        BackgroundAudioPlayer.menu = false;
+        if (!credits)
+        {
+            GameSaver.FolderNumber = GetComponentInParent<SaveDisplay>().saveNumber;
+            GameSaver.gameData = null;
+            Inventory.ClearItemStates();
+            BackgroundAudioPlayer.menu = false;
+        }
         SceneManager.LoadScene(levelName, mode);
     }
 

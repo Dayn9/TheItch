@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6376481184795883439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847146283627762863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e99146511cb2264a8661d9395d3525a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  APIName: achievement_key_water
 --- !u!1001 &1848272266963393725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,3 +86,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d5366e8c9c5cc148bdef1f4cd83dbd5, type: 3}
+--- !u!1 &1847146283627762863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1126001700489234, guid: 1d5366e8c9c5cc148bdef1f4cd83dbd5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1848272266963393725}
+  m_PrefabAsset: {fileID: 0}

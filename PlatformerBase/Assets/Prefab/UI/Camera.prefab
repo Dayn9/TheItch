@@ -68,8 +68,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300022, guid: 3267f62941dabf444ac501dc11465bba, type: 3}
+  m_SortingOrder: 9
+  m_Sprite: {fileID: 21300006, guid: 3267f62941dabf444ac501dc11465bba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8c8c89b64924a142b5fb9dfe7c1c8fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -174,9 +174,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1317652639
+  m_SortingLayer: -1
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 499c08355026d054db2b44044b7c7b63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 1303381903182940955}
   - component: {fileID: 8541234946914417504}
   - component: {fileID: 5165029895120428043}
+  - component: {fileID: 1197403013112397644}
   m_Layer: 0
   m_Name: Books
   m_TagString: Untagged
@@ -377,7 +378,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8c8c89b64924a142b5fb9dfe7c1c8fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -396,7 +397,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 560462be99b393141a7a4f9b47760729, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -558,6 +559,19 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 372b66d2bae6b95448bff2a171a34f36, type: 3}
     priority: 0
     loops: 0
+--- !u!114 &1197403013112397644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5975538321008040058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e99146511cb2264a8661d9395d3525a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  APIName: achievement_books
 --- !u!1 &6254480368257828250
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +664,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: abfc85eb8cdb23442b78ef5c828cd0c6, type: 3}
   m_Color: {r: 0.9490197, g: 0.9607844, b: 1, a: 1}
   m_FlipX: 0
@@ -754,7 +768,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: abfc85eb8cdb23442b78ef5c828cd0c6, type: 3}
   m_Color: {r: 0.9490197, g: 0.9607844, b: 1, a: 1}
   m_FlipX: 0
@@ -970,7 +984,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
-  fadeRate: 1
+  givenImmediatly: 1
   dialogueBox: {fileID: 7418588443544885799}
   areaName: Basophil
 --- !u!61 &7363031402924937865
@@ -1047,7 +1061,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8c8c89b64924a142b5fb9dfe7c1c8fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1066,13 +1080,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 125c01282d8262f418c29e44d1455a5c, type: 3}
+  m_SortingOrder: 8
+  m_Sprite: {fileID: 21300000, guid: aee502271cea61245ae54bab4e119df8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 1.75, y: 12}
+  m_Size: {x: 2, y: 12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1170,7 +1184,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: abfc85eb8cdb23442b78ef5c828cd0c6, type: 3}
   m_Color: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
   m_FlipX: 0
@@ -1340,7 +1354,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8c8c89b64924a142b5fb9dfe7c1c8fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1500,6 +1514,7 @@ GameObject:
   - component: {fileID: 7480718985116650473}
   - component: {fileID: 7449690904264966665}
   - component: {fileID: 7449900823675084741}
+  - component: {fileID: 8793552557130006867}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -1538,7 +1553,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8c8c89b64924a142b5fb9dfe7c1c8fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1629,6 +1644,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   evTrigs: []
   animatedOffset: {x: 0, y: -10, z: 0}
   speed: 50
@@ -1828,6 +1844,19 @@ MonoBehaviour:
   - {fileID: 0}
   letterColor: {r: 0.9568628, g: 0.5058824, b: 0.30980393, a: 1}
   scrollSpeed: 25
+--- !u!114 &8793552557130006867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417924718289120395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e99146511cb2264a8661d9395d3525a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  APIName: achievement_people
 --- !u!1 &7418009058639403941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,7 +2370,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: abfc85eb8cdb23442b78ef5c828cd0c6, type: 3}
   m_Color: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
   m_FlipX: 0
@@ -2407,7 +2436,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8c8c89b64924a142b5fb9dfe7c1c8fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2472,6 +2501,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   evTrigs: []
   animatedOffset: {x: 0, y: -10, z: 0}
   speed: 50
@@ -2765,7 +2795,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300002, guid: e0dd55a8acad0564fa39536405ef2698, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2850,7 +2880,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2922,6 +2952,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   evTrigs: []
   animatedOffset: {x: 0, y: 3, z: 0}
   speed: 5
@@ -3188,8 +3219,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1317652639
-  m_SortingLayer: -1
+  m_SortingLayerID: -1541749547
+  m_SortingLayer: -2
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300008, guid: 145bd437d4dbaab46bab2cc32cfdb001, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3479,7 +3510,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: abfc85eb8cdb23442b78ef5c828cd0c6, type: 3}
   m_Color: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
   m_FlipX: 0
@@ -3559,7 +3590,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 400c6565e0cbd3740811165212658ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3649,7 +3680,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f8c8c89b64924a142b5fb9dfe7c1c8fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3668,7 +3699,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1541749547
   m_SortingLayer: -2
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 381811b82c59500408af4a9ff93d7fdd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3707,12 +3738,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307a823733610a84ba973b25248debcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialBPM: 80
+  initialBPM: 130
   maxHeartRate: 200
   deltaHeartRate: 10
   bpmReadoutNormal: {r: 0.7960785, g: 0.36078432, b: 0.17254902, a: 1}
   bpmReadoutDamage: {r: 0.9568628, g: 0.5058824, b: 0.30980393, a: 1}
   bpmReadoutHeal: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+  outlineDefault: {r: 0.08627451, g: 0.09411766, b: 0.11764707, a: 1}
+  outlineTransfer: {r: 0.70980394, g: 0.21568629, b: 0, a: 1}
+  outlineAbsorb: {r: 0.9568628, g: 0.5058824, b: 0.30980393, a: 1}
+  outlineWater: {r: 0.4431373, g: 0.5372549, b: 0.56078434, a: 1}
+  outlineVirus: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &7449807123662406441
 MonoBehaviour:
   m_ObjectHideFlags: 0

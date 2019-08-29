@@ -18,6 +18,9 @@ public class ProjectileObject : MovingObject
     private const int pushForce = 7; //amount of force applied to the objects on collision
     private PhysicsObject pushing; // physics object being pushed
 
+    private static BreakableTilemap breakableTilemap; //ref to the breakable tilemap
+    private bool isBreaking = false;
+
     private bool active = false; //active state for the projectile pool
 
     public ProjectilePool ProjectilePool { set { projectilePool = value; } }
@@ -39,8 +42,12 @@ public class ProjectileObject : MovingObject
         myForceOverLifetime = GetComponent<ParticleSystem>().forceOverLifetime;
         myEmission = GetComponent<ParticleSystem>().emission;
 
-        
         render = GetComponent<SpriteRenderer>();
+
+        if(breakableTilemap == null)
+        {
+            breakableTilemap = FindObjectOfType<BreakableTilemap>();
+        }
     }
 
     void Update()
@@ -58,6 +65,11 @@ public class ProjectileObject : MovingObject
                 pushing.Frozen = false;
                 pushing = null;
             }
+
+            if(isBreaking)
+            {
+                breakableTilemap.BreakTile(transform.position);
+            }
         }
     }
 
@@ -71,13 +83,24 @@ public class ProjectileObject : MovingObject
         CollisionChecks(collision);
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isBreaking = false; //stop breaking the tilemap
+    }
+
     private void CollisionChecks(Collider2D collision)
     {
         if(!active) { return; }
+        isBreaking = false;
         switch (collision.gameObject.layer)
         {
             case 17: //collision with breakable object
-                collision.GetComponent<BreakableTilemap>().BreakTile(transform.position);
+                if (breakableTilemap == null)
+                {
+                    breakableTilemap = collision.GetComponent<BreakableTilemap>();
+                }
+                breakableTilemap.BreakTile(transform.position);
+                isBreaking = true; //start breaking the tilemap
                 break;
             case 9: //collision with solid
                 SetState(false);

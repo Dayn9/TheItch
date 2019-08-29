@@ -27,8 +27,6 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     private bool touchingLadder; //true when player is touching the ladder
     private bool climbing;
-
-    [SerializeField] private float healRate;
     private bool canSwim = false;
     private bool swimming;
 
@@ -222,7 +220,6 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             }
             if(touchingWater)
             {
-                Heal(healRate * Time.deltaTime);
                 swimming = canSwim;
             }
             touchingLadder = false; //reset every time 

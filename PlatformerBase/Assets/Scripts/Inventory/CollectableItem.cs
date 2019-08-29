@@ -87,9 +87,16 @@ public class CollectableItem : Inventory
         rend.sortingOrder = invRend.sortingOrder + 1;
         collected = true;
 
-        if(itemtype == ItemType.Cure)
+        if (itemtype == ItemType.Cure)
         {
             Player.GetComponent<AbilityHandler>().LockAll(); //re lock all the abilities
+        }
+
+	
+        SteamAchievement sa;
+        if (sa = GetComponent<SteamAchievement>())
+        {
+            sa.Achieve();
         }
     }
 
@@ -99,6 +106,10 @@ public class CollectableItem : Inventory
         targetPosition = Vector2.zero;
 
         SpriteRenderer targetRender = target.GetComponent<SpriteRenderer>();
+        if(targetRender == null)
+        {
+            targetRender = target.GetComponentInParent<SpriteRenderer>();
+        }
         if (targetRender != null)
         {
             render.sortingLayerID = targetRender.sortingLayerID;

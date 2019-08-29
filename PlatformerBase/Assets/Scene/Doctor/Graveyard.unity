@@ -164,10 +164,12 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: The smell of blood fills the Air
@@ -305,6 +307,12 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300030, guid: 4374a73e242e3f14d8ddffedfd7009a0,
+        type: 3}
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 2546377550922172176, guid: bbe10861b3b38df44b57c4771c5252e8,
         type: 3}
     - target: {fileID: 61865142819802584, guid: dd9586f87d9b4cb49b874270f71ec290,
         type: 3}
@@ -475,9 +483,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 623028581
+  m_SortingLayer: -5
+  m_SortingOrder: 4
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -706,16 +714,16 @@ ParticleSystem:
       maxColor: {r: 0.41960788, g: 0.4039216, b: 0.32941177, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.41960788, g: 0.4039216, b: 0.32941177, a: 1}
-        key1: {r: 0.7137255, g: 0.65882355, b: 0.38431376, a: 1}
+        key0: {r: 0.7137255, g: 0.65882355, b: 0.38431376, a: 1}
+        key1: {r: 0.41960788, g: 0.4039216, b: 0.32941177, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 19595
-        ctime1: 19667
+        ctime0: 8192
+        ctime1: 65535
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -765,7 +773,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1081,13 +1089,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1024
+    maxNumParticles: 512
     size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1529,8 +1537,26 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
+          time: 0.099
+          value: 1
+          inSlope: -0.0000001326021
+          outSlope: -0.0000001326021
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.1
+          value: 0.5
+          inSlope: -0.00000014901161
+          outSlope: -0.00000014901161
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
           time: 0.899
-          value: 0.9999999
+          value: 0.5
           inSlope: -0.00000018365448
           outSlope: -0.00000018365448
           tangentMode: 0
@@ -1539,7 +1565,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 0.9
-          value: 0.50048727
+          value: 0.25
           inSlope: 0.05924402
           outSlope: 0.05924402
           tangentMode: 0
@@ -1548,7 +1574,7 @@ ParticleSystem:
           outWeight: 0.22709315
         - serializedVersion: 3
           time: 1
-          value: 0.5
+          value: 0.25
           inSlope: 0.0000016689281
           outSlope: 0.0000016689281
           tangentMode: 0
@@ -2044,8 +2070,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: -3
+      scalar: 2
+      minScalar: -2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2098,7 +2124,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1
-      minScalar: 0.5
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2845,7 +2871,7 @@ ParticleSystem:
     inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
-    enabled: 0
+    enabled: 1
     multiplier: 1
     influenceFilter: 0
     influenceMask:
@@ -4074,7 +4100,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4127,7 +4153,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -12047,10 +12073,12 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: They trade the lead, back and forth
@@ -12751,20 +12779,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7449246239757952643, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: areaName
       value: Graveyard
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4529088451677525177, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
@@ -12772,17 +12790,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 2f5af9d093b04dc42b677787da2488ce,
         type: 3}
-    - target: {fileID: 7207526253200531225, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8631739634717644623, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300030, guid: 3267f62941dabf444ac501dc11465bba,
         type: 3}
+    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207526253200531225, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
 --- !u!1 &321821319
@@ -12837,10 +12865,12 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Tony
@@ -12970,10 +13000,12 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: I dream of wild horses
@@ -13396,7 +13428,7 @@ PrefabInstance:
     - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: completedDialogue
-      value: It's too late for the people burried here, but the water will hold the
+      value: It's too late for the people buried here, but the water will hold the
         virus at bay. You should also be able to swim up those waterfalls.
       objectReference: {fileID: 0}
     - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
@@ -13407,7 +13439,7 @@ PrefabInstance:
     - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
       propertyPath: questDialogue
-      value: Ah, another victim of the virus. Theres a Lily around here that I think
+      value: Ah, another victim of the virus. There's a Lily around here that I think
         might be the cause of all this. It needs to be destroyed. I'm too old now
         to reach it, but if you bring it to me I can show you how to use the waterfalls
         to keep the virus from spreading
@@ -13436,6 +13468,16 @@ PrefabInstance:
         type: 3}
       propertyPath: itemsEaten
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: personIndex
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3254771367814480715, guid: af054e1659be0bf47a4784d2f11f567a,
+        type: 3}
+      propertyPath: givenImmediatly
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3254771367814480716, guid: af054e1659be0bf47a4784d2f11f567a,
         type: 3}
@@ -17590,6 +17632,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 0}
   indicatorOffset: {x: 0, y: 0, z: 0}
 --- !u!61 &487450889
@@ -17718,10 +17761,12 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: Talk to the Gravedigger
   completedDialogue: jump multiple times to swim up a waterfall
@@ -17913,6 +17958,8 @@ GameObject:
   - component: {fileID: 632755054}
   - component: {fileID: 632755059}
   - component: {fileID: 632755058}
+  - component: {fileID: 632755056}
+  - component: {fileID: 632755055}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -17950,6 +17997,121 @@ Transform:
   m_Father: {fileID: 1602780826}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &632755055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632755053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290f164ee06b69649affe5f5fbfef6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: eb1712ee7b3d8704b9b080dca2674f53, type: 3}
+    priority: 0
+    loops: 0
+  - clip: {fileID: 8300000, guid: b37d3b2b6f516564db5dd578d7349af5, type: 3}
+    priority: 0
+    loops: 0
+--- !u!82 &632755056
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632755053}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!483693784 &632755058
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -73301,10 +73463,12 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Hooves turn to black claws. Eyes open, no fear.
@@ -77336,7 +77500,7 @@ PrefabInstance:
     - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
         type: 3}
       propertyPath: playerStart.x
-      value: 66.5
+      value: 65.5
       objectReference: {fileID: 0}
     - target: {fileID: 114565953905819446, guid: c5f7b7edffddcb64dbbeeb03c778eab8,
         type: 3}
@@ -77522,10 +77686,12 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Racing down the track as the line approaches
@@ -78189,10 +78355,12 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: Hooves beating in sync on the broken earth
@@ -90045,10 +90213,12 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
   dialogueBox: {fileID: 341780507}
+  personIndex: -1
   faceImage: {fileID: 0}
   questDialogue: 
   completedDialogue: '"I would rather die of passion than of boredom"  -Zola'

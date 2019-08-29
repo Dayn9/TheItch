@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
 
     [SerializeField] protected DialogueBox dialogueBox;
+    [SerializeField] protected int personIndex = -1;
 
     [Tooltip("img should be 32x32 pixels")]
     [SerializeField] protected Sprite faceImage; //image to display in dialogue box
@@ -51,6 +53,15 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
     {
         if(!paused && playerTouching && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0)))
         {
+            if (personIndex >= 0 && DialogueBox.PeopleTalked[personIndex] == false)
+            {
+                DialogueBox.PeopleTalked[personIndex] = true;
+                SteamAchievement achieve;
+                if (!DialogueBox.PeopleTalked.ToList().Contains(false) && (achieve = dialogueBox.GetComponent<SteamAchievement>()) != null)
+                {
+                    achieve.Achieve();
+                }
+            }
             //check for quest completion and display appropriate dialogue
             CheckQuest();
            
