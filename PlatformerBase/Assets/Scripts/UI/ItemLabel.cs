@@ -31,21 +31,18 @@ public class ItemLabel : Inventory
     private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
-        
 
         //set the area based on starting position and offset
         pos = (Vector2)transform.position + offset;
 
         render.material = styleMat;
-        render.material.SetColor("_ReplaceColor", styles[0]); 
+        render.material.SetColor("_ReplaceColor", styles[0]);
 
-        
+        underlayRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
-        underlayRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
-
         SetHiddenWidth();
     }
 

@@ -91,7 +91,6 @@ public class Inventory : Global {
     {
         if (Items[name].GetComponent<CollectableItem>().IsGem)
         {
-            Debug.Log("It's a Gem!");
             gemLock++;
             if (gemLock >= 4)
             {

@@ -55,12 +55,18 @@ public class InventoryDisplay : Inventory {
                 newItem.GetComponent<CollectableItem>().Collected(); //sets the internal states and layers
             }
         }
-        DisplayItems();
 
         collectEffect = Instantiate(collectEffectPrefab, Vector2.zero, Quaternion.identity);
         collectEffect.SetActive(false);
 
         hidden = (Items.Count == 0);
+    }
+
+    public void Start()
+    {
+        //move the display to a hidden position if hidden
+        display.localPosition = hidden ? hiddenOffset : Vector2.zero;
+        DisplayItems();
     }
 
     public void CreateItemLabel(int i)
@@ -84,10 +90,6 @@ public class InventoryDisplay : Inventory {
         virusKey.SetActive(true);
     }
 
-    private void Start()
-    {
-        display.localPosition = hidden ? hiddenOffset : Vector2.zero; //move the display to a hidden position if hidden
-    }
 
     void Update()
     {
