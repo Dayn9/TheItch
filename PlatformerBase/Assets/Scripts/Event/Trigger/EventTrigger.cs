@@ -205,4 +205,13 @@ public class EventTrigger : Inventory, ILevelData
         }
         return true; //all required items are in the players inventory
     }
+
+    protected bool CheckInput()
+    {
+        return Input.GetKeyDown(KeyCode.DownArrow) ||
+                Input.GetKeyDown(KeyCode.S) ||
+                Input.GetMouseButtonDown(0) ||
+                Input.GetMouseButtonDown(1) ||
+                Input.GetButtonDown("Interact");
+    }
 }

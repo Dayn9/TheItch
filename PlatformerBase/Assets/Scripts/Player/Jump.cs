@@ -145,10 +145,10 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             if (returning)
             {
                 //move back to returnPosition
-                moveVelocity = Vector2.SmoothDamp(transform.position, returnPosition, ref returnVelocity, returnTime); 
+                moveVelocity = Vector2.SmoothDamp(transform.position, returnPosition, ref returnVelocity, returnTime);
                 gravityVelocity = Vector2.up * moveVelocity.y; //set moveVelocities for camera
                 transform.position = moveVelocity;
-                if(((Vector2)transform.position - returnPosition).magnitude < 1)
+                if (((Vector2)transform.position - returnPosition).magnitude < 1)
                 {
                     gravityVelocity = Vector2.zero;
                     returning = false;
@@ -175,12 +175,12 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 gravityVelocity = gravity.normalized * maxGravity;
                 return; //don't let the player move 
             }
-            
+
             #region Movement
             //jumping when on ground
             if (jumping && (grounded || climbing || swimming))
             {
-                gravityVelocity /*+*/= (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed *  Time.deltaTime;
+                gravityVelocity /*+*/= (inheritGravity ? groundNormal : Vector2.up) * jumpSpeed * Time.deltaTime;
                 jumping = false; //insures that you can only jump once after pressing jump button
                 //climbing = false; //jump out of climbing
             }
@@ -190,10 +190,10 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             {
                 CollideOneway(false);
                 //add to velocity in direction of velocity proportional to velocity magnitude
-                if (Input.GetButton("Jump")) 
+                if (Input.GetButton("Jump"))
                 {
                     gravityVelocity += addedSpeed * gravityVelocity.normalized * Time.deltaTime;
-                } 
+                }
             }
             //moving downwards
             else
@@ -202,8 +202,8 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
             }
 
             //fall throught one way platforms when input is down
-            if (grounded && Vector2.Dot(gravity, moveVelocity) > 0 && 
-                (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)))
+            if (grounded && Vector2.Dot(gravity, moveVelocity) > 0 &&
+                Input.GetAxis("Vertical") < 0)
             {
                 CollideOneway(false);
             }

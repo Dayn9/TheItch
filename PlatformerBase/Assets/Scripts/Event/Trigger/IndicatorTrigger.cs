@@ -43,14 +43,6 @@ public class IndicatorTrigger : EventTrigger
         }
     }
 
-    protected bool CheckInput()
-    {
-        return Input.GetKeyDown(KeyCode.DownArrow) || 
-                Input.GetKeyDown(KeyCode.S) || 
-                Input.GetMouseButtonDown(0) || 
-                Input.GetMouseButtonDown(1);
-    }
-
     protected override void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 

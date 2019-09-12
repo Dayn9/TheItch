@@ -134,7 +134,9 @@ public class TransferTrigger : IndicatorTrigger
                 || (FullyHealed && AbilityHandler.IsUnlocked(1))); //check if indicator should be available
 
         //check for mouse in zone and able to interact
-        if (zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)) && validInput)
+        if (((!JoystickMouse.Active && zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+           || (JoystickMouse.Active && zone.bounds.Contains(JoystickMouse.Pos)))
+            && validInput)
         {
             indicator.SetActive(true);
 
@@ -143,7 +145,7 @@ public class TransferTrigger : IndicatorTrigger
                 audioPlayer.PlaySound(0); //play the hover sound
             }
 
-            if (Input.GetMouseButton(0) && !transfering && !FullyHealed)
+            if ((Input.GetMouseButton(0) || Input.GetButton("Transfer")) && !transfering && !FullyHealed)
             {
                 transfering = true;
                 Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
@@ -153,7 +155,7 @@ public class TransferTrigger : IndicatorTrigger
 
                 abilityHandler.PowerZero.SendParticlesTo(transform, healthObj.MaxHealth);
             }
-            else if(Input.GetMouseButton(1) && !absorbing && !Empty)
+            else if((Input.GetMouseButton(1) || Input.GetButton("Absorb")) && !absorbing && !Empty)
             {
                 absorbing = true;
                 Player.GetComponent<IPlayer>().Power.RestoreBPM(healthObj.MaxHealth);

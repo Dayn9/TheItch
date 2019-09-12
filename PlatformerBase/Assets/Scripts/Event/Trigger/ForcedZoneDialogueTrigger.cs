@@ -35,7 +35,7 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
     {
         if (playerTouching && !talked && !Pause.menuPaused)
         {
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0))
+            if (CheckInput())
             {
                 if (personIndex >= 0 && DialogueBox.PeopleTalked[personIndex] == false)
                 {

@@ -42,7 +42,7 @@ public class Door : Highlight {
         if (!paused)
         {
             //trigger event when player is touching door and correct key is pressed
-            if (playerTouching && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)))
+            if (playerTouching && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("Interact")))
             {
                 if (OnDoorOpen != null)
                 {

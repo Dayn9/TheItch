@@ -37,12 +37,13 @@ public abstract class Button : Pause {
             bounds = new Rect(pos.x + area.x, pos.y + area.y, area.width, area.height);
 
             //check if the mouse is withing the collider space
-            if (bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+            if ((!JoystickMouse.Active && bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+              || (JoystickMouse.Active && bounds.Contains(JoystickMouse.Pos)))
             {
                 
                 OnEnter();
                 //check if clicking (left mouse button)
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Interact"))
                 {
                     audioPlayer.PlaySound(0);
                     OnClick();

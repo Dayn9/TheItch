@@ -29,7 +29,9 @@ public class RestorePickup : BloodParticle {
     {
         MoveParticles();
         
-        if (!sending && zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+        if (!sending && 
+           ((!JoystickMouse.Active && zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition))) 
+           || (JoystickMouse.Active && zone.bounds.Contains(JoystickMouse.Pos))))
         {
             Restore();
         }

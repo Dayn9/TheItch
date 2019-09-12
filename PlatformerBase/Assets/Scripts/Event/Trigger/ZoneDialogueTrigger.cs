@@ -51,7 +51,7 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
 
     protected override void Update()
     {
-        if(!paused && playerTouching && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetMouseButtonDown(0)))
+        if(!paused && playerTouching && CheckInput())
         {
             if (personIndex >= 0 && DialogueBox.PeopleTalked[personIndex] == false)
             {

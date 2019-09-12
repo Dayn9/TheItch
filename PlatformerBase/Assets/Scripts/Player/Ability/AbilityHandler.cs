@@ -179,7 +179,7 @@ public class AbilityHandler : Global {
                 {
                     powerZero.Useable = true;
                     //play the blled particle effect when mouse down or coming out of pause
-                    if (Input.GetMouseButton(0) || (part.isPaused && part.GetParticles(particles) > 0))
+                    if (Input.GetMouseButton(0) || Input.GetButton("Transfer") || (part.isPaused && part.GetParticles(particles) > 0))
                     {
                         part.Play();
                         powerZero.AudioPlayer.PlaySound("ContinueSparkle");
@@ -199,7 +199,7 @@ public class AbilityHandler : Global {
 
             if (unlockedAbilities[1])
             {
-                if (Input.GetMouseButton(1) && !inside)
+                if ((Input.GetMouseButton(1) || Input.GetButton("Absorb")) && !inside)
                 {
                     partAbsorb.Play();
                     player.Power.RestoreBPM(increaseRate * Time.deltaTime);
@@ -217,13 +217,13 @@ public class AbilityHandler : Global {
 
             if (unlockedAbilities[2])
             {
-                if (Input.GetMouseButton(1) && !inside)
+                if ((Input.GetMouseButton(1) || Input.GetButton("Absorb")) && !inside)
                 {
                     sprinting = true;
                     player.Heal(sprintHealRate * Time.deltaTime);
                 }
                 //stop the sprinting
-                else if (sprinting && Input.GetMouseButtonUp(1) && !inside)
+                else if (sprinting && (Input.GetMouseButtonUp(1) || Input.GetButtonUp("Absorb")) && !inside)
                 {
                     //player.Power.RemoveBPM(heartRateAdded + heartRateRemoved);
                     sprinting = false;
