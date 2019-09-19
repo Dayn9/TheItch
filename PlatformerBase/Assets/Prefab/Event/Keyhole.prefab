@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4016547624261662}
   - component: {fileID: 212827760866747802}
   - component: {fileID: 61865142819802584}
-  - component: {fileID: 114451947976617116}
   - component: {fileID: 114842262205009870}
+  - component: {fileID: 2008907980037360567}
   m_Layer: 15
   m_Name: Keyhole
   m_TagString: Untagged
@@ -108,28 +108,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2.125}
   m_EdgeRadius: 0
---- !u!114 &114451947976617116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055406856607212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d821d176512e9f54d8b2cb99ae3a0173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableAfter: 0
-  itemsRequired:
-  - {fileID: 0}
-  itemsEaten: 1
-  itemGiven: {fileID: 0}
-  givenOnComplete: 0
-  givenAtOffset: {x: 0, y: 0}
-  indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
-    type: 3}
-  indicatorOffset: {x: 0, y: 2.125, z: 0}
 --- !u!114 &114842262205009870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +120,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf09b43f933c944db1cecb45123d7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evTrig: {fileID: 114451947976617116}
+  evTrig: {fileID: 2008907980037360567}
   beforeAfter: 0
   newSprite: {fileID: 21300002, guid: 96e6912c47a2f4b4bbdd79264d1a3b03, type: 3}
+--- !u!114 &2008907980037360567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055406856607212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee622bf0aadfb04b92d94b01fd2d31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableAfter: 0
+  itemsRequired: []
+  itemsEaten: 1
+  abilityRequired: 0
+  itemsGiven: []
+  givenOnComplete: 0
+  indirect: 0
+  givenImmediatly: 1
+  indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
+    type: 3}
+  indicatorOffset: {x: 0, y: 2.125, z: 0}

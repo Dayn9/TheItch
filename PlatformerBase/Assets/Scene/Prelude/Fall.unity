@@ -943,6 +943,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
@@ -2008,7 +2009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c6305f30799e548a11c165414e50bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evTrig: {fileID: 1956266154}
+  evTrig: {fileID: 708721269}
   beforeAfter: 0
   origin: {x: 0, y: 0}
   final: {x: -6, y: 0}
@@ -4440,6 +4441,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &708721269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2008907980037360567, guid: dd9586f87d9b4cb49b874270f71ec290,
+    type: 3}
+  m_PrefabInstance: {fileID: 1542993299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee622bf0aadfb04b92d94b01fd2d31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &855868532
 GameObject:
   m_ObjectHideFlags: 0
@@ -4495,6 +4508,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   dialogueBox: {fileID: 647655302}
   personIndex: -1
   faceImage: {fileID: 0}
@@ -93987,6 +94001,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   dialogueBox: {fileID: 647655302}
   personIndex: -1
   faceImage: {fileID: 0}
@@ -94002,6 +94017,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1964721290}
     m_Modifications:
+    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.data[0]
+      value: 
+      objectReference: {fileID: 1447275410}
     - target: {fileID: 4016547624261662, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.5
@@ -94039,12 +94059,23 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
+    - target: {fileID: 114842262205009870, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: evTrig
+      value: 
+      objectReference: {fileID: 708721269}
+    - target: {fileID: 2008907980037360567, guid: dd9586f87d9b4cb49b874270f71ec290,
+        type: 3}
+      propertyPath: itemsRequired.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008907980037360567, guid: dd9586f87d9b4cb49b874270f71ec290,
         type: 3}
       propertyPath: itemsRequired.Array.data[0]
       value: 
       objectReference: {fileID: 1447275410}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dd9586f87d9b4cb49b874270f71ec290, type: 3}
 --- !u!1 &1571728323
 GameObject:
@@ -94098,6 +94129,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
@@ -103718,6 +103750,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   dialogueBox: {fileID: 647655302}
   personIndex: -1
   faceImage: {fileID: 0}
@@ -108777,41 +108810,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[0]
-      value: 
-      objectReference: {fileID: 855868534}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1464934332}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1909219682}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1772847489}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[4]
-      value: 
-      objectReference: {fileID: 250034557}
-    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: evTrigs.Array.data[5]
-      value: 
-      objectReference: {fileID: 1571728325}
     - target: {fileID: 7420651817986496503, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -108907,16 +108905,56 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7418188465322788421, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7417924718289120395, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208008205218328421, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 855868534}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1464934332}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1909219682}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1772847489}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[4]
+      value: 
+      objectReference: {fileID: 250034557}
+    - target: {fileID: 7449985172372420139, guid: 27ba412619d65774e87bbd4ca6163c66,
+        type: 3}
+      propertyPath: evTrigs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1571728325}
     - target: {fileID: 7418588443544885796, guid: 27ba412619d65774e87bbd4ca6163c66,
         type: 3}
       propertyPath: evTrigs.Array.data[0]
@@ -108931,11 +108969,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7208008205218328421, guid: 27ba412619d65774e87bbd4ca6163c66,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27ba412619d65774e87bbd4ca6163c66, type: 3}
@@ -109761,6 +109794,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   indicatorPrefab: {fileID: 1824191868636520, guid: 23dcd1063eb67364e95405b26e18146c,
     type: 3}
   indicatorOffset: {x: 0, y: 2, z: 0}
@@ -109944,6 +109978,7 @@ MonoBehaviour:
   itemsGiven: []
   givenOnComplete: 0
   indirect: 0
+  givenImmediatly: 1
   dialogueBox: {fileID: 647655302}
   personIndex: -1
   faceImage: {fileID: 0}
@@ -110027,18 +110062,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f7b7edffddcb64dbbeeb03c778eab8, type: 3}
---- !u!114 &1956266154 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114451947976617116, guid: dd9586f87d9b4cb49b874270f71ec290,
-    type: 3}
-  m_PrefabInstance: {fileID: 1542993299}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d821d176512e9f54d8b2cb99ae3a0173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1964721289
 GameObject:
   m_ObjectHideFlags: 0

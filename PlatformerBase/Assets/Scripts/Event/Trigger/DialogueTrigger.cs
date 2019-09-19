@@ -89,11 +89,13 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
                     }
                 }
             }
+            /*
             //exit the dialogue if the player jumps out
             else if (Input.GetButtonDown("Jump"))
             {
                 dialogueBox.ExitReset();
             }
+            */
         }
     }
 

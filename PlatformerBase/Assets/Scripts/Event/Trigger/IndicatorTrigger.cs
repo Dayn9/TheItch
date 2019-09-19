@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class IndicatorTrigger : EventTrigger
 {
-
     [SerializeField] protected GameObject indicatorPrefab; //object that appears when the player can interact with object
     [SerializeField] protected Vector3 indicatorOffset; //offset from door to display above object
     protected GameObject indicator; //ref to instatiated indicatorPrefab
