@@ -14,7 +14,7 @@ public class MoveRepeat : MoveEvent
     {
         transform.localPosition = origin; //start at the origin
         towards = true;
-        SetCols(false);
+        SetCols(colliderOn == ColliderOn.Always);
 
         move = evTrig.State;
 
