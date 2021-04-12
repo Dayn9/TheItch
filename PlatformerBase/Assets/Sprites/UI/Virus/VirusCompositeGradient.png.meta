@@ -1,15 +1,27 @@
 fileFormatVersion: 2
 guid: 2405002d35d72474db6d85a239567207
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: VirusCompositeGradient_0
-    21300002: VirusCompositeGradient_1
-    21300004: VirusCompositeGradient_2
-    21300006: VirusCompositeGradient_3
-    21300008: VirusCompositeGradient_4
-    21300010: VirusCompositeGradient_5
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: VirusCompositeGradient_0
+  - first:
+      213: 21300002
+    second: VirusCompositeGradient_1
+  - first:
+      213: 21300004
+    second: VirusCompositeGradient_2
+  - first:
+      213: 21300006
+    second: VirusCompositeGradient_3
+  - first:
+      213: 21300008
+    second: VirusCompositeGradient_4
+  - first:
+      213: 21300010
+    second: VirusCompositeGradient_5
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -29,6 +41,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,8 +76,10 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -75,7 +90,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -86,7 +102,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -97,7 +114,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -108,6 +126,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -127,6 +146,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1bcfc33fe561fae49b1cf0e9dd582da7
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -147,6 +167,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9f16b5ec9c59f2641836200f59aed635
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -167,6 +188,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: abbe0ba39bcd09e41bfa7d3ee6aaead8
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -187,6 +209,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: bfb57bf248587334184a9f54dee95c49
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -207,6 +230,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 28d7d7a95222dce47a715c29e59f9964
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -227,6 +251,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9165aeced342e00428560403e65711ed
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -235,10 +260,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 321ea8eb8f49bbc429142c6cb6532898
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

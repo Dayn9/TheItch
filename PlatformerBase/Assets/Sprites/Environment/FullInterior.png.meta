@@ -1,45 +1,111 @@
 fileFormatVersion: 2
 guid: 1e48e26b006c9c140ae7ba493e02dd59
-timeCreated: 1531464076
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: FullInterior_0
-    21300002: FullInterior_1
-    21300004: FullInterior_2
-    21300006: FullInterior_3
-    21300008: FullInterior_4
-    21300010: FullInterior_5
-    21300012: FullInterior_6
-    21300014: FullInterior_7
-    21300016: FullInterior_8
-    21300018: FullInterior_9
-    21300020: FullInterior_10
-    21300022: FullInterior_11
-    21300024: FullInterior_12
-    21300026: FullInterior_13
-    21300028: FullInterior_14
-    21300030: FullInterior_15
-    21300032: FullInterior_16
-    21300034: FullInterior_17
-    21300036: FullInterior_18
-    21300038: FullInterior_19
-    21300040: FullInterior_20
-    21300042: FullInterior_21
-    21300044: FullInterior_22
-    21300046: FullInterior_23
-    21300048: FullInterior_24
-    21300050: FullInterior_25
-    21300052: FullInterior_26
-    21300054: FullInterior_27
-    21300056: FullInterior_28
-    21300058: FullInterior_29
-    21300060: FullInterior_30
-    21300062: FullInterior_31
-    21300064: FullInterior_32
-    21300066: FullInterior_33
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: FullInterior_0
+  - first:
+      213: 21300002
+    second: FullInterior_1
+  - first:
+      213: 21300004
+    second: FullInterior_2
+  - first:
+      213: 21300006
+    second: FullInterior_3
+  - first:
+      213: 21300008
+    second: FullInterior_4
+  - first:
+      213: 21300010
+    second: FullInterior_5
+  - first:
+      213: 21300012
+    second: FullInterior_6
+  - first:
+      213: 21300014
+    second: FullInterior_7
+  - first:
+      213: 21300016
+    second: FullInterior_8
+  - first:
+      213: 21300018
+    second: FullInterior_9
+  - first:
+      213: 21300020
+    second: FullInterior_10
+  - first:
+      213: 21300022
+    second: FullInterior_11
+  - first:
+      213: 21300024
+    second: FullInterior_12
+  - first:
+      213: 21300026
+    second: FullInterior_13
+  - first:
+      213: 21300028
+    second: FullInterior_14
+  - first:
+      213: 21300030
+    second: FullInterior_15
+  - first:
+      213: 21300032
+    second: FullInterior_16
+  - first:
+      213: 21300034
+    second: FullInterior_17
+  - first:
+      213: 21300036
+    second: FullInterior_18
+  - first:
+      213: 21300038
+    second: FullInterior_19
+  - first:
+      213: 21300040
+    second: FullInterior_20
+  - first:
+      213: 21300042
+    second: FullInterior_21
+  - first:
+      213: 21300044
+    second: FullInterior_22
+  - first:
+      213: 21300046
+    second: FullInterior_23
+  - first:
+      213: 21300048
+    second: FullInterior_24
+  - first:
+      213: 21300050
+    second: FullInterior_25
+  - first:
+      213: 21300052
+    second: FullInterior_26
+  - first:
+      213: 21300054
+    second: FullInterior_27
+  - first:
+      213: 21300056
+    second: FullInterior_28
+  - first:
+      213: 21300058
+    second: FullInterior_29
+  - first:
+      213: 21300060
+    second: FullInterior_30
+  - first:
+      213: 21300062
+    second: FullInterior_31
+  - first:
+      213: 21300064
+    second: FullInterior_32
+  - first:
+      213: 21300066
+    second: FullInterior_33
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -57,6 +123,9 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -67,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -79,18 +148,23 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -100,7 +174,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: Standalone
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +186,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: WebGL
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -120,6 +198,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -141,6 +220,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_1
       rect:
@@ -159,6 +245,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_2
       rect:
@@ -177,6 +270,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_3
       rect:
@@ -196,6 +296,13 @@ TextureImporter:
         - {x: 4, y: 4}
         - {x: 2, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_4
       rect:
@@ -214,6 +321,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_5
       rect:
@@ -233,6 +347,13 @@ TextureImporter:
         - {x: -2, y: 4}
         - {x: -4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_6
       rect:
@@ -251,6 +372,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_7
       rect:
@@ -269,6 +397,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_8
       rect:
@@ -287,6 +422,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_9
       rect:
@@ -305,6 +447,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_10
       rect:
@@ -323,6 +472,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_11
       rect:
@@ -341,6 +497,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_12
       rect:
@@ -359,6 +522,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_13
       rect:
@@ -377,6 +547,13 @@ TextureImporter:
         - {x: -4, y: 4}
         - {x: -4, y: -4}
       tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_14
       rect:
@@ -395,6 +572,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_15
       rect:
@@ -413,6 +597,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_16
       rect:
@@ -431,6 +622,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_17
       rect:
@@ -449,6 +647,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_18
       rect:
@@ -467,6 +672,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_19
       rect:
@@ -485,6 +697,13 @@ TextureImporter:
         - {x: 4, y: 2}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_20
       rect:
@@ -503,6 +722,13 @@ TextureImporter:
         - {x: 4, y: 2}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_21
       rect:
@@ -521,6 +747,13 @@ TextureImporter:
         - {x: 2, y: 2}
         - {x: 2, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_22
       rect:
@@ -539,6 +772,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_23
       rect:
@@ -557,6 +797,13 @@ TextureImporter:
         - {x: -1, y: -4}
         - {x: 4, y: -1}
       tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_24
       rect:
@@ -575,6 +822,13 @@ TextureImporter:
         - {x: 4, y: 2}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_25
       rect:
@@ -593,6 +847,13 @@ TextureImporter:
         - {x: 4, y: 2}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_26
       rect:
@@ -611,6 +872,13 @@ TextureImporter:
         - {x: 4, y: -1}
         - {x: 4, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_27
       rect:
@@ -629,6 +897,13 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: -4, y: 1}
       tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_28
       rect:
@@ -647,6 +922,13 @@ TextureImporter:
         - {x: 4, y: 1}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_29
       rect:
@@ -664,6 +946,13 @@ TextureImporter:
         - {x: -4, y: 1}
         - {x: -1, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_30
       rect:
@@ -681,6 +970,13 @@ TextureImporter:
         - {x: 4, y: 1}
         - {x: 4, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_31
       rect:
@@ -699,6 +995,13 @@ TextureImporter:
         - {x: -1, y: -4}
         - {x: 1, y: -4}
       tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_32
       rect:
@@ -717,6 +1020,13 @@ TextureImporter:
         - {x: -2, y: -4}
         - {x: 1, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: FullInterior_33
       rect:
@@ -735,9 +1045,26 @@ TextureImporter:
         - {x: 4, y: -4}
         - {x: 1, y: 4}
       tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
