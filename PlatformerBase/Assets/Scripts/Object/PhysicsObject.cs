@@ -161,7 +161,8 @@ public class PhysicsObject : MovingObject
                 }
             }
 
-            if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
+            if (distance > buffer) { 
+                rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
             if (moveVector.magnitude > buffer) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
             #endregion
             touchingWater = stillTouchingWater; 

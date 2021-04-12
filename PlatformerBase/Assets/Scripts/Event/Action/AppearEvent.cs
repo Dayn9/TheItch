@@ -13,23 +13,15 @@ public class AppearEvent : MonoBehaviour {
         //subscribe to proper event
         if (beforeAfter)
         {
-            evTrig.Before += new triggered(Appear);
+            evTrig.Before += () => SetAllRenderers(appDis) ;
         }
         else
         {
-            evTrig.After += new triggered(Appear);
+            evTrig.After += () => SetAllRenderers(appDis);
         }
         SetAllRenderers(!appDis);
     }
 	
-    /// <summary>
-    /// called by event, sets acivation state
-    /// </summary>
-    private void Appear()
-    {
-        SetAllRenderers(appDis);
-    }
-
     /// <summary>
     /// sets the activation state of all of the renderers and colliders 
     /// </summary>

@@ -70,7 +70,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
                 CheckQuest();
                 if (questCompleted)
                 {
-                    if (dialogueBox.FirstChunk) { CallAfter(); }
+                    if (dialogueBox.FirstChunk) { After?.Invoke(); }
                     if (dialogueBox.OnTriggerKeyPressed(completedDialogue, faceImage))
                     {
                         SetFrozen(false);
@@ -82,7 +82,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
                 }
                 else
                 {
-                    if (dialogueBox.FirstChunk) { CallBefore(); } //only trigger event during the first chunk
+                    if (dialogueBox.FirstChunk) { Before?.Invoke(); } //only trigger event during the first chunk
                     if (dialogueBox.OnTriggerKeyPressed(questDialogue, faceImage))
                     {
                         SetFrozen(false);

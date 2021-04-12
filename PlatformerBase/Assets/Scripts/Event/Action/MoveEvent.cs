@@ -83,11 +83,11 @@ public class MoveEvent : Global {
         //subscribe to proper event
         if (beforeAfter)
         {
-            evTrig.Before += new triggered(Move);
+            evTrig.Before += Move;
         }
         else
         {
-            evTrig.After += new triggered(Move);
+            evTrig.After += Move;
         }
      }
 	

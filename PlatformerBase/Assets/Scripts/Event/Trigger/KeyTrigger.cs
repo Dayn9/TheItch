@@ -16,18 +16,18 @@ public class KeyTrigger : IndicatorTrigger
                     CheckQuest();
                     if (questCompleted)
                     {
-                        CallAfter();
+                        After?.Invoke();
                         audioPlayer.PlaySound(1);
                     }
                     else
                     {
-                        CallBefore();
+                        Before?.Invoke();
                         audioPlayer.PlaySound(0);
                     }
                 }
                 else
                 {
-                    CallBefore();
+                    Before?.Invoke();
                     audioPlayer.PlaySound(0);
                 }
             }

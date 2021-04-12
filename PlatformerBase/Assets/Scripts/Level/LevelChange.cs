@@ -18,7 +18,7 @@ public class LevelChange : EventTrigger
         gameObject.GetComponent<Collider2D>().isTrigger = true;
 
         Transition transition = FindObjectOfType<Transition>();
-        transition.After += new triggered(Advance);
+        transition.After += Advance;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -28,7 +28,7 @@ public class LevelChange : EventTrigger
         {
             changing = true;
             //start the transition
-            CallBefore();
+            Before?.Invoke();
         }
     }
 

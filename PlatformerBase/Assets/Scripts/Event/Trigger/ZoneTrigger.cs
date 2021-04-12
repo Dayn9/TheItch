@@ -12,7 +12,7 @@ public class ZoneTrigger : EventTrigger {
             CheckQuest(); //callecd for item given reasons (don't delete)
             if (questCompleted)
             {
-                CallBefore();
+                Before?.Invoke();
             }
             //if (disableAfter) { gameObject.SetActive(false); } DONT 
         }
@@ -23,7 +23,7 @@ public class ZoneTrigger : EventTrigger {
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //exit dialogue when player leaves
         {
-            CallAfter();
+            After?.Invoke();
             if (disableAfter) { gameObject.SetActive(false); }
         }
     }

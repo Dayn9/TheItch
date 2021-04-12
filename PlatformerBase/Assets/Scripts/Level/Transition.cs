@@ -46,7 +46,7 @@ public class Transition : EventTrigger{
         LevelChange[] changes = FindObjectsOfType<LevelChange>();
         foreach (EventTrigger evTrig in changes)
         {
-            evTrig.Before += new triggered(FadeOut);
+            evTrig.Before += FadeOut;
         }
 
         FadeIn(); //begin the fade in when the scene first loads 
@@ -125,7 +125,7 @@ public class Transition : EventTrigger{
         player.Frozen = true; //stop the player from moving
         player.InFallZone = true;
 
-        CallBefore();
+        Before?.Invoke();
         dialogueBox.OnTriggerKeyPressed(areaName);
     }
 
@@ -169,7 +169,7 @@ public class Transition : EventTrigger{
                     fadeOut = false;
                     GameSaver.SaveGameData();
                     GameSaver.SaveLevelData(); //save the game
-                    CallAfter();
+                    After?.Invoke();
                     player.Frozen = false; 
                     player.InFallZone = false;
                     return;

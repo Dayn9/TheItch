@@ -4,6 +4,15 @@
 [RequireComponent(typeof(ParticleSystem))]
 public class ProjectileObject : MovingObject 
 {
+    //Proposed update 
+    /*
+     * Use the direction and moveVelocity to determine which TILES to break
+     * 
+     * This way it can break multiple in it's path
+     */
+
+
+
     private ProjectileDirection direction; //direcction of the projectile
     [SerializeField] private float acceleration; //rate at which the speed increases 
     [SerializeField] private float maxSpeed; //maximum speed the object should move at 

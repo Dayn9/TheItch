@@ -36,8 +36,8 @@ public class TextboxEvent : EventTrigger
     {
         foreach (EventTrigger evTrig in evTrigs)
         {
-            evTrig.Before += new triggered(MoveIn);
-            evTrig.After += new triggered(MoveIn);
+            evTrig.Before += MoveIn;
+            evTrig.After += MoveIn;
         }
         render = GetComponent<SpriteRenderer>();
 
@@ -69,13 +69,13 @@ public class TextboxEvent : EventTrigger
                     transform.localPosition = targetPos;
                     if (moveIn)
                     {
-                        CallBefore();
+                        Before?.Invoke();
                         timer = 0;
                     }
                     moveIn = false;
                     if (moveOut)
                     {
-                        CallAfter();
+                        After?.Invoke();
                         GetComponent<DialogueBox>().Reset();
 
                         transform.localPosition = visiblePosition + animatedOffset; //reset the localPosition

@@ -74,7 +74,7 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player")) //trigger dialogue when player touches 
         {
-            CallBefore();
+            Before?.Invoke();
             playerTouching = true;
             dialogueBox.Reset(); //make sure the dialogue box is wipeed
 

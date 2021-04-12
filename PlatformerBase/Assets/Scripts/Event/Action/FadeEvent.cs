@@ -39,11 +39,11 @@ public class FadeEvent : Global {
         //subscribe to proper event
         if (beforeAfter)
         {
-            evTrig.Before += new triggered(Fade);
+            evTrig.Before += Fade;
         }
         else
         {
-            evTrig.After += new triggered(Fade);
+            evTrig.After += Fade;
         }
 
         //set the initial values for collider state and color 

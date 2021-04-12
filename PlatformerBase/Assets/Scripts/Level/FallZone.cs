@@ -49,7 +49,7 @@ public class FallZone : Global {
 
     private void Start()
     {
-        evTrig.After += new triggered(Brake);
+        evTrig.After += Brake;
     }
 
     void FixedUpdate () {

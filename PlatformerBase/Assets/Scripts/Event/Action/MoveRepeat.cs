@@ -20,9 +20,9 @@ public class MoveRepeat : MoveEvent
 
         if (!beforeAfter)
         {
-            evTrig.Before += new triggered(ToggleMove);
+            evTrig.Before += ToggleMove;
         }
-        evTrig.After += new triggered(ToggleMove);
+        evTrig.After += ToggleMove;
 
     }
 

@@ -151,7 +151,7 @@ public class TransferTrigger : IndicatorTrigger
                 Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
 
                 Player.GetComponent<IHealthObject>().Damage(0); //triggers the damage animation
-                CallBefore();
+                Before?.Invoke();
 
                 abilityHandler.PowerZero.SendParticlesTo(transform, healthObj.MaxHealth);
             }
@@ -159,7 +159,7 @@ public class TransferTrigger : IndicatorTrigger
             {
                 absorbing = true;
                 Player.GetComponent<IPlayer>().Power.RestoreBPM(healthObj.MaxHealth);
-                CallAfter();
+                After?.Invoke();
 
                 abilityHandler.PowerOne.transform.position = transform.position;
                 abilityHandler.PowerOne.SendParticlesTo(Player.GetComponent<MovingObject>(), healthObj.MaxHealth);

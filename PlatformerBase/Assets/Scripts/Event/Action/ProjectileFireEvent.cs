@@ -26,11 +26,11 @@ public class ProjectileFireEvent : MonoBehaviour
         //subscribe to proper event
         if (beforeAfter)
         {
-            evTrig.Before += new triggered(FireProjectile);
+            evTrig.Before += FireProjectile;
         }
         else
         {
-            evTrig.After += new triggered(FireProjectile);
+            evTrig.After += FireProjectile;
         }
     }
 

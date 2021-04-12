@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
+using System;
 using UnityEngine;
-
-public delegate void triggered();
 
 [RequireComponent(typeof(Collider2D))]
 public class EventTrigger : Inventory, ILevelData
@@ -23,8 +22,8 @@ public class EventTrigger : Inventory, ILevelData
 
     protected bool questCompleted = false; //true when quest has been completed
 
-    public event triggered Before; //Event Triggered on player iteraction when quest incomplete
-    public event triggered After; //Even Triggered on player interaction when quest complete
+    public Action Before; //Event Triggered on player iteraction when quest incomplete
+    public Action After; //Even Triggered on player interaction when quest complete
 
     protected AudioPlayer audioPlayer; //ref to the attached audio player
 
@@ -34,20 +33,10 @@ public class EventTrigger : Inventory, ILevelData
     protected virtual void Awake () {
         gameObject.GetComponent<Collider2D>().isTrigger = true;
 
-        //insure there is never a null event
-        Before = new triggered(NullEvent);
-        After = new triggered(NullEvent);
-
         audioPlayer = GetComponentInParent<AudioPlayer>();
 
         if (itemsGiven.Count > 0 && !indirect) { itemsGiven.ForEach(i => i.transform.localPosition = transform.localPosition); }
     }
-
-
-    /// <summary>
-    /// default event so null ref errors are not thrown
-    /// </summary>
-    protected void NullEvent() { }
 
     public virtual void OnLevelLoad(bool state)
     {
@@ -87,29 +76,14 @@ public class EventTrigger : Inventory, ILevelData
                 CheckQuest();
                 if (questCompleted)
                 {
-                    After();
+                    After?.Invoke();
                 }
                 else
                 {
-                    Before();
+                    Before?.Invoke();
                 }
             }
         }
-    }
-
-    /// <summary>
-    /// used by child classes to call Before Event
-    /// </summary>
-    protected void CallBefore()
-    {
-        Before();
-    }
-    /// <summary>
-    /// used by shild classes to call After Event
-    /// </summary>
-    protected void CallAfter()
-    {
-        After();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)

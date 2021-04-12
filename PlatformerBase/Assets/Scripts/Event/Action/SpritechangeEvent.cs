@@ -20,11 +20,11 @@ public class SpritechangeEvent : MonoBehaviour {
         //subscribe to proper event
         if (beforeAfter)
         {
-            evTrig.Before += new triggered(SetSprite);
+            evTrig.Before += SetSprite;
         }
         else
         {
-            evTrig.After += new triggered(SetSprite);
+            evTrig.After += SetSprite;
         }
     }
 

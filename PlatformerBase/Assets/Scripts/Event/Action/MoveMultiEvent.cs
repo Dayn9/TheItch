@@ -15,11 +15,11 @@ public class MoveMultiEvent : MoveEvent
         {
             if (beforeAfter)
             {
-                evTrig.Before += new triggered(Move);
+                evTrig.Before += Move;
             }
             else
             {
-                evTrig.After += new triggered(Move);
+                evTrig.After += Move;
             }
 
             if (evTrig.State) { numTriggered += 1; }
