@@ -15,8 +15,14 @@ public class Checkpoint : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D coll)
     {
         //set the reset position of the player to this objects location
-        if(coll.tag == "Player") {
-            Global.Player.GetComponent<IPlayer>().ReturnPosition = transform.position;
+        if (coll.tag == "Player")
+        {
+            SetCheckpoint();
         }
+    }
+
+    public void SetCheckpoint()
+    {
+        Global.Player.GetComponent<IPlayer>().ReturnPosition = transform.position;
     }
 }
