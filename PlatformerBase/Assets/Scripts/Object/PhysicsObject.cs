@@ -60,7 +60,7 @@ public class PhysicsObject : MovingObject
     }
 
     protected virtual void Update() {
-        if (!paused)
+        if (!Global.paused)
         {
             if (!frozen)
             {
@@ -78,7 +78,7 @@ public class PhysicsObject : MovingObject
     //called every Physics Update
     protected virtual void FixedUpdate()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             stillTouchingWater = false;
             #region gravity collision
@@ -103,7 +103,7 @@ public class PhysicsObject : MovingObject
                         //gravityVelocity = Vector2.zero; //stop moving * * * MOVED TO COLLIDE WITH CLOSEST SECTION * * *
 
                         float moveableDistance = moveVector.magnitude;
-                        if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
+                        if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - Global.BUFFER), out moveableDistance))
                         {
                             //collide with the closest
                             if (moveableDistance < distance)
@@ -128,7 +128,7 @@ public class PhysicsObject : MovingObject
                         }
                     }
                 }
-                rb2D.position += moveVector.normalized * (distance - buffer); //move object by the distance to nearest collision
+                rb2D.position += moveVector.normalized * (distance - Global.BUFFER); //move object by the distance to nearest collision
                 groundNormal = newGroundNormal; //set the ground normal to normal of closest surface
             }
             #endregion
@@ -142,7 +142,7 @@ public class PhysicsObject : MovingObject
             for (int i = 0; i < numCollisions; i++)
             {
                 float moveableDistance = moveVector.magnitude;
-                if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - buffer), out moveableDistance))
+                if (LayerChecks(hits[i].transform.gameObject, moveVector.normalized * (moveableDistance - Global.BUFFER), out moveableDistance))
                 {
                     //collide with the closest
                     if (moveableDistance < distance)
@@ -161,9 +161,9 @@ public class PhysicsObject : MovingObject
                 }
             }
 
-            if (distance > buffer) { 
-                rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
-            if (moveVector.magnitude > buffer) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
+            if (distance > Global.BUFFER) { 
+                rb2D.position += moveVector.normalized * (distance - Global.BUFFER); } //move object by the distance to nearest collision
+            if (moveVector.magnitude > Global.BUFFER) { sprite.flipX = Vector2.Dot(transform.right, moveVector) < 0; } //face the correct direction
             #endregion
             touchingWater = stillTouchingWater; 
         }
@@ -192,8 +192,8 @@ public class PhysicsObject : MovingObject
                 distance = hits[i].distance; //set new closest distance
             }
         }
-        if (distance > buffer) { rb2D.position += moveVector.normalized * (distance - buffer); } //move object by the distance to nearest collision
-        return distance - buffer; //return the total distance moved
+        if (distance > Global.BUFFER) { rb2D.position += moveVector.normalized * (distance - Global.BUFFER); } //move object by the distance to nearest collision
+        return distance - Global.BUFFER; //return the total distance moved
     }
 
     #region helper methods

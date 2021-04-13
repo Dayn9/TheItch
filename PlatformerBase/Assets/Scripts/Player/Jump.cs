@@ -59,7 +59,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
     }
     public HeartbeatPower Power {
         get {
-            if (!heartBeatPower) { heartBeatPower = MainCamera.GetComponentInChildren<HeartbeatPower>(); }
+            if (!heartBeatPower) { heartBeatPower = Global.MainCamera.GetComponentInChildren<HeartbeatPower>(); }
             return heartBeatPower;
         }
     }
@@ -101,9 +101,9 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
         SetReturnPosition(transform.position); //set the return position to 1 unit above where the player initially spawned
 
-        if (startPosition != Vector2.one)
+        if (Global.startPosition != Vector2.one)
         {
-            transform.position = startPosition;
+            transform.position = Global.startPosition;
         }
 
         audioPlayer = GetComponent<AudioPlayer>();
@@ -111,7 +111,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     protected override void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             //don't accept input when frozen
             if (frozen)
@@ -140,7 +140,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
 
     protected override void FixedUpdate()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             if (returning)
             {
@@ -208,7 +208,7 @@ public class Jump : PhysicsObject, IHealthObject, IPlayer
                 CollideOneway(false);
             }
 
-            moving = moveVelocity.magnitude > buffer; //determine if object is moving
+            moving = moveVelocity.magnitude > Global.BUFFER; //determine if object is moving
             //update the health system
             if (moving) { heartBeatPower.RestoreBPM  (restoreRate * Time.deltaTime); }
             else { heartBeatPower.RemoveBPM(removeRate * Time.deltaTime); }

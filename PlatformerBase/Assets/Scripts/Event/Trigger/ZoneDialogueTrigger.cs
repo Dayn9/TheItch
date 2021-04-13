@@ -34,7 +34,7 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
 
         if (!dialogueBox)
         {
-            dialogueBox = MainCamera.GetComponentInChildren<DialogueBox>();
+            dialogueBox = Global.MainCamera.GetComponentInChildren<DialogueBox>();
             Debug.Log(gameObject.name + "'s dialogue trigger needs manual assignment");
         }
 
@@ -45,13 +45,13 @@ public class ZoneDialogueTrigger : ZoneTrigger, IDialogue {
     {
         if (playerPhysObj == null)
         {
-            playerPhysObj = Player.GetComponent<PhysicsObject>();
+            playerPhysObj = Global.Player.GetComponent<PhysicsObject>();
         }
     }
 
     protected override void Update()
     {
-        if(!paused && playerTouching && CheckInput())
+        if(!Global.paused && playerTouching && CheckInput())
         {
             if (personIndex >= 0 && DialogueBox.PeopleTalked[personIndex] == false)
             {

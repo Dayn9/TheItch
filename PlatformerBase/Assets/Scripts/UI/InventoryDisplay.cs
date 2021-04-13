@@ -84,7 +84,7 @@ public class InventoryDisplay : Inventory {
 
     public void CreateVirusKey()
     {
-        GameObject virusKey = Instantiate(allItems.Find(i => i.name == "VirusKey"), Player.transform.position, Quaternion.identity);
+        GameObject virusKey = Instantiate(allItems.Find(i => i.name == "VirusKey"), Global.Player.transform.position, Quaternion.identity);
         virusKey.name = "VirusKey";
         virusKey.SetActive(true);
     }

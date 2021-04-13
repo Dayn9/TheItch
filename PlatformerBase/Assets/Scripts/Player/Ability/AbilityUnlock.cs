@@ -48,9 +48,9 @@ public class AbilityUnlock : BloodParticle, ILevelData {
         if(collision.tag == "Player")
         {
             //audioPlayer.PlaySound(0);
-            Player.GetComponent<AbilityHandler>().Unlock(abilityUnlocked);
+            Global.Player.GetComponent<AbilityHandler>().Unlock(abilityUnlocked);
             render.enabled = false;
-            SendParticlesTo(Player.GetComponent<MovingObject>(), numParticles);
+            SendParticlesTo(Global.Player.GetComponent<MovingObject>(), numParticles);
             if(text != null)
             {
                 text.ShowText();

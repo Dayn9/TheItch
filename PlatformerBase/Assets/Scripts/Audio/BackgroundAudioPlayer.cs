@@ -21,8 +21,8 @@ public class BackgroundAudioPlayer : AudioPlayer
     {
         sources = GetComponents<AudioSource>();
 
-        sources[0].mute = muted;
-        sources[1].mute = muted;
+        sources[0].mute = Global.muted;
+        sources[1].mute = Global.muted;
 
         /*soundDict = new Dictionary<string, SoundFile>();
         foreach (SoundFile soundFile in sounds)
@@ -45,7 +45,7 @@ public class BackgroundAudioPlayer : AudioPlayer
         foreach (AudioSource source in sources)
         {
             source.loop = true;
-            source.mute = muted; //make sure the source isn't playing while muted 
+            source.mute = Global.muted; //make sure the source isn't playing while muted 
             if (source.enabled)
             {
                 source.Play();
@@ -55,8 +55,8 @@ public class BackgroundAudioPlayer : AudioPlayer
 
     protected override void Update()
     {
-        sources[0].mute = muted;
-        sources[1].mute = muted;
+        sources[0].mute = Global.muted;
+        sources[1].mute = Global.muted;
 
         backgroundMixer.GetFloat("TrackAVol", out currentVolumes[0]);
         backgroundMixer.GetFloat("TrackBVol", out currentVolumes[1]);

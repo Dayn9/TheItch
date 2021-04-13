@@ -9,7 +9,7 @@ public class DoctorsNote : Button
 
     protected override void OnClick()
     {
-        otherPause = false;
+        Pause.otherPause = false;
         gameObject.SetActive(false);
     }
 

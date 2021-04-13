@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [RequireComponent(typeof(PhysicsObject))]
-public class XPathFollow : Global
+public class XPathFollow : MonoBehaviour
 {
     private PhysicsObject physObj;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObject : Global {
+public class MovingObject : MonoBehaviour {
 
     protected Vector2 moveVelocity = Vector2.zero; //velocity the object manipulates on it's own
     protected bool frozen = false; 

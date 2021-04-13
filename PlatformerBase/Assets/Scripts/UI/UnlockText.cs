@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnlockText : Global {
+public class UnlockText : MonoBehaviour {
 
     [SerializeField] private Vector2 hiddenOffset; //relative position of display when hidden
     [SerializeField] private float moveSpeed; //how fast to hide and show
@@ -31,7 +31,7 @@ public class UnlockText : Global {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!paused)
+        if (!Global.paused)
         {
             if(timer < timeActive)
             {

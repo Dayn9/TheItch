@@ -22,7 +22,7 @@ public class MouseCamera : BaseCamera {
 
     void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         { 
             targetOffset = (offsetFromPlayer) + 
                 ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) 

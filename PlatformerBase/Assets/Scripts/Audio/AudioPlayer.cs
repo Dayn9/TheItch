@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioPlayer : Global {
+public class AudioPlayer : MonoBehaviour {
 
     /// <summary>
     /// contains the sound files that can be played by an object and the ability to play those sounds
@@ -27,7 +27,7 @@ public class AudioPlayer : Global {
             soundDict.Add(soundFile.Name, soundFile);
         }
 
-        source.mute = muted; //make sure the source isn't playing while muted 
+        source.mute = Global.muted; //make sure the source isn't playing while muted 
     }
 
     /// <summary>
@@ -88,7 +88,7 @@ public class AudioPlayer : Global {
 
     protected virtual void Update()
     {
-        source.mute = muted;
+        source.mute = Global.muted;
     }
 }
 

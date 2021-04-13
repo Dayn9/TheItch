@@ -55,7 +55,7 @@ public class MoveMultiEvent : MoveEvent
 
     protected override void FixedUpdate()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             //move from current position towards final position
             if (move)

@@ -30,7 +30,7 @@ public class RestorePickup : BloodParticle {
         MoveParticles();
         
         if (!sending && 
-           ((!JoystickMouse.Active && zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition))) 
+           ((!JoystickMouse.Active && zone.bounds.Contains((Vector2)Global.MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition))) 
            || (JoystickMouse.Active && zone.bounds.Contains(JoystickMouse.Pos))))
         {
             Restore();
@@ -45,10 +45,10 @@ public class RestorePickup : BloodParticle {
     private void Restore()
     {
         //transform.parent = Player.transform;
-        SendParticlesTo(Player.GetComponent<MovingObject>(), restoreAmount * 10);
+        SendParticlesTo(Global.Player.GetComponent<MovingObject>(), restoreAmount * 10);
 
-        Player.GetComponent<IHealthObject>().Heal(healAmount);
-        Player.GetComponent<IPlayer>().Power.RestoreBPM(restoreAmount);
+        Global.Player.GetComponent<IHealthObject>().Heal(healAmount);
+        Global.Player.GetComponent<IPlayer>().Power.RestoreBPM(restoreAmount);
         render.enabled = false;
         zone.enabled = false;
 

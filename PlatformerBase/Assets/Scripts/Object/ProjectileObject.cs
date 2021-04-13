@@ -61,7 +61,7 @@ public class ProjectileObject : MovingObject
 
     void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             //accelerate to max speed
             speed = Mathf.Clamp(speed + (acceleration * Time.deltaTime), 0, maxSpeed);

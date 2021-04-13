@@ -30,7 +30,7 @@ public class Transition : EventTrigger{
         //add self to dialogue box
         dialogueBox.GetComponent<TextboxEvent>().AddEvTrig(this);
 
-        player = Player.GetComponent<Jump>();
+        player = Global.Player.GetComponent<Jump>();
         GameSaver.currentLevelName = areaName; 
         if (loadGame) {
             LoadGame();
@@ -143,7 +143,7 @@ public class Transition : EventTrigger{
 
     protected override void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             if (fadeIn) 
             {

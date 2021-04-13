@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class FadeEvent : Global {
+public class FadeEvent : MonoBehaviour {
 
     [SerializeField] private TransferTrigger evTrig; //eventTrigger 
     [Header("Before/True  -  After/False")]
@@ -76,7 +76,7 @@ public class FadeEvent : Global {
 
     // Update is called once per frame
     void Update () {
-		if(!paused && fade)
+		if(!Global.paused && fade)
         {
             float percent = hbIndicator.CurrentHealth / hbIndicator.Total;
 

@@ -12,7 +12,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 /// https://github.com/RITGameDev/GameSaveDemo/blob/master/Assets/Scripts/GameSave.cs
 /// </summary>
 
-public class GameSaver : Global
+public class GameSaver 
 {
     /// <summary>
     /// Handles the saving and loading of gameData
@@ -44,7 +44,7 @@ public class GameSaver : Global
     /// </summary>
     public static bool SaveGameData()
     {
-        Jump player = Player.GetComponent<Jump>();
+        Jump player = Global.Player.GetComponent<Jump>();
 
         //save the game data
         GameSaveData saveData = new GameSaveData(
@@ -105,7 +105,7 @@ public class GameSaver : Global
             levelData.AddObject(data.Name, data.State);
         }
 
-        BreakableTilemap breakable = FindObjectOfType<BreakableTilemap>();
+        BreakableTilemap breakable = Object.FindObjectOfType<BreakableTilemap>();
         //add the breakable tilemap data
         if (breakable)
         {

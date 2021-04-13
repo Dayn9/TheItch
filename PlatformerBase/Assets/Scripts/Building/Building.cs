@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(AudioPlayer))]
-public class Building : Global {
+public class Building : MonoBehaviour {
 
     [SerializeField] private GameObject Exterior; //Exterior Tilemap
     [SerializeField] private BuildingLayer[] Interiors; //Interior layer tilemaps and joining doors
@@ -36,8 +36,8 @@ public class Building : Global {
     // Use this for initialization
     private void Start()
     {
-        physPlayer = Player.GetComponent<PhysicsObject>();
-        ability = Player.GetComponent<AbilityHandler>();
+        physPlayer = Global.Player.GetComponent<PhysicsObject>();
+        ability = Global.Player.GetComponent<AbilityHandler>();
 
         solidDoor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         transparentDoor = new Color(1.0f, 1.0f, 1.0f, doorAboveAlpha);
@@ -69,16 +69,16 @@ public class Building : Global {
         //fade the background
         if (currentLayer == 0)
         {
-            cameraRenderers = MainCamera.GetComponentsInChildren<Renderer>();
+            cameraRenderers = Global.MainCamera.GetComponentsInChildren<Renderer>();
 
             Fade.EnableFade(myRenderers);
-            fade.EnableFade(Player.GetComponent<Renderer>());
+            fade.EnableFade(Global.Player.GetComponent<Renderer>());
             fade.EnableFade(cameraRenderers);
         }
         else if (layer == 0)
         {
             Fade.DisableFade(myRenderers);
-            fade.DisableFade(Player.GetComponent<Renderer>());
+            fade.DisableFade(Global.Player.GetComponent<Renderer>());
             fade.DisableFade(cameraRenderers);
         }
 

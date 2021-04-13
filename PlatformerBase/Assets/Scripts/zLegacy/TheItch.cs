@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(IHealthObject))]
 [RequireComponent(typeof(PhysicsObject))]
 //FASTER HEALTH RATE DOES MORE DAMAGE
-public class TheItch : Global
+public class TheItch : MonoBehaviour
 {
     /*
     [SerializeField] private float timeStill; //time(seconds) the object can stand still before it takes damage

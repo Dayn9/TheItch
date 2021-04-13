@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BloodParticle : Global {
+public abstract class BloodParticle : MonoBehaviour {
 
     [SerializeField] private float particleSpeed;
     private const int particleMultiplier = 3;
@@ -43,7 +43,7 @@ public abstract class BloodParticle : Global {
         partRend = GetComponent<ParticleSystemRenderer>();
         particles = new ParticleSystem.Particle[part.main.maxParticles];
 
-        hbPower = Player.GetComponent<IPlayer>().Power;
+        hbPower = Global.Player.GetComponent<IPlayer>().Power;
 
         part.Stop();
     }
@@ -96,7 +96,7 @@ public abstract class BloodParticle : Global {
 
     protected void MoveParticles()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             if (sending)
             {

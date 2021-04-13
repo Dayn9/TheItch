@@ -4,17 +4,19 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class Pause : Global {
+public class Pause : MonoBehaviour {
 
-    protected SpriteRenderer[] myRenderers; //ref to the spriteRenderers on this and all the child gameObjects
+    private SpriteRenderer[] myRenderers; //ref to the spriteRenderers on this and all the child gameObjects
 
-    protected static Animator[] animators; //ref to all the animators in the scene
+    private static Animator[] animators; //ref to all the animators in the scene
 
     protected Fade fade; //ref to the fade object in the scene 
+    
     public static bool menuPaused = false; //true when menu is paused
     public static bool otherPause = false; //true when something else is paused
+    public static bool paused => menuPaused || otherPause;
 
-    protected AudioPlayer audioPlayer;
+    private AudioPlayer audioPlayer;
 
     private void Awake()
     {
@@ -36,21 +38,7 @@ public class Pause : Global {
         menuPaused = false; //level should never start paused
         otherPause = false;
 
-        GetAudioPlayer();
-    }
-
-    private void Start()
-    {
-
-    }
-
-    protected void GetAudioPlayer()
-    {
-        //find the audio player
-        if ((audioPlayer = GetComponent<AudioPlayer>()) == null)
-        {
-            audioPlayer = GetComponentInParent<AudioPlayer>();
-        }
+        TryGetComponent<AudioPlayer>(out audioPlayer);
         Assert.IsNotNull(audioPlayer, gameObject.name + " cannot find an audioplayer");
     }
 
@@ -61,12 +49,12 @@ public class Pause : Global {
         {
             audioPlayer.PlaySound(0);
             menuPaused = !menuPaused;
-            paused = menuPaused || otherPause;
+            Global.paused = menuPaused || otherPause;
 
             //disable all animators when paused
             foreach (Animator anim in animators)
             {
-                anim.enabled = !paused;
+                anim.enabled = !Global.paused;
             }
 
             SetRenders(menuPaused);
@@ -78,11 +66,11 @@ public class Pause : Global {
             }
             
         }
-        paused = menuPaused || otherPause;
+        Global.paused = menuPaused || otherPause;
         //toggle audio when M key is pressed (Quick action, can also be done through pause menu)
         if (Input.GetKeyDown(KeyCode.M))
         {
-            muted = !muted;
+            Global.muted = !Global.muted;
         }
     }
 
@@ -101,14 +89,14 @@ public class Pause : Global {
     /// <summary>
     /// TODO: handles all the pausing and can be called by child objects
     /// </summary>
-    public void PauseGame(bool p)
+    public static void PauseGame(bool p)
     {
         otherPause = p;
-        paused = menuPaused || otherPause;
+        Global.paused = menuPaused || otherPause;
         //disable all animators when paused
         foreach (Animator anim in animators)
         {
-            anim.enabled = !paused;
+            anim.enabled = !Global.paused;
         }
     }
 }

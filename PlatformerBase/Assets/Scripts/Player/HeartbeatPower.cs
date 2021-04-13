@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Heartbeat))]
-public class HeartbeatPower : Global {
+public class HeartbeatPower : MonoBehaviour {
 
     [SerializeField] private float initialBPM; //initial value for the BPM
     [SerializeField] private float maxHeartRate; //maximum value for bpm
@@ -101,7 +101,7 @@ public class HeartbeatPower : Global {
 
     void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             //lerp color to target
             render.material.SetColor("_Outline", Color.Lerp(render.material.GetColor("_Outline"), targetOutlineColor, 0.1f));

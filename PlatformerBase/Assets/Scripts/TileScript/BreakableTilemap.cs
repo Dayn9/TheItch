@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 [RequireComponent(typeof(Tilemap))]
 [RequireComponent(typeof(BreakParticles))]
-public class BreakableTilemap : Global
+public class BreakableTilemap : MonoBehaviour
 {
     private Tilemap tilemap;
     private BreakParticles breakPart;
@@ -41,7 +41,7 @@ public class BreakableTilemap : Global
     private void Start()
     {
         //For edge case of player clipping into BreakableTilemap
-        Vector3Int playerPos = Vector3Int.FloorToInt(Player.transform.position);
+        Vector3Int playerPos = Vector3Int.FloorToInt(Global.Player.transform.position);
         if (tilemap.GetTile(playerPos))
         {
             tilemap.SetTile(playerPos, brokenTile);

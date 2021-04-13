@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class Fade : Pause
+public class Fade : MonoBehaviour
 { 
     private SpriteRenderer render; //ref to this objects sprite renderer 
     private Dictionary<GameObject, int> origionalLayers; //keeps track of the origional sorting layers of objects that go above the fade
@@ -40,7 +40,7 @@ public class Fade : Pause
                 aboveFade[i].sortingOrder += 1; //make sure always above the fade
             }
         }
-        render.sortingOrder = menuPaused ? 10 : 0;
+        render.sortingOrder = Pause.menuPaused ? 10 : 0;
     }
 
     /// <summary>
@@ -67,6 +67,6 @@ public class Fade : Pause
             render.enabled = false;
         }
 
-        render.sortingOrder = menuPaused ? 10 : 0;
+        render.sortingOrder = Pause.menuPaused ? 10 : 0;
     }
 }

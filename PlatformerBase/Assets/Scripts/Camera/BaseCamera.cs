@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.U2D;
 
 [RequireComponent(typeof(PixelPerfectCamera))]
-public class BaseCamera : Global {
+public class BaseCamera : MonoBehaviour {
 
     //global limits of the camera
     [SerializeField] private int rightLimit;
@@ -49,8 +49,8 @@ public class BaseCamera : Global {
     private void GetCameraProperties()
     {
         ppc = GetComponent<PixelPerfectCamera>();
-        width = ppc.refResolutionX / (2.0f * pixelsPerUnit);
-        height = ppc.refResolutionY / (2.0f * pixelsPerUnit);
+        width = ppc.refResolutionX / (2.0f * Global.PIXELS_PER_UNIT);
+        height = ppc.refResolutionY / (2.0f * Global.PIXELS_PER_UNIT);
     }
 
     protected virtual void Start()
@@ -62,7 +62,7 @@ public class BaseCamera : Global {
         bottomLeft = new Vector2(leftLimit + transform.position.x, bottomLimit + transform.position.y);
         bottomRight = new Vector2(rightLimit + transform.position.x, bottomLimit + transform.position.y);
 
-        player = Player.GetComponent<IPlayer>();
+        player = Global.Player.GetComponent<IPlayer>();
     }
 
     //black magic
@@ -86,9 +86,12 @@ public class BaseCamera : Global {
     protected void KeepPlayerInLimits()
     {
         //keep the player withing the horizontal limits 
-        Player.transform.position = new Vector2(Mathf.Clamp(Player.transform.position.x, leftLimit + 0.5f, rightLimit - 0.5f), Player.transform.position.y);
+        Global.Player.transform.position = new Vector2(
+            Mathf.Clamp(Global.Player.transform.position.x, leftLimit + 0.5f, rightLimit - 0.5f), 
+            Global.Player.transform.position.y
+            );
         //check if player has fallen past the bottom limit of the map
-        if (Player.transform.position.y < bottomLimit - 1.0f)
+        if (Global.Player.transform.position.y < bottomLimit - 1.0f)
         {
             player.OnPlayerFall();
         }

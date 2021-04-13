@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 [RequireComponent(typeof(UIAnchor))]
 [RequireComponent(typeof(HeartbeatAudioPlayer))]
-public class Heartbeat : Global {
+public class Heartbeat : MonoBehaviour {
 
     private Transform marker; //ref to renderer of healthbar
     private Vector2 markerOffset = new Vector2(3.75f, -1.875f);
@@ -56,7 +56,7 @@ public class Heartbeat : Global {
     //assign values to the individual components of the healthbeat 
     void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             heartAnimation.speed = bpm / 60.0f; //match animation speed to bpm
 
@@ -75,14 +75,14 @@ public class Heartbeat : Global {
             //player takes damage when heartrate is too high or low
             if (bpm < minHeartrate || bpm > maxHeartrate)
             {
-                Player.GetComponent<IHealthObject>().Damage(1);
+                Global.Player.GetComponent<IHealthObject>().Damage(1);
             }
 
             SetDigitNum();
 
             int position = Mathf.CeilToInt((bpm - 4.0f) / 8);
             //position = 0;
-            marker.localPosition = markerOffset + Vector2.right * (position * (1.0f / pixelsPerUnit));
+            marker.localPosition = markerOffset + Vector2.right * (position * (1.0f / Global.PIXELS_PER_UNIT));
 
             SetHealth();
 
@@ -141,7 +141,7 @@ public class Heartbeat : Global {
     {
         if (virus)
         {
-            IHealthObject player = Player.GetComponent<IHealthObject>();
+            IHealthObject player = Global.Player.GetComponent<IHealthObject>();
             virus.virusMat.SetFloat("_Cutoff", Mathf.Lerp(virus.virusMat.GetFloat("_Cutoff"), 1 - (player.Health / player.MaxHealth), 0.2f));
         }
        

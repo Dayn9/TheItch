@@ -10,7 +10,7 @@ public class LoadButton : GenericButton
         GameSaveData loadData = GameSaver.LoadGameData(GetComponentInParent<SaveDisplay>().saveNumber);
         GameSaver.currentLevelName = loadData.currentLevel;
         
-        startPosition = loadData.PlayerPosition();
+        Global.startPosition = loadData.PlayerPosition();
 
         Transition.loadGame = true; //tell transition to load in the game and level data
         InventoryDisplay.loadGame = true;

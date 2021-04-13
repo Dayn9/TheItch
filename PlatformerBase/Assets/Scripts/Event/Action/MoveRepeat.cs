@@ -34,7 +34,7 @@ public class MoveRepeat : MoveEvent
 
     protected override void FixedUpdate()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             //move from current position towards final position
             if (move && waitTimer >= waitTime)
@@ -55,7 +55,7 @@ public class MoveRepeat : MoveEvent
                 }
                 else
                 {
-                    transform.position += (Vector3)moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - buffer); //move at speed along mov
+                    transform.position += (Vector3)moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - Global.BUFFER); //move at speed along mov
                 }
             }
             else

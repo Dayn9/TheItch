@@ -58,7 +58,7 @@ public class TextboxEvent : EventTrigger
 
     protected override void Update()
     {
-        if (!paused || true)
+        if (!Global.paused || true)
         {
             if (moveIn || moveOut)
             {

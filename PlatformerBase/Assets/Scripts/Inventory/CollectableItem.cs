@@ -41,7 +41,7 @@ public class CollectableItem : Inventory
     private void OnTriggerEnter2D(Collider2D coll)
     {
         //check if collision with player while player isn't returning
-        if (!collected && coll.CompareTag("Player") && !Player.GetComponent<IPlayer>().IsReturning)
+        if (!collected && coll.CompareTag("Player") && !Global.Player.GetComponent<IPlayer>().IsReturning)
         {
             PlayCollectionEffectAt(transform.position);
 
@@ -89,7 +89,7 @@ public class CollectableItem : Inventory
 
         if (itemtype == ItemType.Cure)
         {
-            Player.GetComponent<AbilityHandler>().LockAll(); //re lock all the abilities
+            Global.Player.GetComponent<AbilityHandler>().LockAll(); //re lock all the abilities
         }
 
 

@@ -52,7 +52,7 @@ public class Book : Button
         if (unlocked)
         {
             DoctorsNote.SetActive(true);
-            otherPause = true;
+            Pause.otherPause = true;
         }
         
     }

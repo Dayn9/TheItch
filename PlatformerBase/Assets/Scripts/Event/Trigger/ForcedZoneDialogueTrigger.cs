@@ -52,7 +52,7 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
                 {
                     //unfreeze player and activate after object
                     SetFrozen(false);
-                    Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
+                    Global.Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
                     if (after != null)
                     {
                         after.SetActive(true);
@@ -61,14 +61,14 @@ public class ForcedZoneDialogueTrigger : ZoneDialogueTrigger
                 }
             }
             //move towards dialogue object
-            if ((transform.position - Player.transform.position).magnitude > distanceAway)
+            if ((transform.position - Global.Player.transform.position).magnitude > distanceAway)
             {
-                Player.GetComponent<PhysicsObject>().InputVelocity = new Vector2(Player.transform.position.x > transform.position.x ? -inputSpeed : inputSpeed, 0);
+                Global.Player.GetComponent<PhysicsObject>().InputVelocity = new Vector2(Global.Player.transform.position.x > transform.position.x ? -inputSpeed : inputSpeed, 0);
             }
             //close enought to dialogue object
             else
             {
-                Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
+                Global.Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
             }
         }
     }

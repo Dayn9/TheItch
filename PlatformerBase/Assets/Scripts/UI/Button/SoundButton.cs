@@ -10,17 +10,17 @@ public class SoundButton : Button {
 
     protected override void OnActive()
     {
-        render.sprite = muted ? mInactive : inactive;
+        render.sprite = Global.muted ? mInactive : inactive;
     }
 
     protected override void OnClick()
     {
-        muted = !muted;
+        Global.muted = !Global.muted;
     }
 
     protected override void OnEnter()
     {
-        render.sprite = muted ? mActive : active;
+        render.sprite = Global.muted ? mActive : active;
     }
    
 }

@@ -46,8 +46,8 @@ public class TransferTrigger : IndicatorTrigger
 
     private void Start()
     {
-        abilityHandler = Player.GetComponentInChildren<AbilityHandler>();
-        cursorChange = MainCamera.GetComponent<CursorChange>();
+        abilityHandler = Global.Player.GetComponentInChildren<AbilityHandler>();
+        cursorChange = Global.MainCamera.GetComponent<CursorChange>();
         HbIndicator.Total = healthObj.MaxHealth;
         HbIndicator.CurrentHealth = healthObj.Health;
         anim.SetBool("full", FullyHealed);
@@ -74,7 +74,7 @@ public class TransferTrigger : IndicatorTrigger
 
     protected override void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             GetMouseClick();
 
@@ -134,7 +134,8 @@ public class TransferTrigger : IndicatorTrigger
                 || (FullyHealed && AbilityHandler.IsUnlocked(1))); //check if indicator should be available
 
         //check for mouse in zone and able to interact
-        if (((!JoystickMouse.Active && zone.bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+        Vector2 mousePos = (Vector2)Global.MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
+        if (((!JoystickMouse.Active && zone.bounds.Contains(mousePos))
            || (JoystickMouse.Active && zone.bounds.Contains(JoystickMouse.Pos)))
             && validInput)
         {
@@ -148,9 +149,9 @@ public class TransferTrigger : IndicatorTrigger
             if ((Input.GetMouseButton(0) || Input.GetButton("Transfer")) && !transfering && !FullyHealed)
             {
                 transfering = true;
-                Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
+                Global.Player.GetComponent<IPlayer>().Power.RemoveBPM(healthObj.MaxHealth);
 
-                Player.GetComponent<IHealthObject>().Damage(0); //triggers the damage animation
+                Global.Player.GetComponent<IHealthObject>().Damage(0); //triggers the damage animation
                 Before?.Invoke();
 
                 abilityHandler.PowerZero.SendParticlesTo(transform, healthObj.MaxHealth);
@@ -158,11 +159,11 @@ public class TransferTrigger : IndicatorTrigger
             else if((Input.GetMouseButton(1) || Input.GetButton("Absorb")) && !absorbing && !Empty)
             {
                 absorbing = true;
-                Player.GetComponent<IPlayer>().Power.RestoreBPM(healthObj.MaxHealth);
+                Global.Player.GetComponent<IPlayer>().Power.RestoreBPM(healthObj.MaxHealth);
                 After?.Invoke();
 
                 abilityHandler.PowerOne.transform.position = transform.position;
-                abilityHandler.PowerOne.SendParticlesTo(Player.GetComponent<MovingObject>(), healthObj.MaxHealth);
+                abilityHandler.PowerOne.SendParticlesTo(Global.Player.GetComponent<MovingObject>(), healthObj.MaxHealth);
                 audioPlayer.PlaySound(1);
             }
             containsMouse = true;

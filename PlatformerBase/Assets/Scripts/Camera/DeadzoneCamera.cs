@@ -41,7 +41,7 @@ public class DeadzoneCamera : BaseCamera
     // Update is called once per frame
     void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             if (cameraType != DeadzoneCameraType.Regular)
             {
@@ -99,7 +99,7 @@ public class DeadzoneCamera : BaseCamera
     /// <returns>rounded value</returns>
     private float RoundToPixel(float origional)
     {
-        float pixelSize = 1.0f / pixelsPerUnit;
+        float pixelSize = 1.0f / Global.PIXELS_PER_UNIT;
         return origional - (origional % pixelSize) + (origional % pixelSize > pixelSize / 2 ? pixelSize : 0);
     }
 

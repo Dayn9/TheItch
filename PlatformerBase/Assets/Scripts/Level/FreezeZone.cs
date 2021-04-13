@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class FreezeZone : Global {
+public class FreezeZone : MonoBehaviour {
 
     [SerializeField] private bool setFreeze;
 
@@ -11,7 +11,7 @@ public class FreezeZone : Global {
     {
         if (coll.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Player.GetComponent<MovingObject>().Frozen = setFreeze;
+            Global.Player.GetComponent<MovingObject>().Frozen = setFreeze;
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
-public class BreakParticles : Global
+public class BreakParticles : MonoBehaviour
 {
     /// <summary>
     /// Controls the broken particles

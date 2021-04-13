@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public enum TextSize { Small, Large, SmallFull, AreaName, SaveLocationName }
 
 [RequireComponent(typeof(AudioPlayer))]
-public class DialogueBox : Pause {
+public class DialogueBox : MonoBehaviour {
     
     [SerializeField] private GameObject charPrefab; //gameobject prefab for individual letters
     [SerializeField] protected TextSize size; //size of the text to display 
@@ -14,6 +13,8 @@ public class DialogueBox : Pause {
 
     private SpriteRenderer charachterImage; //ref to spriteRenderer of the image location 
     protected List<SpriteRenderer> text; //refs to the spriteRenderers of the letter locations
+
+    protected AudioPlayer audioPlayer;
 
     protected int numLines; //number of lines in the dialoge box
     protected int charsPerLine; //number of charachters in each line

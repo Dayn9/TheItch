@@ -22,7 +22,7 @@ public class IndicatorTrigger : EventTrigger
 
     protected override void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             //check if in contact with the player and player is interacting 
             if (playerTouching && CheckInput())

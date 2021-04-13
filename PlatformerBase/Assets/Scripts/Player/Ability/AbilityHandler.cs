@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
-public class AbilityHandler : Global {
+public class AbilityHandler : MonoBehaviour {
 
     /// <summary>
     /// in charge of the different abilities the player has
@@ -71,7 +71,7 @@ public class AbilityHandler : Global {
     // Use this for initialization 
     void Awake () {
         //find player refs
-        player = Player.GetComponent<Jump>();
+        player = Global.Player.GetComponent<Jump>();
     
         //find power zero refs 
         powerZero = Instantiate(abilityZeroPrefab).GetComponent<AbilityTransfer>();
@@ -169,7 +169,7 @@ public class AbilityHandler : Global {
             for (int i = 0; i < unlockedAbilities.Length; i++) { Unlock(i); }
         }
 #endif
-        if (!paused)
+        if (!Global.paused)
         {
             player.Power.SetOutlineColor(0);
 

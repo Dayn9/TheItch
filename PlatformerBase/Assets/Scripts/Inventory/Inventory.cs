@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : Global {
+public class Inventory : MonoBehaviour {
 
     /// <summary>
     /// add on to Global for classes that interact with inventory 

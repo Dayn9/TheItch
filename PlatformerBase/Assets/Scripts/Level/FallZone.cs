@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class FallZone : Global {
+public class FallZone : MonoBehaviour {
 
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
 
@@ -53,7 +53,7 @@ public class FallZone : Global {
     }
 
     void FixedUpdate () {
-		if(!paused && playerInZone)
+		if(!Global.paused && playerInZone)
         {
             //move the fall sections in direction of velocity
             topFallSection.position += (Vector3)velocity;
@@ -71,7 +71,7 @@ public class FallZone : Global {
                 {
                     bottomFallSection.localPosition = Vector2.zero;
                     playerInZone = false;
-                    Player.GetComponent<IPlayer>().InFallZone = false;
+                    Global.Player.GetComponent<IPlayer>().InFallZone = false;
                     return;
                 }
 
@@ -94,10 +94,10 @@ public class FallZone : Global {
         {
             //player stops moving
             playerInZone = true;
-            Player.GetComponent<IPlayer>().InFallZone = true;
+            Global.Player.GetComponent<IPlayer>().InFallZone = true;
 
             //start the fall sections moving
-            velocity = -Player.GetComponent<PhysicsObject>().GravityVelocity;
+            velocity = -Global.Player.GetComponent<PhysicsObject>().GravityVelocity;
             velocity = velocity.normalized * Mathf.Clamp(velocity.magnitude, 1.0f, 1.2f);
             bottomFallSection.gameObject.SetActive(true);
             fallSectionsIndex = 1;

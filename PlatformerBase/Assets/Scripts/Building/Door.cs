@@ -39,17 +39,13 @@ public class Door : Highlight {
 
     private void Update()
     {
-        if (!paused)
+        bool interact = Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("Interact");
+
+        //trigger event when player is touching door and correct key is pressed
+        if (!Global.paused && playerTouching && interact)
         {
-            //trigger event when player is touching door and correct key is pressed
-            if (playerTouching && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("Interact")))
-            {
-                if (OnDoorOpen != null)
-                {
-                    OnDoorOpen(layerInBuilding); //trigger event
-                    audioPlayer.PlaySound(0); //play the unlocking sound
-                }
-            }
+            OnDoorOpen?.Invoke(layerInBuilding); //trigger event
+            audioPlayer.PlaySound(0); //play the unlocking sound
         }
     }
 

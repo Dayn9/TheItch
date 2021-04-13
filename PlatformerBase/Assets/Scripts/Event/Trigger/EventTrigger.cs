@@ -68,7 +68,7 @@ public class EventTrigger : Inventory, ILevelData
 
     protected virtual void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             //check if in contact with the player and player is interacting 
             if (playerTouching)
@@ -138,7 +138,7 @@ public class EventTrigger : Inventory, ILevelData
                     itemGiven.SetActive(true);
                     if (!indirect)
                     {
-                        itemGiven.transform.position = Player.transform.position;
+                        itemGiven.transform.position = Global.Player.transform.position;
                     }
                 }
             }

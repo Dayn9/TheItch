@@ -12,13 +12,13 @@ public class Global : MonoBehaviour {
     private static GameObject mainCamera; //Main Camera object in scene
     private static GameObject player; //player object
 
-    protected static bool paused = false; //true when game is paused and nothing is moving
+    public static bool paused = false; //true when game is paused and nothing is moving
     public static bool muted = false;
 
-    protected const int pixelsPerUnit = 8; //number of pixels displayed in each unity unit
-    protected const float buffer = 0.01f; //collision buffer 
+    public const int PIXELS_PER_UNIT = 8; //number of pixels displayed in each unity unit
+    public const float BUFFER = 0.01f; //collision buffer 
 
-    protected static Vector2 startPosition = Vector2.one;
+    public static Vector2 startPosition = Vector2.one;
 
     #endregion
 
@@ -27,7 +27,7 @@ public class Global : MonoBehaviour {
     /// <summary>
     /// accessor for the mainCamera
     /// </summary>
-    protected GameObject MainCamera {
+    public static GameObject MainCamera {
         get {
             //find the mainCamera if not assigned
             if(mainCamera == null)
@@ -47,7 +47,7 @@ public class Global : MonoBehaviour {
     /// <summary>
     /// accessor for player gameObject
     /// </summary>
-    protected static GameObject Player {
+    public static GameObject Player {
         get
         {
             if (player == null)
@@ -62,7 +62,6 @@ public class Global : MonoBehaviour {
     /// <summary>
     /// accessor for player transform
     /// </summary>
-    protected Transform
-        PlayerTransform { get { return Player.transform; } }
+    public static Transform PlayerTransform { get { return Player.transform; } }
     #endregion 
 }

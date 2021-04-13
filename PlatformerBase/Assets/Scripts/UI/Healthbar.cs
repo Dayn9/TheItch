@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //Legacy Heathbar System
-public class Healthbar : Global {
+public class Healthbar : MonoBehaviour {
 
     [SerializeField] private Digit digitOne; //ref to first digit in healthbar readout
     [SerializeField] private Digit digitTwo; //ref to second digit in healthbar number readout
@@ -17,7 +17,7 @@ public class Healthbar : Global {
     private void Start()
     {
         //get the player's health and maxHealth
-        playerHealth = Player.GetComponent<IHealthObject>();
+        playerHealth = Global.Player.GetComponent<IHealthObject>();
 
         GameObject tick;
         //fill the healthbar with ticks
@@ -34,7 +34,7 @@ public class Healthbar : Global {
 
     // Update is called once per frame
     void Update () {
-        if (!paused)
+        if (!Global.paused)
         {
             //get the player's health
             int hp = Mathf.FloorToInt(playerHealth.Health);

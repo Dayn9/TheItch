@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Books : Global
+public class Books : MonoBehaviour
 {
     [SerializeField] private Vector2 hiddenOffset; //relative position of display when hidden
     private Vector2 openOffset; 
@@ -87,7 +87,7 @@ public class Books : Global
             pos = (Vector2)transform.position + offset;
             bounds = new Rect(pos.x + area.x, pos.y + area.y, area.width, area.height);
             //check if the mouse is withing the collider space
-            if (hidden && bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+            if (hidden && bounds.Contains((Vector2)Global.MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
             {
                 timer = 0;
                 move = true;

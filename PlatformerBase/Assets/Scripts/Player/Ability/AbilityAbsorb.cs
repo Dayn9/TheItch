@@ -17,7 +17,7 @@ public class AbilityAbsorb : BloodParticle
     protected override void Awake()
     {
         base.Awake();
-        playerRend = Player.GetComponent<SpriteRenderer>();
+        playerRend = Global.Player.GetComponent<SpriteRenderer>();
         //playerObj = Player.GetComponent<MovingObject>();
         audioPlayer = GetComponent<AudioPlayer>();
     }
@@ -25,7 +25,7 @@ public class AbilityAbsorb : BloodParticle
     // Update is called once per frame
     void Update()
     {
-        if(!paused)
+        if(!Global.paused)
         {
             //snap to players position
             //transform.position = (Vector2)Player.transform.position ;

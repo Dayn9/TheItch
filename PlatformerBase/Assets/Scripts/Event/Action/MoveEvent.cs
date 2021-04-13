@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(AudioPlayer))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class MoveEvent : Global {
+public class MoveEvent : MonoBehaviour {
 
     protected enum ColliderOn { Snap, Initial, Always }
 
@@ -105,7 +105,7 @@ public class MoveEvent : Global {
 
     protected virtual void FixedUpdate()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             //move from current position towards final position
             if (move)
@@ -134,7 +134,7 @@ public class MoveEvent : Global {
                         float percent = ((Vector2)transform.localPosition - origin).magnitude / (final - origin).magnitude;
                         rend.color = ((1 - percent) * initialColor) + (percent * finalColor);
                     }                 
-                    transform.position += (Vector3)moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - buffer); //move at speed along mov
+                    transform.position += (Vector3)moveObj.MoveVelocity.normalized * (moveObj.MoveVelocity.magnitude - Global.BUFFER); //move at speed along mov
                 }
 
             }

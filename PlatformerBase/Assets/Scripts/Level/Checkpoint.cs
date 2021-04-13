@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class Checkpoint : Global {
+public class Checkpoint : MonoBehaviour {
 
     /// <summary>
     /// Changes the player's reset position
@@ -16,7 +16,7 @@ public class Checkpoint : Global {
     {
         //set the reset position of the player to this objects location
         if(coll.tag == "Player") {
-            Player.GetComponent<IPlayer>().ReturnPosition = transform.position;
+            Global.Player.GetComponent<IPlayer>().ReturnPosition = transform.position;
         }
     }
 }

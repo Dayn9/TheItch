@@ -43,7 +43,7 @@ public class LevelChange : EventTrigger
                 return;
             }
 
-            startPosition = playerStart;
+            Global.startPosition = playerStart;
 
             Items.Clear();
 

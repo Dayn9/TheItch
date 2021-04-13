@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 
 //Adapted from: https://chicounity3d.wordpress.com/2014/05/23/how-to-lerp-like-a-pro/
-public class CameraPanEvent : Pause
+public class CameraPanEvent: MonoBehaviour
 {
     [SerializeField] private EventTrigger evTrig; //eventTrigger 
 
@@ -17,8 +18,6 @@ public class CameraPanEvent : Pause
     [SerializeField] [Range(1, 5)] private float holdTime = 3f;
     private float currentHoldTime;
 
-    private bool move = false;
-    private bool movingOut = true;
     private BaseCamera camController; //ref to camera controller 
 
     [SerializeField] [Range(1, 5)] private float lerpTime = 3f;
@@ -26,7 +25,7 @@ public class CameraPanEvent : Pause
 
     void Start()
     {
-        camController = MainCamera.GetComponent<BaseCamera>();
+        camController = Global.MainCamera.GetComponent<BaseCamera>();
 
         if (evTrig.State)
         {
@@ -36,20 +35,17 @@ public class CameraPanEvent : Pause
         //subscribe to proper event
         if (beforeAfter)
         {
-            evTrig.Before += Move;
+            evTrig.Before += StartMove;
         }
         else
         {
-            evTrig.After += Move;
+            evTrig.After += StartMove;
         }
     }
 
     //called by event, starts the movement
-    private void Move()
+    private void StartMove()
     {
-        move = true;
-        //movingOut = true;
-
         origin = camController.transform.localPosition;
         currentLerpTime = 0f;
         if (useTarget) {
@@ -58,61 +54,75 @@ public class CameraPanEvent : Pause
         }
 
         camController.Manual = true; //take over control
-        PauseGame(true);
+        Pause.PauseGame(true);
+
+        StartCoroutine(Move());
     }
 
-    private void Update()
-    {
-        if (!menuPaused)
-        {
-            if (move && currentLerpTime < lerpTime)
-            {
-                //increment timer once per frame
-                currentLerpTime += Time.deltaTime;
-                if (currentLerpTime > lerpTime)
-                {
-                    currentLerpTime = lerpTime;
-                }
+    private float Smootherstep(float p) => p * p * p * (p * (6f * p - 15f) + 10f);
 
-                float p = currentLerpTime / lerpTime; //calculate percentage
-                if (p == 1)
-                {
-                    if (movingOut)
-                    {
-                        camController.transform.localPosition = final;
-                        movingOut = false;
-                        currentHoldTime = 0;
-                    }
-                    else
-                    {
-                        camController.transform.localPosition = origin;
-                        move = false;
-                        camController.Manual = false;
-                        PauseGame(false);
-                    }
-                }
-                else
-                {
-                    p = p * p * p * (p * (6f * p - 15f) + 10f); //smootherstep!
-                    if (movingOut)
-                    {
-                        camController.transform.localPosition = Vector3.Lerp(origin, final, p);
-                    }
-                    else
-                    {
-                        camController.transform.localPosition = Vector3.Lerp(final, origin, p);
-                    }
-                    
-                }
-            }
-            else if (move && currentHoldTime < holdTime)
+    private IEnumerator Move()
+    {
+        //Move Out
+        while(currentLerpTime < lerpTime)
+        {
+            yield return new WaitForEndOfFrame();
+            if (!Pause.menuPaused) //increment timer once per frame
             {
-                currentHoldTime+= Time.deltaTime;
-                if (currentHoldTime > holdTime)
-                {
-                    currentLerpTime = 0; //reset the timer and start moving back out
-                }
+                currentLerpTime += Time.deltaTime;
+            }
+            if (currentLerpTime >= lerpTime)
+            {
+                camController.transform.localPosition = final;
+                currentHoldTime = 0;
+                break;
+            }
+            else
+            {
+                float p = currentLerpTime / lerpTime; //calculate percentage
+                p = Smootherstep(p); //smootherstep!
+                camController.transform.localPosition = Vector3.Lerp(origin, final, p);
             }
         }
-    }
+
+        //Hold
+        while(currentHoldTime < holdTime)
+        {
+            yield return new WaitForEndOfFrame();
+            if (!Pause.menuPaused) //increment timer once per frame
+            {
+                currentHoldTime += Time.deltaTime;
+            }
+            if (currentHoldTime >= holdTime)
+            {
+                currentLerpTime = 0; //reset the timer and start moving back out
+                break;
+            }
+        }
+
+        //Move Back In
+        while (currentLerpTime < lerpTime)
+        {
+            yield return new WaitForEndOfFrame();
+            
+            if (!Pause.menuPaused) //increment timer once per frame
+            {
+                currentLerpTime += Time.deltaTime;
+            }
+            
+            if (currentLerpTime >= lerpTime)
+            {
+                camController.transform.localPosition = origin;
+                camController.Manual = false;
+                Pause.PauseGame(false);
+                break;
+            }
+            else
+            {
+                float p = currentLerpTime / lerpTime; //calculate percentage
+                p = Smootherstep(p); //smootherstep!
+                camController.transform.localPosition = Vector3.Lerp(final, origin, p);
+            }
+        }
+    }  
 }

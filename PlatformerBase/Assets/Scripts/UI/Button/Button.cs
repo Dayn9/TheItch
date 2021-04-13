@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public abstract class Button : Pause {
+public abstract class Button : MonoBehaviour {
 
     protected SpriteRenderer render; //ref to spriteRenderer component
     [SerializeField] protected Vector2 offset; //offset of collider from transform center
@@ -18,18 +18,19 @@ public abstract class Button : Pause {
 
     [SerializeField] private bool requiresPause = true;
 
+    private AudioPlayer audioPlayer;
 
     protected virtual void Awake()
     {
         render = GetComponent<SpriteRenderer>();
+        audioPlayer = GetComponent<AudioPlayer>();
         //set the area based on starting position and offset
         pos = (Vector2)transform.position + offset;
 
-        GetAudioPlayer();
     }
 
     protected virtual void Update () {
-        if (menuPaused || !requiresPause)
+        if (Pause.menuPaused || !requiresPause)
         {
             OnActive();
             //update the collider position
@@ -37,7 +38,7 @@ public abstract class Button : Pause {
             bounds = new Rect(pos.x + area.x, pos.y + area.y, area.width, area.height);
 
             //check if the mouse is withing the collider space
-            if ((!JoystickMouse.Active && bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
+            if ((!JoystickMouse.Active && bounds.Contains((Vector2)Global.MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition)))
               || (JoystickMouse.Active && bounds.Contains(JoystickMouse.Pos)))
             {
                 

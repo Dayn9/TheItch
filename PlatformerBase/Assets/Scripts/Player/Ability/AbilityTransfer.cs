@@ -16,16 +16,16 @@ public class AbilityTransfer : BloodParticle {
     protected override void Awake () {
 
         base.Awake();
-        playerRend = Player.GetComponent<SpriteRenderer>();
+        playerRend = Global.Player.GetComponent<SpriteRenderer>();
         audioPlayer = GetComponent<AudioPlayer>();
     }
     
 	// Update is called once per frame
 	void Update () {
-        if (!paused)
+        if (!Global.paused)
         {
             //snap to players position
-            transform.position = Player.transform.position;
+            transform.position = Global.Player.transform.position;
 
             //move the particles toward their target
             MoveParticles(); 

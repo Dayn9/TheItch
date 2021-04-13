@@ -22,14 +22,14 @@ public class LeadCamera : BaseCamera {
 
     void Update()
     {
-        if (!paused && !manual)
+        if (!Global.paused && !manual)
         {
             targetOffset = (offsetFromPlayer * (follow.GravityVelocity.y < 0 ? -1 : 1 ))
                 + (follow.MoveVelocity.normalized * dist); //target offset determined direction of MoveVelocity and magnitude of dist
 
             //calculate new offset with speed depending on if target is towards or away from follow
             newOffset = Vector2.SmoothDamp(currentOffset, targetOffset, ref smoothVel,
-                targetOffset.magnitude > buffer ? leaveTime : returnTime);
+                targetOffset.magnitude > Global.BUFFER ? leaveTime : returnTime);
 
             newOffset.z = transform.position.z; //maintain z position
             transform.position = follow.transform.position + newOffset; //move to new Offset from follow

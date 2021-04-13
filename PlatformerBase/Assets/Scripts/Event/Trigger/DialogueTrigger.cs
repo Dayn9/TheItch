@@ -32,7 +32,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
         if (myPhysObj == null) { myPhysObj = GetComponentInChildren<PhysicsObject>(); }
 
         if (!dialogueBox) {
-            dialogueBox = MainCamera.GetComponentInChildren<DialogueBox>();
+            dialogueBox = Global.MainCamera.GetComponentInChildren<DialogueBox>();
             Debug.Log(gameObject.name + "'s dialogue trigger needs manual assignment");
         }
 
@@ -43,7 +43,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
     {
         if(playerPhysObj == null)
         {
-            playerPhysObj = Player.GetComponent<PhysicsObject>();
+            playerPhysObj = Global.Player.GetComponent<PhysicsObject>();
         }
     }
 
@@ -66,7 +66,7 @@ public class DialogueTrigger : IndicatorTrigger, IDialogue {
                 }
 
                 SetFrozen(true);
-                Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
+                Global.Player.GetComponent<PhysicsObject>().InputVelocity = Vector2.zero;
                 CheckQuest();
                 if (questCompleted)
                 {

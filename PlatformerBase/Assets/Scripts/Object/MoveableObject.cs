@@ -9,7 +9,7 @@ public class MoveableObject : PhysicsObject
 
     protected override void FixedUpdate()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             base.FixedUpdate(); //Do Physics stuff
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public enum Anchor { topLeft, topCenter, topRight, middleLeft, middleCenter, middleRight, bottomLeft, bottomCenter, bottomRight }
 
 [ExecuteInEditMode] //save position 
-public class UIAnchor : Global {
+public class UIAnchor : MonoBehaviour {
 
     [SerializeField] private Anchor anchor;
     [SerializeField] private Vector2 offset;
@@ -31,10 +31,12 @@ public class UIAnchor : Global {
 
     public void SetPosition()
     {
-        float cameraHeight = MainCamera.GetComponent<BaseCamera>().CamHeight;
-        float cameraWidth = MainCamera.GetComponent<BaseCamera>().CamWidth;
+        BaseCamera baseCam = Global.MainCamera.GetComponent<BaseCamera>();
 
-        transform.position = new Vector3(MainCamera.transform.position.x, MainCamera.transform.position.y, transform.position.z); //move to center of the screen
+        float cameraHeight = baseCam.CamHeight;
+        float cameraWidth = baseCam.CamWidth;
+
+        transform.position = new Vector3(baseCam.transform.position.x, baseCam.transform.position.y, transform.position.z); //move to center of the screen
         //adjust x position of UI element
         switch (anchor)
         {
@@ -95,7 +97,7 @@ public class UIAnchor : Global {
     /// <returns>rounded value</returns>
     private float RoundToPixel(float origional)
     {
-        float pixelSize = 1.0f / pixelsPerUnit;
+        float pixelSize = 1.0f / Global.PIXELS_PER_UNIT;
         return origional - (origional % pixelSize) + (origional % pixelSize > pixelSize / 2 ? pixelSize : 0);
     }
 }

@@ -35,7 +35,7 @@ public class HeartbeatAudioPlayer : AudioPlayer
     protected override void Update()
     {
         base.Update();
-        if (paused) { source.Pause(); }
+        if (Global.paused) { source.Pause(); }
         else if (!source.isPlaying) { source.Play(); }
     }
 }

@@ -48,14 +48,14 @@ public class ItemLabel : Inventory
 
     private void SetHiddenWidth()
     {
-        hiddenWidth = ((maxWidth * pixelsPerUnit) - (numChars * 6) - 1) / pixelsPerUnit;
+        hiddenWidth = ((maxWidth * Global.PIXELS_PER_UNIT) - (numChars * 6) - 1) / Global.PIXELS_PER_UNIT;
         render.size = new Vector2(hiddenWidth, render.size.y);
         underlayRender.size = render.size;
     }
 
     protected void Update()
     {
-        if (!paused)
+        if (!Global.paused)
         {
             //update the collider position
             pos = (Vector2)transform.position + offset;
@@ -64,7 +64,7 @@ public class ItemLabel : Inventory
             if(Items.Count > slotNum)
             {
                 //set the width
-                targetWidth = bounds.Contains((Vector2)MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition))
+                targetWidth = bounds.Contains((Vector2)Global.MainCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition))
                     ? maxWidth : hiddenWidth;
             }
             else
