@@ -111,25 +111,27 @@ public class ItemLabel : Inventory
         underlayRender.sprite = render.sprite;
 
         //set the color to match item style
+        Color styleColor;
         switch (style)
         {
             default:
             case ItemStyle.Default:
-                render.material.SetColor("_ReplaceColor", styles[0]);
+                styleColor = styles[0];
                 break;
             case ItemStyle.Blood:
-                render.material.SetColor("_ReplaceColor", styles[1]);
+                styleColor = styles[1];
                 break;
             case ItemStyle.Heal:
-                render.material.SetColor("_ReplaceColor", styles[2]);
+                styleColor = styles[2];
                 break;
             case ItemStyle.Water:
-                render.material.SetColor("_ReplaceColor", styles[3]);
+                styleColor = styles[3];
                 break;
             case ItemStyle.Virus:
-                render.material.SetColor("_ReplaceColor", styles[4]);
+                styleColor = styles[4];
                 break;
         }
+        render.material.SetColor("_ReplaceColor", styleColor);
 
         SetHiddenWidth();
     }

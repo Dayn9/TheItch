@@ -18,7 +18,7 @@ public class BreakParticles : MonoBehaviour
         part = GetComponent<ParticleSystem>();
 
         //create the particle array
-        particles = new ParticleSystem.Particle[16];
+        particles = new ParticleSystem.Particle[part.main.maxParticles];
     }
 
     /// <summary>
@@ -31,6 +31,9 @@ public class BreakParticles : MonoBehaviour
 
         //partShape.position = tilePosition + (Vector3)Vector2.one / 2;
         part.Emit(4);
+        
+        if(part.particleCount == part.main.maxParticles) { return; }
+
         //get the last 4 particles emitted
         part.GetParticles(particles, 4, part.particleCount - 4);
 
